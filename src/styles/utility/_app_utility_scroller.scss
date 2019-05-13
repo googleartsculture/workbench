@@ -1,0 +1,32 @@
+//================================================================================================//
+//
+//  SCROLLER UTILITIES
+//
+//================================================================================================//
+
+// VARS
+
+// ELEMENTS
+
+.u-scroller {
+  -webkit-overflow-scrolling: touch;
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.u-scroller-y {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.u-scroller-x {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  overflow-y: hidden;
+}

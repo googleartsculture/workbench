@@ -1,0 +1,33 @@
+//================================================================================================//
+//
+//  TABLE STRUCTURE
+//
+//================================================================================================//
+
+// VARS
+
+$generic-table-border-color: color(app-black) !default;
+$generic-table-header-background: color(app-grey) !default;
+
+// ELEMENTS
+
+.o-table {
+  border: 1px solid $generic-table-border-color;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.o-table__head {}
+.o-table__body {}
+.o-table__row {}
+
+.o-table__header,
+.o-table__cell {
+  border: 1px solid $generic-table-border-color;
+  padding: 8px;
+}
+
+.o-table__header {
+  background-color: $generic-table-border-color;
+  text-align: left;
+}

@@ -1,0 +1,126 @@
+//================================================================================================//
+//
+//  APP VARIABLES
+//
+//================================================================================================//
+
+// ANCHORS
+$anchor-color:                          color(app-gold, 50, 1, app-black-yellow);
+$anchor-color-hover:                    color(app-gold, 25, 1, app-black-yellow);
+$anchor-color-active:                   color(app-gold, 75, 1, app-black-yellow);
+$anchor-color-tap:                      color(app-gold, 75, 1, app-black-yellow);
+$anchor-access-border:                  color(app-green);
+$anchor-background:                     color(app-black, null, 0);
+
+// TEXT COLOR
+
+$text-lightest:                         color(app-white-yellow);
+$text-light:                            color(app-white-yellow, 5, 1, app-black-yellow);
+$text-medium:                           color(app-grey-yellow, 50, 1, app-black-yellow);
+$text-dark:                             color(app-grey-yellow, 75, 1, app-black-yellow);
+
+$color-header-bg:                     #494534;
+$color-footer-bg:                     #140f01;
+$color-tools-bg:                      #2a281e;
+$color-opacities-bg:                  #3b382e;
+$color-inspector-bg:                  color(app-white-yellow);
+
+$color-inspector-title:               #dad7c8;
+
+$color-border:                        #c9c7bb;
+
+// GENERICS
+$global-fieldset-border-color:          color(app-grey, -50);
+$global-svg-fill:                       color(app-black);
+$global-abbr-border-color:              color(app-black);
+$global-page-background:                color(app-black, 15);
+$global-text:                           $text-dark;
+$global-line-height:                    1.2;
+
+$mark-background:                       color(app-red-desaturated);
+
+// PLACEHOLDER
+$placeholder-color:                     color(app-gold, 75, 1, app-black-yellow);
+$placeholder-opacity:                   .8;
+
+// ANIMATIONS
+$animation-time-short:                  250ms;
+$animation-time-default:                400ms;
+$animation-time-long:                   750ms;
+
+$animation-easing:                      cubic-bezier(.4, 0, .2, 1);
+$animation-time:                        $animation-time-default;
+$animation-interaction:                 5%;
+
+// TYPOGRAPHY
+$font-family-base:                      'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family-primary:                   din-2014, Helvetica, Arial, sans-serif;
+$font-family-secondary:                 trajan-pro-3, serif;
+
+$font-size-base:                        16;
+
+$font-size-min:                         10;
+$font-size-xxs:                         11;
+$font-size-xs:                          13;
+$font-size-sm:                          15;
+$font-size-md:                          $font-size-base;
+$font-size-lg:                          18;
+$font-size-xl:                          22;
+$font-size-xxl:                         32;
+$font-size-max:                         45;
+
+$font-weight-light:                     100;
+$font-weight-regular:                   300;
+$font-weight-medium:                    500;
+$font-weight-heavy:                     700;
+
+$letter-spacing:                        0;
+
+// LAYOUT DIMENSIONS
+$layout-min-width:                      768px;
+$layout-header-height:                  64px;
+$layout-navigation-width:               80px;
+$layout-inspector-width:                300px;
+$layout-inspector-width:                90px;
+$layout-tabs-height:                    35px;
+
+// SIZES
+$size-min:                              1;
+$size-xxs:                              2;
+$size-xs:                               5;
+$size-sm:                               10;
+$size-md:                               15;
+$size-lg:                               20;
+$size-xl:                               30;
+$size-xxl:                              50;
+
+// GUTTERS
+$gutter-xs:                             12;
+$gutter-sm:                             25;
+$gutter-md:                             50;
+$gutter-lg:                             80;
+$gutter-default:                        $gutter-sm;
+
+// MEDIA BREAKS
+$media-xxs:                             320;
+$media-xs:                              640;
+$media-sm:                              768;
+$media-md:                              992;
+$media-lg:                              1200;
+$media-xl:                              1600;
+$media-xxl:                             1920;
+
+$media-min:                             $media-xxs;
+$media-max:                             $media-lg;
+
+// ELEVATION
+$z-index-content:                       0;
+$z-index-tools:                         10;
+$z-index-modal:                         20;
+$z-index-loading:                       30;
+$z-index-notification:                  40;
+$z-index-tooltip:                       50;
+$z-index-notice-rotate:                 60;
+$z-index-unsupported:                   70;
+
+// MISC

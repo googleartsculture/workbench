@@ -1,0 +1,175 @@
+<div #workspace class="c-workspace">
+  <canvas #canvas></canvas>
+  <div #panZoomLayer class="c-workspace__pan-zoom-layer" [ngClass]="{
+    'is-active': config.tools.selected === 'pan' || config.tools.selected === 'zoomIn' || config.tools.selected === 'zoomOut',
+    'is-pan': config.tools.selected === 'pan',
+    'is-panning': config.states.panning,
+    'is-zoom-in': config.tools.selected === 'zoomIn',
+    'is-zoom-out': config.tools.selected === 'zoomOut'
+  }"></div>
+</div>
+<div class="c-workspace__tools">
+  <div class="c-workspace__tool-panel">
+
+    <div class="c-workspace__tool c-tool" *ngIf="config.tools.visible.select">
+      <button type="button" class="c-tool__btn"
+        (click)="toolClick('select')"
+        [disabled]="!config.tools.enabled.select"
+        [ngClass]="{ 'is-active': config.tools.selected === 'select' }"
+        appTooltip=""
+        appTooltipPosition="right"
+        appTooltipTitle="{{ 'MODULES.PROJECT.SHARED.WORKSPACE.TOOL.SELECT' | translate }}"
+      ><app-svg-tool-select class="c-tool__icon"></app-svg-tool-select></button>
+    </div>
+
+    <div class="c-workspace__tool c-tool" *ngIf="config.tools.visible.pan">
+      <button type="button" class="c-tool__btn"
+        (click)="toolClick('pan')"
+        [disabled]="!config.tools.enabled.pan"
+        [ngClass]="{ 'is-active': config.tools.selected === 'pan' }"
+        appTooltip=""
+        appTooltipPosition="right"
+        appTooltipTitle="{{ 'MODULES.PROJECT.SHARED.WORKSPACE.TOOL.PAN' | translate }}"
+      ><app-svg-tool-pan class="c-tool__icon"></app-svg-tool-pan></button>
+    </div>
+
+    <div class="c-workspace__tool c-tool" *ngIf="config.tools.visible.zoomIn">
+      <button type="button" class="c-tool__btn"
+        (click)="toolClick('zoomIn')"
+        [disabled]="!config.tools.enabled.zoomIn"
+        [ngClass]="{ 'is-active': config.tools.selected === 'zoomIn' }"
+        appTooltip=""
+        appTooltipPosition="right"
+        appTooltipTitle="{{ 'MODULES.PROJECT.SHARED.WORKSPACE.TOOL.ZOOM_IN' | translate }}"
+      ><app-svg-tool-zoom-in class="c-tool__icon"></app-svg-tool-zoom-in></button>
+    </div>
+
+    <div class="c-workspace__tool c-tool" *ngIf="config.tools.visible.zoomZero">
+      <button type="button" class="c-tool__btn"
+        (click)="toolClick('zoomZero')"
+        [disabled]="!config.tools.enabled.zoomZero"
+        [ngClass]="{ 'is-active': config.tools.selected === 'zoomZero' }"
+        appTooltip=""
+        appTooltipPosition="right"
+        appTooltipTitle="{{ 'MODULES.PROJECT.SHARED.WORKSPACE.TOOL.ZOOM_RESET' | translate }}"
+      ><app-svg-tool-zoom class="c-tool__icon"></app-svg-tool-zoom></button>
+    </div>
+
+    <div class="c-workspace__tool c-tool" *ngIf="config.tools.visible.zoomOut">
+      <button type="button" class="c-tool__btn"
+        (click)="toolClick('zoomOut')"
+        [disabled]="!config.tools.enabled.zoomOut"
+        [ngClass]="{ 'is-active': config.tools.selected === 'zoomOut' }"
+        appTooltip=""
+        appTooltipPosition="right"
+        appTooltipTitle="{{ 'MODULES.PROJECT.SHARED.WORKSPACE.TOOL.ZOOM_OUT' | translate }}"
+      ><app-svg-tool-zoom-out class="c-tool__icon"></app-svg-tool-zoom-out></button>
+    </div>
+
+    <div class="c-workspace__tool c-tool" *ngIf="config.tools.visible.undo">
+      <button type="button" class="c-tool__btn"
+        (click)="toolClick('undo')"
+        [disabled]="!config.tools.enabled.undo"
+        [ngClass]="{ 'is-active': config.tools.selected === 'undo' }"
+        appTooltip=""
+        appTooltipPosition="right"
+        appTooltipTitle="{{ 'MODULES.PROJECT.SHARED.WORKSPACE.TOOL.UNDO' | translate }}"
+      ><app-svg-tool-undo class="c-tool__icon"></app-svg-tool-undo></button>
+    </div>
+
+    <div class="c-workspace__tool c-tool" *ngIf="config.tools.visible.redo">
+      <button type="button" class="c-tool__btn"
+        (click)="toolClick('redo')"
+        [disabled]="!config.tools.enabled.redo"
+        [ngClass]="{ 'is-active': config.tools.selected === 'redo' }"
+        appTooltip=""
+        appTooltipPosition="right"
+        appTooltipTitle="{{ 'MODULES.PROJECT.SHARED.WORKSPACE.TOOL.REDO' | translate }}"
+      ><app-svg-tool-redo class="c-tool__icon"></app-svg-tool-redo></button>
+    </div>
+
+    <div class="c-workspace__tool c-tool" *ngIf="config.tools.visible.sources">
+      <button type="button" class="c-tool__btn"
+        (click)="config.panels.active.sources = !config.panels.active.sources"
+        [ngClass]="{ 'is-active': config.panels.active.sources }"
+        [disabled]="!config.tools.enabled.sources"
+        appTooltip=""
+        appTooltipPosition="right"
+        appTooltipTitle="{{ 'MODULES.PROJECT.SHARED.WORKSPACE.TOOL.OPACITY' | translate }}"
+      ><app-svg-tool-opacities class="c-tool__icon"></app-svg-tool-opacities></button>
+      <div class="c-tool__overlay" *ngIf="config.panels.active.sources">
+        <div *ngFor="let source of data.sources" class="c-slider">
+          <label class="c-slider__label">{{ source.title }}</label>
+          <div class="c-range c-range--alt">
+          <input type="range" class="c-range__field" min="0" max="1" step="0.05" [(ngModel)]="source.opacity" (input)="render()" />
+          </div>
+        </div>
+        <div *ngIf="data.facsimile.processed" class="c-slider">
+          <label class="c-slider__label">{{ 'MODULES.PROJECT.SHARED.WORKSPACE.INPUT.PROCESSED' | translate }}</label>
+          <div class="c-range c-range--alt">
+            <input type="range" class="c-range__field" min="0" max="1" step="0.05" [(ngModel)]="data.facsimile.processed.opacity"
+            (input)="render()" />
+          </div>
+        </div>
+        <div *ngIf="data.facsimile.generated" class="c-slider">
+          <label class="c-slider__label">{{ 'MODULES.PROJECT.SHARED.WORKSPACE.INPUT.GENERATED' | translate }}</label>
+          <div class="c-range c-range--alt">
+            <input type="range" class="c-range__field" min="0" max="1" step="0.05" [(ngModel)]="data.facsimile.generated.opacity"
+            (input)="render()" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="c-workspace__tool-panel">
+
+    <div class="c-workspace__tool c-tool" *ngIf="config.tools.visible.draw">
+      <button type="button" class="c-tool__btn"
+        (click)="toolClick('draw')"
+        [disabled]="!config.tools.enabled.draw"
+        [ngClass]="{ 'is-active': config.tools.selected === 'draw' }"
+        appTooltip=""
+        appTooltipPosition="right"
+        appTooltipTitle="{{ 'MODULES.PROJECT.SHARED.WORKSPACE.TOOL.DRAW' | translate }}"
+      ><app-svg-tool-draw class="c-tool__icon"></app-svg-tool-draw></button>
+    </div>
+
+    <div class="c-workspace__tool c-tool" *ngIf="config.tools.visible.erase">
+      <button type="button" class="c-tool__btn"
+        (click)="toolClick('erase')"
+        [disabled]="!config.tools.enabled.erase"
+        [ngClass]="{ 'is-active': config.tools.selected === 'erase' }"
+        appTooltip=""
+        appTooltipPosition="right"
+        appTooltipTitle="{{ 'MODULES.PROJECT.SHARED.WORKSPACE.TOOL.ERASE' | translate }}"
+      ><app-svg-tool-erase class="c-tool__icon"></app-svg-tool-erase></button>
+    </div>
+
+    <div class="c-workspace__tool c-tool" *ngIf="config.tools.visible.marquee">
+      <button type="button" class="c-tool__btn"
+        (click)="toolClick('marquee')"
+        [disabled]="!config.tools.enabled.marquee"
+        [ngClass]="{ 'is-active': config.tools.selected === 'marquee' }"
+        appTooltip=""
+        appTooltipPosition="right"
+        appTooltipTitle="{{ 'MODULES.PROJECT.SHARED.WORKSPACE.TOOL.MARQUEE' | translate }}"
+      ><app-svg-tool-marquee class="c-tool__icon"></app-svg-tool-marquee></button>
+    </div>
+
+    <div class="c-workspace__tool c-tool" *ngIf="config.tools.visible.polygon">
+      <button type="button" class="c-tool__btn"
+        (click)="toolClick('polygon')"
+        [disabled]="!config.tools.enabled.polygon"
+        [ngClass]="{ 'is-active': config.tools.selected === 'polygon' }"
+        appTooltip=""
+        appTooltipPosition="right"
+        appTooltipTitle="{{ 'MODULES.PROJECT.SHARED.WORKSPACE.TOOL.POLY' | translate }}"
+      ><app-svg-tool-polygon class="c-tool__icon"></app-svg-tool-polygon>
+      </button>
+
+    </div>
+
+  </div>
+</div>
+<app-loader [loading]="!config.states.loaded"></app-loader>

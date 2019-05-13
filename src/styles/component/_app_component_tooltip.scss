@@ -1,0 +1,107 @@
+//================================================================================================//
+//
+//  TOOLTIP COMPONENTS
+//
+//================================================================================================//
+
+// VARS
+
+$tooltip-color-bg: color(app-gold) !default;
+$tooltip-shadow: color(app-black, null, .5) !default;
+
+// ELEMENTS
+
+.c-tooltip {
+  position: absolute;
+  background: $tooltip-color-bg;
+  width: 150px;
+  border-radius: 3px;
+  box-shadow: 0 0 2px $tooltip-shadow;
+  padding: 10px;
+  text-align: center;
+  z-index: $z-index-tooltip;
+
+  &[x-placement^='top'] {
+    margin-bottom: 5px;
+  }
+
+  &[x-placement^='bottom'] {
+    margin-top: 5px;
+  }
+
+  &[x-placement^='right'] {
+    margin-left: 5px;
+  }
+
+  &[x-placement^='left'] {
+    margin-right: 5px;
+  }
+}
+
+.c-tooltip__inner {}
+
+.c-tooltip__title {
+  @include font-primary-regular;
+  margin: 0;
+  text-transform: none;
+  font-size: 14px;
+}
+
+.c-tooltip__copy {
+  font-size: 12px;
+  line-height: 1.2;
+  margin-top: 5px;
+}
+
+.c-tooltip__arrow {
+  border-color: $tooltip-color-bg;
+  border-style: solid;
+  height: 0;
+  margin: 5px;
+  position: absolute;
+  width: 0;
+
+  .c-tooltip[x-placement^='top'] & {
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-width: 5px 5px 0 5px;
+    bottom: -5px;
+    left: calc(50% - 5px);
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  .c-tooltip[x-placement^='bottom'] & {
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    border-width: 0 5px 5px 5px;
+    left: calc(50% - 5px);
+    margin-bottom: 0;
+    margin-top: 0;
+    top: -5px;
+  }
+
+  .c-tooltip[x-placement^='right'] & {
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    border-width: 5px 5px 5px 0;
+    left: -5px;
+    margin-left: 0;
+    margin-right: 0;
+    top: calc(50% - 5px);
+  }
+
+  .c-tooltip[x-placement^='left'] & {
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    border-width: 5px 0 5px 5px;
+    margin-left: 0;
+    margin-right: 0;
+    right: -5px;
+    top: calc(50% - 5px);
+  }
+}

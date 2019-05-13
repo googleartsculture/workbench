@@ -1,0 +1,87 @@
+//================================================================================================//
+//
+//  INPUT STRUCTURE
+//
+//================================================================================================//
+
+// VARS
+
+$input-background: transparent !default;
+$input-border: color(app-white-yellow, -20) !default;
+$input-text: color(app-black-yellow, 10) !default;
+$input-field-offset: 1 !default;
+$input-disabled-opacity: .35 !default;
+$input-background-disabled: color(app-grey-yellow, null, .25);
+
+// ELEMENTS
+
+.o-input {
+  position: relative;
+  user-select: auto;
+}
+
+.o-input--inline-split {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+  width: 100%;
+}
+
+.o-input__label {
+  .o-input--inline-split & {
+    flex-grow: 1;
+  }
+}
+
+.o-input__value {}
+
+.o-input__wrap {
+  position: relative;
+  overflow: hidden;
+  min-height: 24px;
+
+  .o-input--inline-split & {
+    min-width: 24px;
+  }
+}
+
+.o-input__field {
+  border-radius: 0;
+  border: none;
+  padding: 5px 10px 4px 6px;
+  position: relative;
+  background-color: $input-background;
+  color: $input-text;
+  line-height: 1.2;
+  z-index: 1;
+  width: 100%;
+
+  &:disabled {
+    cursor: default !important; // stylelint-disable-line declaration-no-important
+  }
+
+  &:disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    background-color: $input-background-disabled;
+  }
+
+  &[type=week],
+  &[type=time],
+  &[type=month],
+  &[type=date],
+  &[type=datetime-local] {
+    padding: #{$size-sm - 2}px #{$size-sm}px #{$size-sm - 4}px;
+  }
+
+  &[type=color] {
+    padding: 1px 2px;
+    min-height: 38px;
+  }
+
+  &[type=radio],
+  &[type=checkbox] {
+    appearance: none;
+  }
+}

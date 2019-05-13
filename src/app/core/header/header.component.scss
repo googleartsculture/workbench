@@ -1,0 +1,152 @@
+@import '../../../styles/app-init';
+
+$header-title: color(app-gold) !default;
+$header-title-hover: color(app-gold, 10, 1, app-white-yellow) !default;
+$header-nav-border: color(app-white, null, 1) !default;
+
+$header-logo-svg-fill: color(app-gold);
+
+.c-header__logo {
+  flex-shrink: 0;
+  width: $layout-navigation-width;
+}
+
+.c-header__content {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-right: 20px;
+  width: 100%;
+}
+
+.c-header__title {
+  color: $header-title;
+  font-size: 22px;
+  justify-self: flex-start;
+  margin: 0;
+  padding: 0 0 0 20px;
+
+  :host-context(.wf-active) & {
+    font-size: 16px;
+  }
+}
+
+.c-header__status {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.c-header__nav {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 4px 0;
+}
+
+.c-header__nav-list {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.c-header__nav-list-item {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin: 0 5px;
+}
+
+.c-header__status-item--semi {
+  opacity: .5;
+}
+
+.c-header__nav-list-btn {
+  @include animate(color, $animation-time-short);
+  @include font-secondary-regular;
+  @include font-size-sm;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+  justify-content: space-between;
+  width: 65px;
+
+  :host-context(.wf-active) & {
+    @include font-size-xxs;
+    width: 60px;
+  }
+
+  &:hover {
+    color: color(app-white-yellow);
+  }
+
+  &.is-active {
+    color: color(app-gold);
+  }
+}
+
+.c-header__nav-icon {
+  display: block;
+  fill: color(app-grey-yellow, null, .35);
+  height: 32px;
+  width: 32px;
+
+  .c-header__nav-list-btn:hover & {
+    fill: color(app-gold, null, .5);
+  }
+
+  .c-header__nav-list-btn.is-active & {
+    fill: color(app-gold);
+  }
+}
+
+// HEADER LOGO
+
+.c-logo {
+  align-items: center;
+  background-color: rgba(0, 0, 0, .3);
+  color: $header-title;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  @include animate(color $animation-time-short, background-color $animation-time-short);
+
+  &:link {
+    background-color: rgba(0, 0, 0, .3);
+    color: $header-title;
+  }
+
+  &:visited {
+    color: $header-title;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, .5);
+    color: $header-title-hover;
+  }
+
+  &:active {
+    background-color: rgba(0, 0, 0, .75);
+    color: $header-title-hover;
+  }
+}
+
+.c-header__current-route {
+  @include font-size-lg();
+  @include font-secondary-regular;
+  color: $header-title;
+
+  :host-context(.wf-active) & {
+    @include font-size-md();
+  }
+}
+
+.c-logo__icon {
+  fill: $header-logo-svg-fill;
+  height: 30px;
+  width: 30px;
+}

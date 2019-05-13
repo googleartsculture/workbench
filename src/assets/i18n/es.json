@@ -1,0 +1,497 @@
+{
+	"CORE": {
+		"API": {
+			"DISABLE": "",
+			"ERROR": ""
+		},
+		"BROWSER_DETECT": {
+			"TITLE": "",
+			"TS": {
+				"ANDROID": "",
+				"DIMENSION": "",
+				"EDGE": "",
+				"IE": "",
+				"IOS": ""
+			}
+		},
+		"DATA": {
+			"ERROR": {
+				"CREATE": "",
+				"DELETE": "",
+				"SAVE": ""
+			},
+			"WARN": {
+				"DELETE": "",
+				"EXPORT": "",
+				"LOAD": "",
+				"SAVE": ""
+			}
+		},
+		"FOOTER": {
+			"CORP": {
+				"ABOUT": "",
+				"SET": ""
+			},
+			"DEVELOPED": {
+				"POST": "",
+				"PRE": "",
+				"WITH": ""
+			},
+			"LANG": {
+				"ARIA": ""
+			}
+		},
+		"HEADER": {
+			"ANALYSE": "",
+			"ANNOTATE": "",
+			"API": {
+				"DISABLED": "",
+				"PART_DISABLED": ""
+			},
+			"GENERATE": "",
+			"PROCESS": "",
+			"PROPERTIES": ""
+		},
+		"PORTRAIT_NOTICE": {
+			"CONTENT": ""
+		},
+		"STORAGE": {
+			"ERROR": {
+				"FACSIMILIE": "",
+				"PROJECT": "",
+				"SOURCE": "",
+				"STORAGE": ""
+			}
+		}
+	},
+	"MODULES": {
+		"CREATE": {
+			"FORM": {
+				"META": {
+					"AUTHOR": "",
+					"LEGEND": "",
+					"NOTE": "",
+					"TITLE": ""
+				},
+				"SOURCE": {
+					"LEGEND": "",
+					"TITLE": ""
+				},
+				"SUBMIT": ""
+			},
+			"PROJECT": {
+				"IMG": "",
+				"SUB_TITLE": "",
+				"TITLE": ""
+			},
+			"TS": {
+				"ERROR": "",
+				"SUCCESS": "",
+				"WARN": ""
+			}
+		},
+		"HOME": {
+			"SEARCH": {
+				"PLACEHOLDER": ""
+			},
+			"SIDEBAR": {
+				"IMPORT": "",
+				"NEW": "",
+				"TITLE": "",
+				"WELCOME": ""
+			},
+			"SUBTITLE": "",
+			"TABLE": {
+				"AUTHOR": "",
+				"CREATED": "",
+				"TITLE": "",
+				"UPDATED": ""
+			}
+		},
+		"IMPORT": {
+			"SIDEBAR": {
+				"FORM": {
+					"AUTHOR": "",
+					"LEGEND": "",
+					"NOTE": "",
+					"SUBMIT": "",
+					"TITLE": ""
+				},
+				"NOTE": "",
+				"TITLE": ""
+			},
+			"SUB_TITLE": "",
+			"TITLE": "",
+			"TS": {
+				"ERROR": {
+					"FIND": "",
+					"LOAD": "",
+					"PARSE": "",
+					"READ": "",
+					"UNKNOWN": ""
+				},
+				"SUCCESS": {
+					"IMPORT": ""
+				},
+				"WARN": {
+					"IMPORT": ""
+				}
+			}
+		},
+		"PAGE_NOT_FOUND": {
+			"CONTENT": "",
+			"TITLE": ""
+		},
+		"PROJECT": {
+			"MODULES": {
+				"ANALYSE": {
+					"BTN": {
+						"CLASSIFY": "",
+						"DELETE": "",
+						"GLYPH": "",
+						"LOCK": "",
+						"UNLOCK": ""
+					},
+					"CREATE_WORD": {
+						"SAME_WORD_WARN": "",
+						"SEQ_WARN": ""
+					},
+					"NONE": "",
+					"SENTENCE": {
+						"DELETE": "",
+						"TITLE": ""
+					},
+					"TITLE": "",
+					"TOOL": {
+						"CLASSIFY": "",
+						"CLASSIFY_SELECT": "",
+						"CREATE_SELECT": "",
+						"DELETE": "",
+						"DELETE_SELECT": "",
+						"DRAWER": "",
+						"EDIT_GLYPH": "",
+						"LOCK": "",
+						"MOVE_DOWN": "",
+						"MOVE_UP": "",
+						"PANEL": "",
+						"SAVE_GLYPH": "",
+						"SELECT": "",
+						"SELECT_GLYPH": "",
+						"TOGGLE_CARTOUCHE": ""
+					},
+					"TRANSLATION": {
+						"BTN": {
+							"AUTO": ""
+						},
+						"HEADING": "",
+						"NONE": "",
+						"PLACEHOLDERS": {
+							"INTERPRETATION": "",
+							"PHONETIC": "",
+							"TRANSLATION": ""
+						},
+						"SUBTITLE": "",
+						"TITLE": {
+							"PHONETIC": ""
+						},
+						"TS": {
+							"WARN": {
+								"API": ""
+							}
+						}
+					},
+					"TS": {
+						"CONFIRM": "",
+						"ERROR": {
+							"CLASSIFICATION": ""
+						},
+						"WARN": {
+							"API": "",
+							"CLASSIFICATION": ""
+						}
+					},
+					"WORD": {
+						"DELETE": "",
+						"TITLE": ""
+					}
+				},
+				"ANNOTATE": {
+					"AUTHOR": "",
+					"BTN": {
+						"DELETE_ANNOTATION": "",
+						"DELETE_COMMENT": "",
+						"EDIT_ANNOTATION": "",
+						"SAVE_ANNOTATION": "",
+						"SUBMIT": ""
+					},
+					"HOW_TO": "",
+					"INPUT": "",
+					"NO_COMMENT": "",
+					"TITLE": "",
+					"TOOL": {
+						"DRAWER": ""
+					}
+				},
+				"GENERATE": {
+					"ACTIVE": "",
+					"EFFECT": {
+						"OUTLINE": "",
+						"TITLE": "",
+						"TRACE": ""
+					},
+					"LEVEL": "",
+					"TITLE": "",
+					"TOOL": {
+						"DRAWER": ""
+					},
+					"TOUCH": {
+						"BTN": "",
+						"DRAW": "",
+						"TITLE": ""
+					},
+					"WIDTH": ""
+				},
+				"PROCESS": {
+					"ACTIVE": "",
+					"AUTHOR": "",
+					"BTN": {
+						"DELETE": ""
+					},
+					"INPUT": {
+						"INVERT": "",
+						"SOURCE": ""
+					},
+					"LEVEL": "",
+					"NONE": "",
+					"SUBTITLE": "",
+					"TITLE": "",
+					"TOOL": {
+						"DELETE": "",
+						"DRAWER": "",
+						"SELECT": ""
+					}
+				},
+				"PROPERTIES": {
+					"DISTRIBUTION": {
+						"BTN": {
+							"HIDE": "",
+							"SHOW": ""
+						}
+					},
+					"FORM": {
+						"META": {
+							"AUTHOR": {
+								"ALERT": "",
+								"INPUT": ""
+							},
+							"LEGEND": "",
+							"NOTE": "",
+							"TITLE": {
+								"ALERT": "",
+								"INPUT": ""
+							}
+						},
+						"SOURCE": {
+							"BTN": "",
+							"DELETE": "",
+							"INPUT": "",
+							"LEGEND": "",
+							"NOTE": ""
+						},
+						"SUBMIT": "",
+						"SUBMITTING": "",
+						"SUCCESS": ""
+					},
+					"SIDEBAR": {
+						"ACTION": {
+							"DELETE": "",
+							"HEAD": "",
+							"WARNING": ""
+						},
+						"DATE": {
+							"CREATE": "",
+							"UPDATE": ""
+						},
+						"DOWNLOAD": {
+							"BTN": {
+								"DOWNLOAD": "",
+								"EXPORT": ""
+							},
+							"TITLE": ""
+						},
+						"TITLE": ""
+					},
+					"TITLE": "",
+					"TS": {
+						"CONFIRM": "",
+						"CONFIRM_SRC": "",
+						"ERROR": "",
+						"SUCCESS": "",
+						"WARN": ""
+					}
+				}
+			},
+			"SHARED": {
+				"EXPORT_MODAL": {
+					"BTN": "",
+					"CONTENT": "",
+					"TITLE": "",
+					"TS": {
+						"ERROR": {
+							"DATA": "",
+							"DOWNLOAD": "",
+							"TYPE": "",
+							"YAML": "",
+							"YAML_2": ""
+						},
+						"WARN": ""
+					}
+				},
+				"FACSIMILIE_MODAL": {
+					"BTN": "",
+					"CONTENT": "",
+					"TITLE": "",
+					"TS": {
+						"ERROR": "",
+						"WARN": ""
+					}
+				},
+				"GLYPH_MODAL": {
+					"INPUT": "",
+					"TITLE": ""
+				},
+				"WORKSPACE": {
+					"INPUT": {
+						"GENERATED": "",
+						"PROCESSED": ""
+					},
+					"TOOL": {
+						"DRAW": "",
+						"ERASE": "",
+						"MARQUEE": "",
+						"OPACITY": "",
+						"PAN": "",
+						"POLY": "",
+						"REDO": "",
+						"SELECT": "",
+						"UNDO": "",
+						"ZOOM_IN": "",
+						"ZOOM_OUT": "",
+						"ZOOM_RESET": ""
+					},
+					"TS": {
+						"CONFIRM": "",
+						"DELETE": "",
+						"DELETE_PL": "",
+						"DELETE_SEN": "",
+						"DELETE_SEN_GLY": "",
+						"DELETE_SEN_GLY_PL": "",
+						"DELETE_SEN_PL": "",
+						"DELETE_WORD": "",
+						"DELETE_WORD_PL": "",
+						"ERROR": {
+							"API_ID": "",
+							"API_MAL": "",
+							"FACSIMILIE": {
+								"EMPTY": "",
+								"GENERATED": "",
+								"LOAD": "",
+								"PROCESSED": "",
+								"UPDATE": ""
+							},
+							"GLYPH": "",
+							"SOURCE": {
+								"LOAD": ""
+							},
+							"WORKSPACE": ""
+						},
+						"WARN": {
+							"API_ID": "",
+							"GLYPH": ""
+						}
+					}
+				}
+			}
+		},
+		"SETTINGS": {
+			"ALERT": {
+				"UPDADE": {
+					"SUCCESS": ""
+				}
+			},
+			"DEVELOPERS": {
+				"BROWSER": "",
+				"BROWSER_SIZE": "",
+				"BTN": {
+					"HIDE": "",
+					"SHOW": ""
+				},
+				"OS": "",
+				"SCREEN_SIZE": "",
+				"UA": ""
+			},
+			"FORM": {
+				"CLASSIFICATION": {
+					"ALERT": "",
+					"INPUT": "",
+					"LEGEND": "",
+					"NOTE": ""
+				},
+				"CLUSTER": {
+					"ALERT": "",
+					"INPUT": "",
+					"LEGEND": "",
+					"NOTE": ""
+				},
+				"NAME": {
+					"ALERT": "",
+					"INPUT": "",
+					"LEGEND": "",
+					"NOTE": ""
+				},
+				"SUBMIT": "",
+				"SUBMITTING": ""
+			},
+			"TITLE": "",
+			"TS": {
+				"ERROR": {
+					"SAVE": ""
+				},
+				"WARN": {
+					"SAVE": ""
+				}
+			}
+		}
+	},
+	"SHARED": {
+		"FILE_UPLOAD": {
+			"BTN": "",
+			"DISABLE": "",
+			"DRAG_DROP": "",
+			"DROP": "",
+			"ERROR": "",
+			"LOAD": "",
+			"TS": {
+				"ERROR": {
+					"PARSE": "",
+					"READ": ""
+				}
+			}
+		},
+		"IMAGE": {
+			"ERROR": "",
+			"WARN": ""
+		},
+		"IMG_UPLOAD": {
+			"BTN": "",
+			"DISABLE": "",
+			"DRAG_DROP": "",
+			"DROP": "",
+			"LOAD": "",
+			"TS": {
+				"ERROR": "",
+				"WARN": ""
+			}
+		}
+	}
+}

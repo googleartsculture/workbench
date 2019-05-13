@@ -1,0 +1,159 @@
+<app-workspace #workspace (workspaceSetup)="onWorkspaceReady()" (workspaceData)="workspaceUpdate($event)"></app-workspace>
+
+<aside class="o-drawer" [ngClass]="{ 'is-hidden': !aside.active }">
+  <div class="o-drawer__close">
+    <button class="c-button c-button--tool" (click)="aside.active = !aside.active"
+      appTooltip=""
+      appTooltipPosition="left"
+      appTooltipTitle="{{ 'MODULES.PROJECT.MODULES.ANNOTATE.TOOL.DRAWER' | translate }}">
+      <span class="c-button__drop">
+        <app-svg-arrow-right-icon class="c-button__icon c-icon" [style.display]="!aside.active ? 'none' : 'block'"></app-svg-arrow-right-icon>
+        <app-svg-arrow-left-icon class="c-button__icon c-icon" [style.display]="aside.active ? 'none' : 'block'" ></app-svg-arrow-left-icon>
+      </span>
+    </button>
+  </div>
+  <div class="o-drawer__content">
+    <div class="c-sidebar">
+      <div class="c-sidebar__header">
+        <h2 class="c-sidebar__title">{{ 'MODULES.PROJECT.MODULES.ANNOTATE.TITLE' | translate }}</h2>
+      </div>
+      <div class="c-sidebar__content">
+
+        <div class="u-scroller">
+
+          <ul class="c-annotations" *ngIf="workspaceData?.annotations">
+            <li class="c-annotations__item"
+              *ngFor="let annotation of workspaceData?.annotations"
+              [ngClass]="{ 'is-disabled': config.editing.active && annotation.id !== config.editing.object.id }"
+              (mouseenter)="highlightAnnotation(annotation, true)"
+              (mouseleave)="highlightAnnotation(annotation, false)"
+            >
+
+              <div class="c-annotation">
+                <div class="c-annotation__header">
+                  <button class="c-annotation__open c-button c-button--title" type="button" (click)="selectAnnotation(annotation)">
+                    <span class="c-button__drop">
+                      <span class="c-button__label">
+                        <span class="c-annotation__date">{{ annotation.created | date: 'medium' }}</span>
+                        <span class="c-annotation__author">{{ annotation.author || 'MODULES.PROJECT.MODULES.ANNOTATE.AUTHOR' | translate }}</span>
+                      </span>
+                    </span>
+                  </button>
+                  <button
+                    class="c-annotation__edit c-button c-button--title-icon"
+                    type="button"
+                    *ngIf="!config.editing.object || annotation.id !== config.editing.object.id"
+                    (click)="editAnnotation(annotation)"
+                    appTooltip=""
+                    appTooltipPosition="bottom"
+                    appTooltipTitle="{{ 'MODULES.PROJECT.MODULES.ANNOTATE.BTN.EDIT_ANNOTATION' | translate }}"
+                  >
+                    <span class="c-button__drop">
+                      <span class="u-sr-only">{{ 'MODULES.PROJECT.MODULES.ANNOTATE.BTN.EDIT_ANNOTATION' | translate }}</span>
+                      <app-svg-tool-polygon class="c-button__icon c-icon c-icon--sm"></app-svg-tool-polygon>
+                    </span>
+                  </button>
+                  <button
+                    class="c-annotation__save c-button c-button--title-icon"
+                    type="button"
+                    *ngIf="config.editing.object && annotation.id === config.editing.object.id"
+                    (click)="saveAnnotation(annotation)"
+                    appTooltip=""
+                    appTooltipPosition="bottom"
+                    appTooltipTitle="{{ 'MODULES.PROJECT.MODULES.ANNOTATE.BTN.SAVE_ANNOTATION' | translate }}"
+                  >
+                    <span class="c-button__drop">
+                      <span class="u-sr-only">{{ 'MODULES.PROJECT.MODULES.ANNOTATE.BTN.SAVE_ANNOTATION' | translate }}</span>
+                      <app-svg-tick-icon class="c-button__icon c-icon c-icon--sm"></app-svg-tick-icon>
+                    </span>
+                  </button>
+                  <button
+                    class="c-annotation__close c-button c-button--title-icon"
+                    type="button"
+                    [disabled]="config.editing.active && annotation.id === config.editing.object.id"
+                    (click)="deleteAnnotation(annotation)"
+                    appTooltip=""
+                    appTooltipPosition="bottom"
+                    appTooltipTitle="{{ 'MODULES.PROJECT.MODULES.ANNOTATE.BTN.DELETE_ANNOTATION' | translate }}"
+                  >
+                    <span class="c-button__drop">
+                      <span class="u-sr-only">{{ 'MODULES.PROJECT.MODULES.ANNOTATE.BTN.DELETE_ANNOTATION' | translate }}</span>
+                      <app-svg-trash-icon class="c-button__icon c-icon c-icon--sm"></app-svg-trash-icon>
+                    </span>
+                  </button>
+                </div>
+                <div class="c-annotation__content" *ngIf="annotation.selected">
+
+                  <form class="o-form c-comment-form">
+                    <div class="o-form-row">
+                      <div class="o-input">
+                        <label class="o-input__label c-label" for="comment">{{ 'MODULES.PROJECT.MODULES.ANNOTATE.INPUT' | translate }}</label>
+                        <div class="o-input__wrap c-textbox c-textbox--multiline">
+                          <textarea class="o-input__field c-textbox__field" id="comment" name="comment" autocomplete="off" #commentText></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="c-comment-form__actions">
+                      <button type="button"
+                        class="c-input__button c-button c-button--mid c-button--full"
+                        [disabled]="!commentText.value"
+                        (click)="addComment(annotation, commentText.value); commentText.value = ''"
+                      >
+                        <span class="c-button__drop">
+                          <span class="c-button__label">{{ 'MODULES.PROJECT.MODULES.ANNOTATE.BTN.SUBMIT' | translate }}</span>
+                        <app-svg-add-comment-icon class="c-button__icon c-icon c-icon--sm"></app-svg-add-comment-icon>
+                        </span>
+                      </button>
+                    </div>
+                  </form>
+
+                  <ul class="c-comments">
+                    <li class="c-comments__item" *ngFor="let comment of annotation.comments">
+                      <div class="c-comment">
+                        <div class="c-comment__header">
+                          <div class="c-comment__author">{{ comment.author || 'MODULES.PROJECT.MODULES.ANNOTATE.AUTHOR' | translate }}</div>
+                          <button class="c-button c-button--title-icon c-button--slim"
+                            appTooltip=""
+                            appTooltipPosition="bottom"
+                            appTooltipTitle="{{ 'MODULES.PROJECT.MODULES.ANNOTATE.BTN.DELETE_COMMENT' | translate }}"
+                            type="button" (click)="deleteComment(annotation, comment.id)">
+                            <span class="c-button__drop">
+                              <span class="u-sr-only">{{ 'MODULES.PROJECT.MODULES.ANNOTATE.BTN.DELETE_COMMENT' | translate }}</span>
+                              <app-svg-trash-icon class="c-button__icon c-icon c-icon--sm"></app-svg-trash-icon>
+                            </span>
+                          </button>
+                        </div>
+                        <div class="c-comment__content">{{ comment.comment }}</div>
+                        <div class="c-comment__date">{{ comment.created | date: 'medium' }}</div>
+
+                      </div>
+                    </li>
+                  </ul>
+
+                  <div class="c-comments-note" *ngIf="annotation.comments.length < 1">
+                    <div class="c-alert c-alert--info">
+                      <p>{{ 'MODULES.PROJECT.MODULES.ANNOTATE.NO_COMMENT' | translate }}</p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </li>
+          </ul>
+
+          <div class="c-cta" *ngIf="!workspaceData?.annotations || workspaceData.annotations.length < 1">
+            <div class="c-cta__tool">
+              <app-svg-tool-polygon class="c-cta__tool-icon c-icon c-icon--lg"></app-svg-tool-polygon>
+            </div>
+            <p>{{ 'MODULES.PROJECT.MODULES.ANNOTATE.HOW_TO' | translate }}</p>
+          </div>
+
+          <app-loader class="c-annotations-loader" [appLoaderAside]="true" [loading]="!aside.loaded"></app-loader>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>
+

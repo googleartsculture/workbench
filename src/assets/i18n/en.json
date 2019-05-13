@@ -1,0 +1,494 @@
+{
+	"CORE": {
+		"API": {
+			"DISABLE": "API services disabled",
+			"ERROR": "API error"
+		},
+		"BROWSER_DETECT": {
+			"TITLE": "Unsupported",
+			"TS": {
+				"ANDROID": "The version of Android running on your device is not supported. Please download Android 6.0 or later",
+				"DIMENSION": "Your web browser window does not meet the required dimensions. Please load the application on a device with minimum dimensions of 768x550.",
+				"EDGE": "Edge is not supported by the Workbench. Please load the application using another browser.",
+				"IE": "Internet Explorer is not supported by the Workbench. Please load the application using another browser.",
+				"IOS": "The version of iOS running on your Apple device is not supported. Please download iOS 10 or later."
+			}
+		},
+		"DATA": {
+			"ERROR": {
+				"CREATE": "Project could not be created",
+				"DELETE": "Project could not be fuly deleted",
+				"SAVE": "Could not save imported project data"
+			},
+			"WARN": {
+
+			}
+		},
+		"FOOTER": {
+			"CORP": {
+				"ABOUT": "About",
+				"SET": "Settings"
+			},
+			"DEVELOPED": {
+				"POST": "research project",
+				"PRE": "A",
+				"WITH": "developed with"
+			},
+			"LANG": {
+				"ARIA": "Select Language"
+			}
+		},
+		"HEADER": {
+			"ANALYSE": "Analyse",
+			"ANNOTATE": "Annotate",
+			"API": {
+				"DISABLED": "API services disabled",
+				"PART_DISABLED": "API services partially disabled"
+			},
+			"GENERATE": "Generate",
+			"PROCESS": "Process",
+			"PROPERTIES": "Properties"
+		},
+		"PORTRAIT_NOTICE": {
+			"CONTENT": "Please rotate your device"
+		},
+		"STORAGE": {
+			"ERROR": {
+				"FACSIMILIE": "The facsimile {{id}} does not exist",
+				"PROJECT": "This project \"{{id}}\" does not exist",
+				"SOURCE": "The source {{id}} does not exist",
+				"STORAGE": "Storage error: "
+			}
+		}
+	},
+	"MODULES": {
+		"CREATE": {
+			"FORM": {
+				"META": {
+					"AUTHOR": "Author",
+					"LEGEND": "Properties",
+					"NOTE": "Add project meta information",
+					"TITLE": "Title"
+				},
+				"SOURCE": {
+					"LEGEND": "Source file details",
+					"TITLE": "Title"
+				},
+				"SUBMIT": "Create"
+			},
+			"PROJECT": {
+				"IMG": "Project image",
+				"SUB_TITLE": "Upload your source file on the left side.",
+				"TITLE": "New project"
+			},
+			"TS": {
+				"ERROR": "Could not create project due to an unknown error!",
+				"SUCCESS": "project successfully created!",
+				"WARN": "Could not create project. ERROR: "
+			}
+		},
+		"HOME": {
+			"SEARCH": {
+				"PLACEHOLDER": "Search title..."
+			},
+			"SIDEBAR": {
+				"IMPORT": "Import project",
+				"NEW": "New project",
+				"TITLE": "Hieroglyphics Initiative Workbench",
+				"WELCOME": "Welcome to the Hieroglyphics Initiative Workbench"
+			},
+			"SUBTITLE": "My projects",
+			"TABLE": {
+				"AUTHOR": "Author",
+				"CREATED": "Created",
+				"TITLE": "Title",
+				"UPDATED": "Updated"
+			}
+		},
+		"IMPORT": {
+			"SIDEBAR": {
+				"FORM": {
+					"AUTHOR": "Author",
+					"LEGEND": "Properties",
+					"NOTE": "Imported project meta information",
+					"SUBMIT": "Save",
+					"TITLE": "Title"
+				},
+				"NOTE": "Upload your export file on the left side.",
+				"TITLE": "Import project"
+			},
+			"SUB_TITLE": "Sources",
+			"TITLE": "Project images",
+			"TS": {
+				"ERROR": {
+					"FIND": "Could not find import file",
+					"LOAD": "Could not load import project file",
+					"PARSE": "Could not parse file",
+					"READ": "Could not read file",
+					"UNKNOWN": "Could not import project due to an unknown error!"
+				},
+				"SUCCESS": {
+					"IMPORT": "project successfully imported!"
+				},
+				"WARN": {
+					"IMPORT": "Could not import project. ERROR: "
+				}
+			}
+		},
+		"PAGE_NOT_FOUND": {
+			"CONTENT": "Oops! This page could not be found...",
+			"TITLE": "Page Not Found"
+		},
+		"PROJECT": {
+			"MODULES": {
+				"ANALYSE": {
+					"BTN": {
+						"CLASSIFY": "Classify all glyphs",
+						"DELETE": "Delete all glyphs",
+						"GLYPH": "glyph",
+						"LOCK": "lock",
+						"UNLOCK": "unlock"
+					},
+					"CREATE_WORD": {
+						"SAME_WORD_WARN": "Selected glyphs must be within the same word",
+						"SEQ_WARN": "Selected glyphs must be in sequential order"
+					},
+					"NONE": "To begin sequencing glyphs, click and drag using the marquee tool in the left workspace panel to auto-create glyphs, or create a shape with the polygon tool to create your own glyphs",
+					"SENTENCE": {
+						"DELETE": "Delete sentence",
+						"TITLE": "Sentence"
+					},
+					"TITLE": "Sequence",
+					"TOOL": {
+						"CLASSIFY": "Classify glyph",
+						"CLASSIFY_SELECT": "Classify selected",
+						"CREATE_SELECT": "Create word from selected",
+						"DELETE": "Delete glyph",
+						"DELETE_SELECT": "Delete selected",
+						"DRAWER": "Show/hide drawer",
+						"EDIT_GLYPH": "Edit glyph",
+						"LOCK": "Lock glyph",
+						"MOVE_DOWN": "Move down",
+						"MOVE_UP": "Move up",
+						"PANEL": "Show/hide panel",
+						"SAVE_GLYPH": "Save glyph",
+						"SELECT": "Select glyph from list",
+						"SELECT_GLYPH": "Select glyph",
+						"TOGGLE_CARTOUCHE": "Toggle cartouche"
+					},
+					"TRANSLATION": {
+						"BTN": {
+							"AUTO": "Auto translate "
+						},
+						"HEADING": "Translation",
+						"NONE": "No translations have been found for this sentence.",
+						"PLACEHOLDERS": {
+							"INTERPRETATION": "Add interperetation…",
+							"PHONETIC": "Add transliteration…",
+							"TRANSLATION": "Add translation…"
+						},
+						"SUBTITLE": "Translations",
+						"TITLE": {
+							"PHONETIC": "Transliterations..."
+						},
+						"TS": {
+							"WARN": {
+								"API": "An error has occured with the classifier API:"
+							}
+						}
+					},
+					"TS": {
+						"CONFIRM": "Auto-classifying this selection will overwrite {{glyphs}} glyphs. Are you sure you want to proceed?",
+						"ERROR": {
+							"CLASSIFICATION": "An error has occured with glyph classification"
+						},
+						"WARN": {
+							"API": "An error has occured with the classifier API: ",
+							"CLASSIFICATION": "Classification ERROR: "
+						}
+					},
+					"WORD": {
+						"DELETE": "Delete word",
+						"TITLE": "Word"
+					}
+				},
+				"ANNOTATE": {
+					"AUTHOR": "No author",
+					"BTN": {
+						"DELETE_ANNOTATION": "Delete annotation",
+						"DELETE_COMMENT": "Delete comment",
+						"EDIT_ANNOTATION": "Edit annotation",
+						"SAVE_ANNOTATION": "Save annotation",
+						"SUBMIT": "Add comment"
+					},
+					"HOW_TO": "To annotate, create an area with the polygon tool.",
+					"INPUT": "Comment",
+					"NO_COMMENT": "No comments available to display.",
+					"TITLE": "Annotations",
+					"TOOL": {
+						"DRAWER": "Show/hide drawer"
+					}
+				},
+				"GENERATE": {
+					"ACTIVE": "Active",
+					"EFFECT": {
+						"OUTLINE": "Outlines",
+						"TITLE": "Effects",
+						"TRACE": "Trace"
+					},
+					"LEVEL": "Level",
+					"TITLE": "Generate Facsimile",
+					"TOOL": {
+						"DRAWER": "Show/hide drawer"
+					},
+					"TOUCH": {
+						"BTN": "Clear all drawings",
+						"DRAW": "Draw/Erase",
+						"TITLE": "Touch-up"
+					},
+					"WIDTH": "Width"
+				},
+				"PROCESS": {
+					"ACTIVE": "Active",
+					"AUTHOR": "No author",
+					"BTN": {
+						"DELETE": "Delete Area"
+					},
+					"INPUT": {
+						"INVERT": "Invert",
+						"SOURCE": "Source"
+					},
+					"LEVEL": "Level",
+					"NONE": "To begin creating an area, click and drag using the marquee tool in the left workspace panel",
+					"SUBTITLE": "Threshold",
+					"TITLE": "Areas",
+					"TOOL": {
+						"DELETE": "Delete Area",
+						"DRAWER": "Show/hide drawer",
+						"SELECT": "Select Area"
+					}
+				},
+				"PROPERTIES": {
+					"DISTRIBUTION": {
+						"BTN": {
+							"HIDE": "Hide glyph distribution information",
+							"SHOW": "Show glyph distribution information"
+						}
+					},
+					"FORM": {
+						"META": {
+							"AUTHOR": {
+								"ALERT": "An author is required",
+								"INPUT": "Author"
+							},
+							"LEGEND": "Meta data",
+							"NOTE": "Project meta information",
+							"TITLE": {
+								"ALERT": "A title is required",
+								"INPUT": "Title"
+							}
+						},
+						"SOURCE": {
+							"BTN": "Add new",
+							"DELETE": "Delete source file",
+							"INPUT": "Title",
+							"LEGEND": "Source files",
+							"NOTE": "Project source files"
+						},
+						"SUBMIT": "Save",
+						"SUBMITTING": "Saving...",
+						"SUCCESS": "Saved"
+					},
+					"SIDEBAR": {
+						"ACTION": {
+							"DELETE": "Delete project",
+							"HEAD": "Actions",
+							"WARNING": "WARNING: This will permanently delete any work you have done so far!"
+						},
+						"DATE": {
+							"CREATE": "Date created: ",
+							"UPDATE": "Date updated: "
+						},
+						"DOWNLOAD": {
+							"BTN": {
+								"DOWNLOAD": "Download facsimile",
+								"EXPORT": "Download export file"
+							},
+							"TITLE": "Downloads"
+						},
+						"TITLE": "Information"
+					},
+					"TITLE": "Project properties",
+					"TS": {
+						"CONFIRM": "Are you sure you want to delete this project? This action cannot be undone!",
+						"CONFIRM_SRC": "Are you sure you want to delete this source? This action cannot be undone.",
+						"ERROR": "Could not save project properties settings due to an unknown error",
+						"SUCCESS": "Project deleted",
+						"WARN": "Could not save application settings due to an unknown error: "
+					}
+				}
+			},
+			"SHARED": {
+				"EXPORT_MODAL": {
+					"BTN": "Download Export",
+					"CONTENT": "Download the export file of your project by clicking the button below ",
+					"TITLE": "Download export file ",
+					"TS": {
+						"ERROR": {
+							"DATA": "Data: ",
+							"DOWNLOAD": "Cannot create download link form URL",
+							"TYPE": "Error: ",
+							"YAML": "Could not create export YAML file",
+							"YAML_2": "Could not create export YAML file: "
+						},
+						"WARN": "Cannot create download link form URL: "
+					}
+				},
+				"FACSIMILIE_MODAL": {
+					"BTN": "Download",
+					"CONTENT": "Download a facsimile of your project by clicking the button below.",
+					"TITLE": "Download facsimile",
+					"TS": {
+						"ERROR": "Cannot create download link from URL",
+						"WARN": "Cannot create download link from URL: "
+					}
+				},
+				"GLYPH_MODAL": {
+					"INPUT": "Category",
+					"TITLE": "Select Glyph"
+				},
+				"WORKSPACE": {
+					"INPUT": {
+						"GENERATED": "Generated facsimile",
+						"PROCESSED": "Processed facsimile"
+					},
+					"TOOL": {
+						"DRAW": "Draw (d)",
+						"ERASE": "Erase (e)",
+						"MARQUEE": "Create Marquee (m)",
+						"OPACITY": " Layer opacities",
+						"PAN": "Pan (p)",
+						"POLY": "Create Polygon (g)",
+						"REDO": "Re-do",
+						"SELECT": "Select (s)",
+						"UNDO": "Undo",
+						"ZOOM_IN": "Zoom in",
+						"ZOOM_OUT": "Zoom Out",
+						"ZOOM_RESET": "Reset zoom"
+					},
+					"TS": {
+						"CONFIRM": "This will delete {{ glyphs }} glyphs. Are you sure you want to proceed?",
+						"DELETE": "This will delete {{ objects }} object Are you sure you want to proceed?",
+						"DELETE_PL": "This will delete {{ objects }} objects Are you sure you want to proceed?",
+						"DELETE_SEN": "This will delete {{ words }} word ",
+						"DELETE_SEN_GLY": "and {{glyphs}} glyph. Are you sure you want to proceed?",
+						"DELETE_SEN_GLY_PL": "and {{glyphs}} glyphs. Are you sure you want to proceed?",
+						"DELETE_SEN_PL": "This will delete {{ words }} words ",
+						"DELETE_WORD": "This will delete {{glyphs}} glyph. Are you sure you want to proceed?",
+						"DELETE_WORD_PL": "This will delete {{glyphs}} glyphs. Are you sure you want to proceed?",
+						"ERROR": {
+							"API_ID": "An error has occured with the identify API",
+							"API_MAL": "API response malformed",
+							"FACSIMILIE": {
+								"EMPTY": "Cannot create empty Facsimile",
+								"GENERATED": "Cannot load generated Facsimile: {{ fax }}",
+								"LOAD": "Cannot load facsimile: {{ fax }}",
+								"PROCESSED": "Cannot load processed Facsimile: {{ fax }}",
+								"UPDATE": "Cannot update facsimile"
+							},
+							"GLYPH": "An error has occured creating the glyph image. Please try again.",
+							"SOURCE": {
+								"LOAD": "Cannot load source: {{ source }}"
+							},
+							"WORKSPACE": " Workspace error: {{ err }}"
+						},
+						"WARN": {
+							"API_ID": "An error has occured with the identify API: ",
+							"GLYPH": "An error has occured creating the glyph image: "
+						}
+					}
+				}
+			}
+		},
+		"SETTINGS": {
+			"ALERT": {
+				"UPDADE": {
+					"SUCCESS": "Settings have been updated"
+				}
+			},
+			"DEVELOPERS": {
+				"BROWSER": "Browser",
+				"BROWSER_SIZE": "Browser Dimensions",
+				"BTN": {
+					"HIDE": "Hide developer information",
+					"SHOW": "Show developer information"
+				},
+				"OS": "Operating System",
+				"SCREEN_SIZE": "Screen Dimensions",
+				"UA": "User Agent"
+			},
+			"FORM": {
+				"CLASSIFICATION": {
+					"ALERT": "The classification model is required",
+					"INPUT": "Model",
+					"LEGEND": "Classification",
+					"NOTE": "Settings related to classification and the auto-classify engine"
+				},
+				"CLUSTER": {
+					"ALERT": "The cluster analysis threshold is required",
+					"INPUT": "Threshold",
+					"LEGEND": "Cluster analysis",
+					"NOTE": "Settings related to cluster analysis and the auto-identify engine"
+				},
+				"NAME": {
+					"ALERT": "Your full name is required",
+					"INPUT": "Full name",
+					"LEGEND": "Your name",
+					"NOTE": "The name your work will be stored under"
+				},
+				"SUBMIT": "Save",
+				"SUBMITTING": "Saving..."
+			},
+			"TITLE": "Settings",
+			"TS": {
+				"ERROR": {
+					"SAVE": "Could not save application settings due to an unknown error"
+				},
+				"WARN": {
+					"SAVE": "Could not save application settings due to an unknown error: "
+				}
+			}
+		}
+	},
+	"SHARED": {
+		"FILE_UPLOAD": {
+			"BTN": "Or choose file",
+			"DISABLE": "Upload disabled",
+			"DRAG_DROP": "Drag and drop a file to upload",
+			"DROP": "Drop your file",
+			"ERROR": "Please select only a Workbench Export YAML file",
+			"LOAD": "Loading...",
+			"TS": {
+				"ERROR": {
+					"PARSE": "Could not parse file '{{ file }}'",
+					"READ": "Could not read file '{{ file }}'"
+				}
+			}
+		},
+		"IMAGE": {
+			"ERROR": "Could not load image '{{ file }}' due to error",
+			"WARN": "Could not load image '{{ file }}' due to error"
+		},
+		"IMG_UPLOAD": {
+			"BTN": "Or choose file",
+			"DISABLE": "Upload disabled",
+			"DRAG_DROP": "Drag and drop an image to upload",
+			"DROP": "Drop your file",
+			"LOAD": "Loading...",
+			"TS": {
+				"ERROR": "Image load error. Please try again.",
+				"WARN": "Image load error. Please try again."
+			}
+		}
+	}
+}

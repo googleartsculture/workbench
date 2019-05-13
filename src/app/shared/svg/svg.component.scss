@@ -1,0 +1,18 @@
+@import '../../../styles/app-init';
+
+:host {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+
+  svg {
+    fill: inherit;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    @include animate(fill, $animation-time-default);
+    width: 100%;
+  }
+}

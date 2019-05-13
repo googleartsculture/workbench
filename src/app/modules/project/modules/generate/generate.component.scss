@@ -1,0 +1,102 @@
+//================================================================================================//
+//
+//  GENERATE MODULE COMPONENTS
+//
+//================================================================================================//
+
+@import '../../../../../styles/app-init';
+
+// VARS
+$generate-border: color(app-yellow-desaturated, 60, 1, app-white-yellow) !default;
+$generate-header-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
+$generate-header-border: color(app-yellow-desaturated, 60, 1, app-white-yellow) !default;
+$generate-background: color(app-yellow-desaturated, 90, 1, app-white-yellow) !default;
+
+$effects-background: color(app-white-yellow) !default;
+$effects-title-background: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
+$effects-border: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
+$effects-setting-border: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
+
+$tool-size: 32px;
+$tool-color: color(app-yellow, 80, 1, app-black-yellow) !default;
+$tool-hover: color(app-yellow, 100, 1, app-black-yellow) !default;
+
+// ELEMENTS
+
+:host {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+// GENERATE
+
+.c-generate {
+  border-bottom: 1px solid $generate-border;
+  background-color: $generate-background;
+}
+
+.c-generate__title {
+  @include font-size-md();
+  background-color: $generate-header-background;
+  margin: 0;
+  padding: 11px 15px;
+
+  :host-context(.wf-active) & {
+    @include font-size-sm();
+  }
+}
+
+.c-generate__content {
+  padding: 11px 15px;
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: $generate-header-border;
+  background-color: $generate-background;
+}
+
+// EFFECT
+
+.c-effect {
+  margin: 11px 0;
+  background-color: $effects-background;
+}
+
+.c-effect__title {
+  @include font-secondary-heavy();
+  @include font-size-md();
+  padding: 5px 11px;
+  background-color: $effects-title-background;
+  margin-bottom: 0;
+
+  :host-context(.wf-active) & {
+    @include font-size-sm();
+  }
+}
+
+// EFFECT SETTINGS LIST
+
+.c-settings {
+  border: 1px solid $effects-border;
+  padding: 11px;
+  margin: 0;
+  list-style: none;
+}
+
+.c-settings__item {
+  padding: 11px 0;
+  margin: 0;
+  border-width: 0 0 1px;
+  border-style: dotted;
+  border-color: $effects-setting-border;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+    border-width: 0;
+  }
+}

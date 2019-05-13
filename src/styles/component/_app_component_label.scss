@@ -1,0 +1,23 @@
+//================================================================================================//
+//
+//  LABEL COMPONENT
+//
+//================================================================================================//
+
+// VARS
+$label-color: color(app-grey-yellow, 25, 1, app-black-yellow) !default;
+$label-color-error: color(app-red-desaturated) !default;
+$label-weight: $font-weight-heavy;
+
+// ELEMENTS
+
+.c-label {
+  @include animate(color);
+  @include font-size-sm();
+  font-weight: $label-weight;
+  color: $label-color;
+
+  .has-error & {
+    color: $label-color-error;
+  }
+}

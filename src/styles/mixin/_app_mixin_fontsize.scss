@@ -1,0 +1,47 @@
+//================================================================================================//
+//
+//  FONT SIZE TOOLS
+//
+//================================================================================================//
+
+// MIXINS
+
+@mixin font-size($font-size-base: 16, $pixel-size: 16) {
+  font-size: #{$font-size-base}px;
+}
+
+@mixin font-size-max {
+  @include font-size($font-size-max);
+}
+
+@mixin font-size-xxl {
+  @include font-size($font-size-xxl);
+}
+
+@mixin font-size-xl {
+  @include font-size($font-size-xl);
+}
+
+@mixin font-size-lg {
+  @include font-size($font-size-lg);
+}
+
+@mixin font-size-md {
+  @include font-size($font-size-md);
+}
+
+@mixin font-size-sm {
+  @include font-size($font-size-sm);
+}
+
+@mixin font-size-xs {
+  @include font-size($font-size-xs);
+}
+
+@mixin font-size-xxs {
+  @include font-size($font-size-xxs);
+}
+
+@mixin font-size-min {
+  @include font-size($font-size-min);
+}

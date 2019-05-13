@@ -1,0 +1,38 @@
+// stylelint-disable no-duplicate-selectors
+// stylelint-disable declaration-no-important
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}
+
+@function to-string($value) {
+  @return inspect($value);
+}
+
+$min-width: 1;
+$max-width: 128; // Max supported custom cursor size in browsers
+
+// Generate black draw tool cursors
+@for $i from $min-width through $max-width {
+  body.draw-tool.cursor-width-#{$i}:not(.workspace-loading) .upper-canvas:hover {
+    cursor: url('data:image/svg+xml,<?xml version="1.0" encoding="utf-8"?><svg height="#{$i}px" width="#{$i}px" enable-background="new 0 0 84.2 84.2" id="Layer_1" stroke-width="1px" stroke="white"	version="1.1"	viewBox="0 0 84.2 84.2"	x="0px"	xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" y="0px"><circle cx="42.1" cy="42.1" r="42.1"/></svg>') #{$i / 2} #{$i / 2}, crosshair !important;
+  }
+}
+
+// Generate white erase tool cursors
+@for $i from $min-width through $max-width {
+  body.erase-tool.cursor-width-#{$i}:not(.workspace-loading) .upper-canvas:hover {
+    cursor: url('data:image/svg+xml,<?xml version="1.0" encoding="utf-8"?><svg height="#{$i}px" width="#{$i}px" fill="white" enable-background="new 0 0 84.2 84.2" id="Layer_1" stroke-width="1px" stroke="black"	version="1.1"	viewBox="0 0 84.2 84.2"	x="0px"	xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" y="0px"><circle cx="42.1" cy="42.1" r="42.1"/></svg>') #{$i / 2} #{$i / 2}, crosshair !important;
+  }
+}
+
+body.workspace-loading .upper-canvas:hover {
+  cursor: wait !important;
+}
+
+// stylelint-enable no-duplicate-selectors
+// stylelint-enable declaration-no-important

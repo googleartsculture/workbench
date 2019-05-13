@@ -1,0 +1,13 @@
+{
+  "theme": "gitbook",
+  "name": "Hieroglyphics Initiative - Workbench",
+  "tsconfig": "src/tsconfig.docs.json",
+  "silent": false,
+  "hideGenerator": true,
+  "disableSourceCode": false,
+  "minimal": false,
+  "customLogo": "",
+  "gaID": "",
+  "watch": false,
+  "serve": false
+}

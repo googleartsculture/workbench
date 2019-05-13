@@ -1,0 +1,21 @@
+{
+  "name": "Hieroglyphics Initiative Workbench",
+  "short_name": "Workbench",
+  "description": "The Hieroglyphics Initiative Workbench web application",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#dad7c8",
+  "theme_color": "#312e25",
+  "icons": [
+    {
+      "src": "assets/images/favicons/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }, {
+      "src": "assets/images/favicons/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

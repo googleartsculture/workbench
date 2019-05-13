@@ -1,0 +1,141 @@
+@import '../../../../../styles/app-init';
+
+$tool-size: 40px !default;
+$tool-color: color(app-grey-yellow) !default;
+$tool-border: color(app-orange-desaturated, 50, 1, app-black-yellow) !default;
+$tool-background: color(app-orange-desaturated, 70, 1, app-black-yellow) !default;
+$tool-background-hover: color(app-orange-desaturated, 80, 1, app-black-yellow) !default;
+$tool-background-active: color(app-orange-desaturated, 90, 1, app-black-yellow) !default;
+$tool-svg-fill: color(app-gold);
+
+$input-disabled-opacity: .35 !default;
+
+:host {
+  flex: 1;
+  display: flex;
+  position: relative;
+}
+
+.c-workspace {
+  flex: 1;
+  position: relative;
+}
+
+.c-workspace__pan-zoom-layer {
+  bottom: 0;
+  display: none;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  &.is-active {
+    display: block;
+    pointer-events: auto;
+  }
+
+  &.is-pan {
+    cursor: -webkit-grab;
+    cursor: grab;
+
+    &.is-panning {
+      cursor: -webkit-grabbing;
+      cursor: grabbing;
+    }
+  }
+
+  &.is-zoom-in {
+    cursor: zoom-in;
+  }
+
+  &.is-zoom-out {
+    cursor: zoom-out;
+  }
+}
+
+.c-workspace__tools {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.c-workspace__tool-panel {
+  background-color: $tool-background;
+  border-bottom: 1px solid $tool-border;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+// TOOL
+
+.c-tool {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  height: $tool-size;
+  justify-content: center;
+  position: relative;
+  width: $tool-size;
+}
+
+.c-tool__btn {
+  height: 100%;
+  width: 100%;
+
+  &:hover {
+    background-color: $tool-background-hover;
+  }
+
+  &.is-active {
+    background-color: $tool-background-active;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    opacity: $input-disabled-opacity;
+  }
+
+  &.is-active--opacity {
+    background-color: $color-opacities-bg;
+  }
+}
+
+.c-tool__icon {
+  fill: $tool-color;
+  height: 20px;
+  width: 20px;
+
+  .c-tool__btn.is-active & {
+    fill: $tool-svg-fill;
+  }
+}
+
+.c-tool__overlay {
+  background-color: $tool-background;
+  border-left: 1px solid color(app-yellow-desaturated, -50, 1, app-black-yellow);
+  color: $tool-color;
+  left: 100%;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  max-height: 320px;
+  min-width: 320px;
+  overflow-y: auto;
+}
+
+.c-slider {
+  border-bottom: 1px dotted color(app-yellow-desaturated, -50, 1, app-black-yellow);
+  padding: 10px;
+  z-index: $z-index-tools - 1;
+}
+
+.c-slider__label {
+  @include font-primary-heavy;
+  @include font-size-xs;
+  color: $tool-color;
+  display: block;
+  margin-bottom: 5px;
+}

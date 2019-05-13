@@ -1,0 +1,43 @@
+//================================================================================================//
+//
+//  PAGE STRUCTURE
+//
+//================================================================================================//
+
+// VARS
+$page-left-column-background: color(app-white-yellow) !default;
+$page-basic-background: color(app-white-yellow) !default;
+
+// ELEMENTS
+
+.o-page {
+  display: flex;
+  flex-grow: 1;
+  min-height: 100%;
+}
+
+.o-page__lhs {
+  background-color: $page-left-column-background;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+}
+
+.o-page__rhs {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: relative;
+  width: 400px;
+}
+
+.o-page--basic {
+  background-color: $page-basic-background;
+  padding: #{$gutter-sm}px;
+  display: block;
+}
+
+.o-page__lhs--basic {
+  padding: #{$gutter-sm}px;
+}

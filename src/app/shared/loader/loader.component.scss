@@ -1,0 +1,137 @@
+@import '../../../styles/app-init';
+
+$loader-background: $global-page-background !default;
+$loader-background-light: $color-inspector-bg !default;
+$loader-background-aside: color(app-grey-yellow, 50, 1, app-white-yellow) !default;
+$loader-spinner-primary: color(app-gold) !default;
+$loader-spinner-secondary: color(app-grey-yellow, -60) !default;
+$loader-spinner-basic-primary: color(app-yellow-desaturated, -75) !default;
+$loader-spinner-basic-secondary: color(app-grey, 5) !default;
+$loader-spinner-small-primary: color(app-yellow-desaturated, -75) !default;
+$loader-spinner-small-secondary: color(app-white, -5) !default;
+$loader-spinner-small-dark-primary: color(app-black) !default;
+$loader-spinner-small-dark-secondary: color(app-grey, -5) !default;
+
+$loader-spinner-size: 60px !default;
+$loader-spinner-basic-size: 40px !default;
+$loader-spinner-small-size: 20px !default;
+$loader-spinner-width: 2px !default;
+$loader-spinner-small-width: 1px !default;
+
+@keyframes loaderSpinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+:host {
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  @include animate(opacity, $animation-time-default);
+  width: 100%;
+  z-index: $z-index-loading;
+
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+
+    .__loader-spinner {
+      animation-play-state: paused;
+    }
+  }
+}
+
+.c-loader {
+  align-items: center;
+  backface-visibility: hidden;
+  background-color: $loader-background;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  will-change: opacity;
+
+  &.is-bg-light {
+    background-color: $loader-background-light;
+  }
+
+  &.is-bg-transparent {
+    background-color: transparent;
+  }
+
+  &.is-aside {
+    background: $loader-background-aside;
+  }
+}
+
+.c-loader__logo {
+  height: 200px;
+  @include animate(opacity, $animation-time-short);
+  width: 300px;
+
+  .is-basic &,
+  .is-small &,
+  .is-small-dark &,
+  .is-aside & {
+    display: none;
+  }
+
+  .is-hidden-spinner & {
+    margin-bottom: 0;
+  }
+}
+
+.c-loader__spinner {
+  animation: loaderSpinner 1s linear infinite;
+  border-radius: 50%;
+  border: $loader-spinner-width solid $loader-spinner-secondary;
+  border-top-color: $loader-spinner-primary;
+  height: $loader-spinner-size;
+  margin-top: -20px;
+  width: $loader-spinner-size;
+
+  .is-basic & {
+    border: $loader-spinner-width solid $loader-spinner-basic-secondary;
+    border-top-color: $loader-spinner-basic-primary;
+    height: $loader-spinner-basic-size;
+    margin-top: 0;
+    width: $loader-spinner-basic-size;
+  }
+
+  .is-small & {
+    border: $loader-spinner-small-width solid $loader-spinner-small-secondary;
+    border-top-color: $loader-spinner-small-primary;
+    height: $loader-spinner-small-size;
+    margin-top: 0;
+    width: $loader-spinner-small-size;
+  }
+
+  .is-small-dark & {
+    border: $loader-spinner-small-width solid $loader-spinner-small-dark-secondary;
+    border-top-color: $loader-spinner-small-dark-primary;
+    height: $loader-spinner-small-size;
+    margin-top: 0;
+    width: $loader-spinner-small-size;
+  }
+
+  .is-aside & {
+    background: $loader-background-aside;
+    border: $loader-spinner-small-width solid $loader-spinner-small-secondary;
+    border-top-color: $loader-spinner-small-primary;
+  }
+
+  .is-hidden-spinner & {
+    display: none;
+  }
+}

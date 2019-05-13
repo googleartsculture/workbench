@@ -1,0 +1,47 @@
+//================================================================================================//
+//
+//  ALERT COMPONENTS
+//
+//================================================================================================//
+
+// VARS
+$alert-background: color(app-white) !default;
+$alert-border: color(app-white-yellow, -25) !default;
+
+$alert-border-error: color(app-red-desaturated) !default;
+$color-alert-warning-border: color(app-gold, -30) !default;
+$color-alert-success-border: color(app-green) !default;
+
+// ELEMENTS
+
+.c-alert {
+  background-color: $alert-background;
+  padding: 5px 10px;
+  border-width: 0 0 0 4px;
+  border-style: solid;
+  border-color: $alert-border;
+  margin-bottom: 20px;
+
+  p {
+    font-size: 14px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.c-alert--error {
+  border-color: $alert-border-error;
+  color: $alert-border-error;
+}
+
+.c-alert--warning {
+  border-color: $color-alert-warning-border;
+  color: $color-alert-warning-border;
+}
+
+.c-alert--success {
+  border-color: $color-alert-success-border;
+  color: $color-alert-success-border;
+}

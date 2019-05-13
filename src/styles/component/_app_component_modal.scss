@@ -1,0 +1,37 @@
+//================================================================================================//
+//
+//  MODAL COMPONENTS
+//
+//================================================================================================//
+
+// VARS
+
+@import '~ngx-smart-modal/ngx-smart-modal';
+
+.c-modal {
+  margin: -1rem;
+}
+
+.c-modal__title {
+  @include font-primary-regular;
+  @include font-size-md;
+  background-color: $color-inspector-title;
+  margin: 0;
+  padding: 20px;
+}
+
+.c-modal__content {
+  background: $color-inspector-bg;
+  max-height: 450px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  .c-modal--text & {
+    padding: 20px;
+    text-align: center;
+  }
+}
+
+.c-modal__button-wrap {
+  margin: 20px 0;
+}

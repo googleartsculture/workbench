@@ -1,0 +1,60 @@
+@import '../styles/app-init';
+
+:host {
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-grow: 1;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+// STAGE STRUCTURE
+.c-stage {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: $layout-min-width;
+}
+
+.c-stage__header {
+  flex-direction: row;
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+.c-stage__main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  position: relative;
+}
+
+.c-stage__footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+
+// HEADER
+.c-header {
+  background-color: $color-header-bg;
+  height: $layout-header-height;
+  padding-right: 25px;
+}
+
+// MAIN
+.c-main {}
+
+// FOOTER
+.c-footer {
+  background-color: $color-footer-bg;
+  padding: 10px 30px;
+}

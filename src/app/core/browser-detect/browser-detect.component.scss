@@ -1,0 +1,59 @@
+@import '../../../styles/app-init';
+
+$browser-background: color(app-yellow-desaturated);
+
+:host {
+  align-items: center;
+  background-color: $global-page-background;
+  bottom: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  padding: 20px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: $z-index-unsupported;
+
+  .is-unsupported & {
+    display: flex;
+  }
+}
+
+.c-browser-detect__img {
+  align-items: center;
+  background-color: $browser-background;
+  border-radius: 4px;
+  display: flex;
+  height: 54px;
+  justify-content: center;
+  margin-bottom: 38px;
+  width: 54px;
+}
+
+.c-browser-detect__svg {
+  fill: $color-header-bg;
+  height: 48px;
+  width: 48px;
+}
+
+.c-browser-detect__title {
+  @include font-secondary-heavy;
+  color: $text-lightest;
+  font-size: 32px;
+
+  :host-context(.wf-active) & {
+    font-size: 30px;
+  }
+}
+
+.c-browser-detect__list {
+  margin-bottom: -10px;
+}
+
+.c-browser-detect__copy {
+  color: $text-light;
+  text-align: center;
+  margin-bottom: 10px;
+}

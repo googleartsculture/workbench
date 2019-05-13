@@ -1,0 +1,44 @@
+@import '../../../styles/app-init';
+
+$table-border: color(app-white-yellow, -25, 1) !default;
+$table-background: color(app-white-yellow) !default;
+$table-head-background: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
+$effects-border: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
+$effects-setting-border: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
+
+:host {}
+
+.c-dev-table {
+  @include animate(transform, $animation-time-short);
+  border-color: $table-border;
+  background-color: $table-background;
+  color: $text-dark;
+  margin-top: 20px;
+  transform: translateY(0);
+
+  .is-hidden & {
+    transform: translateY(100%);
+  }
+}
+
+.c-dev-table__header,
+.c-dev-table__cell {
+  border-color: $table-border;
+}
+
+.c-dev-table__header {
+  @include font-secondary-heavy();
+  @include font-size-md();
+  padding: 5px 11px;
+  background-color: $table-head-background;
+  margin-bottom: 0;
+
+  :host-context(.wf-active) & {
+    @include font-size-sm();
+  }
+}
+
+.c-table-reveal {
+  position: relative;
+  overflow: hidden;
+}

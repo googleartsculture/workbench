@@ -1,0 +1,77 @@
+//================================================================================================//
+//
+//  SIDEBAR COMPONENTS
+//
+//================================================================================================//
+
+// VARS
+
+$sidebar-gutter: 15px !default;
+$sidebar-header-back: color(app-grey-yellow, 10, 1, app-white-yellow) !default;
+$sidebar-header-border: color(app-grey-yellow, 5, 1, app-black-yellow) !default;
+
+$sidebar-background: color(app-grey-yellow, 50, 1, app-white-yellow) !default;
+$sidebar-background-dark:  color(app-yellow-desaturated, 65, 1, app-black-yellow) !default;
+
+// ELEMENTS
+
+.c-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: $sidebar-background;
+}
+
+.c-sidebar--dark {
+  background-color: $sidebar-background-dark;
+}
+
+.c-sidebar__header {
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: $sidebar-header-border;
+  background-color: $sidebar-header-back;
+
+  &.has-actions {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.c-sidebar__title {
+  @include font-size-lg();
+  padding: 11px $sidebar-gutter;
+  font-weight: 700;
+  margin: 0;
+
+  :host-context(.wf-active) & {
+    @include font-size-sm();
+  }
+}
+
+.c-sidebar__note {
+  border-width: 1px 0 0;
+  border-style: solid;
+  border-color: $sidebar-header-border;
+  padding: 11px $sidebar-gutter;
+}
+
+.c-sidebar__content {
+  position: relative;
+  flex-grow: 1;
+
+  .o-panel & {
+    min-height: 260px;
+  }
+}
+
+.c-sidebar__actions {
+  @include animate(height, $animation-time-short);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-grow: 1;
+  padding: 0 $sidebar-gutter - 3px 0 0;
+  opacity: 1;
+}

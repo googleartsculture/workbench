@@ -1,0 +1,208 @@
+@import '../../../styles/app-init';
+
+$project-subtitle-text: color(app-orange-desaturated) !default;
+$project-header-background: color(app-yellow-soft, 75, 1, app-black-yellow) !default;
+
+$search-text-placeholder: color(app-orange-desaturated) !default;
+$search-background: color(app-yellow-desaturated, 65, 1, app-black-yellow) !default;
+
+$sidebar-text: color(app-white) !default;
+
+$activities-cell-text: color(app-grey, 25) !default;
+$activities-header-text: color(app-grey, 50) !default;
+$activities-row-background-alt: color(app-yellow-desaturated, -75, .45) !default;
+$activities-row-background-hover: color(app-white, null, .1) !default;
+$activities-row-border: color(app-yellow-desaturated, -65, 1) !default;
+
+$activities-svg-fill: color(app-gold);
+
+:host {
+  display: flex;
+  flex-grow: 1;
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+}
+
+// PROJECTS
+
+.c-projects {
+  background-color: $color-header-bg;
+}
+
+.c-projects__header {
+  @include animate(opacity, $animation-time-long);
+  align-items: center;
+  background-color: $project-header-background;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+
+  .is-displayed & {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.c-projects__subtitle {
+  font-size: 20px;
+  color: $project-subtitle-text;
+  line-height: 1;
+  margin: 0;
+}
+
+.c-projects__no-projects {
+  align-items: center;
+  background-color: $global-page-background;
+  background-image: url('/assets/images/bg_home.jpg');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  @include animate(opacity, $animation-time-long);
+
+  .is-displayed-projects & {
+    opacity: .25;
+  }
+}
+
+.c-projects__content {
+  display: flex;
+  flex-grow: 1;
+  opacity: 0;
+  pointer-events: none;
+  position: relative;
+  @include animate(opacity, $animation-time-long);
+
+  .is-displayed & {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+// SEARCH
+
+.c-search__input {
+  @include animate(background-color);
+  background-color: $search-background;
+  appearance: none;
+  border-radius: 20px;
+  border-width: 0;
+  box-sizing: border-box;
+  color: $text-light;
+  font-size: 14px;
+  line-height: 1;
+  padding: 6px 18px;
+
+  &::-webkit-input-placeholder {
+    color: $search-text-placeholder;
+    line-height: normal;
+  }
+}
+
+// ACTIVE TABLE
+
+.c-activities {
+  border: none;
+}
+
+.c-activities__head {
+  background-color: transparent;
+}
+
+.c-activities__header {
+  background-color: transparent;
+  font-weight: 700;
+  padding: 10px 20px;
+  color: $activities-header-text;
+  border: none;
+
+  .c-activities__head & {
+    color: $activities-header-text !important; // stylelint-disable-line declaration-no-important
+    text-transform: uppercase;
+    height: 50px;
+    font-size: 14px;
+  }
+
+  .c-activities__body & {
+    height: 44px;
+    font-size: 13px;
+  }
+}
+
+.c-activities__row {
+  background-color: transparent;
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: $activities-row-border;
+
+  .c-activities__body & {
+    @include animate(background-color border-color, $animation-time-short);
+    cursor: pointer;
+
+    &:hover {
+      border-color: $activities-row-background-hover;
+      background-color: $activities-row-background-hover;
+    }
+  }
+}
+
+.c-activities__row:nth-child(odd) {
+  background-color: $activities-row-background-alt;
+
+  thead & {
+    background-color: transparent;
+  }
+}
+
+.c-activities__cell {
+  border: none;
+  height: 40px;
+  color: $activities-cell-text;
+  padding: 10px 20px;
+  font-size: 13px;
+}
+
+// SIDEBAR
+
+.c-welcome {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 50px;
+  min-height: 500px;
+  height: 100%;
+}
+
+.c-welcome__statement {
+  color: $sidebar-text;
+  text-align: left;
+  padding-bottom: 44px;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 1.6;
+  width: 100%;
+}
+
+.c-welcome__actions {
+  padding-top: 58px;
+  width: 100%;
+}
+
+.c-welcome__break {
+  fill: $activities-svg-fill;
+  height: 10px;
+  margin: 0 auto;
+  width: 135px;
+}

@@ -1,0 +1,31 @@
+//================================================================================================//
+//
+//  ICON COMPONENTS
+//
+//================================================================================================//
+
+// VARS
+$icon-svg-fill: color(app-white-yellow) !default;
+
+// ELEMENTS
+
+.c-icon {
+  fill: $icon-svg-fill;
+  height: 20px;
+  width: 20px;
+}
+
+.c-icon--xs {
+  width: 14px;
+  height: 14px;
+}
+
+.c-icon--sm {
+  width: 16px;
+  height: 16px;
+}
+
+.c-icon--lg {
+  width: 24px;
+  height: 24px;
+}

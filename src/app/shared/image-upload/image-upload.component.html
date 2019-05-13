@@ -1,0 +1,44 @@
+<div
+  class="c-image-upload"
+  [ngClass]="{
+    'is-imageless': !imageSrc,
+    'is-active': dragOver,
+    'is-hidden': dragHidden,
+    'is-loading': dragLoading,
+    'is-disabled-drag': dragDisabled
+  }"
+>
+  <div class="c-image-caption c-image-caption--drag">
+    <button class="c-image-caption__inner" type="button" [ngClass]="{'is-disabled': isDisabled}" (click)="uploader.click()">
+          <div class="c-image-caption__upload-group">
+          <app-svg-upload-img-icon class="c-image-caption__icon"></app-svg-upload-img-icon>
+          {{ 'SHARED.IMG_UPLOAD.DRAG_DROP' | translate }}<br /><br />
+          <input #uploader (change)="manualUpload($event)" accept="image/*" hidden type="file">
+          <div [ngClass]="{'is-disabled': isDisabled}" class="c-image-caption__button c-button c-button--dark">
+            <span class="c-button__drop">
+              <span class="c-button__label">{{ 'SHARED.IMG_UPLOAD.BTN' | translate }}</span>
+            </span>
+          </div>
+          </div>
+    </button>
+
+  </div>
+  <div class="c-image-upload__image" *ngIf="!dragLoading && imageSrc">
+    <img [src]="imageSrc">
+  </div>
+  <div class="c-image-caption c-image-caption--drop">
+    <div class="c-image-caption__inner">
+      {{ 'SHARED.IMG_UPLOAD.DROP' | translate }}
+    </div>
+  </div>
+  <div class="c-image-caption c-image-caption--loading">
+    <div class="c-image-caption__inner">
+      {{ 'SHARED.IMG_UPLOAD.LOAD' | translate }}
+    </div>
+  </div>
+  <div class="c-image-caption c-image-caption--disabled">
+    <div class="c-image-caption__inner">
+      {{ 'SHARED.IMG_UPLOAD.DISABLE' | translate }}
+    </div>
+  </div>
+</div>

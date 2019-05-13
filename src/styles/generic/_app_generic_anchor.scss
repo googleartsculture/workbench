@@ -1,0 +1,40 @@
+//============================================================================//
+//
+//  GLOBAL GENERIC ANCHOR
+//
+//============================================================================//
+
+// VARS
+$anchor-color:                        color(app-gold) !default;
+$anchor-color-hover:                  color(app-gold, 25, 1, app-black-yellow) !default;
+$anchor-color-active:                 color(app-gold, 75, 1, app-black-yellow) !default;
+$anchor-color-tap:                    color(app-gold) !default;
+$anchor-background:                   color(app-gold, 75, 0, app-black-yellow) !default;
+$anchor-access-border:                color(app-green) !default;
+
+// ELEMENTS
+
+a {
+  @include animate(color background-color outline);
+  background-color: $anchor-background;
+  text-decoration-skip-ink: auto;
+  color: $anchor-color;
+  text-decoration: underline;
+
+  &:link,
+  &:visited {
+    color: $anchor-color;
+    background-color: $anchor-background;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: $anchor-color-hover;
+    outline: 0;
+  }
+
+  &:active {
+    color: $anchor-color-active;
+    outline-width: 0;
+  }
+}

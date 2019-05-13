@@ -1,0 +1,83 @@
+//============================================================================//
+//
+//  GLOBAL GENERIC TYPOGRAPHY
+//
+//============================================================================//
+
+// VARS
+
+// ELEMENTS
+
+body {
+  @include font-primary-regular;
+  @include font-size-sm();
+  -webkit-font-smoothing: antialiased;
+  color: $text-medium;
+  text-rendering: optimizeLegibility;
+
+  @include media-min-sm {
+    @include font-size-md();
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include font-secondary-heavy;
+  margin: 0 0 24px;
+  color: $text-dark;
+  letter-spacing: $letter-spacing;
+}
+
+h1 {
+  font-size: 36px;
+
+  :host-context(.wf-active) & {
+    font-size: 32px;
+  }
+}
+
+h2 {
+  font-size: 28px;
+
+  :host-context(.wf-active) & {
+    font-size: 24px;
+  }
+}
+
+h3 {
+  font-size: 24px;
+
+  :host-context(.wf-active) & {
+    font-size: 20px;
+  }
+}
+
+li,
+p {
+  @include font-size-md();
+  letter-spacing: $letter-spacing;
+  line-height: 1.5;
+  margin: 0 0 10px;
+  word-wrap: break-word;
+
+  @include media-min-sm {
+    @include font-size-lg();
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+strong {
+  @include font-primary-heavy;
+}
+
+button,
+input {
+  @include font-primary-light;
+}

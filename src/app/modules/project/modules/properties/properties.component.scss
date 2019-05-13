@@ -1,0 +1,93 @@
+@import '../../../../../styles/app-init';
+
+$info-border: color(app-yellow-desaturated, 60, 1, app-white-yellow) !default;
+$info-title-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
+
+$table-border: color(app-white-yellow, -25, 1) !default;
+$table-background: color(app-white-yellow) !default;
+$table-head-background: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
+
+:host {}
+
+.c-info {}
+
+.c-info__header {
+  background-color: $info-title-background;
+  display: flex;
+  padding: 11px 15px;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+.c-info__content {
+  padding: 15px;
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: $info-border;
+}
+
+.c-info__title {
+  @include font-secondary-heavy;
+  @include font-size-md();
+  color: $text-medium;
+
+  :host-context(.wf-active) & {
+    @include font-size-sm();
+  }
+}
+
+.c-pair__key {
+  margin-right: 5px;
+}
+
+.c-pair {
+  @include font-size-md;
+  margin-bottom: 0;
+}
+
+.c-preview {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.c-preview__item {
+  margin: 10px 15px 30px 0;
+  max-width: 300px;
+  width: 100%;
+}
+
+.c-preview__image {
+  min-height: 250px;
+  position: relative;
+}
+
+.c-dev-table {
+  @include animate(transform, $animation-time-short);
+  border-color: $table-border;
+  background-color: $table-background;
+  color: $text-dark;
+  margin-top: 20px;
+}
+
+.c-dev-table__header,
+.c-dev-table__cell {
+  border-color: $table-border;
+}
+
+.c-dev-table__header {
+  @include font-secondary-heavy();
+  @include font-size-md();
+  padding: 5px 11px;
+  background-color: $table-head-background;
+  margin-bottom: 0;
+
+  :host-context(.wf-active) & {
+    @include font-size-sm();
+  }
+}
+
+.c-table-reveal {
+  position: relative;
+  overflow: hidden;
+}

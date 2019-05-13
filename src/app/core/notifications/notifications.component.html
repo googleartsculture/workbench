@@ -1,0 +1,15 @@
+<div class="c-notifications" [ngClass]="{ 'is-active': active }">
+  <div class="c-notifications__tray">
+    <div class="c-notification c-notification--dismissable"
+      *ngFor="let n of notifications"
+      [ngClass]="'c-notification--' + n.type"
+    >
+      <div clas="c-notification__content">
+      {{n.message}}
+      </div>
+      <button type="button" class="c-notification__close" (click)="remove(n)">
+        <app-svg-close-icon class="c-notification__icon c-icon c-icon--lg"></app-svg-close-icon>
+      </button>
+    </div>
+  </div>
+</div>

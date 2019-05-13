@@ -1,0 +1,173 @@
+<app-workspace #workspace (workspaceSetup)="onWorkspaceReady()" (workspaceData)="workspaceUpdate($event)"></app-workspace>
+
+<aside class="o-drawer" [ngClass]="{ 'is-hidden': !aside.active }">
+  <div class="o-drawer__close">
+    <button class="c-button c-button--tool" (click)="aside.active = !aside.active"
+        appTooltip=""
+        appTooltipPosition="left"
+        appTooltipTitle="{{'MODULES.PROJECT.MODULES.PROCESS.TOOL.DRAWER' | translate }}">
+      <span class="c-button__drop">
+        <app-svg-arrow-right-icon class="c-button__icon c-icon" [style.display]="!aside.active ? 'none' : 'block'"></app-svg-arrow-right-icon>
+        <app-svg-arrow-left-icon class="c-button__icon c-icon" [style.display]="aside.active ? 'none' : 'block'" ></app-svg-arrow-left-icon>
+      </span>
+    </button>
+  </div>
+  <div class="o-drawer__content">
+    <div class="c-sidebar">
+      <div class="c-sidebar__header">
+        <h2 class="c-sidebar__title">{{ 'MODULES.PROJECT.MODULES.PROCESS.TITLE' | translate }}</h2>
+      </div>
+      <div class="c-sidebar__content">
+        <div class="u-scroller">
+
+          <ul class="c-areas-list" *ngIf="workspaceData?.areas || workspaceData?.areas.length > 0">
+            <li class="c-areas-list__item"
+              *ngFor="let area of workspaceData?.areas"
+              (mouseenter)="highlightArea(area, true)"
+              (mouseleave)="highlightArea(area, false)"
+            >
+              <div class="c-area">
+                <div class="c-area__header">
+                  <button
+                    class="c-area__open c-button c-button--title"
+                    type="button"
+                    (click)="selectArea(area)"
+                    appTooltip=""
+                    appTooltipPosition="bottom"
+                    appTooltipTitle="{{ 'MODULES.PROJECT.MODULES.PROCESS.TOOL.SELECT' | translate }}"
+                  >
+                    <span class="c-button__drop">
+                      <span class="c-button__label">
+                        <span class="c-area__date">{{ area.created | date: 'medium' }}</span>
+                        <span class="c-area__author">{{ area.author || 'MODULES.PROJECT.MODULES.PROCESS.AUTHOR' | translate }}</span>
+                      </span>
+                    </span>
+                  </button>
+                  <button
+                    class="c-area__close c-button c-button--title-icon"
+                    type="button"
+                    (click)="deleteArea(area)"
+                    appTooltip=""
+                    appTooltipPosition="bottom"
+                    appTooltipTitle="{{ 'MODULES.PROJECT.MODULES.PROCESS.TOOL.DELETE' | translate }}"
+                  >
+                    <span class="c-button__drop">
+                      <span class="c-button__label">{{ 'MODULES.PROJECT.MODULES.PROCESS.BTN.DELETE' | translate }}</span>
+                      <app-svg-trash-icon class="c-button__icon c-icon c-icon--sm"></app-svg-trash-icon>
+                    </span>
+                  </button>
+                </div>
+                <div class="c-area__content" *ngIf="area.selected">
+
+                  <!-- form row and select box -->
+
+                  <div class="o-form-row">
+                    <label class="c-label" for="source_{{ area.id }}">{{ 'MODULES.PROJECT.MODULES.PROCESS.INPUT.SOURCE' | translate }}</label>
+
+                    <div class="o-input">
+                      <div class="o-input__wrap c-select">
+                        <select
+                          name="source_{{ area.id }}"
+                          class="o-input__field c-select__field"
+                          id="source_{{ area.id }}"
+                          [(ngModel)]="area.source"
+                          (change)="onSourceChange(area)"
+                        >
+                          <option *ngFor="let source of workspaceSources" [ngValue]="source.id">{{ source.title }}</option>
+                        </select>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="c-effect">
+
+                    <h3 class="c-effect__title">{{ 'MODULES.PROJECT.MODULES.PROCESS.SUBTITLE' | translate }}</h3>
+
+                    <div class="c-effect__content">
+
+                      <ul class="c-settings">
+                        <li class="c-settings__item">
+                          <div class="o-form-row c-setting">
+                            <div class="o-input o-input--inline-split c-checkbox">
+                              <label class="o-input__label c-label" for="threshold_{{ area.id }}">{{ 'MODULES.PROJECT.MODULES.PROCESS.ACTIVE' | translate }}</label>
+                              <div class="o-input__wrap">
+                                <input
+                                  type="checkbox"
+                                  class="o-input__field c-checkbox__field"
+                                  name="threshold_{{ area.id }}"
+                                  id="threshold_{{ area.id }}"
+                                  [(ngModel)]="area.effects.threshold.active"
+                                  (change)="onEffectChange(area)"
+                                />
+                                <div class="c-checkbox__fake"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="c-settings__item">
+
+                          <div class="o-form-row c-setting">
+                            <div class="o-input c-range">
+                              <label class="o-input__label c-label" for="threshold-level_{{ area.id }}">{{ 'MODULES.PROJECT.MODULES.PROCESS.LEVEL' | translate }}</label>
+                              <div class="o-input__wrap">
+                                <input
+                                  type="range"
+                                  class="o-input__field c-range__field"
+                                  id="threshold-level_{{ area.id }}"
+                                  name="threshold-level_{{ area.id }}"
+                                  max="255"
+                                  min="0"
+                                  step="1"
+                                  [(ngModel)]="area.effects.threshold.level"
+                                  (input)="onEffectChange(area)"
+                                />
+                              </div>
+                            </div>
+                          </div>
+
+                        </li>
+                        <li class="c-settings__item">
+
+                          <div class="o-form-row c-setting">
+                            <div class="o-input o-input--inline-split c-checkbox">
+                              <label class="o-input__label c-label" for="threshold-invert_{{ area.id }}">{{ 'MODULES.PROJECT.MODULES.PROCESS.INPUT.INVERT' | translate }}</label>
+                              <div class="o-input__wrap">
+                                <input
+                                  type="checkbox"
+                                  class="o-input__field c-checkbox__field"
+                                  name="threshold-invert_{{ area.id }}"
+                                  id="threshold-invert_{{ area.id }}"
+                                  [(ngModel)]="area.effects.threshold.invert"
+                                  (change)="onEffectChange(area)"
+                                />
+                                <div class="c-checkbox__fake"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="c-cta" *ngIf="!workspaceData?.areas || workspaceData.areas.length < 1">
+            <div class="c-cta__tool">
+              <app-svg-tool-marquee class="c-cta__tool-icon c-icon c-icon--lg"></app-svg-tool-marquee>
+            </div>
+            <p>{{ 'MODULES.PROJECT.MODULES.PROCESS.NONE' | translate }}</p>
+          </div>
+
+          <app-loader class="c-areas-loader" [appLoaderAside]="true" [loading]="!aside.loaded"></app-loader>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>
+

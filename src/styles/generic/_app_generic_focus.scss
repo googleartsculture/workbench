@@ -1,0 +1,16 @@
+
+//============================================================================//
+//
+//  GLOBAL GENERIC FOCUS
+//
+//============================================================================//
+
+// VARS
+
+// ELEMENTS
+
+// stylelint-disable declaration-no-important
+.focus-disabled :focus {
+  outline: none !important;
+}
+// stylelint-enable declaration-no-important

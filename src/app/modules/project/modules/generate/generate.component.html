@@ -1,0 +1,203 @@
+<app-workspace #workspace (workspaceSetup)="onWorkspaceReady()" (workspaceData)="workspaceUpdate($event)"></app-workspace>
+
+<aside class="o-drawer" [ngClass]="{ 'is-hidden': !aside.active }">
+  <div class="o-drawer__close">
+    <button class="c-button c-button--tool" (click)="aside.active = !aside.active"
+      appTooltip=""
+      appTooltipPosition="left"
+      appTooltipTitle="{{ 'MODULES.PROJECT.MODULES.GENERATE.TOOL.DRAWER' | translate }}">
+      <span class="c-button__drop">
+        <app-svg-arrow-right-icon class="c-button__icon c-icon" [style.display]="!aside.active ? 'none' : 'block'"></app-svg-arrow-right-icon>
+        <app-svg-arrow-left-icon class="c-button__icon c-icon" [style.display]="aside.active ? 'none' : 'block'" ></app-svg-arrow-left-icon>
+      </span>
+    </button>
+  </div>
+  <div class="o-drawer__content">
+    <div class="c-sidebar">
+      <div class="c-sidebar__header">
+        <h2 class="c-sidebar__title">{{ 'MODULES.PROJECT.MODULES.GENERATE.TITLE' | translate }}</h2>
+      </div>
+      <div class="c-sidebar__content">
+        <div class="u-scroller">
+
+          <div class="c-generate">
+            <h3 class="c-generate__title">{{ 'MODULES.PROJECT.MODULES.GENERATE.TOUCH.TITLE' | translate }}</h3>
+            <div class="c-generate__content">
+
+              <div [ngClass]="{ 'is-loading': config.effects.loading }">
+                <div class="c-effect" *ngIf="config.effects.enabled.drawing">
+                  <h3 class="c-effect__title">{{ 'MODULES.PROJECT.MODULES.GENERATE.TOUCH.DRAW' | translate }}</h3>
+
+                  <div class="c-effect__content">
+
+                    <ul class="c-settings">
+                      <li class="c-settings__item">
+                        <div class="o-form-row c-setting">
+                          <div class="o-input o-input--inline-split c-checkbox">
+                            <label class="o-input__label c-label" for="drawing">{{ 'MODULES.PROJECT.MODULES.GENERATE.ACTIVE' | translate }}</label>
+                            <div class="o-input__wrap">
+                              <input
+                                type="checkbox"
+                                class="o-input__field c-checkbox__field"
+                                name="drawing"
+                                id="drawing"
+                                [(ngModel)]="workspaceData?.effects.drawing.active"
+                                (change)="onEffectChange()"
+                              />
+                              <div class="c-checkbox__fake"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="c-settings__item">
+                        <div class="o-form-row c-setting">
+                          <div class="o-input o-input--inline-split c-range">
+                            <label class="o-input__label c-label" for="drawing-width">{{ 'MODULES.PROJECT.MODULES.GENERATE.WIDTH' | translate }} ({{ workspaceData?.effects.drawing.width || 3 }})</label>
+                            <div class="o-input__wrap">
+                              <input
+                                type="range"
+                                class="o-input__field c-range__field"
+                                id="drawing-width"
+                                name="drawing-width"
+                                max="26"
+                                min="1"
+                                step="1"
+                                [(ngModel)]="workspaceData?.effects.drawing.width"
+                                (change)="onEffectChange(false)"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="c-settings__item">
+                        <div class="o-form-row c-setting">
+                          <div class="c-generate__actions">
+                            <button type="button" class="c-button c-button--mid c-button--full" (click)="clearDrawings()" [disabled]="workspaceData?.drawings.length < 1">
+                              <span class="c-button__drop">
+                                <span class="c-button__label">{{ 'MODULES.PROJECT.MODULES.GENERATE.TOUCH.BTN' | translate }}</span>
+                                <app-svg-trash-icon class="c-button__icon c-icon c-icon--sm"></app-svg-trash-icon>
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="c-generate">
+            <h3 class="c-generate__title">{{ 'MODULES.PROJECT.MODULES.GENERATE.EFFECT.TITLE' | translate }}</h3>
+            <div class="c-generate__content">
+
+              <div [ngClass]="{ 'is-loading': config.effects.loading }">
+                <div class="c-effect" *ngIf="config.effects.enabled.trace">
+                  <h3 class="c-effect__title">{{ 'MODULES.PROJECT.MODULES.GENERATE.EFFECT.TRACE' | translate }}</h3>
+
+                  <div class="c-effect__content">
+
+                    <ul class="c-settings">
+                      <li class="c-settings__item">
+                        <div class="o-form-row c-setting">
+                          <div class="o-input o-input--inline-split c-checkbox">
+                            <label class="o-input__label c-label" for="trace">{{ 'MODULES.PROJECT.MODULES.GENERATE.ACTIVE' | translate }}</label>
+                            <div class="o-input__wrap">
+                              <input
+                                type="checkbox"
+                                class="o-input__field c-checkbox__field"
+                                name="trace"
+                                id="trace"
+                                [(ngModel)]="workspaceData?.effects.trace.active"
+                                (change)="onEffectChange()"
+                              />
+                              <div class="c-checkbox__fake"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="c-settings__item">
+                        <div class="o-form-row c-setting">
+                          <div class="o-input o-input--inline-split c-range">
+                            <label class="o-input__label c-label" for="trace-level">{{ 'MODULES.PROJECT.MODULES.GENERATE.LEVEL' | translate }}</label>
+                            <div class="o-input__wrap">
+                              <input
+                                type="range"
+                                id="trace-level"
+                                class="o-input__field c-range__field"
+                                name="trace-level"
+                                max="255"
+                                min="0"
+                                step="1"
+                                [(ngModel)]="workspaceData?.effects.trace.level"
+                                (change)="onEffectChange()"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="c-effect" *ngIf="config.effects.enabled.outlines">
+                  <h3 class="c-effect__title">{{ 'MODULES.PROJECT.MODULES.GENERATE.EFFECT.OUTLINE' | translate }}</h3>
+
+                  <div class="c-effect__content">
+
+                    <ul class="c-settings">
+                      <li class="c-settings__item">
+                        <div class="o-form-row c-setting">
+                          <div class="o-input o-input--inline-split c-checkbox">
+                            <label class="o-input__label c-label" for="outlines">{{ 'MODULES.PROJECT.MODULES.GENERATE.ACTIVE' | translate }}</label>
+                            <div class="o-input__wrap">
+                              <input
+                                type="checkbox"
+                                class="o-input__field c-checkbox__field"
+                                name="outlines"
+                                id="outlines"
+                                [(ngModel)]="workspaceData?.effects.outlines.active"
+                                (change)="onEffectChange()"
+                              />
+                              <div class="c-checkbox__fake"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="c-settings__item">
+                        <div class="o-form-row c-setting">
+                          <div class="o-input o-input--inline-split c-range">
+                            <label class="o-input__label c-label" for="outlines-level">{{'MODULES.PROJECT.MODULES.GENERATE.LEVEL' | translate }}</label>
+                            <div class="o-input__wrap">
+                              <input
+                                type="range"
+                                class="o-input__field c-range__field"
+                                id="outlines-level"
+                                name="outlines-level"
+                                max="255"
+                                min="0"
+                                step="1"
+                                [(ngModel)]="workspaceData?.effects.outlines.level"
+                                (change)="onEffectChange()"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <app-loader class="c-generate-loader" [appLoaderAside]="true" [loading]="!aside.loaded"></app-loader>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>

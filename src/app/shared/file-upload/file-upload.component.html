@@ -1,0 +1,44 @@
+<div
+  class="c-file-upload"
+  [ngClass]="{
+    'is-imageless': !imageSrc,
+    'is-active': dragOver,
+    'is-hidden': dragHidden,
+    'is-loading': dragLoading,
+    'is-disabled': dragDisabled
+  }"
+>
+  <div class="c-file-caption c-file-caption--drag">
+    <div class="c-file-caption__inner">
+      <div *ngIf="errors.type"><small>{{ 'SHARED.FILE_UPLOAD.ERROR' | translate }}</small></div>
+        <div class="c-file-caption__upload-group">
+            <app-svg-upload-icon class="c-file-caption__icon"></app-svg-upload-icon>
+            {{ 'SHARED.FILE_UPLOAD.DRAG_DROP' | translate }}<br /><br />
+            <input hidden #uploader (change)="manualUpload($event)" type="file" accept=".yml">
+            <button (click)="uploader.click()" type="button" class="c-file-caption__button c-button c-button--dark">
+              <span class="c-button__drop">
+                <span class="c-button__label">{{ 'SHARED.FILE_UPLOAD.BTN' | translate }}</span>
+              </span>
+            </button>
+        </div>
+    </div>
+  </div>
+  <div class="c-file-upload__image" *ngIf="!dragLoading && imageSrc">
+    <img [src]="imageSrc">
+  </div>
+  <div class="c-file-caption c-file-caption--drop">
+    <div class="c-file-caption__inner">
+      {{ 'SHARED.FILE_UPLOAD.DROP' | translate }}
+    </div>
+  </div>
+  <div class="c-file-caption c-file-caption--loading">
+    <div class="c-file-caption__inner">
+      {{ 'SHARED.FILE_UPLOAD.LOAD' | translate }}
+    </div>
+  </div>
+  <div class="c-file-caption c-file-caption--disabled">
+    <div class="c-file-caption__inner">
+      {{ 'SHARED.FILE_UPLOAD.DISABLE' | translate }}
+    </div>
+  </div>
+</div>

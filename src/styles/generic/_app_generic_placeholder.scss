@@ -1,0 +1,13 @@
+//============================================================================//
+//
+//  GLOBAL GENERIC PLACEHOLDER
+//
+//============================================================================//
+
+// VARS
+
+$placeholder-color: color(app-gold, 75, 1, app-black-yellow) !default;
+$placeholder-opacity: .8 !default;
+
+// ELEMENTS
+@include placeholder($placeholder-color, $placeholder-opacity);

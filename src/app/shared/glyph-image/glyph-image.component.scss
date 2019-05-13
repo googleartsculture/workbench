@@ -1,0 +1,11 @@
+@import '../../../styles/app-init';
+
+:host,
+img {
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}

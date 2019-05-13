@@ -1,0 +1,19 @@
+//================================================================================================//
+//
+//  INPUT TOOLS
+//
+//================================================================================================//
+
+@mixin track($height: 5, $width: 100%) {
+  @include animate(background-color);
+  height: #{$height}px;
+  width: $width;
+}
+
+@mixin thumb($color: #fff, $radius: 2.5, $height: 5, $width: 5) {
+  background-color: $color;
+  border: none;
+  border-radius: #{$radius}px;
+  height: #{$height}px;
+  width: #{$width}px;
+}

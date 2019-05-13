@@ -1,0 +1,150 @@
+//================================================================================================//
+//
+//  RANGE COMPONENTS
+//
+//================================================================================================//
+
+// VARS
+
+$range-track: color(app-white-yellow, 25, 1, app-black-yellow) !default;
+$range-track-hover: color(app-white-yellow, -35, 1, app-black-yellow) !default;
+$range-thumb: color(app-yellow, 80, 1, app-black-yellow) !default;
+
+$range-track-alt: color(app-grey-yellow, -60) !default;
+$range-track-alt-hover: color(app-grey-yellow, -65, 1) !default;
+$range-thumb-alt: color(app-grey-yellow) !default;
+
+$range-thumb-radius: 8 !default;
+$range-thumb-height: 16 !default;
+$range-thumb-width: 16 !default;
+$range-thumb-border: 2 !default;
+$range-track-width: 100% !default;
+$range-track-height: 6 !default;
+$range-track-border: 2 !default;
+$range-track-radius: 2 !default;
+
+// ELEMENTS
+
+.c-range {
+  border-width: 0;
+  background-color: transparent;
+}
+
+.c-range__field {
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+  margin: #{$range-thumb-height / 2}px 0;
+  padding: 4px 0;
+  width: #{$range-track-width};
+  overflow: visible;
+
+  &:hover,
+  &:focus {
+    &::-webkit-slider-runnable-track {
+      background: $range-track-hover;
+    }
+
+    &::-ms-fill-lower {
+      background: $range-track-hover;
+    }
+
+    &::-ms-fill-upper {
+      background: $range-track-hover;
+    }
+  }
+
+  &::-webkit-slider-runnable-track {
+    @include track($range-track-height, $range-track-width);
+    background-color: $range-track;
+    border: none;
+    border-radius: 0;
+  }
+
+  &::-webkit-slider-thumb {
+    @include thumb($range-thumb, $range-thumb-radius, $range-thumb-height, $range-thumb-width);
+    -webkit-appearance: none;
+    margin-top: #{((-$range-track-border + $range-track-height) / 2) - ($range-thumb-height / 2)}px;
+  }
+
+  &::-moz-range-track {
+    @include track($range-track-height, $range-track-width);
+    background-color: $range-track;
+    border: none;
+    border-radius: 0;
+  }
+
+  &::-moz-range-thumb {
+    @include thumb($range-thumb, $range-thumb-radius, $range-thumb-height, $range-thumb-width);
+  }
+
+  &::-ms-track {
+    @include track($range-track-height, $range-track-width);
+    background: transparent;
+    border-color: transparent;
+    border-width: 0;
+    color: transparent;
+  }
+
+  &::-ms-fill-lower {
+    background-color: $range-track;
+    border: none;
+    border-radius: 0;
+  }
+
+  &::-ms-fill-upper {
+    background-color: $range-track;
+    border: none;
+    border-radius: 0;
+  }
+
+  &::-ms-thumb {
+    @include thumb($range-thumb, $range-thumb-radius, $range-thumb-height, $range-thumb-width);
+    margin-top: 0;
+  }
+
+  .c-range--alt & {
+    &:hover,
+    &:focus {
+      &::-webkit-slider-runnable-track {
+        background-color: $range-track-alt-hover;
+      }
+
+      &::-ms-fill-lower {
+        background-color: $range-track-alt-hover;
+      }
+
+      &::-ms-fill-upper {
+        background-color: $range-track-alt-hover;
+      }
+    }
+
+    &::-webkit-slider-runnable-track {
+      background-color: $range-track-alt;
+    }
+
+    &::-webkit-slider-thumb {
+      @include thumb($range-thumb-alt, $range-thumb-radius, $range-thumb-height, $range-thumb-width);
+    }
+
+    &::-moz-range-track {
+      background-color: $range-track-alt;
+    }
+
+    &::-moz-range-thumb {
+      @include thumb($range-thumb-alt, $range-thumb-radius, $range-thumb-height, $range-thumb-width);
+    }
+
+    &::-ms-fill-lower {
+      background-color: $range-track-alt;
+    }
+
+    &::-ms-fill-upper {
+      background-color: $range-track-alt;
+    }
+
+    &::-ms-thumb {
+      @include thumb($range-thumb-alt, $range-thumb-radius, $range-thumb-height, $range-thumb-width);
+    }
+  }
+}

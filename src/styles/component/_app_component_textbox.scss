@@ -1,0 +1,141 @@
+//================================================================================================//
+//
+//  TEXTBOX COMPONENTS
+//
+//================================================================================================//
+
+// VARS
+
+$textbox-background: color(app-white-yellow, null, 1) !default;
+$textbox-border: color(app-white-yellow, 25, 1, app-black-yellow) !default;
+$textbox-border-hover: color(app-white-yellow, 50, 1, app-black-yellow) !default;
+$textbox-background-disabled: color(app-grey-yellow, null, .25);
+
+$textbox-border-warning: color(app-orange) !default;
+$textbox-border-error: color(app-red-desaturated) !default;
+$textbox-border-success: color(app-green) !default;
+
+$textbox-field-background: color(app-white, null, 0) !default;
+$textbox-field-background-focus: color(app-white, null, 1) !default;
+$textbox-field-text-disabled: color(app-white-yellow, 50, 1, app-black-yellow) !default;
+
+$textbox-line-height: 1.2 !default;
+$textbox-line-height-multiline: 1.5 !default;
+
+// ELEMENTS
+
+.c-textbox {
+  @include animate(border-color);
+  background-color: $textbox-background;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $textbox-border;
+  display: flex;
+  padding: 1px;
+  height: 34px;
+
+  &.is-active,
+  &:hover {
+    border-color: $textbox-border-hover;
+  }
+
+  &.is-read-only,
+  &.is-read-only:hover {
+    background-color: transparent;
+    border-color: $textbox-border;
+    cursor: not-allowed;
+  }
+}
+
+.c-textbox--alt {
+  background-color: transparent;
+  font-size: 12px;
+  font-weight: 500;
+  height: 23px;
+  text-align: center;
+}
+
+.c-textbox--multiline {
+  height: 200px;
+}
+
+.c-textbox__field {
+  @include animate(border-color background-color);
+  @include font-size-md();
+  border-style: solid;
+  border-color: transparent;
+  border-width: 0 0 0 4px;
+  background-color: $textbox-field-background;
+  line-height: $textbox-line-height;
+  flex-grow: 1;
+
+  a {
+    word-break: break-all;
+  }
+
+  .c-textbox--alt & {
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .c-textbox--multiline & {
+    line-height: $textbox-line-height-multiline;
+    resize: none;
+  }
+
+  .is-required &,
+  &.required,
+  &[required] {
+    border-color: $textbox-border;
+  }
+
+  .is-error &,
+  &.ng-invalid:not(.ng-pristine) {
+    border-color: $textbox-border-error;
+  }
+
+  .is-warning & {
+    border-color: $textbox-border-warning;
+  }
+
+  .is-success &,
+  &.ng-valid,
+  &.ng-valid {
+    border-color: $textbox-border-success;
+  }
+
+  .is-disabled &,
+  &:disabled,
+  &[disabled],
+  &:read-only,
+  &[read-only] {
+    background-color: $textbox-background-disabled;
+    border-color: transparent;
+    color: $textbox-field-text-disabled;
+    cursor: not-allowed;
+    pointer-events: none;
+
+    .c-textbox:hover &,
+    .c-textbox:focus & {
+      background-color: $textbox-background-disabled;
+      border-color: transparent;
+    }
+
+    .c-textbox--alt:hover &,
+    .c-textbox--alt:focus & {
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+
+  &:focus {
+    outline: 0;
+    background-color: $textbox-field-background-focus;
+
+    .c-textbox--alt & {
+      background-color: transparent;
+    }
+  }
+}

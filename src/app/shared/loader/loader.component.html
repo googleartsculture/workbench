@@ -1,0 +1,15 @@
+<div
+  [ngClass]="{
+    'is-bg-light': appLoaderBgLight,
+    'is-bg-transparent': appLoaderBgTransparent,
+    'is-basic': appLoaderBasic,
+    'is-small': appLoaderSmall,
+    'is-small-dark': appLoaderSmallDark,
+    'is-aside': appLoaderAside,
+    'is-hidden-spinner': appLoaderHideSpinner
+  }"
+  class="c-loader"
+>
+  <app-svg-logo class="c-loader__logo"></app-svg-logo>
+  <div class="c-loader__spinner"></div>
+</div>

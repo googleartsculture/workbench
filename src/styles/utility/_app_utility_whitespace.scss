@@ -1,0 +1,84 @@
+//================================================================================================//
+//
+//  WHITESPACE UTILITIES
+//
+//================================================================================================//
+
+// VARS
+
+// ELEMENTS
+
+// stylelint-disable declaration-no-important
+
+.u-ws-0 {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.u-p-x-0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.u-p-h-0 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.u-m-b-xxs {
+  margin-bottom: #{$size-xxs}px !important;
+}
+
+.u-m-b-xs {
+  margin-bottom: #{$size-xs}px !important;
+}
+
+.u-m-b-sm {
+  margin-bottom: #{$size-sm}px !important;
+}
+
+.u-m-b-md {
+  margin-bottom: #{$size-md}px !important;
+}
+
+.u-m-b-lg {
+  margin-bottom: #{$size-lg}px !important;
+}
+
+.u-m-b-xl {
+  margin-bottom: #{$size-xl}px !important;
+}
+
+.u-m-b-xxl {
+  margin-bottom: #{$size-xxl}px !important;
+}
+
+.u-m-t-xxs {
+  margin-top: #{$size-xxs}px !important;
+}
+
+.u-m-t-xs {
+  margin-top: #{$size-xs}px !important;
+}
+
+.u-m-t-sm {
+  margin-top: #{$size-sm}px !important;
+}
+
+.u-m-t-md {
+  margin-top: #{$size-md}px !important;
+}
+
+.u-m-t-lg {
+  margin-top: #{$size-lg}px !important;
+}
+
+.u-m-t-xl {
+  margin-top: #{$size-xl}px !important;
+}
+
+.u-m-t-xxl {
+  margin-top: #{$size-xxl}px !important;
+}
+
+// stylelint-enable declaration-no-important

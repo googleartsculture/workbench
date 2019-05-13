@@ -1,0 +1,132 @@
+//================================================================================================//
+//
+//  PROCESS MODULE COMPONENTS
+//
+//================================================================================================//
+
+@import '../../../../../styles/app-init';
+
+// VARS
+
+$areas-title-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
+$areas-border: color(app-yellow-desaturated, 60, 1, app-white-yellow) !default;
+
+$area-header-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
+$area-header-border: color(app-yellow-desaturated, 60, 1, app-white-yellow) !default;
+
+$area-background: color(app-yellow-desaturated, 90, 1, app-white-yellow) !default;
+
+$area-effects-background: color(app-white-yellow) !default;
+
+$effects-title-background: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
+$effects-border: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
+$effects-setting-border: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
+
+$cta-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
+$cta-tool: color(app-orange-desaturated, 70, 1, app-black-yellow) !default;
+$cta-icon: color(app-grey-yellow) !default;
+// ELEMENTS
+
+:host {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+// AREAS LIST
+
+.c-areas-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.c-areas-list__item {
+  padding: 0;
+  margin: 0;
+}
+
+// AREA
+
+.c-area {
+  border-bottom: 1px solid $areas-border;
+  background-color: $area-background;
+}
+
+.c-area__open {
+  flex-grow: 1;
+}
+
+.c-area__header {
+  background-color: $area-header-background;
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+.c-area__author {
+  @include font-size-xs();
+  display: block;
+}
+
+.c-area__date {
+  @include font-secondary-heavy();
+  @include font-size-lg();
+
+  :host-context(.wf-active) & {
+    @include font-size-md();
+  }
+}
+
+.c-area__content {
+  padding: 11px 15px 15px;
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: $area-header-border;
+}
+
+// EFFECT
+
+.c-effect {
+  margin: 11px 0;
+  background-color: $area-effects-background;
+}
+
+.c-effect__title {
+  @include font-secondary-heavy();
+  @include font-size-md();
+  padding: 5px 11px;
+  background-color: $effects-title-background;
+  margin-bottom: 0;
+
+  :host-context(.wf-active) & {
+    @include font-size-sm();
+  }
+}
+
+// EFFECT SETTINGS LIST
+
+.c-settings {
+  border: 1px solid $effects-border;
+  padding: 10px;
+  margin: 0;
+  list-style: none;
+}
+
+.c-settings__item {
+  padding: 10px 0;
+  margin: 0;
+  border-width: 0 0 1px;
+  border-style: dotted;
+  border-color: $effects-setting-border;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+    border-width: 0;
+  }
+}

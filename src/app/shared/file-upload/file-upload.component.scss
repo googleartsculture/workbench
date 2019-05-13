@@ -1,0 +1,145 @@
+@import '../../../styles/app-init';
+
+$uploader-background: color(app-white-yellow) !default;
+$uploader-border: color(app-yellow-desaturated, 75, 1, app-white-yellow) !default;
+$uploader-text: color(app-grey) !default;
+$file-svg-fill: $color-tools-bg;
+
+:host {
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.c-file-upload {
+  border-width: 4px;
+  border-style: dashed;
+  border-color: $uploader-border;
+  background-color: $uploader-background;
+  color: $uploader-text;
+  font-size: 20px;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  &.is-hidden {
+    opacity: 0;
+  }
+}
+
+.c-file-upload__image {
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.c-file-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  @include animate(opacity, $animation-time-default);
+  width: 100%;
+}
+
+.c-file-caption--loading {
+  pointer-events: none;
+  opacity: 0;
+
+  .c-file-upload.is-loading & {
+    opacity: 1;
+  }
+}
+
+.c-file-caption--disabled {
+  pointer-events: none;
+  opacity: 0;
+
+  .c-file-upload.is-disabled & {
+    opacity: 1;
+  }
+}
+
+.c-file-caption--drag {
+  opacity: 0;
+
+  .c-file-upload.is-imageless & {
+    opacity: 1;
+  }
+
+  &.is-loading {
+    opacity: 1;
+  }
+
+  &.is-disabled {
+    opacity: 0;
+  }
+
+  .c-file-upload.is-active & {
+    opacity: 0;
+  }
+}
+
+.c-file-caption--drop {
+  pointer-events: none;
+  opacity: 0;
+
+  &.is-loading {
+    opacity: 1;
+  }
+
+  &.is-disabled {
+    opacity: 0;
+  }
+
+  .c-file-upload.is-active & {
+    opacity: 1;
+  }
+}
+
+.c-file-caption__inner {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 24px;
+}
+
+.c-file-caption__button {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.c-file-caption__upload-group {
+  @include animate (opacity, $animation-time-default);
+  opacity: 1;
+
+  .is-loading &,
+  .is-active &,
+  .is-hidden & {
+    opacity: 0;
+  }
+}
+
+.c-file-caption__icon {
+  display: block;
+  fill: $file-svg-fill;
+  height: 52px;
+  width: 200px;
+  margin: 0 auto 30px;
+}

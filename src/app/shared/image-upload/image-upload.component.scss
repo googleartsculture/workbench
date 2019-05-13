@@ -1,0 +1,187 @@
+@import '../../../styles/app-init';
+
+$uploader-background: color(app-white-yellow) !default;
+$uploader-border: color(app-yellow-desaturated, 75, 1, app-white-yellow) !default;
+$uploader-text: color(app-grey, 5);
+
+$button-dark-label: color(app-white-yellow) !default;
+$button-dark-label-hover: color(app-white) !default;
+$button-dark-label-active: color(app-white, 15, 1, app-black-yellow) !default;
+$button-dark-label-disabled: color(app-white-yellow) !default;
+$button-dark-background: $color-tools-bg !default;
+$button-dark-background-disabled: $color-tools-bg !default;
+
+$caption-icon-fill: $color-tools-bg !default;
+
+:host {
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  &.is-disabled {
+    pointer-events: none;
+  }
+}
+
+.c-image-upload {
+  border-width: 4px;
+  border-style: dashed;
+  border-color: $uploader-border;
+  background-color: $uploader-background;
+  color: $uploader-text;
+  font-size: 20px;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  &.is-hidden {
+    opacity: 0;
+  }
+}
+
+.c-image-upload__image {
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+// IMAGE CAPTION
+
+.c-image-caption {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  @include animate(opacity, $animation-time-default);
+  width: 100%;
+}
+
+.c-image-caption--loading {
+  pointer-events: none;
+  opacity: 0;
+
+  .c-image-upload.is-loading & {
+    opacity: 1;
+  }
+}
+
+.c-image-caption--disabled {
+  pointer-events: none;
+  opacity: 0;
+
+  .c-image-upload.is-disabled-drag & {
+    opacity: 1;
+  }
+}
+
+.c-image-caption--drag {
+  opacity: 0;
+
+  .c-image-upload.is-imageless & {
+    opacity: 1;
+  }
+
+  &.is-loading {
+    opacity: 1;
+  }
+
+  &.is-disabled-drag {
+    opacity: 0;
+  }
+
+  .c-image-upload.is-active & {
+    opacity: 0;
+  }
+}
+
+.c-image-caption--drop {
+  pointer-events: none;
+  opacity: 0;
+
+  &.is-loading {
+    opacity: 1;
+  }
+
+  &.is-disabled-drag {
+    opacity: 0;
+  }
+
+  .c-image-upload.is-active & {
+    opacity: 1;
+  }
+}
+
+.c-image-caption__icon {
+  display: block;
+  fill: $caption-icon-fill;
+  height: 52px;
+  width: 200px;
+  margin: 0 auto 30px;
+}
+
+.c-image-caption__inner {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 24px;
+  font-weight: 400;
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.c-image-caption__upload-group {
+  @include animate(opacity, $animation-time-default);
+  opacity: 1;
+
+  .is-loading &,
+  .is-active &,
+  .is-hidden & {
+    opacity: 0;
+  }
+}
+
+.c-image-caption__button {
+  font-size: 14px;
+  text-transform: uppercase;
+
+  .c-image-caption__inner:hover &,
+  .c-image-caption__inner.is-active & {
+    color: $button-dark-label-hover;
+  }
+
+  .c-image-caption__inner:link &,
+  .c-image-caption__inner:visited & {
+    color: $button-dark-label;
+  }
+
+  .c-image-caption__inner:active & {
+    color: $button-dark-label-active;
+  }
+
+  .c-image-caption__inner:disabled &,
+  .c-image-caption__inner.is-disabled & {
+    background-color: $button-dark-background-disabled;
+    pointer-events: none;
+
+    .c-image-caption__inner:hover & {
+      cursor: default;
+      color: $button-dark-label-disabled;
+    }
+  }
+}

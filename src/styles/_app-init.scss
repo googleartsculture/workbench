@@ -1,0 +1,24 @@
+//================================================================================================//
+//
+//  APP INIT
+//  Global Functions, Config and Mixins
+//
+//================================================================================================//
+
+// FUNCTIONS
+@import 'function/app_function_calculations';
+@import 'function/app_function_colors';
+@import 'function/app_function_strings';
+
+// CONFIG
+@import 'app_colors';
+@import 'app_variables';
+
+// MIXINS
+@import 'mixin/app_mixin_animation';
+@import 'mixin/app_mixin_fonts';
+@import 'mixin/app_mixin_fontsize';
+@import 'mixin/app_mixin_input';
+@import 'mixin/app_mixin_pixelate';
+@import 'mixin/app_mixin_placeholder';
+@import 'mixin/app_mixin_media';

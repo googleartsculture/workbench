@@ -1,0 +1,34 @@
+@import '../../../styles/app-init';
+
+:host {
+  align-items: center;
+  background-color: $global-page-background;
+  bottom: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: $z-index-notice-rotate;
+
+  .is-touch & {
+    @include media-min-sm-portrait() {
+      display: flex;
+    }
+  }
+}
+
+.c-portrait-notice__img {
+  height: 140px;
+  margin-bottom: 20px;
+  width: 200px;
+}
+
+.c-portrait-notice__copy {
+  @include font-primary-light;
+  color: $text-light;
+  font-size: 22px;
+  text-align: center;
+}

@@ -1,0 +1,557 @@
+<app-workspace #workspace (workspaceSetup)="onWorkspaceReady()" (workspaceData)="workspaceUpdate($event)"></app-workspace>
+
+<aside class="o-drawer" [ngClass]="{ 'is-hidden': !aside.active }">
+  <div class="o-drawer__close">
+    <button class="c-button c-button--tool" (click)="aside.active = !aside.active"
+      appTooltip=""
+      appTooltipPosition="left"
+      appTooltipTitle="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.DRAWER' | translate }}"
+    >
+      <span class="c-button__drop">
+        <app-svg-arrow-right-icon class="c-button__icon c-icon" [style.display]="!aside.active ? 'none' : 'block'"></app-svg-arrow-right-icon>
+        <app-svg-arrow-left-icon class="c-button__icon c-icon" [style.display]="aside.active ? 'none' : 'block'"></app-svg-arrow-left-icon>
+      </span>
+    </button>
+
+  </div>
+  <div class="o-drawer__content">
+
+    <div class="c-sidebar">
+      <div class="c-sidebar__header has-actions">
+        <h2 class="c-sidebar__title">{{ 'MODULES.PROJECT.MODULES.ANALYSE.TITLE' | translate }}</h2>
+        <div class="c-sidebar__actions u-animate-x-fade" *ngIf="getSentenceList().length > 0" [ngClass]="{'has-actions': config.ai.classification.enabled && config.selected.length > 0}">
+
+          <button *ngIf="config.selected.length > 0" type="button" class="c-tool u-animate-x-fade" (click)="createWord(config.selected)"
+            appTooltip=""
+            appTooltipPosition="bottom"
+            appTooltipTitle="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.CREATE_SELECT' | translate }}"
+            [ngClass]="{ 'is-hidden': config.selected.length < 1 }">
+            <span class="u-sr-only">{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.CREATE_SELECT' | translate }}</span>
+            <app-svg-word-join class="c-tool__icon c-icon c-icon--sm"></app-svg-word-join>
+          </button>
+
+          <button type="button" *ngIf="config.ai.classification.enabled && config.selected.length > 0" class="c-tool u-animate-x-fade"
+            (click)="autoClassifyGlyphs(config.selected)" [disabled]=" config.ai.classification.loading || !config.ai.classification.enabled"
+            appTooltip="" appTooltipPosition="bottom" appTooltipTitle="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.CLASSIFY_SELECT' | translate }}"
+            [ngClass]="{ 'is-hidden': !config.ai.classification.enabled && config.selected.length < 1 }">
+            <span class="u-sr-only">{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.CLASSIFY_SELECT' | translate }}</span>
+            <app-svg-glyph-auto-classify class="c-tool__icon c-icon c-icon--sm"></app-svg-glyph-auto-classify>
+          </button>
+
+          <button type="button" *ngIf="config.selected.length > 0" class="c-tool u-animate-x-fade" (click)="deleteSelectedGlyphs()"
+            appTooltip="" appTooltipPosition="left" appTooltipTitle="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.DELETE_SELECT' | translate }}"
+            [ngClass]="{'is-hidden': config.selected.length < 1}">
+            <span class="u-sr-only">{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.DELETE_SELECT' | translate }}</span>
+            <app-svg-trash-icon class="c-tool__icon c-icon c-icon--sm"></app-svg-trash-icon>
+          </button>
+        </div>
+      </div>
+      <div class="c-sidebar__content">
+
+        <div class="u-scroller">
+          <div class="c-sequence" *ngIf="getSentenceList(); let sentences">
+            <div class="c-sequence__content" *ngIf="sentences.length > 0">
+
+              <ul class="c-sentences js-drag-drop-sentences">
+                <li class="c-sentences__item js-drag-drop-target-sentences"
+                  *ngFor="let sentence of sentences; let sI = index; trackBy:trackByFn()"
+                  [attr.data-id]="sentence.id"
+                >
+                  <div
+                    class="c-sentence"
+                    [ngClass]="{'is-selected': sentence.selected,
+                    'is-sentence-expanded': !this.aside.loaded || sentence.expanded}"
+                  >
+                    <div class="c-sentence__header"
+                      (mouseenter)="highlightSentence(sentence, true)"
+                      (mouseleave)="highlightSentence(sentence, false)"
+                    >
+                      <div *ngIf="enableDragDrop" class="c-nudge">
+                        <button class="js-drag-drop-handle-sentences" type="button">
+                          <app-svg-dragable-icon class="c-tool__icon"></app-svg-dragable-icon>
+                        </button>
+                      </div>
+                      <div class="c-nudge" *ngIf="!enableDragDrop">
+                        <button
+                          class="c-nudge__btn"
+                          type="button"
+                          title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.MOVE_UP' | translate }}"
+                          (click)="nudge('up', 'sentence', sentence, null)"
+                          [disabled]="sI === 0"
+                        >
+                          <app-svg-chevron-up-icon class="c-icon c-icon--xs c-tool__icon c-tool--nudge"></app-svg-chevron-up-icon>
+                        </button>
+                        <button
+                          class="c-nudge__btn"
+                          type="button"
+                          title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.MOVE_DOWN' | translate }}"
+                          (click)="nudge('down', 'sentence', sentence, null)"
+                          [disabled]="sI === (sentences.length - 1)"
+                        >
+                          <app-svg-chevron-down-icon class="c-icon c-icon--xs c-tool__icon c-tool--nudge"></app-svg-chevron-down-icon>
+                        </button>
+                      </div>
+                      <button type="button" class="c-tool c-tool--sentence"
+                        (click)="toggleExpand('sentence', sentence)">
+                        <app-svg-chevron-up-icon class="c-tool__icon"></app-svg-chevron-up-icon>
+                      </button>
+                      <button type="button"
+                        class="c-sentence__title"
+                        (click)="toggleSentenceSelection(sentence)">
+                        {{ 'MODULES.PROJECT.MODULES.ANALYSE.SENTENCE.TITLE' | translate }}
+                      </button>
+                      <div class="c-sentence__actions">
+                        <button type="button"
+                          *ngIf="config.ai.classification.enabled"
+                          class="c-tool"
+                          (click)="autoClassifyGlyphs(getGlyphList('sentence', sentence))"
+                          [disabled]="getGlyphList('sentence', sentence).length < 1 || config.ai.classification.loading"
+                          title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.CLASSIFY' | translate }}"
+                        >
+                          <app-svg-glyph-auto-classify class="c-tool__icon"></app-svg-glyph-auto-classify>
+                        </button>
+                        <button type="button"
+                          class="c-tool"
+                          (click)="deleteSentence(sentence)"
+                          title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.SENTENCE.DELETE' | translate }}"
+                        >
+                          <app-svg-trash-icon class="c-tool__icon"></app-svg-trash-icon>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="c-sentence__content">
+                      <ul class="c-words js-drag-drop-words" *ngIf="getWordList(sentence); let words">
+                        <li class="c-words__item js-drag-drop-target-words"
+                          *ngFor="let word of words; let wI = index; trackBy:trackByFn()"
+                          [attr.data-id]="word.id"
+                        >
+                          <div
+                            class="c-word"
+                            [ngClass]="{'is-selected': word.selected, 'is-cartouche': word.isCartouche,
+                            'is-word-expanded': !this.aside.loaded || word.expanded }"
+                          >
+                            <div class="c-word__header"
+                              (mouseenter)="highlightWord(word, true)"
+                              (mouseleave)="highlightWord(word, false)"
+                            >
+                              <div *ngIf="enableDragDrop">
+                                <button class="js-drag-drop-handle-words" type="button">
+                                  <app-svg-dragable-icon class="c-tool__icon"></app-svg-dragable-icon>
+                                </button>
+                              </div>
+                              <div *ngIf="!enableDragDrop" class="c-nudge">
+                                <button
+                                class="c-nudge__btn"
+                                type="button"
+                                  title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.MOVE_UP' | translate }}"
+                                  (click)="nudge('up', 'word', word, sentence)"
+                                  [disabled]="wI === 0"
+                                >
+                                  <app-svg-chevron-up-icon class="c-icon c-icon--xs c-tool__icon c-tool--nudge"></app-svg-chevron-up-icon>
+                                </button>
+                                <button
+                                class="c-nudge__btn"
+                                type="button"
+                                  title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.MOVE_DOWN' | translate }}"
+                                  (click)="nudge('down', 'word', word, sentence)"
+                                  [disabled]="wI === (words.length - 1)"
+                                >
+                                  <app-svg-chevron-down-icon class="c-icon c-icon--xs c-tool__icon c-tool--nudge"></app-svg-chevron-down-icon>
+                                </button>
+                              </div>
+                              <button type="button"
+                                class="c-tool c-tool--word"
+                                (click)="toggleExpand('word', word)">
+                                <app-svg-chevron-up-icon class="c-tool__icon"></app-svg-chevron-up-icon>
+                              </button>
+                              <button type="button"
+                                class="c-word__title"
+                                (click)="toggleWordSelection(word)">
+                                {{ 'MODULES.PROJECT.MODULES.ANALYSE.WORD.TITLE' | translate }}
+                              </button>
+                              <div class="c-word__actions">
+                                <button type="button"
+                                  class="c-tool"
+                                  (click)="word.isCartouche = !word.isCartouche; updateWorkspace()"
+                                  [disabled]="word.glyphs.length < 1 || config.ai.classification.loading"
+                                  [ngClass]="{'is-toggled': word.isCartouche}"
+                                  title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.TOGGLE_CARTOUCHE' | translate }}"
+                                >
+                                  <app-svg-glyph-cartouche class="c-tool__icon"></app-svg-glyph-cartouche>
+                                </button>
+                                <button type="button"
+                                  *ngIf="config.ai.classification.enabled"
+                                  class="c-tool"
+                                  (click)="autoClassifyGlyphs(getGlyphList('word', word))"
+                                  [disabled]="word.glyphs.length < 1 || config.ai.classification.loading"
+                                  title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.CLASSIFY' | translate }}"
+                                >
+                                  <app-svg-glyph-auto-classify class="c-tool__icon"></app-svg-glyph-auto-classify>
+                                </button>
+                                <button type="button"
+                                  class="c-tool"
+                                  (click)="deleteWord(word)"
+                                  title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.WORD.DELETE' | translate }}"
+                                >
+                                  <app-svg-trash-icon class="c-tool__icon"></app-svg-trash-icon>
+                                </button>
+                              </div>
+                            </div>
+                            <div class="c-word__content">
+                              <ul class="c-glyphs js-drag-drop-glyphs" *ngIf="getGlyphList('word', word); let glyphs">
+                                <li class="c-glyphs__item js-drag-drop-target-glyphs"
+                                  *ngFor="let glyph of glyphs; let gI = index; trackBy:trackByFn()"
+                                  [ngClass]="{ 'is-disabled': config.editing.active && glyph.id !== config.editing.object.id }"
+                                  [attr.data-id]="glyph.id"
+                                  [ngClass]="{
+                                    'is-selected': glyph.selected,
+                                    'is-locked': glyph.locked,
+                                    'is-loading': config.ai.classification.glyphs.indexOf(glyph.id) !== -1,
+                                    'is-disabled': config.editing.active && glyph.id !== config.editing.object.id
+                                  }">
+                                  <app-loader [appLoaderSmall]="true" [appLoaderBgTransparent]="true" [loading]="config.ai.classification.glyphs.indexOf(glyph.id) !== -1"></app-loader>
+                                  <div class="c-glyph u-animate-x-fade"
+                                    (mouseenter)="highlightGlyph(glyph, true)"
+                                    (mouseleave)="highlightGlyph(glyph, false)"
+                                    [ngClass]="{
+                                      'is-hidden': config.ai.classification.glyphs.indexOf(glyph.id) !== -1
+                                    }"
+                                  >
+                                    <div class="c-glyph__suggestions" [ngClass]="{'has-suggestions': glyph.gardinerCodePredictions.length > 0 }">
+                                      <div *ngIf="enableDragDrop">
+                                        <button class="js-drag-drop-handle-glyphs" type="button"
+                                          [disabled]="config.editing.active && glyph.id === config.editing.object.id"
+                                        >
+                                          <app-svg-dragable-icon class="c-tool__icon"></app-svg-dragable-icon>
+                                        </button>
+                                      </div>
+                                      <div *ngIf="!enableDragDrop" class="c-nudge">
+                                        <button type="button"
+                                        class="c-nudge__btn"
+                                          title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.MOVE_UP' | translate }}"
+                                          (click)="nudge('up', 'glyph', glyph, word)"
+                                          [disabled]="gI === 0 || config.editing.active && glyph.id === config.editing.object.id"
+                                        >
+                                          <app-svg-chevron-up-icon class="c-icon c-icon--xs c-tool__icon c-tool--nudge"></app-svg-chevron-up-icon>
+                                        </button>
+                                        <button type="button"
+                                        class="c-nudge__btn"
+                                          title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.MOVE_DOWN' | translate }}"
+                                          (click)="nudge('down', 'glyph', glyph, word)"
+                                          [disabled]="gI === (glyphs.length - 1) || config.editing.active && glyph.id === config.editing.object.id"
+                                        >
+                                          <app-svg-chevron-down-icon class="c-icon c-icon--xs c-tool__icon c-tool--nudge"></app-svg-chevron-down-icon>
+                                        </button>
+                                      </div>
+                                      <button class="c-glyph-select"
+                                        (click)="manuallyClassifyGlyph(glyph)"
+                                        [ngClass]="{'is-glyph': glyph.gardinerCode}"
+                                        [disabled]="config.editing.active && glyph.id === config.editing.object.id"
+                                        title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.SELECT' | translate }}"
+                                        >
+                                        <div class="c-glyph-select__icon">
+                                          <app-glyph-image *ngIf="glyph.gardinerCode" [glyphCode]="glyph.gardinerCode"></app-glyph-image>
+                                        </div>
+                                        <div class="c-glyph-select__code">
+                                          <span *ngIf="glyph.gardinerCode">{{ glyph.gardinerCode }}</span>
+                                          <span *ngIf="!glyph.gardinerCode">?</span>
+                                        </div>
+                                      </button>
+                                      <div class="c-glyph__prediction" *ngFor="let prediction of glyph.gardinerCodePredictions">
+                                        <button class="c-glyph-prediction" type="button"
+                                          (click)="setGlyphCode(glyph, prediction.glyph)"
+                                          [ngClass]="{'is-selected':prediction.glyph === glyph.gardinerCode }"
+                                          [disabled]="config.editing.active && glyph.id === config.editing.object.id"
+                                          title="{{ prediction.glyph }}"
+                                        >
+                                          <div class="c-glyph-prediction__icon">
+                                            <app-glyph-image [(glyphCode)]="prediction.glyph"></app-glyph-image>
+                                          </div>
+                                        </button>
+                                      </div>
+                                    </div>
+                                    <div class="c-tools is-full" *ngIf="!glyph.selected">
+                                      <button class="c-button c-glyph__select-btn"
+                                        type="button"
+                                        (click)="selectGlyph(glyph)"
+                                        title="{{'MODULES.PROJECT.MODULES.ANALYSE.TOOL.SELECT_GLYPH' | translate }}"
+                                      >
+                                        <span class="u-sr-only">{{'MODULES.PROJECT.MODULES.ANALYSE.TOOL.SELECT_GLYPH' | translate }}</span>
+                                      </button>
+                                    </div>
+                                    <div *ngIf="config.editing.object && glyph.id === config.editing.object.id" class="c-tools">
+                                      <button
+                                        type="button"
+                                        (click)="saveGlyph(glyph)"
+                                        class="c-tool"
+                                        title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.SAVE_GLYPH' | translate }}"
+                                      >
+                                        <span class="u-sr-only">{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.SAVE_GLYPH' | translate }}</span>
+                                        <app-svg-tick-icon class="c-tool__icon"></app-svg-tick-icon>
+                                      </button>
+                                    </div>
+                                    <div *ngIf="glyph.selected" class="c-tools">
+                                      <button
+                                        *ngIf="!config.editing.object || glyph.id !== config.editing.object.id"
+                                        type="button"
+                                        (click)="editGlyph(glyph)"
+                                        class="c-tool"
+                                        title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.EDIT_GLYPH' | translate }}"
+                                      >
+                                        <span class="u-sr-only">{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.EDIT_GLYPH' | translate }}</span>
+                                        <app-svg-tool-polygon class="c-tool__icon"></app-svg-tool-polygon>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        (click)="toggleGlyphLock(glyph)"
+                                        class="c-tool"
+                                        [disabled]="config.editing.active && glyph.id === config.editing.object.id"
+                                        title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.LOCK' | translate }}"
+                                      >
+                                        <span class="u-sr-only">{{ glyph.locked ? ('MODULES.PROJECT.MODULES.ANALYSE.BTN.UNLOCK' | translate) : ('MODULES.PROJECT.MODULES.ANALYSE.BTN.LOCK' | translate) }} {{ 'MODULES.PROJECT.MODULES.ANALYSE.BTN.GLYPH' | translate }}</span>
+                                        <app-svg-locked-icon *ngIf="!glyph.locked" class="c-tool__icon"></app-svg-locked-icon>
+                                        <app-svg-unlocked-icon *ngIf="glyph.locked" class="c-tool__icon"></app-svg-unlocked-icon>
+                                      </button>
+                                      <button
+                                        *ngIf="config.ai.classification.enabled"
+                                        type="button"
+                                        (click)="autoClassifyGlyph(glyph)"
+                                        [disabled]="config.editing.active && glyph.id === config.editing.object.id"
+                                        class="c-tool"
+                                        title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.CLASSIFY' | translate }}"
+                                      >
+                                        <span class="u-sr-only">{{ 'MODULES.PROJECT.MODULES.ANALYSE.BTN.CLASSIFY' | translate }}</span>
+                                        <app-svg-glyph-auto-classify class="c-tool__icon"></app-svg-glyph-auto-classify>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        (click)="deleteGlyph(glyph)"
+                                        [disabled]="config.editing.active && glyph.id === config.editing.object.id"
+                                        class="c-tool"
+                                        title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.DELETE' | translate }}"
+                                      >
+                                        <span class="u-sr-only">{{ 'MODULES.PROJECT.MODULES.ANALYSE.BTN.DELETE' | translate }}</span>
+                                        <app-svg-trash-icon class="c-tool__icon c-icon c-icon--sm"></app-svg-trash-icon>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+            </div>
+          </div>
+
+          <div class="c-cta" *ngIf="!getSentenceList().length">
+            <div class="c-cta__tool-group">
+              <div class="c-cta__tool">
+                <app-svg-tool-marquee class="c-cta__tool-icon c-icon c-icon--lg"></app-svg-tool-marquee>
+              </div>
+              <div class="c-cta__tool">
+                <app-svg-tool-polygon class="c-cta__tool-icon c-icon c-icon--lg"></app-svg-tool-polygon>
+              </div>
+            </div>
+            <p>{{ 'MODULES.PROJECT.MODULES.ANALYSE.NONE' | translate }}</p>
+          </div>
+          <app-loader class="c-generate-loader" [appLoaderAside]="true" [loading]="!aside.loaded"></app-loader>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</aside>
+
+<div class="o-panel" [ngClass]="{ 'is-hidden': !panel.active }">
+  <button class="o-panel__head" (click)="togglePanel()" [ngClass]="{'has-actions': !getSentenceList().length}">
+    <h2 class="o-panel__title"> {{ 'MODULES.PROJECT.MODULES.ANALYSE.TRANSLATION.HEADING' | translate }}</h2>
+    <div class="c-button c-button--tool"
+      title="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.PANEL' | translate }}"
+    >
+      <span class="c-button__drop o-panel__close">
+        <app-svg-arrow-up-icon class="c-button__icon c-icon" *ngIf="!panel.active"></app-svg-arrow-up-icon>
+        <app-svg-arrow-down-icon class="c-button__icon c-icon" *ngIf="panel.active"></app-svg-arrow-down-icon>
+      </span>
+    </div>
+  </button>
+  <div class="o-panel__content">
+    <div class="u-scroller-x">
+      <form class="c-translation" *ngIf="getSentenceList().length">
+        <div class="c-translation__content">
+          <ul class="c-translation-sentences">
+            <li class="c-translation-sentences__item"
+              *ngFor="let sentence of getSentenceList(); let s = index; trackBy:trackByFn()">
+
+              <div class="c-translation-sentence">
+                <ul class="c-translation-words">
+                  <li class="c-translation-words__item"
+                    *ngFor="let word of getWordList(sentence); let w = index; trackBy:trackByFn()">
+                    <div class="c-translation-word">
+                      <div class="c-translation-word__glyphs"
+                        [ngClass]="{ 'is-cartouche': word.isCartouche }">
+                        <ul class="c-translation-glyphs">
+                          <li class="c-translation-glyphs__item"
+                            *ngFor="let glyph of getGlyphList('word', word); trackBy:trackByFn()"
+                            [attr.data-glyph-id]="glyph.id"
+                            [ngClass]="{ 'is-selected': glyph.selected }"
+                          >
+                            <app-loader [appLoaderSmall]="true" [appLoaderBgTransparent]="true" [loading]="config.ai.classification.glyphs.indexOf(glyph.id) !== -1"></app-loader>
+                            <div class="c-translation-glyph u-animate-x-fade"
+                              (mouseenter)="highlightGlyph(glyph, true)"
+                              (mouseleave)="highlightGlyph(glyph, false)"
+                              [ngClass]="{'is-hidden': config.ai.classification.glyphs.indexOf(glyph.id) !== -1}"
+                            >
+                              <div class="c-translation-glyph__icon">
+                                <app-glyph-image *ngIf="glyph.gardinerCode" [glyphCode]="glyph.gardinerCode"></app-glyph-image>
+                              </div>
+                              <div class="c-translation-glyph__code">
+                                <span *ngIf="glyph.gardinerCode">{{ glyph.gardinerCode }}</span>
+                                <span *ngIf="!glyph.gardinerCode">?</span>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      <fieldset class="o-form-fieldset c-translation-word__inputs"
+                      >
+                        <div class="o-form-row">
+                          <div class="o-input">
+                            <label for="" class="o-input__label c-label">
+                              <div class="o-input__wrap c-textbox c-textbox--alt">
+                                <input name="sentence_{{s}}_word_{{w}}_translation" type="text" class="o-input__field c-textbox__field"
+                                  placeholder="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TRANSLATION.PLACEHOLDERS.TRANSLATION' | translate }}"
+                                  [(ngModel)]="word.translation" (input)="updateWorkspace()" size="1"
+                                  (mouseenter)="highlightWord(word, true)"
+                                  (mouseleave)="highlightWord(word, false)">
+                              </div>
+                            </label>
+                          </div>
+                        </div>
+                        <div class="o-form-row">
+                          <div class="o-input">
+                            <label for="" class="o-input__label c-label">
+                              <div class="o-input__wrap c-textbox c-textbox--alt">
+                                <input name="sentence_{{s}}_word_{{w}}_transliteration" type="text" class="o-input__field c-textbox__field"
+                                  placeholder="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TRANSLATION.PLACEHOLDERS.PHONETIC' | translate }}"
+                                  [(ngModel)]="word.transliteration" (input)="updateSentenceTransliteration(sentence)" size="1"
+                                  (mouseenter)="highlightWord(word, true)"
+                                  (mouseleave)="highlightWord(word, false)">
+                              </div>
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <fieldset class="o-form-fieldset c-translation-sentence__inputs"
+              >
+                <div class="o-form-row">
+                  <p class="c-transliteration">{{ sentence.transliteration || ('MODULES.PROJECT.MODULES.ANALYSE.TRANSLATION.TITLE.PHONETIC' | translate ) }}</p>
+                </div>
+                <div class="o-form-row">
+                  <div class="o-input">
+                    <label for="" class="o-input__label c-label">
+                      <div class="o-input__wrap c-textbox c-textbox--alt">
+                        <input name="sentence_{{s}}_translation" type="text" class="o-input__field c-textbox__field"
+                          placeholder="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TRANSLATION.PLACEHOLDERS.INTERPRETATION' | translate }}"
+                          [(ngModel)]="sentence.interpretation" (input)="updateWorkspace()" size="1"
+                          (mouseenter)="highlightSentence(sentence, true)"
+                          (mouseleave)="highlightSentence(sentence, false)">
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <div class="c-auto-translate" *ngIf="config.ai.translation.enabled">
+
+                <div class="c-auto-translate__header">
+                  <button type="button" class="c-translate-title"
+                    (click)="config.ai.translation.active = !config.ai.translation.active"
+                    [ngClass]="{'is-expanded': config.ai.translation.active}"
+                  >
+                    <app-svg-chevron-up-icon class="c-translate-title__icon c-icon c-icon--sm"></app-svg-chevron-up-icon>
+                    <span class="c-translate-title__label">{{ 'MODULES.PROJECT.MODULES.ANALYSE.TRANSLATION.SUBTITLE' | translate }}</span>
+                  </button>
+                </div>
+
+                <div class="c-auto-translate__content" *ngIf="config.ai.translation.active">
+                  <div class="u-scroller">
+
+                  <div class="c-auto-translate__actions" *ngIf="config.ai.translation.active">
+                      <button type="button" class="c-button c-button--mid"
+                        (click)="autoTranslateSentence(sentence)"
+                      >
+                        <span class="c-button__drop">
+                          <span class="c-button__label">{{ 'MODULES.PROJECT.MODULES.ANALYSE.TRANSLATION.BTN.AUTO' | translate }}</span>
+                          <app-svg-auto-translate class="c-button__icon c-icon"></app-svg-auto-translate>
+                        </span>
+                      </button>
+                    </div>
+
+                    <div *ngIf="getTranslationData(sentence.id); let translationData">
+                      <ul class="c-results" *ngIf="translationData.results.length">
+
+                        <li class="c-results__item"
+                          *ngFor="let result of translationData.results"
+                          (mouseenter)="highlightSentenceRange(sentence, result.start, result.end, true)"
+                          (mouseleave)="highlightSentenceRange(sentence, result.start, result.end, false)"
+                          [ngClass]="{
+                            'is-start': result.start === 0,
+                            'is-end': result.end === (getGlyphList('sentence', sentence).length - 1)
+                          }"
+                        >
+                          <button class="c-result" type="button"
+                            (click)="autoFillWord(sentence, result)"
+                            [title]="result.translation.translation + ' | ' + result.transliteration"
+                            [ngStyle]="{
+                              'margin-left': (result.start * 52) + 'px',
+                              'width': ((result.end - result.start + 1) * 52) + 'px'
+                            }"
+                          >
+                            <span class="c-result__label">{{ result.translation.translation }} | {{ result.transliteration }}</span>
+                          </button>
+                        </li>
+                      </ul>
+
+                      <div class="c-alert c-alert--info" *ngIf="!translationData.loading && !translationData.results.length">
+                        <p>{{ 'MODULES.PROJECT.MODULES.ANALYSE.TRANSLATION.NONE' | translate }}</p>
+                      </div>
+
+                      <app-loader [loading]="translationData.loading" [appLoaderBgTransparent]="true" [appLoaderBasic]="true"></app-loader>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+          </ul>
+        </div>
+      </form>
+          <div class="c-cta" *ngIf="!getSentenceList().length">
+            <div class="c-cta__tool-group">
+              <div class="c-cta__tool">
+                <app-svg-tool-marquee class="c-cta__tool-icon c-icon c-icon--lg"></app-svg-tool-marquee>
+              </div>
+              <div class="c-cta__tool">
+                <app-svg-tool-polygon class="c-cta__tool-icon c-icon c-icon--lg"></app-svg-tool-polygon>
+              </div>
+            </div>
+            <p>{{ 'MODULES.PROJECT.MODULES.ANALYSE.NONE' | translate }}</p>
+          </div>
+    </div>
+  </div>
+</div>
+
+<app-glyph-picker-modal></app-glyph-picker-modal>

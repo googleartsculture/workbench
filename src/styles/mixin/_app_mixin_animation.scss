@@ -1,0 +1,39 @@
+//================================================================================================//
+//
+//  ANIMATION TOOLS
+//
+//================================================================================================//
+
+// Example usage: @include animate(left top);
+@mixin animate($properties: all, $duration: $animation-time, $easing: $animation-easing, $delay: 0s) {
+
+  // @if $properties == transform {
+  //   transition: transform $duration $easing $delay;
+  // }
+
+  // @else {
+  //   @if length($properties) > 1 {
+  //     $new-properties: unquote('');
+
+  //     @for $i from 1 through length($properties) {
+  //       $p: nth($properties, $i);
+
+  //       @if ($i == length($properties)) {
+  //         $new-properties: $new-properties + $p;
+  //       }
+
+  //       @else {
+  //         $new-properties: $new-properties + $p + ', ';
+  //       }
+  //     }
+  //     transition-delay: $delay;
+  //     transition-duration: $duration;
+  //     transition-property: $new-properties;
+  //     transition-timing-function: $easing;
+  //   }
+
+  //   @else {
+  //     transition: $properties $duration $easing $delay;
+  //   }
+  // }
+}

@@ -1,0 +1,17 @@
+//============================================================================//
+//
+//  GLOBAL GENERIC SELECTION
+//
+//============================================================================//
+
+// VARS
+
+$text-selection: #99f !default;
+
+// ELEMENTS
+
+::-moz-selection,
+::selection {
+  color: $text-selection;
+  text-shadow: none;
+}

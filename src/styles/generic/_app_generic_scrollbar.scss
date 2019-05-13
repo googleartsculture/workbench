@@ -1,0 +1,29 @@
+//============================================================================//
+//
+//  GLOBAL GENERIC ANGULAR SCROLLBAR
+//
+//============================================================================//
+
+// VARS
+$scrollbar-thumb: color(app-grey-yellow, 45, 1, app-black-yellow) !default;
+$scrollbar-track: color(app-grey-yellow, 10, 1, app-white-yellow) !default;
+
+// ELEMENTS
+
+body {
+  background-color: $global-page-background;
+  overflow: hidden;
+
+  ::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: $scrollbar-track;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $scrollbar-thumb;
+  }
+}

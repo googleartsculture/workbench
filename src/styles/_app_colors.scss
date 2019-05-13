@@ -1,0 +1,35 @@
+//============================================================================//
+//
+//  GLOBAL COLORS
+//
+//============================================================================//
+
+// COLORS
+
+$colors: (
+  app-black: #000,
+  app-black-yellow: #232018,
+  app-white: #fff,
+  app-white-yellow: #f8f7f3,
+  app-grey: #a0a0a0,
+  app-grey-yellow: #cbc5aa,
+  app-gold: #f8de7a,
+  app-green: #42a948,
+  app-orange: #ffa600,
+  app-orange-desaturated: #8b7f60,
+  app-yellow: #f4ec31,
+  app-yellow-soft: #dbcf9a,
+  app-yellow-desaturated: #7a6f47,
+  app-red: #f00,
+  app-red-desaturated: #a94442,
+  app-blue: #00f,
+);
+
+$tints: (
+  darkest: -75%,
+  darker: -50%,
+  dark: -25%,
+  light: 25%,
+  lighter: 50%,
+  lightest: 75%
+);

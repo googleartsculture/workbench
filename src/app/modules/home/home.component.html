@@ -1,0 +1,69 @@
+<div class="o-page">
+
+  <div class="o-page__lhs c-projects" [ngClass]="{ 'is-displayed': projectListLoaded }">
+    <div class="c-projects__header">
+      <h3 class="c-projects__subtitle">{{ 'MODULES.HOME.SUBTITLE' | translate }}</h3>
+      <div class="c-projects__search c-search">
+        <input autocomplete="off" class="c-search__input" type="search" #search [attr.placeholder]="'MODULES.HOME.SEARCH.PLACEHOLDER' | translate" (input)="filterProjectList(search.value)" />
+      </div>
+    </div>
+    <div class="c-projects__no-projects">
+      <app-loader
+        [loading]="!projectListLoaded"
+        [appLoaderBgTransparent]="true"
+        [appLoaderHideSpinner]="hideLoadingSpinner"
+      ></app-loader>
+    </div>
+    <div class="c-projects__content">
+      <div class="u-scroller">
+        <table class="o-table c-activities">
+          <thead class="o-table__head c-activities__head">
+            <tr class="o-table__row c-activities__row">
+              <th class="o-table__header c-activities__header">{{ 'MODULES.HOME.TABLE.TITLE' | translate }}</th>
+              <th class="o-table__header c-activities__header">{{ 'MODULES.HOME.TABLE.AUTHOR' | translate }}</th>
+              <th class="o-table__header c-activities__header">{{ 'MODULES.HOME.TABLE.UPDATED' | translate }}</th>
+              <th class="o-table__header c-activities__header">{{ 'MODULES.HOME.TABLE.CREATED' | translate }}</th>
+            </tr>
+          </thead>
+          <tbody class="o-table__body c-activities__body">
+            <tr class="o-table__row c-activities__row" *ngFor="let project of projectListFiltered" (click)="openProject(project)">
+              <th class="o-table__header c-activities__header">{{ project.title }}</th>
+              <td class="o-table__cell c-activities__cell">{{ project.author }}</td>
+              <td class="o-table__cell c-activities__cell">{{ project.updated | date:'medium' }}</td>
+              <td class="o-table__cell c-activities__cell">{{ project.created | date:'medium' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="o-page__rhs">
+    <div class="u-scroller">
+      <div class="c-sidebar c-sidebar--dark">
+        <h1 class="u-sr-only">{{ 'MODULES.HOME.SIDEBAR.TITLE' | translate }}</h1>
+        <div class="c-sidebar__content">
+
+          <div class="c-welcome">
+            <div class="c-welcome__statement">{{ 'MODULES.HOME.SIDEBAR.WELCOME' | translate }}</div>
+            <app-svg-n35-icon class="c-welcome__break"></app-svg-n35-icon>
+            <div class="c-welcome__actions">
+              <a routerLink="create" class="c-button c-button--full c-button--outline">
+                <span class="c-button__drop">
+                  <span class="c-button__label">{{ 'MODULES.HOME.SIDEBAR.NEW' | translate }}</span>
+                </span>
+              </a>
+              <a routerLink="import" class="c-button c-button--full c-button--outline">
+                <span class="c-button__drop">
+                  <span class="c-button__label">{{ 'MODULES.HOME.SIDEBAR.IMPORT' | translate }}</span>
+                </span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

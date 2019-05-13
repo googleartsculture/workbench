@@ -1,0 +1,48 @@
+//================================================================================================//
+//
+//  CTA COMPONENTS
+//
+//================================================================================================//
+
+// VARS
+$cta-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
+$cta-tool: color(app-orange-desaturated, 70, 1, app-black-yellow) !default;
+$cta-tool-border: color(app-orange-desaturated, 100, 1, app-black-yellow) !default;
+$cta-icon: color(app-grey-yellow) !default;
+
+// ELEMENTS
+
+.c-cta {
+  background-color: $cta-background;
+  padding: 30px 55px 55px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.c-cta__tool {
+  align-items: center;
+  border: 1px solid $cta-tool-border;
+  background-color: $cta-tool;
+  display: flex;
+  height: 64px;
+  justify-content: center;
+  margin: 0 auto 20px;
+  width: 64px;
+
+  .c-cta__tool-group & {
+    margin: 0 10px 20px;
+  }
+}
+
+.c-cta__tool-group {
+  display: flex;
+}
+
+.c-cta__tool-icon {
+  fill: $cta-icon;
+  width: 36px;
+  height: 36px;
+}

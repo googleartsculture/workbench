@@ -1,0 +1,152 @@
+//================================================================================================//
+//
+//  ANNOTATE MODULE COMPONENTS
+//
+//================================================================================================//
+
+@import '../../../../../styles/app-init';
+
+// VARS
+
+$annotations-title-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
+$annotations-border: color(app-yellow-desaturated, 60, 1, app-white-yellow) !default;
+
+$annotation-header-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
+$annotation-header-border: color(app-yellow-desaturated, 60, 1, app-white-yellow) !default;
+
+$annotation-background: color(app-yellow-desaturated, 90, 1, app-white-yellow) !default;
+
+$annotation-effects-background: color(app-white-yellow) !default;
+
+$comment-border: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
+$comment-background: color(app-orange-desaturated, 85, 1, app-white-yellow) !default;
+
+// ELEMENTS
+
+:host {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.c-annotations-note {
+  padding: 20px;
+}
+
+// ANNOTATIONS LIST
+
+.c-annotations {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.c-annotations__item {
+  padding: 0;
+  margin: 0;
+
+  &.is-disabled {
+    opacity: .5;
+    pointer-events: none;
+  }
+}
+
+// ANNOTATION
+
+.c-annotation {
+  border-bottom: 1px solid $annotations-border;
+  background-color: $annotation-background;
+}
+
+.c-annotation__open {
+  flex-grow: 1;
+}
+
+.c-annotation__header {
+  background-color: $annotation-header-background;
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+.c-annotation__author {
+  @include font-size-xs();
+  display: block;
+}
+
+.c-annotation__date {
+  @include font-secondary-heavy();
+  @include font-size-lg();
+
+  :host-context(.wf-active) & {
+    @include font-size-md();
+  }
+}
+
+.c-annotation__content {
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: $annotation-header-border;
+}
+
+// COMMENT FORM
+
+.c-comment-form {
+  padding: 10px 20px 20px;
+}
+
+// COMMENTS
+
+.c-comments-note {
+  padding: 20px;
+}
+
+.c-comments {
+  border-width: 1px 0 0;
+  border-style: solid;
+  border-color: $comment-border;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.c-comments__item {
+  padding: 10px 20px;
+  margin: 0;
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: $comment-border;
+
+  &:nth-child(odd) {
+    background-color: $comment-background;
+  }
+
+  &:last-child {
+    border-width: 0;
+  }
+}
+
+// COMMENT
+
+.c-comment__header {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+.c-comment__date {
+  @include font-size-min();
+}
+
+.c-comment__author {
+  @include font-size-xs();
+  text-transform: uppercase;
+  flex-grow: 1;
+}
+
+.c-comment__content {
+  @include font-size-sm();
+  padding-bottom: 2px;
+  line-height: 1.2;
+}

@@ -1,0 +1,101 @@
+//================================================================================================//
+//
+//  SELECT COMPONENTS
+//
+//================================================================================================//
+
+// VARS
+
+$select-background: color(app-white-yellow, null, 1) !default;
+$select-border: color(app-white-yellow, -25, 1) !default;
+$select-border-hover: color(app-white-yellow, -50, 1) !default;
+
+$select-border-warning: color(app-orange) !default;
+$select-border-error: color(app-red-desaturated) !default;
+$select-border-success: color(app-green) !default;
+
+$select-field-background: color(app-white, null, 0) !default;
+$select-field-text-disabled: color(app-white-yellow, -50) !default;
+
+$select-line-height: 1.2 !default;
+
+// ELEMENTS
+
+.c-select {
+  @include animate(border-color background-color);
+  background-color: $select-background;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $select-border;
+  padding: 2px;
+
+  &::after {
+    @include animate(border-color background-color);
+    content: '';
+    position: absolute;
+    display: block;
+    z-index: 2;
+    pointer-events: none;
+    border-width: 2px 2px 0 0;
+    border-color: $select-border;
+    border-style: solid;
+    height: 6px;
+    width: 6px;
+    transform: translateY(-50%) rotate(135deg);
+    top: 45%;
+    right: 7px;
+  }
+
+  &:hover {
+    border-color: $select-border-hover;
+
+    &::after {
+      border-color: $select-border-hover;
+    }
+  }
+}
+
+.c-select__field {
+  @include animate(border-color);
+  @include font-size-md();
+  border-radius: 0;
+  appearance: none;
+  background-color: $select-field-background;
+  line-height: $select-line-height;
+  border-style: solid;
+  border-color: transparent;
+  border-width: 0 0 0 4px;
+  box-sizing: border-box;
+
+  .is-required &,
+  &.required,
+  &[required] {
+    border-color: $select-border;
+  }
+
+  .is-error &,
+  &.ng-invalid:not(.ng-pristine) {
+    border-color: $select-border-error;
+  }
+
+  .is-warning & {
+    border-color: $select-border-warning;
+  }
+
+  .is-success &,
+  &.ng-valid,
+  &.ng-valid {
+    border-color: $select-border-success;
+  }
+
+  .is-disabled &,
+  &:disabled,
+  &[disabled] {
+    color: $select-field-text-disabled;
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}

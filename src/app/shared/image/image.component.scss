@@ -1,0 +1,34 @@
+@import '../../../styles/app-init';
+
+$placeholder-background:  color(app-black, 10);
+$placeholder-svg-fill: color(app-grey, -5);
+
+:host {
+  display: block;
+  position: relative;
+}
+
+img {}
+
+.c-placeholder {
+  background-color: $placeholder-background;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  svg {
+    height: 48px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+
+    path,
+    rect {
+      fill: $placeholder-svg-fill;
+    }
+  }
+}

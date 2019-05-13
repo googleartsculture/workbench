@@ -1,0 +1,117 @@
+<div class="u-scroller">
+  <div class="o-page o-page--basic">
+    <h1>{{ 'MODULES.SETTINGS.TITLE' | translate }}</h1>
+
+    <form [formGroup]="formData" (ngSubmit)="save()">
+      <fieldset class="o-form-fieldset">
+        <legend class="o-form-legend">{{ 'MODULES.SETTINGS.FORM.NAME.LEGEND' | translate }}</legend>
+        <div class="o-form-note">
+          <p>{{ 'MODULES.SETTINGS.FORM.NAME.NOTE' | translate }}</p>
+        </div>
+        <div class="o-form-row">
+          <label class="o-form-row__label" for="userFullName">{{ 'MODULES.SETTINGS.FORM.NAME.INPUT' | translate }}</label>
+          <div class="o-form-row__wrap c-textbox">
+            <input class="o-input__field c-textbox__field" type="text" name="userFullName" id="userFullName"
+              formControlName="userFullName"
+              required
+            >
+          </div>
+          <div class="o-form-row__validation" [hidden]="formData.controls.userFullName.valid || formData.controls.userFullName.pristine">
+              {{ 'MODULES.SETTINGS.FORM.NAME.ALERT' | translate }}
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="o-form-fieldset">
+        <legend class="o-form-legend">{{ 'MODULES.SETTINGS.FORM.CLUSTER.LEGEND' | translate }}</legend>
+        <div class="o-form-note">
+          <p>{{ 'MODULES.SETTINGS.FORM.CLUSTER.NOTE' | translate }}</p>
+        </div>
+        <div class="o-form-row">
+          <label class="o-form-row__label c-label" for="clusterAnalysisThreshold">{{ 'MODULES.SETTINGS.FORM.CLUSTER.INPUT' | translate }}</label>
+          <div class="o-form-row__wrap c-textbox">
+            <input class="o-input__field c-textbox__field" type="number" name="clusterAnalysisThreshold" id="clusterAnalysisThreshold" min="0" max="255"
+              formControlName="clusterAnalysisThreshold"
+              required
+            >
+          </div>
+          <div class="o-form-row__validation" [hidden]="formData.controls.clusterAnalysisThreshold.valid || formData.controls.clusterAnalysisThreshold.pristine">
+              {{ 'MODULES.SETTINGS.FORM.CLUSTER.ALERT' | translate }}
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="o-form-fieldset">
+        <legend class="o-form-legend">{{ 'MODULES.SETTINGS.FORM.CLASSIFICATION.LEGEND' | translate }}</legend>
+        <div class="o-form-note">
+          <p>{{ 'MODULES.SETTINGS.FORM.CLASSIFICATION.NOTE' | translate }}</p>
+        </div>
+        <div class="o-form-row">
+          <label class="o-form-row__label" for="classificationModel">{{ 'MODULES.SETTINGS.FORM.CLASSIFICATION.INPUT' | translate }}</label>
+          <div class="o-form-row__input o-input c-select">
+            <select class="o-input__field c-select__field" id="classificationModel" name="classificationModel"
+              formControlName="classificationModel"
+            >
+              <option *ngFor="let model of classificationModels" [ngValue]="model">{{ model.displayName }} ({{ model.name }}{{ model.version ? ' - ' + model.version : '' }})</option>
+            </select>
+          </div>
+          <div class="o-form-row__validation" [hidden]="formData.controls.classificationModel.valid || formData.controls.classificationModel.pristine">
+              {{ 'MODULES.SETTINGS.FORM.CLASSIFICATION.ALERT' | translate }}
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="o-form-actions">
+        <div class="c-alert c-alert--success" *ngIf="config.states.saved">
+          <p>{{ 'MODULES.SETTINGS.ALERT.UPDADE.SUCCESS' | translate }}</p>
+        </div>
+        <button class="c-button c-button--mid" type="submit" [disabled]="formData.pristine || config.states.saving || formData.status === 'INVALID'">
+          <span class="c-button__drop">
+            <span class="c-button__label" *ngIf="!config.states.saving">{{ 'MODULES.SETTINGS.FORM.SUBMIT' | translate }}</span>
+            <span class="c-button__label" *ngIf="config.states.saving">{{ 'MODULES.SETTINGS.FORM.SUBMITTING' | translate }}</span>
+            <app-svg-save-icon class="c-button__icon c-icon c-icon--sm"></app-svg-save-icon>
+          </span>
+        </button>
+      </div>
+
+    </form>
+
+    <br />
+    <div>
+      <button class="c-button c-button--mid" type="button" (click)="config.devVisible = !config.devVisible">
+        <span class="c-button__drop">
+          <span class="c-button__label" *ngIf="!config.devVisible">{{ 'MODULES.SETTINGS.DEVELOPERS.BTN.SHOW' | translate }}</span>
+          <app-svg-arrow-down-icon *ngIf="!config.devVisible" class="c-button__icon c-icon c-icon--sm"></app-svg-arrow-down-icon>
+          <span class="c-button__label" *ngIf="config.devVisible">{{ 'MODULES.SETTINGS.DEVELOPERS.BTN.HIDE' | translate }}</span>
+          <app-svg-arrow-up-icon *ngIf="config.devVisible" class="c-button__icon c-icon c-icon--sm"></app-svg-arrow-up-icon>
+        </span>
+      </button>
+      <div class="c-table-reveal" [ngClass]="{'is-hidden': !config.devVisible }">
+        <table class="o-table c-dev-table">
+          <tr class="o-table__row c-dev-table__row">
+            <th class="o-table__header c-dev-table__header">{{ 'MODULES.SETTINGS.DEVELOPERS.BROWSER' | translate }}</th>
+            <td class="o-table__cell c-dev-table__cell">{{ devData.browser.name }} ({{ devData.browser.version }})</td>
+          </tr>
+          <tr class="o-table__row c-dev-table__row">
+            <th class="o-table__header c-dev-table__header">{{ 'MODULES.SETTINGS.DEVELOPERS.OS' | translate }}</th>
+            <td class="o-table__cell c-dev-table__cell">{{ devData.os.name }} ({{ devData.os.version }})</td>
+          </tr>
+          <tr class="o-table__row c-dev-table__row">
+            <th class="o-table__header c-dev-table__header">{{ 'MODULES.SETTINGS.DEVELOPERS.SCREEN_SIZE' | translate }}</th>
+            <td class="o-table__cell c-dev-table__cell">{{ devData.screen.width }} x {{ devData.screen.height }}</td>
+          </tr>
+          <tr class="o-table__row c-dev-table__row">
+            <th class="o-table__header c-dev-table__header">{{ 'MODULES.SETTINGS.DEVELOPERS.BROWSER_SIZE' | translate }}</th>
+            <td class="o-table__cell c-dev-table__cell">{{ devData.window.width }} x {{ devData.window.height }}</td>
+          </tr>
+          <tr class="o-table__row c-dev-table__row">
+            <th class="o-table__header c-dev-table__header">{{ 'MODULES.SETTINGS.DEVELOPERS.UA' | translate }}</th>
+            <td class="o-table__cell c-dev-table__cell">{{ devData.ua }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <app-loader [loading]="config.states.loading"></app-loader>
+
+  </div>
+</div>
