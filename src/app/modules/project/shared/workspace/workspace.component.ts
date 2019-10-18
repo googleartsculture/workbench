@@ -35,9 +35,9 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class WorkspaceComponent implements OnInit, OnDestroy {
 
-  @ViewChild('canvas') private canvasRef: ElementRef;
-  @ViewChild('panZoomLayer') private panZoomLayerRef: ElementRef;
-  @ViewChild('workspace') private workspaceRef: ElementRef;
+  @ViewChild('canvas', { static: true }) private canvasRef: ElementRef;
+  @ViewChild('panZoomLayer', { static: true }) private panZoomLayerRef: ElementRef;
+  @ViewChild('workspace', { static: true }) private workspaceRef: ElementRef;
   @HostListener('window:resize', ['$event']) private onWindowResize = this.resize;
 
   @Output() workspaceSetup = new EventEmitter<void>();

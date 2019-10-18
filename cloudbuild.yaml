@@ -1,0 +1,34 @@
+steps:
+- name: 'gcr.io/cloud-builders/gsutil'
+  id: copy-environs
+  args:
+    - cp
+    - -r
+    - 'gs://${PROJECT_ID}-configs/workbench/src/environments/'
+    - ./src/
+- name: 'gcr.io/cloud-builders/gsutil'
+  id: copy-app
+  args:
+    - cp
+    - 'gs://${PROJECT_ID}-configs/workbench/src/app.yaml'
+    - ./src/
+
+- name: 'justingrayston/chrome_node:latest'
+  id: install
+  args: ['npm', 'install']
+  waitFor:
+    - copy-environs
+    - copy-app
+# - name: 'justingrayston/chrome_node:latest'
+#   args: ['npm', 'run', 'test-ci']
+# - name: 'selenium/standalone-chrome-debug:latest'
+#   args: ['npm', 'run', 'e2e']
+- name: 'justingrayston/chrome_node:latest'
+  id: build
+  args: ['npm', 'run', 'build']
+  waitFor:
+    - install
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy', './dist/app.yaml']
+  waitFor:
+    - build
