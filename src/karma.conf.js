@@ -29,12 +29,10 @@ module.exports = function (config) {
     browsers: ['Chrome'],
     singleRun: false,
     customLaunchers: {
-      ChromiumCustom: {
-        base: 'Chromium',
-        displayName: 'ChromiumCustom',
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
         flags: [
           '--no-sandbox',
-          '--headless',
           '--disable-gpu',
           '--remote-debugging-port=9222',
         ],

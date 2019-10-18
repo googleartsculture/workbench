@@ -15,7 +15,7 @@ import { AnnotateConfig } from './annotate.model';
 })
 export class AnnotateComponent implements OnDestroy {
 
-  @ViewChild('workspace') private workspace: WorkspaceComponent;
+  @ViewChild('workspace', { static: true }) private workspace: WorkspaceComponent;
 
   aside: ProjectAside = {
     active: true,

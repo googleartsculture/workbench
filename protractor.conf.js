@@ -9,6 +9,9 @@ exports.config = {
     './e2e/**/*.e2e-spec.ts'
   ],
   capabilities: {
+    chromeOptions: {
+      args: ["--headless", "--no-sandbox"]
+    },
     'browserName': 'chrome'
   },
   directConnect: true,
@@ -19,6 +22,7 @@ exports.config = {
     defaultTimeoutInterval: 30000,
     print: function() {}
   },
+  seleniumAddress: 'http://localhost:4444/wd/hub',
   onPrepare() {
     require('ts-node').register({
       project: 'e2e/tsconfig.e2e.json'
