@@ -58,10 +58,10 @@ handlers:
         default-src 'none';
         object-src 'none';
         script-src 'self' 'unsafe-inline' 'unsafe-eval';
-        connect-src 'self';
+        connect-src 'self' https://translation-api-dot-hieroglyphics-initiative-stg.appspot.com https://cluster-analysis-api-dot-hieroglyphics-initiative-stg.appspot.com https://classification-api2-dot-hieroglyphics-initiative-stg.appspot.com;
         img-src 'self' data: blob:;
-        font-src 'self';
-        style-src 'self' 'unsafe-inline';
+        font-src 'self' https://fonts.gstatic.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
         manifest-src 'self';
 
 skip_files:

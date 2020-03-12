@@ -7,15 +7,15 @@
 @import '../../../../../styles/app-init';
 
 // VARS
-$generate-border: color(app-yellow-desaturated, 60, 1, app-white-yellow) !default;
-$generate-header-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
-$generate-header-border: color(app-yellow-desaturated, 60, 1, app-white-yellow) !default;
-$generate-background: color(app-yellow-desaturated, 90, 1, app-white-yellow) !default;
+$generate-border: #ddd !default;
+$generate-header-background: color(app-grey-lighter) !default;
+$generate-header-border: #ddd !default;
+$generate-background: color(app-grey-lightest) !default;
 
-$effects-background: color(app-white-yellow) !default;
-$effects-title-background: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
-$effects-border: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
-$effects-setting-border: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
+$effects-background: color(app-white) !default;
+$effects-title-background: color(app-grey-darkest) !default;
+$effects-border: #ddd !default;
+$effects-setting-border: #ddd !default;
 
 $tool-size: 32px;
 $tool-color: color(app-yellow, 80, 1, app-black-yellow) !default;
@@ -38,41 +38,33 @@ $tool-hover: color(app-yellow, 100, 1, app-black-yellow) !default;
 }
 
 .c-generate__title {
-  @include font-size-md();
+  @include font-size-sm();
   background-color: $generate-header-background;
+  line-height: 1;
   margin: 0;
   padding: 11px 15px;
-
-  :host-context(.wf-active) & {
-    @include font-size-sm();
-  }
+  text-transform: uppercase;
 }
 
 .c-generate__content {
   padding: 11px 15px;
-  border-width: 1px 0 0 0;
-  border-style: solid;
-  border-color: $generate-header-border;
-  background-color: $generate-background;
 }
 
 // EFFECT
 
 .c-effect {
-  margin: 11px 0;
   background-color: $effects-background;
+  margin: 11px 0;
 }
 
 .c-effect__title {
-  @include font-secondary-heavy();
-  @include font-size-md();
-  padding: 5px 11px;
+  @include font-size-sm();
   background-color: $effects-title-background;
+  color: color(app-white);
+  font-size: 13px;
   margin-bottom: 0;
-
-  :host-context(.wf-active) & {
-    @include font-size-sm();
-  }
+  padding: 8px 11px;
+  text-transform: uppercase;
 }
 
 // EFFECT SETTINGS LIST

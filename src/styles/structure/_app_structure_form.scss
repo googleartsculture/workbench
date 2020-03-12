@@ -6,10 +6,10 @@
 
 // VARS
 
-$padding-sidebar-gutter: 20px !default;
+$padding-sidebar-gutter: 15px !default;
 
-$color-form-border: color(app-yellow-desaturated, 60, 1, app-white-yellow) !default;
-$color-label-text: color(app-grey-yellow, 35, 1, app-black-yellow) !default;
+$color-form-border: #ddd !default;
+$color-label-text: color(app-grey, 35, 1, app-black-yellow) !default;
 
 $color-radio-label-text: color(app-orange-desaturated, 25, 1, app-black-yellow) !default;
 $color-error-text: color(app-red-desaturated) !default;
@@ -26,7 +26,8 @@ $form-row-validation-text: color(app-red-desaturated) !default;
 
 .o-form-note {
   margin: 0 0 20px;
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: $font-weight-light;
 
   p,
   ul,
@@ -91,7 +92,7 @@ $form-row-validation-text: color(app-red-desaturated) !default;
   @include font-size-xs();
   display: flex;
   flex-direction: row;
-  font-weight: 700;
+  font-weight: $font-weight-heavy;
   color: $color-label-text;
   margin-bottom: 5px;
   align-items: center;

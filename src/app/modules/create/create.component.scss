@@ -1,5 +1,7 @@
 @import '../../../styles/app-init';
 
+$border-color: #ddd;
+
 :host {
   display: flex;
   flex: 1 0 100%;
@@ -24,5 +26,7 @@
 }
 
 .c-create-sidebar {
-  padding: 20px;
+  background-color: color(app-grey-lightest);
+  border-bottom: 1px solid $border-color;
+  padding: 15px;
 }

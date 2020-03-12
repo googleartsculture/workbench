@@ -39,7 +39,7 @@ interface GlyphCache {
 })
 export class AnalyseComponent implements OnDestroy {
 
-  @ViewChild('workspace', { static: true }) private workspace: WorkspaceComponent;
+  @ViewChild('workspace') private workspace: WorkspaceComponent;
 
   updateWorkspace: () => any = debounce(this.updateWorkspaceDebounced, 100, { trailing: true });
 

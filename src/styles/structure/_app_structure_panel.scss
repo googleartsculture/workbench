@@ -1,6 +1,6 @@
 $workspace-panel-background: $color-inspector-bg !default;
-$panel-header-back: color(app-grey-yellow, 10, 1, app-white-yellow) !default;
-$panel-header-border: color(app-grey-yellow, 5, 1, app-black-yellow) !default;
+$panel-header-back: #bdbdbd !default;
+$panel-header-border: #ddd !default;
 $panel-header-border-clear: color(app-grey-yellow, 5, 0) !default;
 
 .o-panel {
@@ -20,7 +20,6 @@ $panel-header-border-clear: color(app-grey-yellow, 5, 0) !default;
 .o-panel__head {
   @include animate(border-color, $animation-time-short);
   background-color: $panel-header-back;
-  border: 1px solid $panel-header-border-clear;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -37,14 +36,11 @@ $panel-header-border-clear: color(app-grey-yellow, 5, 0) !default;
 }
 
 .o-panel__title {
-  @include font-size-lg();
+  @include font-size-sm();
   padding: 7px 15px;
-  font-weight: 700;
+  font-weight: $font-weight-heavy;
+  line-height: 1;
   margin: 0;
-
-  :host-context(.wf-active) & {
-    @include font-size-sm();
-  }
 }
 
 .o-panel__content {

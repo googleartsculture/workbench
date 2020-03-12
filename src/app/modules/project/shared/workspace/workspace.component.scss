@@ -1,12 +1,13 @@
 @import '../../../../../styles/app-init';
 
 $tool-size: 40px !default;
-$tool-color: color(app-grey-yellow) !default;
-$tool-border: color(app-orange-desaturated, 50, 1, app-black-yellow) !default;
-$tool-background: color(app-orange-desaturated, 70, 1, app-black-yellow) !default;
-$tool-background-hover: color(app-orange-desaturated, 80, 1, app-black-yellow) !default;
-$tool-background-active: color(app-orange-desaturated, 90, 1, app-black-yellow) !default;
-$tool-svg-fill: color(app-gold);
+$tool-color: color(app-white) !default;
+$tool-border: color(app-grey-medium) !default;
+$tool-background: color(app-grey-dark) !default;
+$tool-background-hover: color(app-grey-darkest) !default;
+$tool-background-active: color(app-grey-darkest) !default;
+$tool-svg-fill: color(app-white);
+$tool-svg-fill-active: color(app-yellow);
 
 $input-disabled-opacity: .35 !default;
 
@@ -109,7 +110,7 @@ $input-disabled-opacity: .35 !default;
   width: 20px;
 
   .c-tool__btn.is-active & {
-    fill: $tool-svg-fill;
+    fill: $tool-svg-fill-active;
   }
 }
 

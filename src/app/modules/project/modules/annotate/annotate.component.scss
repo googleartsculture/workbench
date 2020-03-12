@@ -9,17 +9,17 @@
 // VARS
 
 $annotations-title-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
-$annotations-border: color(app-yellow-desaturated, 60, 1, app-white-yellow) !default;
+$annotations-border: #ddd !default;
 
-$annotation-header-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
-$annotation-header-border: color(app-yellow-desaturated, 60, 1, app-white-yellow) !default;
+$annotation-header-background: color(app-grey-lighter) !default;
+$annotation-header-border: #ddd !default;
 
-$annotation-background: color(app-yellow-desaturated, 90, 1, app-white-yellow) !default;
+$annotation-background: color(app-grey-lightest) !default;
 
-$annotation-effects-background: color(app-white-yellow) !default;
+$annotation-effects-background: color(app-white) !default;
 
-$comment-border: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
-$comment-background: color(app-orange-desaturated, 85, 1, app-white-yellow) !default;
+$comment-border: color(app-grey, 75, 1, app-white) !default;
+$comment-background: color(app-grey, 85, 1, app-white) !default;
 
 // ELEMENTS
 
@@ -50,6 +50,10 @@ $comment-background: color(app-orange-desaturated, 85, 1, app-white-yellow) !def
     opacity: .5;
     pointer-events: none;
   }
+
+  &:nth-of-type(2n) .c-annotation__header {
+    background-color: darken($annotation-header-background, 3%);
+  }
 }
 
 // ANNOTATION
@@ -77,11 +81,7 @@ $comment-background: color(app-orange-desaturated, 85, 1, app-white-yellow) !def
 
 .c-annotation__date {
   @include font-secondary-heavy();
-  @include font-size-lg();
-
-  :host-context(.wf-active) & {
-    @include font-size-md();
-  }
+  @include font-size-md();
 }
 
 .c-annotation__content {

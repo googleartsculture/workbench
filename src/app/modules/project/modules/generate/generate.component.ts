@@ -15,7 +15,7 @@ import { GenerateConfig } from './generate.model';
 })
 export class GenerateComponent {
 
-  @ViewChild('workspace', { static: true }) private workspace: WorkspaceComponent;
+  @ViewChild('workspace') private workspace: WorkspaceComponent;
 
   aside: ProjectAside = {
     active: true,

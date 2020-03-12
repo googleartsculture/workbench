@@ -1,6 +1,6 @@
 @import '../../../styles/app-init';
 
-$browser-background: color(app-yellow-desaturated);
+$browser-background: color(app-grey-light);
 
 :host {
   align-items: center;
@@ -33,7 +33,7 @@ $browser-background: color(app-yellow-desaturated);
 }
 
 .c-browser-detect__svg {
-  fill: $color-header-bg;
+  fill: color(app-yellow);
   height: 48px;
   width: 48px;
 }
@@ -41,19 +41,15 @@ $browser-background: color(app-yellow-desaturated);
 .c-browser-detect__title {
   @include font-secondary-heavy;
   color: $text-lightest;
-  font-size: 32px;
-
-  :host-context(.wf-active) & {
-    font-size: 30px;
-  }
+  font-size: 30px;
 }
 
-.c-browser-detect__list {
-  margin-bottom: -10px;
-}
+.c-browser-detect__list {}
 
 .c-browser-detect__copy {
   color: $text-light;
+  font-size: 16px;
+  margin: 0 auto;
+  max-width: 600px;
   text-align: center;
-  margin-bottom: 10px;
 }

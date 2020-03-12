@@ -1,23 +1,29 @@
 export const environment = {
   appVersion: '',
-  production: false,
+  production: true,
   config: {
     apiServices: {
       enabled: true,
       // Replace this value.
-      key: '',
+      key: 'CHANGE_ME',
       translation: {
         // Set this to the correct backend.
-        url: ''
+        url: 'https://translation-api-dot-rosetta-ai-dev.appspot.com '
       },
       clusterAnalysis: {
         // Set this to the correct backend.
-        url: ''
+        url: 'https://cluster-analysis-api-dot-rosetta-ai-dev.appspot.com'
       },
       classification: {
         // Set this to the correct backend.
-        url: '',
-        models: []
+        url: 'https://classification-api2-dot-rosetta-ai-dev.appspot.com',
+        models: [
+          {
+            displayName: 'Hieroglyphs',
+            name: 'ICN7361549319569331597',
+            version: 'ICN7361549319569331597'
+          }
+        ] // add
       }
     },
     fontServices: {

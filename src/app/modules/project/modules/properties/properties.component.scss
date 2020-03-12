@@ -1,7 +1,8 @@
 @import '../../../../../styles/app-init';
 
-$info-border: color(app-yellow-desaturated, 60, 1, app-white-yellow) !default;
-$info-title-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
+$info-border: #ddd !default;
+$info-title-background: #eee !default;
+$info-content-background: color(app-grey-lightest) !default;
 
 $table-border: color(app-white-yellow, -25, 1) !default;
 $table-background: color(app-white-yellow) !default;
@@ -12,28 +13,26 @@ $table-head-background: color(app-orange-desaturated, 75, 1, app-white-yellow) !
 .c-info {}
 
 .c-info__header {
+  align-items: stretch;
   background-color: $info-title-background;
   display: flex;
-  padding: 11px 15px;
   justify-content: stretch;
-  align-items: stretch;
+  padding: 11px 15px;
 }
 
 .c-info__content {
-  padding: 15px;
-  border-width: 1px 0 0 0;
-  border-style: solid;
+  background-color: $info-content-background;
   border-color: $info-border;
+  border-style: solid;
+  border-width: 1px 0;
+  padding: 15px;
 }
 
 .c-info__title {
-  @include font-secondary-heavy;
-  @include font-size-md();
   color: $text-medium;
-
-  :host-context(.wf-active) & {
-    @include font-size-sm();
-  }
+  font-size: 13px;
+  font-weight: $font-weight-heavy;
+  text-transform: uppercase;
 }
 
 .c-pair__key {
@@ -41,7 +40,7 @@ $table-head-background: color(app-orange-desaturated, 75, 1, app-white-yellow) !
 }
 
 .c-pair {
-  @include font-size-md;
+  font-size: 14px;
   margin-bottom: 0;
 }
 
@@ -77,14 +76,10 @@ $table-head-background: color(app-orange-desaturated, 75, 1, app-white-yellow) !
 
 .c-dev-table__header {
   @include font-secondary-heavy();
-  @include font-size-md();
+  @include font-size-sm();
   padding: 5px 11px;
   background-color: $table-head-background;
   margin-bottom: 0;
-
-  :host-context(.wf-active) & {
-    @include font-size-sm();
-  }
 }
 
 .c-table-reveal {

@@ -117,12 +117,13 @@ $file-svg-fill: $color-tools-bg;
 .c-file-caption__inner {
   text-align: center;
   vertical-align: middle;
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .c-file-caption__button {
   font-size: 14px;
-  text-transform: uppercase;
+  font-weight: $font-weight-regular;
+  min-width: 140px;
 }
 
 .c-file-caption__upload-group {

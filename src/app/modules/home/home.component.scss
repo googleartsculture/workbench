@@ -1,18 +1,19 @@
 @import '../../../styles/app-init';
 
-$project-subtitle-text: color(app-orange-desaturated) !default;
-$project-header-background: color(app-yellow-soft, 75, 1, app-black-yellow) !default;
+$project-subtitle-text: color(app-white) !default;
+$project-header-background: color(app-grey-dark) !default;
 
-$search-text-placeholder: color(app-orange-desaturated) !default;
-$search-background: color(app-yellow-desaturated, 65, 1, app-black-yellow) !default;
+$search-text-placeholder: color(app-grey-light) !default;
+$search-background: color(app-grey-medium) !default;
 
-$sidebar-text: color(app-white) !default;
+$sidebar-text: color(app-grey-darkest) !default;
 
-$activities-cell-text: color(app-grey, 25) !default;
-$activities-header-text: color(app-grey, 50) !default;
-$activities-row-background-alt: color(app-yellow-desaturated, -75, .45) !default;
-$activities-row-background-hover: color(app-white, null, .1) !default;
-$activities-row-border: color(app-yellow-desaturated, -65, 1) !default;
+$activities-cell-text: color(app-grey-lighter) !default;
+$activities-header-text: $text-dark !default;
+$activities-header-background: rgba(255, 255, 255, .8) !default;
+$activities-row-background-alt: rgba(0, 0, 0, .3) !default;
+$activities-row-background-hover: rgba(255, 255, 255, .15) !default;
+$activities-row-border: rgba(255, 255, 255, .18) !default;
 
 $activities-svg-fill: color(app-gold);
 
@@ -28,7 +29,7 @@ $activities-svg-fill: color(app-gold);
 // PROJECTS
 
 .c-projects {
-  background-color: $color-header-bg;
+  background-color: color(app-grey-darkest);
 }
 
 .c-projects__header {
@@ -37,7 +38,7 @@ $activities-svg-fill: color(app-gold);
   background-color: $project-header-background;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 15px 20px;
   position: relative;
   z-index: 1;
   opacity: 0;
@@ -49,10 +50,11 @@ $activities-svg-fill: color(app-gold);
 }
 
 .c-projects__subtitle {
-  font-size: 20px;
   color: $project-subtitle-text;
-  line-height: 1;
+  font-size: 19px;
+  font-weight: $font-weight-regular;
   margin: 0;
+  text-transform: uppercase;
 }
 
 .c-projects__no-projects {
@@ -94,15 +96,16 @@ $activities-svg-fill: color(app-gold);
 
 .c-search__input {
   @include animate(background-color);
-  background-color: $search-background;
   appearance: none;
+  background-color: $search-background;
   border-radius: 20px;
   border-width: 0;
   box-sizing: border-box;
   color: $text-light;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: $font-weight-heavy;
   line-height: 1;
-  padding: 6px 18px;
+  padding: 9px 20px;
 
   &::-webkit-input-placeholder {
     color: $search-text-placeholder;
@@ -121,8 +124,7 @@ $activities-svg-fill: color(app-gold);
 }
 
 .c-activities__header {
-  background-color: transparent;
-  font-weight: 700;
+  background-color: $activities-header-background;
   padding: 10px 20px;
   color: $activities-header-text;
   border: none;
@@ -142,7 +144,7 @@ $activities-svg-fill: color(app-gold);
 
 .c-activities__row {
   background-color: transparent;
-  border-width: 1px 0;
+  border-width: 2px 0;
   border-style: solid;
   border-color: $activities-row-border;
 
@@ -153,6 +155,10 @@ $activities-svg-fill: color(app-gold);
     &:hover {
       border-color: $activities-row-background-hover;
       background-color: $activities-row-background-hover;
+    }
+
+    &:active {
+      background-color: darken($activities-row-background-hover, 15%);
     }
   }
 }
@@ -169,7 +175,7 @@ $activities-svg-fill: color(app-gold);
   border: none;
   height: 40px;
   color: $activities-cell-text;
-  padding: 10px 20px;
+  padding: 15px 20px;
   font-size: 13px;
 }
 
@@ -187,22 +193,22 @@ $activities-svg-fill: color(app-gold);
 
 .c-welcome__statement {
   color: $sidebar-text;
-  text-align: left;
-  padding-bottom: 44px;
-  font-weight: 300;
   font-size: 32px;
-  line-height: 1.6;
+  line-height: 42px;
+  padding-bottom: 28px;
+  text-align: center;
   width: 100%;
 }
 
 .c-welcome__actions {
-  padding-top: 58px;
+  padding-top: 36px;
   width: 100%;
 }
 
 .c-welcome__break {
-  fill: $activities-svg-fill;
-  height: 10px;
+  background-color: $color-border;
+  border-radius: 1.5px;
+  height: 3px;
   margin: 0 auto;
-  width: 135px;
+  width: 28px;
 }

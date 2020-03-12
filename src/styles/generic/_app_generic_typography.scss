@@ -30,30 +30,19 @@ h6 {
   margin: 0 0 24px;
   color: $text-dark;
   letter-spacing: $letter-spacing;
+  text-transform: uppercase;
 }
 
 h1 {
-  font-size: 36px;
-
-  :host-context(.wf-active) & {
-    font-size: 32px;
-  }
+  font-size: 32px;
 }
 
 h2 {
-  font-size: 28px;
-
-  :host-context(.wf-active) & {
-    font-size: 24px;
-  }
+  font-size: 24px;
 }
 
 h3 {
-  font-size: 24px;
-
-  :host-context(.wf-active) & {
-    font-size: 20px;
-  }
+  font-size: 20px;
 }
 
 li,

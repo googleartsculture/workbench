@@ -3,11 +3,11 @@
 // VARS
 
 $glyph-transparent: color(app-gold, null, 0);
-$glyph-hover-background: color(app-yellow-desaturated, null, .1) !default;
-$glyph-even-background: color(app-yellow-desaturated, null, .2) !default;
-$glyph-highlight-background: color(app-gold, 10) !default;
-$glyph-highlight-border: color(app-gold, -25) !default;
-$glyph-border-transparent: color(app-gold, -10, 0) !default;
+$glyph-hover-background: color(app-grey, null, .1) !default;
+$glyph-even-background: color(app-grey-lighter) !default;
+$glyph-highlight-background: color(app-yellow, 10) !default;
+$glyph-highlight-border: color(app-grey-lighter) !default;
+$glyph-border-transparent: color(app-yellow, -10, 0) !default;
 $glyph-svg-fill: color(app-grey, -5) !default;
 
 // ELEMENTS
@@ -28,10 +28,7 @@ $glyph-svg-fill: color(app-grey, -5) !default;
   flex-shrink: 0;
   margin-bottom: 0;
   width: 20%;
-  border-width: 2px;
-  border-style: solid;
   background: $glyph-transparent;
-  border-color: $glyph-border-transparent;
 
   &:nth-of-type(2n) {
     background: $glyph-even-background;
@@ -43,7 +40,6 @@ $glyph-svg-fill: color(app-grey, -5) !default;
 
   &.is-highlighted {
     background: $glyph-highlight-background;
-    border-color: $glyph-highlight-border;
   }
 }
 

@@ -5,8 +5,9 @@
 //================================================================================================//
 
 // VARS
-$page-left-column-background: color(app-white-yellow) !default;
-$page-basic-background: color(app-white-yellow) !default;
+$page-left-column-background: color(app-white) !default;
+$page-right-column-background: color(app-grey-lightest) !default;
+$page-basic-background: color(app-white) !default;
 
 // ELEMENTS
 
@@ -25,6 +26,7 @@ $page-basic-background: color(app-white-yellow) !default;
 }
 
 .o-page__rhs {
+  background-color: $page-right-column-background;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;

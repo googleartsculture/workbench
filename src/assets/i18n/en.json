@@ -89,13 +89,13 @@
 		},
 		"HOME": {
 			"SEARCH": {
-				"PLACEHOLDER": "Search title..."
+				"PLACEHOLDER": "Search title…"
 			},
 			"SIDEBAR": {
 				"IMPORT": "Import project",
-				"NEW": "New project",
-				"TITLE": "Hieroglyphics Initiative Workbench",
-				"WELCOME": "Welcome to the Hieroglyphics Initiative Workbench"
+				"NEW": "Start project",
+				"TITLE": "Fabricius",
+				"WELCOME": "Welcome to Fabricius"
 			},
 			"SUBTITLE": "My projects",
 			"TABLE": {
@@ -462,7 +462,7 @@
 	},
 	"SHARED": {
 		"FILE_UPLOAD": {
-			"BTN": "Or choose file",
+			"BTN": "or Choose file",
 			"DISABLE": "Upload disabled",
 			"DRAG_DROP": "Drag and drop a file to upload",
 			"DROP": "Drop your file",
@@ -480,7 +480,7 @@
 			"WARN": "Could not load image '{{ file }}' due to error"
 		},
 		"IMG_UPLOAD": {
-			"BTN": "Or choose file",
+			"BTN": "or Choose file",
 			"DISABLE": "Upload disabled",
 			"DRAG_DROP": "Drag and drop an image to upload",
 			"DROP": "Drop your file",

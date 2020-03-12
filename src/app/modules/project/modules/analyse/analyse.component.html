@@ -19,9 +19,13 @@
     <div class="c-sidebar">
       <div class="c-sidebar__header has-actions">
         <h2 class="c-sidebar__title">{{ 'MODULES.PROJECT.MODULES.ANALYSE.TITLE' | translate }}</h2>
-        <div class="c-sidebar__actions u-animate-x-fade" *ngIf="getSentenceList().length > 0" [ngClass]="{'has-actions': config.ai.classification.enabled && config.selected.length > 0}">
+        <div
+          *ngIf="getSentenceList().length > 0"
+          [ngClass]="{'has-actions': config.ai.classification.enabled && config.selected.length > 0}"
+          class="c-sidebar__actions u-animate-x-fade"
+        >
 
-          <button *ngIf="config.selected.length > 0" type="button" class="c-tool u-animate-x-fade" (click)="createWord(config.selected)"
+          <button *ngIf="config.selected.length > 0" type="button" class="c-tool c-tool--light u-animate-x-fade" (click)="createWord(config.selected)"
             appTooltip=""
             appTooltipPosition="bottom"
             appTooltipTitle="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.CREATE_SELECT' | translate }}"
@@ -30,7 +34,7 @@
             <app-svg-word-join class="c-tool__icon c-icon c-icon--sm"></app-svg-word-join>
           </button>
 
-          <button type="button" *ngIf="config.ai.classification.enabled && config.selected.length > 0" class="c-tool u-animate-x-fade"
+          <button type="button" *ngIf="config.ai.classification.enabled && config.selected.length > 0" class="c-tool c-tool--light u-animate-x-fade"
             (click)="autoClassifyGlyphs(config.selected)" [disabled]=" config.ai.classification.loading || !config.ai.classification.enabled"
             appTooltip="" appTooltipPosition="bottom" appTooltipTitle="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.CLASSIFY_SELECT' | translate }}"
             [ngClass]="{ 'is-hidden': !config.ai.classification.enabled && config.selected.length < 1 }">
@@ -38,7 +42,7 @@
             <app-svg-glyph-auto-classify class="c-tool__icon c-icon c-icon--sm"></app-svg-glyph-auto-classify>
           </button>
 
-          <button type="button" *ngIf="config.selected.length > 0" class="c-tool u-animate-x-fade" (click)="deleteSelectedGlyphs()"
+          <button type="button" *ngIf="config.selected.length > 0" class="c-tool c-tool--light u-animate-x-fade" (click)="deleteSelectedGlyphs()"
             appTooltip="" appTooltipPosition="left" appTooltipTitle="{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.DELETE_SELECT' | translate }}"
             [ngClass]="{'is-hidden': config.selected.length < 1}">
             <span class="u-sr-only">{{ 'MODULES.PROJECT.MODULES.ANALYSE.TOOL.DELETE_SELECT' | translate }}</span>
@@ -49,7 +53,7 @@
       <div class="c-sidebar__content">
 
         <div class="u-scroller">
-          <div class="c-sequence" *ngIf="getSentenceList(); let sentences">
+          <div class="c-sequence" [ngClass]="{'has-margin': sentences.length > 0}" *ngIf="getSentenceList(); let sentences;">
             <div class="c-sequence__content" *ngIf="sentences.length > 0">
 
               <ul class="c-sentences js-drag-drop-sentences">
@@ -209,7 +213,12 @@
                                     'is-loading': config.ai.classification.glyphs.indexOf(glyph.id) !== -1,
                                     'is-disabled': config.editing.active && glyph.id !== config.editing.object.id
                                   }">
-                                  <app-loader [appLoaderSmall]="true" [appLoaderBgTransparent]="true" [loading]="config.ai.classification.glyphs.indexOf(glyph.id) !== -1"></app-loader>
+                                  <app-loader
+                                    [appLoaderSmall]="true"
+                                    [appLoaderBgTransparent]="true"
+                                    [loading]="config.ai.classification.glyphs.indexOf(glyph.id) !== -1"
+                                    [appLoaderSmallDark]="true"
+                                  ></app-loader>
                                   <div class="c-glyph u-animate-x-fade"
                                     (mouseenter)="highlightGlyph(glyph, true)"
                                     (mouseleave)="highlightGlyph(glyph, false)"
@@ -489,7 +498,7 @@
                   <div class="u-scroller">
 
                   <div class="c-auto-translate__actions" *ngIf="config.ai.translation.active">
-                      <button type="button" class="c-button c-button--mid"
+                      <button type="button" class="c-button c-button--dark"
                         (click)="autoTranslateSentence(sentence)"
                       >
                         <span class="c-button__drop">

@@ -65,7 +65,7 @@
         <div class="c-alert c-alert--success" *ngIf="config.states.saved">
           <p>{{ 'MODULES.SETTINGS.ALERT.UPDADE.SUCCESS' | translate }}</p>
         </div>
-        <button class="c-button c-button--mid" type="submit" [disabled]="formData.pristine || config.states.saving || formData.status === 'INVALID'">
+        <button class="c-button c-button--dark" type="submit" [disabled]="formData.pristine || config.states.saving || formData.status === 'INVALID'">
           <span class="c-button__drop">
             <span class="c-button__label" *ngIf="!config.states.saving">{{ 'MODULES.SETTINGS.FORM.SUBMIT' | translate }}</span>
             <span class="c-button__label" *ngIf="config.states.saving">{{ 'MODULES.SETTINGS.FORM.SUBMITTING' | translate }}</span>
@@ -78,7 +78,7 @@
 
     <br />
     <div>
-      <button class="c-button c-button--mid" type="button" (click)="config.devVisible = !config.devVisible">
+      <button class="c-button c-button--dark" type="button" (click)="config.devVisible = !config.devVisible">
         <span class="c-button__drop">
           <span class="c-button__label" *ngIf="!config.devVisible">{{ 'MODULES.SETTINGS.DEVELOPERS.BTN.SHOW' | translate }}</span>
           <app-svg-arrow-down-icon *ngIf="!config.devVisible" class="c-button__icon c-icon c-icon--sm"></app-svg-arrow-down-icon>

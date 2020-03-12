@@ -1,10 +1,10 @@
 @import '../../../styles/app-init';
 
-$header-title: color(app-gold) !default;
+$header-title: color(app-grey-darkest) !default;
 $header-title-hover: color(app-gold, 10, 1, app-white-yellow) !default;
 $header-nav-border: color(app-white, null, 1) !default;
 
-$header-logo-svg-fill: color(app-gold);
+$header-logo-svg-fill: color(app-grey-darkest);
 
 .c-header__logo {
   flex-shrink: 0;
@@ -21,14 +21,11 @@ $header-logo-svg-fill: color(app-gold);
 
 .c-header__title {
   color: $header-title;
-  font-size: 22px;
+  font-size: 16px;
   justify-self: flex-start;
   margin: 0;
   padding: 0 0 0 20px;
-
-  :host-context(.wf-active) & {
-    font-size: 16px;
-  }
+  text-transform: uppercase;
 }
 
 .c-header__status {
@@ -40,24 +37,17 @@ $header-logo-svg-fill: color(app-gold);
 }
 
 .c-header__nav {
-  align-items: center;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 4px 0;
 }
 
 .c-header__nav-list {
-  align-items: center;
   display: flex;
-  flex-direction: row;
+  height: 100%;
 }
 
 .c-header__nav-list-item {
-  align-items: center;
   display: flex;
-  flex-direction: row;
-  margin: 0 5px;
+  height: 100%;
 }
 
 .c-header__status-item--semi {
@@ -66,41 +56,45 @@ $header-logo-svg-fill: color(app-gold);
 
 .c-header__nav-list-btn {
   @include animate(color, $animation-time-short);
-  @include font-secondary-regular;
-  @include font-size-sm;
   align-items: center;
+  color: color(app-grey-darkest);
   display: flex;
   flex-direction: column;
-  height: 50px;
-  justify-content: space-between;
-  width: 65px;
-
-  :host-context(.wf-active) & {
-    @include font-size-xxs;
-    width: 60px;
-  }
+  font-size: 11px;
+  font-weight: $font-weight-heavy;
+  height: 100%;
+  justify-content: center;
+  opacity: .5;
+  padding: 0 15px;
+  text-transform: uppercase;
 
   &:hover {
-    color: color(app-white-yellow);
+    opacity: 1;
   }
 
   &.is-active {
-    color: color(app-gold);
+    background-color: color(app-yellow-bright);
+    cursor: default;
+    opacity: 1;
   }
 }
 
 .c-header__nav-icon {
-  display: block;
-  fill: color(app-grey-yellow, null, .35);
-  height: 32px;
-  width: 32px;
+  align-items: center;
+  background-color: color(app-white);
+  border-radius: 50%;
+  display: flex;
+  font-size: 11px;
+  font-weight: $font-weight-heavy;
+  margin-bottom: 3px;
+  height: 20px;
+  justify-content: center;
+  width: 20px;
 
-  .c-header__nav-list-btn:hover & {
-    fill: color(app-gold, null, .5);
-  }
-
-  .c-header__nav-list-btn.is-active & {
-    fill: color(app-gold);
+  &__svg {
+    fill: color(app-grey-darkest);
+    height: 12px;
+    width: 12px;
   }
 }
 
@@ -108,7 +102,7 @@ $header-logo-svg-fill: color(app-gold);
 
 .c-logo {
   align-items: center;
-  background-color: rgba(0, 0, 0, .3);
+  background-color: color(app-yellow-dark);
   color: $header-title;
   display: flex;
   justify-content: center;
@@ -116,7 +110,7 @@ $header-logo-svg-fill: color(app-gold);
   @include animate(color $animation-time-short, background-color $animation-time-short);
 
   &:link {
-    background-color: rgba(0, 0, 0, .3);
+    background-color: color(app-yellow-dark);
     color: $header-title;
   }
 
@@ -125,24 +119,19 @@ $header-logo-svg-fill: color(app-gold);
   }
 
   &:hover {
-    background-color: rgba(0, 0, 0, .5);
+    background-color: color(app-yellow-soft);
     color: $header-title-hover;
   }
 
   &:active {
-    background-color: rgba(0, 0, 0, .75);
-    color: $header-title-hover;
+    background-color: color(app-yellow-dark);
   }
 }
 
 .c-header__current-route {
-  @include font-size-lg();
+  @include font-size-md();
   @include font-secondary-regular;
   color: $header-title;
-
-  :host-context(.wf-active) & {
-    @include font-size-md();
-  }
 }
 
 .c-logo__icon {

@@ -3,8 +3,8 @@
 $loader-background: $global-page-background !default;
 $loader-background-light: $color-inspector-bg !default;
 $loader-background-aside: color(app-grey-yellow, 50, 1, app-white-yellow) !default;
-$loader-spinner-primary: color(app-gold) !default;
-$loader-spinner-secondary: color(app-grey-yellow, -60) !default;
+$loader-spinner-primary: color(app-white) !default;
+$loader-spinner-secondary: color(app-grey-light) !default;
 $loader-spinner-basic-primary: color(app-yellow-desaturated, -75) !default;
 $loader-spinner-basic-secondary: color(app-grey, 5) !default;
 $loader-spinner-small-primary: color(app-yellow-desaturated, -75) !default;
@@ -29,12 +29,12 @@ $loader-spinner-small-width: 1px !default;
 }
 
 :host {
+  @include animate(opacity, $animation-time-default);
   display: block;
   height: 100%;
   left: 0;
   position: absolute;
   top: 0;
-  @include animate(opacity, $animation-time-default);
   width: 100%;
   z-index: $z-index-loading;
 
@@ -75,11 +75,7 @@ $loader-spinner-small-width: 1px !default;
   }
 }
 
-.c-loader__logo {
-  height: 200px;
-  @include animate(opacity, $animation-time-short);
-  width: 300px;
-
+.c-loader__copy {
   .is-basic &,
   .is-small &,
   .is-small-dark &,
@@ -92,13 +88,62 @@ $loader-spinner-small-width: 1px !default;
   }
 }
 
+.c-loader__line-1,
+.c-loader__line-2,
+.c-loader__line-3,
+.c-loader__line-4 {
+  color: color(app-white);
+  display: block;
+  text-align: center;
+}
+
+.c-loader__line-1 {
+  font-size: 26px;
+  font-weight: $font-weight-heavy;
+  line-height: 30px;
+  margin-bottom: 12px;
+}
+
+.c-loader__line-2 {
+  font-weight: $font-weight-light;
+  font-size: 19px;
+  margin-bottom: 50px;
+}
+
+.c-loader__icon {
+  display: block;
+  fill: color(app-white);
+  height: 80px;
+  width: 80px;
+  margin: 0 auto 20px;
+}
+
+.c-loader__line-3 {
+  font-size: 39px;
+  font-weight: $font-weight-heavy;
+}
+
+.c-loader__break {
+  background-color: color(app-white);
+  border-radius: 1.5px;
+  display: block;
+  height: 3px;
+  margin: 15px auto 16px;
+  width: 28px;
+}
+
+.c-loader__line-4 {
+  font-size: 19px;
+  font-weight: $font-weight-light;
+}
+
 .c-loader__spinner {
   animation: loaderSpinner 1s linear infinite;
   border-radius: 50%;
   border: $loader-spinner-width solid $loader-spinner-secondary;
   border-top-color: $loader-spinner-primary;
   height: $loader-spinner-size;
-  margin-top: -20px;
+  margin-top: 50px;
   width: $loader-spinner-size;
 
   .is-basic & {

@@ -8,38 +8,35 @@
 
 @mixin font-primary-light {
   font-family: $font-family-primary;
-  font-weight: 300;
+  font-weight: $font-weight-light;
 }
 
 @mixin font-primary-regular {
   font-family: $font-family-primary;
-  font-weight: 400;
+  font-weight: $font-weight-regular;
 }
 
 @mixin font-primary-heavy {
   font-family: $font-family-primary;
-  font-weight: 600;
+  font-weight: $font-weight-heavy;
 }
 
 @mixin font-secondary-light {
   font-family: $font-family-secondary;
-  font-weight: 300;
-  font-variant: small-caps;
+  font-weight: $font-weight-light;
 }
 
 @mixin font-secondary-regular {
   font-family: $font-family-secondary;
-  font-weight: 400;
-  font-variant: small-caps;
+  font-weight: $font-weight-regular;
 }
 
 @mixin font-secondary-heavy {
   font-family: $font-family-secondary;
-  font-weight: 600;
-  font-variant: small-caps;
+  font-weight: $font-weight-heavy;
 }
 
 @mixin font-not-async-light {
   font-family: $font-family-base;
-  font-weight: 300;
+  font-weight: $font-weight-light;
 }

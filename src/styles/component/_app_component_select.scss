@@ -57,10 +57,10 @@ $select-line-height: 1.2 !default;
 
 .c-select__field {
   @include animate(border-color);
-  @include font-size-md();
   border-radius: 0;
   appearance: none;
   background-color: $select-field-background;
+  font-size: 15px;
   line-height: $select-line-height;
   border-style: solid;
   border-color: transparent;

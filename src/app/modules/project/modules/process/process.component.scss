@@ -9,22 +9,23 @@
 // VARS
 
 $areas-title-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
-$areas-border: color(app-yellow-desaturated, 60, 1, app-white-yellow) !default;
+$areas-border: #ddd !default;
 
-$area-header-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
-$area-header-border: color(app-yellow-desaturated, 60, 1, app-white-yellow) !default;
+$area-header-background: color(app-grey-lighter) !default;
+$area-header-border: #ddd !default;
 
-$area-background: color(app-yellow-desaturated, 90, 1, app-white-yellow) !default;
+$area-background: color(app-grey-lightest) !default;
 
-$area-effects-background: color(app-white-yellow) !default;
+$area-effects-background: color(app-white) !default;
 
-$effects-title-background: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
+$effects-title-background: color(app-grey-darkest) !default;
 $effects-border: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
 $effects-setting-border: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
 
 $cta-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
 $cta-tool: color(app-orange-desaturated, 70, 1, app-black-yellow) !default;
 $cta-icon: color(app-grey-yellow) !default;
+
 // ELEMENTS
 
 :host {
@@ -45,6 +46,10 @@ $cta-icon: color(app-grey-yellow) !default;
 .c-areas-list__item {
   padding: 0;
   margin: 0;
+
+  &:nth-of-type(2n) .c-area__header {
+    background-color: darken($area-header-background, 3%);
+  }
 }
 
 // AREA
@@ -72,11 +77,7 @@ $cta-icon: color(app-grey-yellow) !default;
 
 .c-area__date {
   @include font-secondary-heavy();
-  @include font-size-lg();
-
-  :host-context(.wf-active) & {
-    @include font-size-md();
-  }
+  @include font-size-md();
 }
 
 .c-area__content {
@@ -94,15 +95,12 @@ $cta-icon: color(app-grey-yellow) !default;
 }
 
 .c-effect__title {
-  @include font-secondary-heavy();
-  @include font-size-md();
-  padding: 5px 11px;
   background-color: $effects-title-background;
+  color: color(app-white);
+  font-size: 13px;
   margin-bottom: 0;
-
-  :host-context(.wf-active) & {
-    @include font-size-sm();
-  }
+  padding: 8px 11px;
+  text-transform: uppercase;
 }
 
 // EFFECT SETTINGS LIST

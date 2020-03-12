@@ -1,5 +1,6 @@
-import { DataService } from './core/data/data.service';
 import { Component, OnInit } from '@angular/core';
+
+import { DataService } from './core/data/data.service';
 import { PrettyFocusService } from './core/pretty-focus/pretty-focus.service';
 import { WebfontsService } from './core/webfonts/webfonts.service';
 import { BrowserDetectService } from './core/browser-detect/browser-detect.service';

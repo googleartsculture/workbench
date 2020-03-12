@@ -18,7 +18,7 @@ $workspace-aside-background: $color-inspector-bg !default;
   top: 0;
   transform: translateX(0);
   @include animate(transform, $animation-time-short);
-  width: 400px;
+  width: 410px;
 
   &.is-hidden {
     transform: translateX(100%);

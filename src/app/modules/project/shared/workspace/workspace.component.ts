@@ -35,9 +35,9 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class WorkspaceComponent implements OnInit, OnDestroy {
 
-  @ViewChild('canvas', { static: true }) private canvasRef: ElementRef;
-  @ViewChild('panZoomLayer', { static: true }) private panZoomLayerRef: ElementRef;
-  @ViewChild('workspace', { static: true }) private workspaceRef: ElementRef;
+  @ViewChild('canvas') private canvasRef: ElementRef;
+  @ViewChild('panZoomLayer') private panZoomLayerRef: ElementRef;
+  @ViewChild('workspace') private workspaceRef: ElementRef;
   @HostListener('window:resize', ['$event']) private onWindowResize = this.resize;
 
   @Output() workspaceSetup = new EventEmitter<void>();
@@ -1087,7 +1087,7 @@ export class WorkspaceComponent implements OnInit, OnDestroy {
     // Setup canvas
     this.canvas = new fabric.Canvas(this.canvasEl);
     this.canvas.imageSmoothingEnabled = false;
-    this.canvas.backgroundColor = '#282828'; // Must match `/src/styles/_variables.scss`
+    this.canvas.backgroundColor = '#3b3b3b'; // Must match `/src/styles/_variables.scss`
     this.canvas.uniScaleTransform = true;
     this.canvas.setDimensions({
       width: this.workspaceEl.clientWidth,

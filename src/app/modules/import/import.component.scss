@@ -1,8 +1,8 @@
 @import '../../../styles/app-init';
 
-$uploader-background: color(app-white-yellow) !default;
-$uploader-background-transparent: color(app-white-yellow, null, 0) !default;
-$uploader-border: color(app-yellow-desaturated, 75, 1, app-white-yellow) !default;
+$uploader-background: color(app-white) !default;
+$uploader-background-transparent: color(app-white, null, 0) !default;
+$uploader-border: #ddd !default;
 $uploader-text: color(app-grey) !default;
 
 :host {
@@ -29,7 +29,9 @@ $uploader-text: color(app-grey) !default;
 }
 
 .c-import-sidebar {
-  padding: 20px;
+  background-color: color(app-grey-lightest);
+  border-bottom: 1px solid $uploader-border;
+  padding: 15px;
 }
 
 // IMPORTED IMAGES LIST

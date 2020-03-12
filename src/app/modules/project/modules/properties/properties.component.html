@@ -39,7 +39,7 @@
             <p>{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.SOURCE.NOTE' | translate }}</p>
           </div>
           <div class="o-form-note">
-            <button class="c-button c-button--mid" type="button" (click)="addNewSource()">
+            <button class="c-button c-button--dark" type="button" (click)="addNewSource()">
               <span class="c-button__drop">
                 <span class="c-button__label">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.SOURCE.BTN' | translate }}</span>
                 <app-svg-upload-img-icon class="c-button__icon c-icon c-icon--sm"></app-svg-upload-img-icon>
@@ -59,7 +59,7 @@
                 </div>
               </div>
               <div class="o-form-row">
-                <button class="c-button c-button--mid" type="button" (click)="deleteSource(source)">
+                <button class="c-button c-button--dark" type="button" (click)="deleteSource(source)">
                   <span class="c-button__drop">
                     <span class="c-button__label">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.SOURCE.DELETE' | translate }}</span>
                     <app-svg-trash-icon class="c-button__icon c-icon c-icon--sm"></app-svg-trash-icon>
@@ -74,7 +74,7 @@
           <div class="c-alert c-alert--success" *ngIf="config.states.saved">
             <p>{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.SUCCESS' | translate }}</p>
           </div>
-          <button class="c-button c-button--mid" type="submit" [disabled]="!config.states.sourceChanged && (propertiesForm.form.pristine || config.states.saving || !propertiesForm.form.valid)">
+          <button class="c-button c-button--dark" type="submit" [disabled]="!config.states.sourceChanged && (propertiesForm.form.pristine || config.states.saving || !propertiesForm.form.valid)">
             <span class="c-button__drop">
               <span class="c-button__label" *ngIf="!config.states.saving">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.SUBMIT' | translate }}</span>
               <span class="c-button__label" *ngIf="config.states.saving">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.SUBMITTING' | translate }}</span>
@@ -87,7 +87,7 @@
 
       <br />
       <div>
-        <button class="c-button c-button--mid" type="button" (click)="glyphDistribution.active = !glyphDistribution.active">
+        <button class="c-button c-button--dark" type="button" (click)="glyphDistribution.active = !glyphDistribution.active">
           <span class="c-button__drop">
             <span class="c-button__label" *ngIf="!glyphDistribution.active">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.DISTRIBUTION.BTN.SHOW' | translate }} ({{ glyphDistribution.count }})</span>
             <app-svg-arrow-down-icon *ngIf="!glyphDistribution.active" class="c-button__icon c-icon c-icon--sm"></app-svg-arrow-down-icon>
@@ -130,13 +130,13 @@
                 <h2 class="c-info__title">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.SIDEBAR.DOWNLOAD.TITLE' | translate }}</h2>
               </div>
               <div class="c-info__content">
-                <button type="button" class="c-button c-button--mid c-button--full" (click)="downloadFacsimile()">
+                <button type="button" class="c-button c-button--dark c-button--full" (click)="downloadFacsimile()">
                   <span class="c-button__drop">
                     <span class="c-button__label">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.SIDEBAR.DOWNLOAD.BTN.DOWNLOAD' | translate }}</span>
                     <app-svg-download-icon class="c-button__icon c-icon c-icon--sm"></app-svg-download-icon>
                   </span>
                 </button>
-                <button type="button" class="c-button c-button--mid c-button--full" (click)="downloadExport()">
+                <button type="button" class="c-button c-button--dark c-button--full" (click)="downloadExport()">
                   <span class="c-button__drop">
                     <span class="c-button__label">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.SIDEBAR.DOWNLOAD.BTN.EXPORT' | translate }}</span>
                     <app-svg-download-icon class="c-button__icon c-icon c-icon--sm"></app-svg-download-icon>
@@ -153,7 +153,7 @@
                 <div class="c-alert c-alert--warning">
                   <p>{{ 'MODULES.PROJECT.MODULES.PROPERTIES.SIDEBAR.ACTION.WARNING' | translate }}</p>
                 </div>
-                <button type="button" class="c-button c-button--mid c-button--full" (click)="deleteProject()">
+                <button type="button" class="c-button c-button--dark c-button--full" (click)="deleteProject()">
                   <span class="c-button__drop">
                     <span class="c-button__label">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.SIDEBAR.ACTION.DELETE' | translate }}</span>
                     <app-svg-trash-icon class="c-button__icon c-icon c-icon--sm"></app-svg-trash-icon>

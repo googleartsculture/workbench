@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import * as webfontloader from 'webfontloader';
-import { environment } from '../../../environments/environment';
-import { assignIn, isEmpty } from 'lodash';
 
 @Injectable()
 export class WebfontsService {
@@ -13,24 +11,18 @@ export class WebfontsService {
     classes: true,
     active: this.fontsLoaded.bind(this),
     inactive: this.fontsLoaded.bind(this),
+    google: {
+      families: ['Google Sans:400,500,700'],
+    },
   };
 
-  constructor() {
-    assignIn(this.config, environment.config.fontServices.webfontloaderConfig);
-  }
+  constructor() {}
 
   fontsLoaded(): void {
     this.loaded.next(true);
   }
 
   init(): void {
-    if (
-      environment.config &&
-      environment.config.fontServices &&
-      environment.config.fontServices.webfontloaderConfig
-    ) {
-      webfontloader.load(this.config);
-    }
+    webfontloader.load(this.config);
   }
-
 }

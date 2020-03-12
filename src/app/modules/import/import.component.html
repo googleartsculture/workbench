@@ -57,14 +57,13 @@
                     type="submit"
                     [disabled]="!config.states.importValid"
                     [ngClass]="{ 'is-loading': config.states.saving }"
-                    class="c-button c-button--mid c-button--full u-m-b-5"
+                    class="c-button c-button--dark c-button--full"
                   >
                     <span class="c-button__drop c-loader-bg">
                       <span class="c-button__label" *ngIf="!config.states.saving">{{ 'MODULES.IMPORT.SIDEBAR.FORM.SUBMIT' | translate }}</span>
                       <app-svg-save-icon *ngIf="!config.states.saving" class="c-button__icon c-icon c-icon--sm"></app-svg-save-icon>
                       <app-loader class="c-button__loader" [appLoaderSmall]="true" [appLoaderBgTransparent]="true" [loading]="config.states.saving"></app-loader>
                     </span>
-
                   </button>
                 </div>
               </div>

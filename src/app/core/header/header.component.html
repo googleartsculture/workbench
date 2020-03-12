@@ -2,7 +2,7 @@
   <app-svg-logo-small class="c-logo__icon"></app-svg-logo-small>
 </a>
 <div class="c-header__content">
-  <h1 class="c-header__title">{{ currentProjectRoute ? project?.properties.title : 'Workbench' }}</h1>
+  <h1 class="c-header__title">{{ currentProjectRoute ? project?.properties.title : 'FABRICIUS' }}</h1>
   <div class="c-header__status">
     <div class="c-header__status-item"
       *ngIf="apiServicesEnabledCount === 0"
@@ -29,7 +29,7 @@
          currentProjectRoute !== 'process' && currentProjectRoute !== 'generate' && currentProjectRoute !== 'analyse' &&
          currentProjectRoute !== 'annotate' && currentProjectRoute !== 'properties' }"
       >
-        <app-svg-step-one-icon class="c-header__nav-icon"></app-svg-step-one-icon>
+        <span class="c-header__nav-icon">1</span>
         {{ 'CORE.HEADER.PROCESS' | translate }}
       </button>
     </li>
@@ -38,7 +38,7 @@
         (click)="navigate('generate')"
         [ngClass]="{ 'is-active': currentProjectRoute === 'generate' }"
       >
-        <app-svg-step-two-icon class="c-header__nav-icon"></app-svg-step-two-icon>
+        <span class="c-header__nav-icon">2</span>
         {{'CORE.HEADER.GENERATE' | translate }}
       </button>
     </li>
@@ -47,7 +47,7 @@
         (click)="navigate('analyse')"
         [ngClass]="{ 'is-active': currentProjectRoute === 'analyse' }"
       >
-        <app-svg-step-three-icon class="c-header__nav-icon"></app-svg-step-three-icon>
+        <span class="c-header__nav-icon">3</span>
         {{ 'CORE.HEADER.ANALYSE' | translate }}
       </button>
     </li>
@@ -56,7 +56,7 @@
         (click)="navigate('annotate')"
         [ngClass]="{ 'is-active': currentProjectRoute === 'annotate' }"
       >
-        <app-svg-step-four-icon class="c-header__nav-icon"></app-svg-step-four-icon>
+        <span class="c-header__nav-icon">4</span>
         {{ 'CORE.HEADER.ANNOTATE' | translate }}
       </button>
     </li>
@@ -65,7 +65,9 @@
         (click)="navigate('properties')"
         [ngClass]="{ 'is-active': currentProjectRoute === 'properties' }"
       >
-        <app-svg-config-icon class="c-header__nav-icon"></app-svg-config-icon>
+        <span class="c-header__nav-icon">
+          <app-svg-config-icon class="c-header__nav-icon__svg"></app-svg-config-icon>
+        </span>
         {{ 'CORE.HEADER.PROPERTIES' | translate }}
       </button>
     </li>

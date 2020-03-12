@@ -28,14 +28,10 @@ $effects-setting-border: color(app-orange-desaturated, 75, 1, app-white-yellow) 
 
 .c-dev-table__header {
   @include font-secondary-heavy();
-  @include font-size-md();
+  @include font-size-sm();
   padding: 5px 11px;
   background-color: $table-head-background;
   margin-bottom: 0;
-
-  :host-context(.wf-active) & {
-    @include font-size-sm();
-  }
 }
 
 .c-table-reveal {

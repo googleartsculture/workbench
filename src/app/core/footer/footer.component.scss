@@ -1,12 +1,12 @@
 @import '../../../styles/app-init';
 
-$color-footer-text: color(app-grey-yellow, 40, 1, app-white-yellow) !default;
+$color-footer-text: color(app-grey-lighter) !default;
 
-$color-corp-text: color(app-grey-yellow, 40, 1, app-black-yellow) !default;
-$color-corp-link: color(app-grey-yellow, 40, 1, app-black-yellow) !default;
-$color-corp-visited: color(app-grey-yellow, 45, 1, app-black-yellow) !default;
-$color-corp-hover: color(app-grey-yellow, 30, 1, app-black-yellow) !default;
-$color-corp-active: color(app-white) !default;
+$color-corp-text: color(app-grey-lighter) !default;
+$color-corp-link: $color-corp-text !default;
+$color-corp-visited: $color-corp-text !default;
+$color-corp-hover: $color-corp-text !default;
+$color-corp-active: $color-corp-text !default;
 
 $color-lang-border: $color-corp-text !default;
 $color-lang-border-hover: $color-corp-hover !default;
@@ -42,8 +42,9 @@ $color-lang-border-hover: $color-corp-hover !default;
     content: '';
     position: absolute;
     display: block;
-    width: 1px;
+    width: 2px;
     height: 12px;
+    opacity: .35;
     right: -1px;
     top: 50%;
     background-color: $color-corp-text;
@@ -150,21 +151,6 @@ $color-lang-border-hover: $color-corp-hover !default;
 
 .c-accreditation__link {
   color: transparent;
-}
-
-.c-accreditation__ubisoft {
-  fill: $color-footer-text;
-  height: 19px;
-  position: relative;
-  top: -1px;
-  width: 66px;
-}
-
-.c-accreditation__divider {
-  background-color: $color-footer-text;
-  height: 16px;
-  margin: 0 10px;
-  width: 1px;
 }
 
 .c-accreditation__google {

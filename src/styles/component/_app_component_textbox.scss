@@ -6,18 +6,18 @@
 
 // VARS
 
-$textbox-background: color(app-white-yellow, null, 1) !default;
-$textbox-border: color(app-white-yellow, 25, 1, app-black-yellow) !default;
-$textbox-border-hover: color(app-white-yellow, 50, 1, app-black-yellow) !default;
-$textbox-background-disabled: color(app-grey-yellow, null, .25);
+$textbox-background: color(app-white) !default;
+$textbox-border: color(app-white, 25, 1, app-black) !default;
+$textbox-border-hover: color(app-white, 50, 1, app-black) !default;
+$textbox-background-disabled: transparent;
 
 $textbox-border-warning: color(app-orange) !default;
 $textbox-border-error: color(app-red-desaturated) !default;
 $textbox-border-success: color(app-green) !default;
 
-$textbox-field-background: color(app-white, null, 0) !default;
-$textbox-field-background-focus: color(app-white, null, 1) !default;
-$textbox-field-text-disabled: color(app-white-yellow, 50, 1, app-black-yellow) !default;
+$textbox-field-background: color(app-white) !default;
+$textbox-field-background-focus: color(app-white) !default;
+$textbox-field-text-disabled: color(app-white, 50, 1, app-black) !default;
 
 $textbox-line-height: 1.2 !default;
 $textbox-line-height-multiline: 1.5 !default;
@@ -50,7 +50,7 @@ $textbox-line-height-multiline: 1.5 !default;
 .c-textbox--alt {
   background-color: transparent;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: $font-weight-regular;
   height: 23px;
   text-align: center;
 }
@@ -61,11 +61,11 @@ $textbox-line-height-multiline: 1.5 !default;
 
 .c-textbox__field {
   @include animate(border-color background-color);
-  @include font-size-md();
   border-style: solid;
   border-color: transparent;
   border-width: 0 0 0 4px;
   background-color: $textbox-field-background;
+  font-size: 15px;
   line-height: $textbox-line-height;
   flex-grow: 1;
 

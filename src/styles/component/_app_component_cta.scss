@@ -5,10 +5,10 @@
 //================================================================================================//
 
 // VARS
-$cta-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
-$cta-tool: color(app-orange-desaturated, 70, 1, app-black-yellow) !default;
-$cta-tool-border: color(app-orange-desaturated, 100, 1, app-black-yellow) !default;
-$cta-icon: color(app-grey-yellow) !default;
+$cta-background: color(app-grey-lightest) !default;
+$cta-tool: color(app-grey-dark) !default;
+$cta-tool-border: #ddd !default;
+$cta-icon: color(app-grey) !default;
 
 // ELEMENTS
 
@@ -20,6 +20,7 @@ $cta-icon: color(app-grey-yellow) !default;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid $cta-tool-border;
 }
 
 .c-cta__tool {

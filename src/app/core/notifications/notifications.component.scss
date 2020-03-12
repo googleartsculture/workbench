@@ -69,6 +69,7 @@ $notification-text-error-active: color(app-red-desaturated, -30);
   color: $notification-text;
   display: flex;
   flex-direction: row;
+  font-size: 15px;
   justify-content: space-between;
   margin-bottom: 5px;
   padding: 10px;
