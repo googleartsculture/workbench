@@ -16,7 +16,7 @@ import { Source } from '../../shared/workspace/source.model';
 })
 export class ProcessComponent implements OnDestroy {
 
-  @ViewChild('workspace') private workspace: WorkspaceComponent;
+  @ViewChild('workspace', {static: true}) private workspace: WorkspaceComponent;
 
   aside: ProjectAside = {
     active: true,
