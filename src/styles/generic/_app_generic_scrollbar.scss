@@ -5,8 +5,8 @@
 //============================================================================//
 
 // VARS
-$scrollbar-thumb: #616161 !default;
-$scrollbar-track: color(app-grey-lighter) !default;
+$scrollbar-thumb: #494949 !default;
+$scrollbar-track: #d0d0d0 !default;
 
 // ELEMENTS
 
@@ -15,8 +15,8 @@ body {
   overflow: hidden;
 
   ::-webkit-scrollbar {
-    height: 10px;
-    width: 10px;
+    height: 8px;
+    width: 8px;
   }
 
   ::-webkit-scrollbar-track {

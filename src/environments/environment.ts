@@ -20,8 +20,8 @@ export const environment = {
         models: [
           {
             displayName: 'Hieroglyphs',
-            name: 'ICN7361549319569331597',
-            version: 'ICN7361549319569331597'
+            name: 'ICN376997904574787450',
+            version: 'ICN376997904574787450'
           }
         ] // add
       }

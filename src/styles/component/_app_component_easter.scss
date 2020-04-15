@@ -1,0 +1,64 @@
+$color-logo-black: color(app-logo-black);
+$color-logo-orange: color(app-logo-orange);
+
+$num: 17;
+@while $num > 0 {
+  .c-easter-icon path:nth-of-type(18n - #{$num}) {
+    + path {
+      pointer-events: none;
+    }
+
+    @if $num == 15 or $num == 9 {
+      &:hover {
+        fill: $color-logo-black;
+
+        + path {
+          fill: $color-logo-orange;
+        }
+      }
+    }
+
+    @else {
+      &:hover {
+        fill: $color-logo-orange;
+
+        + path {
+          fill: $color-logo-black;
+        }
+      }
+    }
+  }
+
+  $num: $num - 2;
+}
+
+$numSq: 8;
+@while $numSq > 0 {
+  .c-easter-icon-square g:nth-of-type(9n - #{$numSq}) {
+    path + path {
+      pointer-events: none;
+    }
+
+    @if $numSq == 7 or $numSq == 4 {
+      path:hover {
+        fill: $color-logo-black;
+
+        + path {
+          fill: $color-logo-orange;
+        }
+      }
+    }
+
+    @else {
+      path:hover {
+        fill: $color-logo-orange;
+
+        + path {
+          fill: $color-logo-black;
+        }
+      }
+    }
+  }
+
+  $numSq: $numSq - 1;
+}

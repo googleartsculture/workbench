@@ -1,8 +1,10 @@
-<a class="c-header__logo c-logo" routerLink="/">
-  <app-svg-logo-small class="c-logo__icon"></app-svg-logo-small>
-</a>
+<div class="c-header__logo c-logo">
+  <a class="c-header__logo-link" routerLink="/" aria-label="FABRICIUS">
+    <app-svg-fabricius-logo class="c-header__logo-icon c-easter-icon"></app-svg-fabricius-logo>
+  </a>
+</div>
 <div class="c-header__content">
-  <h1 class="c-header__title">{{ currentProjectRoute ? project?.properties.title : 'FABRICIUS' }}</h1>
+  <h1 class="c-header__title" *ngIf="project?.properties.title">{{ project?.properties.title }}</h1>
   <div class="c-header__status">
     <div class="c-header__status-item"
       *ngIf="apiServicesEnabledCount === 0"

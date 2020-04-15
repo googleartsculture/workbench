@@ -6,11 +6,6 @@ $header-nav-border: color(app-white, null, 1) !default;
 
 $header-logo-svg-fill: color(app-grey-darkest);
 
-.c-header__logo {
-  flex-shrink: 0;
-  width: $layout-navigation-width;
-}
-
 .c-header__content {
   align-items: center;
   display: flex;
@@ -20,10 +15,11 @@ $header-logo-svg-fill: color(app-grey-darkest);
 }
 
 .c-header__title {
+  border-left: 2px solid color(app-grey-medium);
   color: $header-title;
   font-size: 16px;
   justify-self: flex-start;
-  margin: 0;
+  margin: 0 0 0 2px;
   padding: 0 0 0 20px;
   text-transform: uppercase;
 }
@@ -55,7 +51,6 @@ $header-logo-svg-fill: color(app-grey-darkest);
 }
 
 .c-header__nav-list-btn {
-  @include animate(color, $animation-time-short);
   align-items: center;
   color: color(app-grey-darkest);
   display: flex;
@@ -67,13 +62,14 @@ $header-logo-svg-fill: color(app-grey-darkest);
   opacity: .5;
   padding: 0 15px;
   text-transform: uppercase;
+  transition: background-color $animation-time-short, color $animation-time-short, opacity $animation-time-short;
 
   &:hover {
     opacity: 1;
   }
 
   &.is-active {
-    background-color: color(app-yellow-bright);
+    background-color: color(app-yellow);
     cursor: default;
     opacity: 1;
   }
@@ -81,8 +77,6 @@ $header-logo-svg-fill: color(app-grey-darkest);
 
 .c-header__nav-icon {
   align-items: center;
-  background-color: color(app-white);
-  border-radius: 50%;
   display: flex;
   font-size: 11px;
   font-weight: $font-weight-heavy;
@@ -94,38 +88,28 @@ $header-logo-svg-fill: color(app-grey-darkest);
   &__svg {
     fill: color(app-grey-darkest);
     height: 12px;
+    transition: fill $animation-time-short;
     width: 12px;
   }
 }
 
 // HEADER LOGO
 
-.c-logo {
+.c-header__logo {
   align-items: center;
-  background-color: color(app-yellow-dark);
-  color: $header-title;
   display: flex;
-  justify-content: center;
-  text-decoration: none;
-  @include animate(color $animation-time-short, background-color $animation-time-short);
+  flex-shrink: 0;
+  height: 100%;
+  margin: 0 20px;
+}
 
-  &:link {
-    background-color: color(app-yellow-dark);
-    color: $header-title;
-  }
+.c-header__logo-link {
+  display: block;
+}
 
-  &:visited {
-    color: $header-title;
-  }
-
-  &:hover {
-    background-color: color(app-yellow-soft);
-    color: $header-title-hover;
-  }
-
-  &:active {
-    background-color: color(app-yellow-dark);
-  }
+.c-header__logo-icon {
+  height: 30px;
+  width: 220px;
 }
 
 .c-header__current-route {
@@ -135,7 +119,6 @@ $header-logo-svg-fill: color(app-grey-darkest);
 }
 
 .c-logo__icon {
-  fill: $header-logo-svg-fill;
-  height: 30px;
-  width: 30px;
+  height: 100%;
+  width: 100%;
 }

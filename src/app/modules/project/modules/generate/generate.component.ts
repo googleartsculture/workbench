@@ -1,9 +1,9 @@
-import { Outlines } from './../../shared/workspace/outlines.effect';
-import { Trace } from './../../shared/workspace/trace.effect';
-import { WorkspaceComponent } from './../../shared/workspace/workspace.component';
+import { Outlines } from '../../shared/workspace/outlines.effect';
+import { Trace } from '../../shared/workspace/trace.effect';
+import { WorkspaceComponent } from '../../shared/workspace/workspace.component';
 import { Component, ViewChild } from '@angular/core';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
-import { DataService } from './../../../../core/data/data.service';
+import { DataService } from '../../../../core/data/data.service';
 import { WorkspaceSeed, WorkspaceData } from '../../shared/workspace/workspace.model';
 import { ProjectAside } from '../../project.model';
 import { GenerateConfig } from './generate.model';

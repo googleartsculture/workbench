@@ -29,7 +29,7 @@ import {
   SvgToolDrawComponent,
   SvgToolEraseComponent,
   SvgGoogleLogoComponent,
-  SvgLogoSmallComponent,
+  SvgFabriciusLogoComponent,
   SvgLockedIconComponent,
   SvgUnlockedIconComponent,
   SvgTrashIconComponent,
@@ -60,6 +60,7 @@ import {
   SvgCreateIconComponent,
   SvgArrowUpIconComponent,
   SvgArrowDownIconComponent,
+  SvgFabriciusLogoSqaureComponent,
 } from './svg.component';
 
 @NgModule({
@@ -92,7 +93,7 @@ import {
     SvgToolDrawComponent,
     SvgToolEraseComponent,
     SvgGoogleLogoComponent,
-    SvgLogoSmallComponent,
+    SvgFabriciusLogoComponent,
     SvgLockedIconComponent,
     SvgUnlockedIconComponent,
     SvgTrashIconComponent,
@@ -123,6 +124,7 @@ import {
     SvgCreateIconComponent,
     SvgArrowUpIconComponent,
     SvgArrowDownIconComponent,
+    SvgFabriciusLogoSqaureComponent,
   ],
   exports: [
     SvgCloseIconComponent,
@@ -153,7 +155,7 @@ import {
     SvgToolDrawComponent,
     SvgToolEraseComponent,
     SvgGoogleLogoComponent,
-    SvgLogoSmallComponent,
+    SvgFabriciusLogoComponent,
     SvgLockedIconComponent,
     SvgUnlockedIconComponent,
     SvgTrashIconComponent,
@@ -184,6 +186,7 @@ import {
     SvgCreateIconComponent,
     SvgArrowUpIconComponent,
     SvgArrowDownIconComponent,
+    SvgFabriciusLogoSqaureComponent,
   ],
 })
 export class SvgModule {}

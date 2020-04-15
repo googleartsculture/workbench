@@ -29,22 +29,23 @@ $button-medium-label-active: color(app-white, -15) !default;
 $button-medium-label-disabled: color(app-white) !default;
 
 $button-dark-background: color(app-grey-dark) !default;
-$button-dark-background-hover: color(app-grey-medium) !default;
+$button-dark-background-hover: color(app-grey-dark) !default;
 $button-dark-background-active: color(app-grey-dark) !default;
 $button-dark-background-disabled: color(app-grey-lighter) !default;
 $button-dark-label: color(app-white) !default;
-$button-dark-label-hover: color(app-white) !default;
-$button-dark-label-active: color(app-white) !default;
+$button-dark-label-hover: color(app-yellow) !default;
+$button-dark-label-active: color(app-yellow) !default;
 $button-dark-label-disabled: $text-dark !default;
 
-$button-yellow-background: color(app-yellow) !default;
-$button-yellow-background-hover: color(app-yellow-dark) !default;
-$button-yellow-background-active: color(app-yellow) !default;
-$button-yellow-background-disabled: color(app-grey-lighter) !default;
-$button-yellow-label: $text-dark !default;
-$button-yellow-label-hover: $text-dark !default;
-$button-yellow-label-active: $text-dark !default;
-$button-yellow-label-disabled: $text-dark !default;
+$button-invert-background: transparent !default;
+$button-invert-border: color(app-grey-dark) !default;
+$button-invert-background-hover: color(app-grey-dark) !default;
+$button-invert-background-active: color(app-grey-dark) !default;
+$button-invert-background-disabled: color(app-grey-lighter) !default;
+$button-invert-label: $text-dark !default;
+$button-invert-label-hover: color(app-yellow) !default;
+$button-invert-label-active: color(app-white) !default;
+$button-invert-label-disabled: $text-dark !default;
 
 $button-tool-background: color(app-grey-darkest) !default;
 $button-tool-background-disabled: color(app-grey, 25) !default;
@@ -66,6 +67,7 @@ $button-tool-label-disabled: color(app-white) !default;
   line-height: 1;
   min-width: 130px;
   position: relative;
+  transition: color $animation-time-short, background-color $animation-time-short;
 
   &:link,
   &:visited {
@@ -173,37 +175,42 @@ $button-tool-label-disabled: color(app-white) !default;
   }
 }
 
-.c-button--yellow {
-  background-color: $button-yellow-background;
-  color: $button-yellow-label;
+.c-button--invert {
+  background-color: $button-invert-background;
+  border: 2px solid $button-invert-border;
+  color: $button-invert-label;
   font-size: 14px;
+
+  &.c-button--bumper .c-button__drop {
+    min-height: 50px;
+  }
 
   &:link,
   &:visited {
-    background-color: $button-yellow-background;
-    color: $button-yellow-label;
+    background-color: $button-invert-background;
+    color: $button-invert-label;
   }
 
   &.is-active,
   &:hover {
-    background-color: $button-yellow-background-hover;
-    color: $button-yellow-label-hover;
+    background-color: $button-invert-background-hover;
+    color: $button-invert-label-hover;
   }
 
   &:active {
-    background-color: $button-yellow-background-active;
-    color: $button-yellow-label-active;
+    background-color: $button-invert-background-active;
+    color: $button-invert-label-active;
   }
 
   &.is-disabled,
   &:disabled {
-    background-color: $button-yellow-background-disabled;
-    color: $button-yellow-label-disabled;
+    background-color: $button-invert-background-disabled;
+    color: $button-invert-label-disabled;
     pointer-events: none;
 
     &:hover {
       cursor: default;
-      color: $button-yellow-label-disabled;
+      color: $button-invert-label-disabled;
     }
   }
 }
@@ -252,7 +259,7 @@ $button-tool-label-disabled: color(app-white) !default;
 
 .c-button--bumper {
   border-radius: 25px;
-  font-size: 19px;
+  font-size: 20px;
   overflow: hidden;
 
   + .c-button--bumper {
@@ -279,7 +286,7 @@ $button-tool-label-disabled: color(app-white) !default;
   }
 
   .c-button--bumper & {
-    min-height: 50px;
+    min-height: 54px;
   }
 
   .c-button--icon & {
@@ -320,6 +327,7 @@ $button-tool-label-disabled: color(app-white) !default;
 .c-button__icon {
   fill: $button-label;
   min-width: 0;
+  transition: fill $animation-time-short;
 
   .is-loading & {
     fill: transparent !important; // stylelint-disable-line declaration-no-important

@@ -98,43 +98,29 @@ $loader-spinner-small-width: 1px !default;
 }
 
 .c-loader__line-1 {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: $font-weight-heavy;
-  line-height: 30px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .c-loader__line-2 {
   font-weight: $font-weight-light;
-  font-size: 19px;
+  font-size: 20px;
   margin-bottom: 50px;
 }
 
 .c-loader__icon {
   display: block;
-  fill: color(app-white);
-  height: 80px;
-  width: 80px;
-  margin: 0 auto 20px;
+  height: 120px;
+  width: 120px;
+  margin: 0 auto 50px;
 }
 
 .c-loader__line-3 {
-  font-size: 39px;
-  font-weight: $font-weight-heavy;
-}
-
-.c-loader__break {
-  background-color: color(app-white);
-  border-radius: 1.5px;
-  display: block;
-  height: 3px;
-  margin: 15px auto 16px;
-  width: 28px;
-}
-
-.c-loader__line-4 {
-  font-size: 19px;
+  font-size: 21px;
   font-weight: $font-weight-light;
+  line-height: 1.5;
+  max-width: 350px;
 }
 
 .c-loader__spinner {
