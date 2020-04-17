@@ -20,6 +20,7 @@ import * as ArrayMove from 'array-move';
 import { TranslationRequest, TranslationResult} from '../../../../core/api/translation.model';
 import { WordStorage } from '../../../../core/storage/storage.model';
 import Sortable from 'sortablejs';
+import { gardinerGlyphs } from '../../shared/gardiner-glyphs.model';
 
 interface WordCache {
   parentId: Sentence['id'];
@@ -399,6 +400,11 @@ export class AnalyseComponent implements OnDestroy {
 
         // Send to API
         this.apiService.post('classify', data).then((results: Array<ClassificationResult>) => {
+
+          // Remove results that don't match our known set of glyphs
+          results = filter(results, (result: ClassificationResult) => {
+            return find(gardinerGlyphs, { code: result.glyph.toLowerCase() });
+          });
 
           if (results && results.length) {
             glyph.gardinerCodePredictions = orderBy(results, ['score'], ['desc']);

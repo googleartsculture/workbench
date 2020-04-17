@@ -1,9 +1,9 @@
-import { Settings } from '../../../settings/settings.model';
-import { Annotation, AnnotationComment } from '../../shared/workspace/annotation.model';
-import { WorkspaceComponent } from '../../shared/workspace/workspace.component';
+import { Settings } from './../../../settings/settings.model';
+import { Annotation, AnnotationComment } from './../../shared/workspace/annotation.model';
+import { WorkspaceComponent } from './../../shared/workspace/workspace.component';
 import { Component, ViewChild, OnDestroy } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable, Subscription } from 'rxjs';
-import { DataService } from '../../../../core/data/data.service';
+import { DataService } from './../../../../core/data/data.service';
 import { WorkspaceSeed, WorkspaceData } from '../../shared/workspace/workspace.model';
 import { ProjectAside } from '../../project.model';
 import { AnnotateConfig } from './annotate.model';

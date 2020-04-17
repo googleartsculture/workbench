@@ -1,10 +1,10 @@
 import { find, debounce } from 'lodash';
-import { Area } from '../../shared/workspace/area.model';
-import { Settings } from '../../../settings/settings.model';
-import { WorkspaceComponent } from '../../shared/workspace/workspace.component';
+import { Area } from './../../shared/workspace/area.model';
+import { Settings } from './../../../settings/settings.model';
+import { WorkspaceComponent } from './../../shared/workspace/workspace.component';
 import { Component, ViewChild, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { BehaviorSubject, Observable, combineLatest, Subscription } from 'rxjs';
-import { DataService } from '../../../../core/data/data.service';
+import { DataService } from './../../../../core/data/data.service';
 import { WorkspaceSeed, WorkspaceData } from '../../shared/workspace/workspace.model';
 import { ProjectAside } from '../../project.model';
 import { Source } from '../../shared/workspace/source.model';

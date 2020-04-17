@@ -1,15 +1,12 @@
 export const gardinerGlyphs: Array<GardinerGlyph> = [
   {
-    'code': 'a1',
+    'code': 'a1'
   },
   {
     'code': 'a10'
   },
   {
     'code': 'a11'
-  },
-  {
-    'code': 'a119'
   },
   {
     'code': 'a12'
@@ -28,9 +25,6 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'a16'
-  },
-  {
-    'code': 'a166'
   },
   {
     'code': 'a17'
@@ -90,6 +84,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'a32'
   },
   {
+    'code': 'a32a'
+  },
+  {
     'code': 'a33'
   },
   {
@@ -99,13 +96,7 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'a35'
   },
   {
-    'code': 'a359'
-  },
-  {
     'code': 'a36'
-  },
-  {
-    'code': 'a366'
   },
   {
     'code': 'a37'
@@ -123,19 +114,31 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'a40'
   },
   {
+    'code': 'a40a'
+  },
+  {
     'code': 'a41'
   },
   {
     'code': 'a42'
   },
   {
+    'code': 'a42a'
+  },
+  {
     'code': 'a43'
+  },
+  {
+    'code': 'a43a'
   },
   {
     'code': 'a44'
   },
   {
     'code': 'a45'
+  },
+  {
+    'code': 'a45a'
   },
   {
     'code': 'a46'
@@ -171,31 +174,82 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'a55'
   },
   {
+    'code': 'a56'
+  },
+  {
+    'code': 'a57'
+  },
+  {
+    'code': 'a58'
+  },
+  {
     'code': 'a59'
+  },
+  {
+    'code': 'a5a'
   },
   {
     'code': 'a6'
   },
   {
+    'code': 'a60'
+  },
+  {
+    'code': 'a61'
+  },
+  {
+    'code': 'a62'
+  },
+  {
+    'code': 'a63'
+  },
+  {
+    'code': 'a64'
+  },
+  {
+    'code': 'a65'
+  },
+  {
+    'code': 'a66'
+  },
+  {
+    'code': 'a67'
+  },
+  {
     'code': 'a68'
+  },
+  {
+    'code': 'a69'
+  },
+  {
+    'code': 'a6a'
+  },
+  {
+    'code': 'a6b'
   },
   {
     'code': 'a7'
   },
   {
-    'code': 'a8'
+    'code': 'a70'
   },
   {
-    'code': 'a84'
+    'code': 'a8'
   },
   {
     'code': 'a9'
   },
   {
-    'code': 'a97'
+    'code': 'aa1'
   },
   {
-    'code': 'aa1'
+    'code': 'aa10'
+  },
+  {
+    'code': 'aa11'
+  },
+  {
+    'code': 'aa12'
   },
   {
     'code': 'aa13'
@@ -205,6 +259,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'aa15'
+  },
+  {
+    'code': 'aa16'
   },
   {
     'code': 'aa17'
@@ -243,6 +300,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'aa27'
   },
   {
+    'code': 'aa28'
+  },
+  {
     'code': 'aa29'
   },
   {
@@ -264,22 +324,28 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'aa5'
   },
   {
-    'code': 'aa5a'
-  },
-  {
     'code': 'aa6'
   },
   {
     'code': 'aa7'
   },
   {
+    'code': 'aa7a'
+  },
+  {
+    'code': 'aa7b'
+  },
+  {
+    'code': 'aa8'
+  },
+  {
+    'code': 'aa9'
+  },
+  {
     'code': 'b1'
   },
   {
     'code': 'b2'
-  },
-  {
-    'code': 'b24'
   },
   {
     'code': 'b3'
@@ -291,10 +357,19 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'b5'
   },
   {
+    'code': 'b5a'
+  },
+  {
     'code': 'b6'
   },
   {
     'code': 'b7'
+  },
+  {
+    'code': 'b8'
+  },
+  {
+    'code': 'b9'
   },
   {
     'code': 'c1'
@@ -312,10 +387,19 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'c12'
   },
   {
-    'code': 'c17'
+    'code': 'c13'
   },
   {
-    'code': 'c175a'
+    'code': 'c14'
+  },
+  {
+    'code': 'c15'
+  },
+  {
+    'code': 'c16'
+  },
+  {
+    'code': 'c17'
   },
   {
     'code': 'c18'
@@ -328,6 +412,27 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'c20'
+  },
+  {
+    'code': 'c21'
+  },
+  {
+    'code': 'c22'
+  },
+  {
+    'code': 'c23'
+  },
+  {
+    'code': 'c24'
+  },
+  {
+    'code': 'c2a'
+  },
+  {
+    'code': 'c2b'
+  },
+  {
+    'code': 'c2c'
   },
   {
     'code': 'c3'
@@ -369,13 +474,7 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'd14'
   },
   {
-    'code': 'd140'
-  },
-  {
     'code': 'd15'
-  },
-  {
-    'code': 'd154'
   },
   {
     'code': 'd16'
@@ -399,9 +498,6 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'd21'
   },
   {
-    'code': 'd212a'
-  },
-  {
     'code': 'd22'
   },
   {
@@ -414,16 +510,10 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'd25'
   },
   {
-    'code': 'd251'
-  },
-  {
     'code': 'd26'
   },
   {
     'code': 'd27'
-  },
-  {
-    'code': 'd279'
   },
   {
     'code': 'd27a'
@@ -442,6 +532,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'd31'
+  },
+  {
+    'code': 'd31a'
   },
   {
     'code': 'd32'
@@ -504,6 +597,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'd48'
   },
   {
+    'code': 'd48a'
+  },
+  {
     'code': 'd49'
   },
   {
@@ -513,16 +609,49 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'd50'
   },
   {
+    'code': 'd50a'
+  },
+  {
+    'code': 'd50b'
+  },
+  {
+    'code': 'd50c'
+  },
+  {
+    'code': 'd50d'
+  },
+  {
+    'code': 'd50e'
+  },
+  {
+    'code': 'd50f'
+  },
+  {
+    'code': 'd50g'
+  },
+  {
+    'code': 'd50h'
+  },
+  {
+    'code': 'd50i'
+  },
+  {
     'code': 'd51'
   },
   {
     'code': 'd52'
   },
   {
+    'code': 'd52a'
+  },
+  {
     'code': 'd53'
   },
   {
     'code': 'd54'
+  },
+  {
+    'code': 'd54a'
   },
   {
     'code': 'd55'
@@ -555,13 +684,49 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'd63'
   },
   {
+    'code': 'd64'
+  },
+  {
+    'code': 'd65'
+  },
+  {
+    'code': 'd66'
+  },
+  {
+    'code': 'd67'
+  },
+  {
+    'code': 'd67a'
+  },
+  {
+    'code': 'd67b'
+  },
+  {
+    'code': 'd67c'
+  },
+  {
+    'code': 'd67d'
+  },
+  {
+    'code': 'd67e'
+  },
+  {
+    'code': 'd67f'
+  },
+  {
+    'code': 'd67g'
+  },
+  {
+    'code': 'd67h'
+  },
+  {
     'code': 'd7'
   },
   {
-    'code': 'd7a'
+    'code': 'd8'
   },
   {
-    'code': 'd8'
+    'code': 'd8a'
   },
   {
     'code': 'd9'
@@ -579,9 +744,6 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'e12'
   },
   {
-    'code': 'e128'
-  },
-  {
     'code': 'e13'
   },
   {
@@ -594,16 +756,13 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'e16'
   },
   {
-    'code': 'e166'
+    'code': 'e16a'
   },
   {
     'code': 'e17'
   },
   {
-    'code': 'e176'
-  },
-  {
-    'code': 'e177'
+    'code': 'e17a'
   },
   {
     'code': 'e18'
@@ -616,6 +775,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'e20'
+  },
+  {
+    'code': 'e20a'
   },
   {
     'code': 'e21'
@@ -642,6 +804,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'e28'
   },
   {
+    'code': 'e28a'
+  },
+  {
     'code': 'e29'
   },
   {
@@ -661,6 +826,18 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'e34'
+  },
+  {
+    'code': 'e34a'
+  },
+  {
+    'code': 'e36'
+  },
+  {
+    'code': 'e37'
+  },
+  {
+    'code': 'e38'
   },
   {
     'code': 'e4'
@@ -684,6 +861,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'e9'
   },
   {
+    'code': 'e9a'
+  },
+  {
     'code': 'f1'
   },
   {
@@ -697,6 +877,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'f13'
+  },
+  {
+    'code': 'f13a'
   },
   {
     'code': 'f14'
@@ -717,6 +900,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'f19'
   },
   {
+    'code': 'f1a'
+  },
+  {
     'code': 'f2'
   },
   {
@@ -724,6 +910,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'f21'
+  },
+  {
+    'code': 'f21a'
   },
   {
     'code': 'f22'
@@ -759,6 +948,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'f31'
   },
   {
+    'code': 'f31a'
+  },
+  {
     'code': 'f32'
   },
   {
@@ -777,10 +969,13 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'f37'
   },
   {
-    'code': 'f37b'
+    'code': 'f37a'
   },
   {
     'code': 'f38'
+  },
+  {
+    'code': 'f38a'
   },
   {
     'code': 'f39'
@@ -807,10 +1002,19 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'f45'
   },
   {
+    'code': 'f45a'
+  },
+  {
     'code': 'f46'
   },
   {
+    'code': 'f46a'
+  },
+  {
     'code': 'f47'
+  },
+  {
+    'code': 'f47a'
   },
   {
     'code': 'f48'
@@ -828,13 +1032,22 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'f51'
   },
   {
+    'code': 'f51a'
+  },
+  {
+    'code': 'f51b'
+  },
+  {
+    'code': 'f51c'
+  },
+  {
     'code': 'f52'
   },
   {
-    'code': 'f6'
+    'code': 'f53'
   },
   {
-    'code': 'f63'
+    'code': 'f6'
   },
   {
     'code': 'f7'
@@ -855,6 +1068,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'g11'
   },
   {
+    'code': 'g11a'
+  },
+  {
     'code': 'g12'
   },
   {
@@ -862,9 +1078,6 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'g14'
-  },
-  {
-    'code': 'g14a'
   },
   {
     'code': 'g15'
@@ -886,6 +1099,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'g20'
+  },
+  {
+    'code': 'g20a'
   },
   {
     'code': 'g21'
@@ -942,7 +1158,13 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'g36'
   },
   {
+    'code': 'g36a'
+  },
+  {
     'code': 'g37'
+  },
+  {
+    'code': 'g37a'
   },
   {
     'code': 'g38'
@@ -966,10 +1188,16 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'g43'
   },
   {
+    'code': 'g43a'
+  },
+  {
     'code': 'g44'
   },
   {
     'code': 'g45'
+  },
+  {
+    'code': 'g45a'
   },
   {
     'code': 'g46'
@@ -981,13 +1209,7 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'g48'
   },
   {
-    'code': 'g48a'
-  },
-  {
     'code': 'g49'
-  },
-  {
-    'code': 'g4a'
   },
   {
     'code': 'g5'
@@ -1009,6 +1231,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'g6'
+  },
+  {
+    'code': 'g6a'
   },
   {
     'code': 'g7'
@@ -1047,9 +1272,6 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'h6a'
   },
   {
-    'code': 'h6b'
-  },
-  {
     'code': 'h7'
   },
   {
@@ -1062,7 +1284,13 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'i10'
   },
   {
+    'code': 'i10a'
+  },
+  {
     'code': 'i11'
+  },
+  {
+    'code': 'i11a'
   },
   {
     'code': 'i12'
@@ -1095,9 +1323,6 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'i6'
   },
   {
-    'code': 'i64'
-  },
-  {
     'code': 'i7'
   },
   {
@@ -1105,6 +1330,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'i9'
+  },
+  {
+    'code': 'i9a'
   },
   {
     'code': 'k1'
@@ -1128,10 +1356,16 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'k7'
   },
   {
+    'code': 'k8'
+  },
+  {
     'code': 'l1'
   },
   {
     'code': 'l2'
+  },
+  {
+    'code': 'l2a'
   },
   {
     'code': 'l3'
@@ -1143,7 +1377,16 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'l5'
   },
   {
+    'code': 'l6'
+  },
+  {
+    'code': 'l6a'
+  },
+  {
     'code': 'l7'
+  },
+  {
+    'code': 'l8'
   },
   {
     'code': 'm1'
@@ -1152,10 +1395,37 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'm10'
   },
   {
+    'code': 'm10a'
+  },
+  {
     'code': 'm11'
   },
   {
     'code': 'm12'
+  },
+  {
+    'code': 'm12a'
+  },
+  {
+    'code': 'm12b'
+  },
+  {
+    'code': 'm12c'
+  },
+  {
+    'code': 'm12d'
+  },
+  {
+    'code': 'm12e'
+  },
+  {
+    'code': 'm12f'
+  },
+  {
+    'code': 'm12g'
+  },
+  {
+    'code': 'm12h'
   },
   {
     'code': 'm13'
@@ -1167,13 +1437,19 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'm15'
   },
   {
+    'code': 'm15a'
+  },
+  {
     'code': 'm16'
   },
   {
-    'code': 'm163'
+    'code': 'm16a'
   },
   {
     'code': 'm17'
+  },
+  {
+    'code': 'm17a'
   },
   {
     'code': 'm18'
@@ -1183,6 +1459,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'm1a'
+  },
+  {
+    'code': 'm1b'
   },
   {
     'code': 'm2'
@@ -1197,10 +1476,16 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'm22'
   },
   {
+    'code': 'm22a'
+  },
+  {
     'code': 'm23'
   },
   {
     'code': 'm24'
+  },
+  {
+    'code': 'm24a'
   },
   {
     'code': 'm25'
@@ -1215,6 +1500,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'm28'
   },
   {
+    'code': 'm28a'
+  },
+  {
     'code': 'm29'
   },
   {
@@ -1227,10 +1515,19 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'm31'
   },
   {
+    'code': 'm31a'
+  },
+  {
     'code': 'm32'
   },
   {
     'code': 'm33'
+  },
+  {
+    'code': 'm33a'
+  },
+  {
+    'code': 'm33b'
   },
   {
     'code': 'm34'
@@ -1251,19 +1548,25 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'm39'
   },
   {
+    'code': 'm3a'
+  },
+  {
     'code': 'm4'
   },
   {
     'code': 'm40'
   },
   {
+    'code': 'm40a'
+  },
+  {
+    'code': 'm41'
+  },
+  {
     'code': 'm42'
   },
   {
     'code': 'm43'
-  },
-  {
-    'code': 'm43a'
   },
   {
     'code': 'm44'
@@ -1314,13 +1617,25 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'n18'
   },
   {
+    'code': 'n18a'
+  },
+  {
+    'code': 'n18b'
+  },
+  {
     'code': 'n19'
   },
   {
     'code': 'n2'
   },
   {
+    'code': 'n20'
+  },
+  {
     'code': 'n21'
+  },
+  {
+    'code': 'n22'
   },
   {
     'code': 'n23'
@@ -1330,6 +1645,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'n25'
+  },
+  {
+    'code': 'n25a'
   },
   {
     'code': 'n26'
@@ -1353,10 +1671,10 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'n31'
   },
   {
-    'code': 'n31e'
+    'code': 'n32'
   },
   {
-    'code': 'n32'
+    'code': 'n33'
   },
   {
     'code': 'n33a'
@@ -1377,6 +1695,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'n36'
   },
   {
+    'code': 'n37'
+  },
+  {
     'code': 'n37a'
   },
   {
@@ -1392,10 +1713,10 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'n40'
   },
   {
-    'code': 'n42'
+    'code': 'n41'
   },
   {
-    'code': 'n46b'
+    'code': 'n42'
   },
   {
     'code': 'n5'
@@ -1404,13 +1725,7 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'n6'
   },
   {
-    'code': 'n64'
-  },
-  {
     'code': 'n7'
-  },
-  {
-    'code': 'n76'
   },
   {
     'code': 'n8'
@@ -1419,13 +1734,163 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'n9'
   },
   {
+    'code': 'nl1'
+  },
+  {
+    'code': 'nl10'
+  },
+  {
+    'code': 'nl11'
+  },
+  {
+    'code': 'nl12'
+  },
+  {
+    'code': 'nl13'
+  },
+  {
+    'code': 'nl14'
+  },
+  {
+    'code': 'nl15'
+  },
+  {
+    'code': 'nl16'
+  },
+  {
+    'code': 'nl17'
+  },
+  {
+    'code': 'nl17a'
+  },
+  {
+    'code': 'nl18'
+  },
+  {
+    'code': 'nl19'
+  },
+  {
+    'code': 'nl2'
+  },
+  {
+    'code': 'nl20'
+  },
+  {
+    'code': 'nl3'
+  },
+  {
+    'code': 'nl4'
+  },
+  {
+    'code': 'nl5'
+  },
+  {
+    'code': 'nl5a'
+  },
+  {
+    'code': 'nl6'
+  },
+  {
+    'code': 'nl7'
+  },
+  {
+    'code': 'nl8'
+  },
+  {
+    'code': 'nl9'
+  },
+  {
+    'code': 'nu1'
+  },
+  {
+    'code': 'nu10'
+  },
+  {
+    'code': 'nu10a'
+  },
+  {
+    'code': 'nu11'
+  },
+  {
+    'code': 'nu11a'
+  },
+  {
+    'code': 'nu12'
+  },
+  {
+    'code': 'nu13'
+  },
+  {
+    'code': 'nu14'
+  },
+  {
+    'code': 'nu15'
+  },
+  {
+    'code': 'nu16'
+  },
+  {
+    'code': 'nu17'
+  },
+  {
+    'code': 'nu18'
+  },
+  {
+    'code': 'nu18a'
+  },
+  {
+    'code': 'nu19'
+  },
+  {
+    'code': 'nu2'
+  },
+  {
+    'code': 'nu20'
+  },
+  {
+    'code': 'nu21'
+  },
+  {
+    'code': 'nu22'
+  },
+  {
+    'code': 'nu22a'
+  },
+  {
+    'code': 'nu3'
+  },
+  {
+    'code': 'nu4'
+  },
+  {
+    'code': 'nu5'
+  },
+  {
+    'code': 'nu6'
+  },
+  {
+    'code': 'nu7'
+  },
+  {
+    'code': 'nu8'
+  },
+  {
+    'code': 'nu9'
+  },
+  {
     'code': 'o1'
   },
   {
     'code': 'o10'
   },
   {
-    'code': 'o104'
+    'code': 'o10a'
+  },
+  {
+    'code': 'o10b'
+  },
+  {
+    'code': 'o10c'
   },
   {
     'code': 'o11'
@@ -1455,10 +1920,19 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'o19'
   },
   {
+    'code': 'o19a'
+  },
+  {
+    'code': 'o1a'
+  },
+  {
     'code': 'o2'
   },
   {
     'code': 'o20'
+  },
+  {
+    'code': 'o20a'
   },
   {
     'code': 'o21'
@@ -1473,7 +1947,13 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'o24'
   },
   {
+    'code': 'o24a'
+  },
+  {
     'code': 'o25'
+  },
+  {
+    'code': 'o25a'
   },
   {
     'code': 'o26'
@@ -1488,10 +1968,16 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'o29'
   },
   {
+    'code': 'o29a'
+  },
+  {
     'code': 'o3'
   },
   {
     'code': 'o30'
+  },
+  {
+    'code': 'o30a'
   },
   {
     'code': 'o31'
@@ -1503,6 +1989,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'o33'
   },
   {
+    'code': 'o33a'
+  },
+  {
     'code': 'o34'
   },
   {
@@ -1510,6 +1999,18 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'o36'
+  },
+  {
+    'code': 'o36a'
+  },
+  {
+    'code': 'o36b'
+  },
+  {
+    'code': 'o36c'
+  },
+  {
+    'code': 'o36d'
   },
   {
     'code': 'o37'
@@ -1539,9 +2040,6 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'o44'
   },
   {
-    'code': 'o44a'
-  },
-  {
     'code': 'o45'
   },
   {
@@ -1557,19 +2055,43 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'o49'
   },
   {
-    'code': 'o49a'
+    'code': 'o5'
   },
   {
-    'code': 'o5'
+    'code': 'o50'
+  },
+  {
+    'code': 'o50a'
+  },
+  {
+    'code': 'o50b'
   },
   {
     'code': 'o51'
   },
   {
-    'code': 'o51b'
+    'code': 'o5a'
   },
   {
     'code': 'o6'
+  },
+  {
+    'code': 'o6a'
+  },
+  {
+    'code': 'o6b'
+  },
+  {
+    'code': 'o6c'
+  },
+  {
+    'code': 'o6d'
+  },
+  {
+    'code': 'o6e'
+  },
+  {
+    'code': 'o6f'
   },
   {
     'code': 'o7'
@@ -1593,22 +2115,10 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'p1a'
   },
   {
-    'code': 'p1c'
-  },
-  {
     'code': 'p2'
   },
   {
-    'code': 'p26'
-  },
-  {
     'code': 'p3'
-  },
-  {
-    'code': 'p30'
-  },
-  {
-    'code': 'p34'
   },
   {
     'code': 'p3a'
@@ -1618,9 +2128,6 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'p5'
-  },
-  {
-    'code': 'p5f'
   },
   {
     'code': 'p6'
@@ -1662,6 +2169,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'r10'
   },
   {
+    'code': 'r10a'
+  },
+  {
     'code': 'r11'
   },
   {
@@ -1677,16 +2187,13 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'r15'
   },
   {
-    'code': 'r15b'
-  },
-  {
     'code': 'r16'
   },
   {
-    'code': 'r17'
+    'code': 'r16a'
   },
   {
-    'code': 'r17b'
+    'code': 'r17'
   },
   {
     'code': 'r18'
@@ -1710,19 +2217,34 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'r23'
   },
   {
-    'code': 'r23a'
-  },
-  {
     'code': 'r24'
   },
   {
     'code': 'r25'
   },
   {
+    'code': 'r26'
+  },
+  {
+    'code': 'r27'
+  },
+  {
+    'code': 'r28'
+  },
+  {
+    'code': 'r29'
+  },
+  {
+    'code': 'r2a'
+  },
+  {
     'code': 'r3'
   },
   {
-    'code': 'r36a'
+    'code': 'r3a'
+  },
+  {
+    'code': 'r3b'
   },
   {
     'code': 'r4'
@@ -1731,13 +2253,7 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'r5'
   },
   {
-    'code': 'r50'
-  },
-  {
     'code': 'r6'
-  },
-  {
-    'code': 'r61'
   },
   {
     'code': 'r7'
@@ -1758,19 +2274,7 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 's11'
   },
   {
-    'code': 's113'
-  },
-  {
-    'code': 's116'
-  },
-  {
-    'code': 's118'
-  },
-  {
     'code': 's12'
-  },
-  {
-    'code': 's12a'
   },
   {
     'code': 's13'
@@ -1780,6 +2284,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 's14a'
+  },
+  {
+    'code': 's14b'
   },
   {
     'code': 's15'
@@ -1824,6 +2331,12 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 's26'
   },
   {
+    'code': 's26a'
+  },
+  {
+    'code': 's26b'
+  },
+  {
     'code': 's27'
   },
   {
@@ -1831,6 +2344,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 's29'
+  },
+  {
+    'code': 's2a'
   },
   {
     'code': 's3'
@@ -1852,6 +2368,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 's35'
+  },
+  {
+    'code': 's35a'
   },
   {
     'code': 's36'
@@ -1878,9 +2397,6 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 's42'
   },
   {
-    'code': 's42a'
-  },
-  {
     'code': 's43'
   },
   {
@@ -1890,13 +2406,16 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 's45'
   },
   {
-    'code': 's47a'
+    'code': 's46'
   },
   {
     'code': 's5'
   },
   {
     'code': 's6'
+  },
+  {
+    'code': 's6a'
   },
   {
     'code': 's7'
@@ -1917,6 +2436,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 't11'
   },
   {
+    'code': 't11a'
+  },
+  {
     'code': 't12'
   },
   {
@@ -1930,6 +2452,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 't16'
+  },
+  {
+    'code': 't16a'
   },
   {
     'code': 't17'
@@ -1986,13 +2511,25 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 't32'
   },
   {
+    'code': 't32a'
+  },
+  {
     'code': 't33'
+  },
+  {
+    'code': 't33a'
   },
   {
     'code': 't34'
   },
   {
     'code': 't35'
+  },
+  {
+    'code': 't36'
+  },
+  {
+    'code': 't3a'
   },
   {
     'code': 't4'
@@ -2026,9 +2563,6 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'u10'
-  },
-  {
-    'code': 'u109'
   },
   {
     'code': 'u11'
@@ -2073,6 +2607,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'u23'
   },
   {
+    'code': 'u23a'
+  },
+  {
     'code': 'u24'
   },
   {
@@ -2091,6 +2628,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'u29'
   },
   {
+    'code': 'u29a'
+  },
+  {
     'code': 'u3'
   },
   {
@@ -2101,6 +2641,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'u32'
+  },
+  {
+    'code': 'u32a'
   },
   {
     'code': 'u33'
@@ -2133,16 +2676,22 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'u41'
   },
   {
+    'code': 'u42'
+  },
+  {
     'code': 'u5'
   },
   {
     'code': 'u6'
   },
   {
-    'code': 'u7'
+    'code': 'u6a'
   },
   {
-    'code': 'u7a'
+    'code': 'u6b'
+  },
+  {
+    'code': 'u7'
   },
   {
     'code': 'u8'
@@ -2160,7 +2709,22 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'v11'
   },
   {
+    'code': 'v11a'
+  },
+  {
+    'code': 'v11b'
+  },
+  {
+    'code': 'v11c'
+  },
+  {
     'code': 'v12'
+  },
+  {
+    'code': 'v12a'
+  },
+  {
+    'code': 'v12b'
   },
   {
     'code': 'v13'
@@ -2175,9 +2739,6 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'v16'
   },
   {
-    'code': 'v16a'
-  },
-  {
     'code': 'v17'
   },
   {
@@ -2187,10 +2748,73 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'v19'
   },
   {
+    'code': 'v1a'
+  },
+  {
+    'code': 'v1b'
+  },
+  {
+    'code': 'v1c'
+  },
+  {
+    'code': 'v1d'
+  },
+  {
+    'code': 'v1e'
+  },
+  {
+    'code': 'v1f'
+  },
+  {
+    'code': 'v1g'
+  },
+  {
+    'code': 'v1h'
+  },
+  {
+    'code': 'v1i'
+  },
+  {
     'code': 'v2'
   },
   {
     'code': 'v20'
+  },
+  {
+    'code': 'v20a'
+  },
+  {
+    'code': 'v20b'
+  },
+  {
+    'code': 'v20c'
+  },
+  {
+    'code': 'v20d'
+  },
+  {
+    'code': 'v20e'
+  },
+  {
+    'code': 'v20f'
+  },
+  {
+    'code': 'v20g'
+  },
+  {
+    'code': 'v20h'
+  },
+  {
+    'code': 'v20i'
+  },
+  {
+    'code': 'v20j'
+  },
+  {
+    'code': 'v20k'
+  },
+  {
+    'code': 'v20l'
   },
   {
     'code': 'v21'
@@ -2200,6 +2824,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'v23'
+  },
+  {
+    'code': 'v23a'
   },
   {
     'code': 'v24'
@@ -2217,7 +2844,16 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'v28'
   },
   {
+    'code': 'v28a'
+  },
+  {
     'code': 'v29'
+  },
+  {
+    'code': 'v29a'
+  },
+  {
+    'code': 'v2a'
   },
   {
     'code': 'v3'
@@ -2226,13 +2862,22 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'v30'
   },
   {
+    'code': 'v30a'
+  },
+  {
     'code': 'v31'
+  },
+  {
+    'code': 'v31a'
   },
   {
     'code': 'v32'
   },
   {
     'code': 'v33'
+  },
+  {
+    'code': 'v33a'
   },
   {
     'code': 'v34'
@@ -2247,6 +2892,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'v37'
   },
   {
+    'code': 'v37a'
+  },
+  {
     'code': 'v38'
   },
   {
@@ -2256,7 +2904,10 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'v4'
   },
   {
-    'code': 'v48'
+    'code': 'v40'
+  },
+  {
+    'code': 'v40a'
   },
   {
     'code': 'v5'
@@ -2268,13 +2919,16 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'v7'
   },
   {
+    'code': 'v7a'
+  },
+  {
+    'code': 'v7b'
+  },
+  {
     'code': 'v8'
   },
   {
     'code': 'v9'
-  },
-  {
-    'code': 'v96'
   },
   {
     'code': 'w1'
@@ -2296,6 +2950,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'w14'
+  },
+  {
+    'code': 'w14a'
   },
   {
     'code': 'w15'
@@ -2337,22 +2994,22 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'w24'
   },
   {
+    'code': 'w24a'
+  },
+  {
     'code': 'w25'
   },
   {
     'code': 'w3'
   },
   {
+    'code': 'w3a'
+  },
+  {
     'code': 'w4'
   },
   {
     'code': 'w5'
-  },
-  {
-    'code': 'w54'
-  },
-  {
-    'code': 'w59'
   },
   {
     'code': 'w6'
@@ -2365,6 +3022,9 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
   },
   {
     'code': 'w9'
+  },
+  {
+    'code': 'w9a'
   },
   {
     'code': 'x1'
@@ -2382,10 +3042,16 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'x4a'
   },
   {
+    'code': 'x4b'
+  },
+  {
     'code': 'x5'
   },
   {
     'code': 'x6'
+  },
+  {
+    'code': 'x6a'
   },
   {
     'code': 'x7'
@@ -2394,10 +3060,16 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'x8'
   },
   {
+    'code': 'x8a'
+  },
+  {
     'code': 'y1'
   },
   {
-    'code': 'y10'
+    'code': 'y1a'
+  },
+  {
+    'code': 'y2'
   },
   {
     'code': 'y3'
@@ -2418,129 +3090,6 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'y8'
   },
   {
-    'code': 'z2a'
-  },
-  {
-    'code': 'z2b'
-  },
-  {
-    'code': 'z2c'
-  },
-  {
-    'code': 'aa10'
-  },
-  {
-    'code': 'aa11'
-  },
-  {
-    'code': 'aa12'
-  },
-  {
-    'code': 'aa16'
-  },
-  {
-    'code': 'aa28'
-  },
-  {
-    'code': 'aa7a'
-  },
-  {
-    'code': 'aa8'
-  },
-  {
-    'code': 'aa9'
-  },
-  {
-    'code': 'd218a'
-  },
-  {
-    'code': 'd24a'
-  },
-  {
-    'code': 'd280a'
-  },
-  {
-    'code': 'd36a'
-  },
-  {
-    'code': 'l6'
-  },
-  {
-    'code': 'l7a'
-  },
-  {
-    'code': 'm41'
-  },
-  {
-    'code': 'n20'
-  },
-  {
-    'code': 'n22'
-  },
-  {
-    'code': 'n33'
-  },
-  {
-    'code': 'n37'
-  },
-  {
-    'code': 'n41'
-  },
-  {
-    'code': 'n5a'
-  },
-  {
-    'code': 'o15a'
-  },
-  {
-    'code': 'o29a'
-  },
-  {
-    'code': 'o50'
-  },
-  {
-    'code': 'p4a'
-  },
-  {
-    'code': 'r22a'
-  },
-  {
-    'code': 'r24a'
-  },
-  {
-    'code': 'r24b'
-  },
-  {
-    'code': 'r24c'
-  },
-  {
-    'code': 'r25a'
-  },
-  {
-    'code': 'r25b'
-  },
-  {
-    'code': 's40a'
-  },
-  {
-    'code': 'u40a'
-  },
-  {
-    'code': 'u6a'
-  },
-  {
-    'code': 'v1a'
-  },
-  {
-    'code': 'w24a'
-  },
-  {
-    'code': 'y1a'
-  },
-  {
-    'code': 'y2'
-  },
-  {
     'code': 'z1'
   },
   {
@@ -2550,7 +3099,85 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'z11'
   },
   {
+    'code': 'z12'
+  },
+  {
+    'code': 'z13'
+  },
+  {
+    'code': 'z14'
+  },
+  {
+    'code': 'z15'
+  },
+  {
+    'code': 'z15a'
+  },
+  {
+    'code': 'z15b'
+  },
+  {
+    'code': 'z15c'
+  },
+  {
+    'code': 'z15d'
+  },
+  {
+    'code': 'z15e'
+  },
+  {
+    'code': 'z15f'
+  },
+  {
+    'code': 'z15g'
+  },
+  {
+    'code': 'z15h'
+  },
+  {
+    'code': 'z15i'
+  },
+  {
+    'code': 'z16'
+  },
+  {
+    'code': 'z16a'
+  },
+  {
+    'code': 'z16b'
+  },
+  {
+    'code': 'z16c'
+  },
+  {
+    'code': 'z16d'
+  },
+  {
+    'code': 'z16e'
+  },
+  {
+    'code': 'z16f'
+  },
+  {
+    'code': 'z16g'
+  },
+  {
+    'code': 'z16h'
+  },
+  {
     'code': 'z2'
+  },
+  {
+    'code': 'z2a'
+  },
+  {
+    'code': 'z2b'
+  },
+  {
+    'code': 'z2c'
+  },
+  {
+    'code': 'z2d'
   },
   {
     'code': 'z3'
@@ -2559,10 +3186,19 @@ export const gardinerGlyphs: Array<GardinerGlyph> = [
     'code': 'z3a'
   },
   {
+    'code': 'z3b'
+  },
+  {
     'code': 'z4'
   },
   {
+    'code': 'z4a'
+  },
+  {
     'code': 'z5'
+  },
+  {
+    'code': 'z5a'
   },
   {
     'code': 'z6'
@@ -2630,6 +3266,14 @@ export const gardinerGlyphCategories: Array<GardinerGlyphCategory> = [
   {
     label: 'N: Sky, earth, water',
     prefix: 'N',
+  },
+  {
+    label: 'NL: Nomes of Lower Egypt items',
+    prefix: 'NL',
+  },
+  {
+    label: 'NU: Nomes of Upper Egypt items',
+    prefix: 'NU',
   },
   {
     label: 'O: Buildings, parts of buildings, etc.',
