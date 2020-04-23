@@ -32,3 +32,8 @@ steps:
   args: ['app', 'deploy', './dist/app.yaml']
   waitFor:
     - build
+
+artifacts:
+  objects:
+    location: 'gs://${_ARTIFACT_BUCKET_}/workbench/$SHORT_SHA'
+    paths: ['dist/']
