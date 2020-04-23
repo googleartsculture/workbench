@@ -13,7 +13,7 @@ steps:
     - |
       tar xvzf dist.tar.gz -C ./
   waitFor:
-    - build
+    - get-artifact
 - name: 'gcr.io/cloud-builders/gcloud'
   id: deploy
   args:
