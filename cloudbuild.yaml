@@ -29,19 +29,20 @@ steps:
   waitFor:
     - install
 - name: 'gcr.io/cloud-builders/gcloud'
+  id: deploy
   args: ['app', 'deploy', './dist/app.yaml']
   waitFor:
     - build
 - name: 'gcr.io/cloud-builders/gcloud'
+  id: zip
   entrypoint: /bin/sh
   args:
     - -c
     - |
-      zip -r dist.zip dist/
+      tar cvzf dist.tar.gz dist
   waitFor:
     - build
-
 artifacts:
   objects:
     location: 'gs://${_ARTIFACT_BUCKET_}/workbench/$SHORT_SHA'
-    paths: ['dist.zip']
+    paths: ['dist.tar.gz']
