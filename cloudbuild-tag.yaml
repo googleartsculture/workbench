@@ -20,8 +20,7 @@ steps:
     - app
     - deploy
     - ./dist/app.yaml
-    - --project
-    - ${_STAGING_PROJECT_}
+    - --project=${_STAGING_PROJECT_}
   waitFor:
     - deflate
   
