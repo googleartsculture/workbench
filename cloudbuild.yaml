@@ -34,7 +34,7 @@ steps:
   waitFor:
     - build
 - name: 'gcr.io/cloud-builders/gcloud'
-  id: zip
+  id: gzip
   entrypoint: /bin/sh
   args:
     - -c

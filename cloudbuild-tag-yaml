@@ -1,0 +1,25 @@
+steps:
+- name: 'gcr.io/cloud-builders/gsutil'
+  id: get-artifact
+  args:
+    - cp 
+    - 'gs://${_ARTIFACT_BUCKET_}/workbench/$SHORT_SHA/dist.tar.gz'
+    - '.'
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: deflate
+  entrypoint: /bin/sh
+  args:
+    - -c
+    - |
+      tar xvzf dist.tar.gz -C ./
+  waitFor:
+    - build
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: deploy
+  args:
+    - app
+    - deploy
+    - --project ${_STAGING_PROJECT_}
+  waitFor:
+    - deflate
+  
