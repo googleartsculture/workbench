@@ -21,6 +21,7 @@ steps:
     - deploy
     - ./dist/app.yaml
     - --project=${_STAGING_PROJECT_}
+    - --log-http
   waitFor:
     - deflate
   
