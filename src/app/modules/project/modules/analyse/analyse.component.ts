@@ -1,4 +1,5 @@
 import { ClassificationResult, ClassificationRequest } from '../../../../core/api/classification.modal';
+import { ConfirmClassificationRequest } from '../../../../core/api/confirm-classification.model';
 import { Settings } from './../../../settings/settings.model';
 import { NotificationsService } from './../../../../core/notifications/notifications.service';
 import { includes, filter, pull, find, orderBy, map, uniq, concat } from 'lodash';
@@ -21,6 +22,7 @@ import { TranslationRequest, TranslationResult} from '../../../../core/api/trans
 import { WordStorage } from '../../../../core/storage/storage.model';
 import Sortable from 'sortablejs';
 import { gardinerGlyphs } from '../../shared/gardiner-glyphs.model';
+import { GlyphPickerModalComponent } from '../../shared/glyph-picker-modal/glyph-picker-modal.component';
 
 interface WordCache {
   parentId: Sentence['id'];
@@ -64,6 +66,9 @@ export class AnalyseComponent implements OnDestroy {
       identify: {
         enabled: false,
         loading: false,
+      },
+      confirmation: {
+        enabled: false
       },
       classification: {
         enabled: false,
@@ -111,6 +116,7 @@ export class AnalyseComponent implements OnDestroy {
         this.config.ai.identify.enabled = includes(servicesEnabled, 'clusterAnalysis');
         this.config.ai.classification.enabled = includes(servicesEnabled, 'classification');
         this.config.ai.translation.enabled = includes(servicesEnabled, 'translation');
+        this.config.ai.confirmation.enabled = includes(servicesEnabled, 'confirmation');
       }),
       this.dataService.settingsObs.subscribe((settings: Settings) => {
         this.settings = settings;
@@ -376,6 +382,25 @@ export class AnalyseComponent implements OnDestroy {
         this.config.ai.classification.loading = false;
       });
     }
+  }
+
+  confirmGlyphClassification(glyph: Glyph): Promise<void> {
+
+    return new Promise((resolve, reject) => {
+      this.workspace.getPolyImgOfFacsimile(glyph).then((imgSrc: string) => {
+        const data: ConfirmClassificationRequest = {
+          image: imgSrc,
+          gardinerCode: glyph.gardinerCode
+        };
+
+        this.apiService.post('confirmation', data).then(() => {
+          resolve();
+        })
+        .catch((e) => {
+          reject(e);
+        });
+      });
+    });
   }
 
   autoClassifyGlyph (glyph: Glyph): Promise<void> {

@@ -23,6 +23,9 @@ export interface AnalyseAIConfig {
     loading: boolean;
     glyphs: Array<Glyph['id']>
   };
+  confirmation: {
+    enabled: boolean;
+  };
   translation: {
     enabled: boolean;
     active: boolean;

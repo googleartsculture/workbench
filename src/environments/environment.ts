@@ -4,8 +4,10 @@ export const environment = {
     config: {
       apiServices: {
         enabled: true,
-        // Replace this value.
-        key: 'CHANGE_ME',
+        key: 'DEPRECATED',
+        confirmation: {
+          url: 'https://confrimation-api-dot-rosetta-ai-dev.ew.r.appspot.com'
+        },
         translation: {
           // Set this to the correct backend.
           url: 'https://translation-api-dot-rosetta-ai-dev.appspot.com '

@@ -280,6 +280,11 @@
                                       </div>
                                     </div>
                                     <div class="c-tools is-full" *ngIf="!glyph.selected">
+                                      <button class="c-button" *ngIf="config.ai.confirmation.enabled"
+                                        type="button"
+                                        (click)="confirmGlyphClassification(glyph)">
+                                          Confirm
+                                      </button>
                                       <button class="c-button c-glyph__select-btn"
                                         type="button"
                                         (click)="selectGlyph(glyph)"

@@ -21,8 +21,7 @@ export class ApiService {
   ) {
     // Test for service availbility
     if (
-      environment.config.apiServices.enabled &&
-      environment.config.apiServices.key
+      environment.config.apiServices.enabled
     ) {
       if (environment.config.apiServices.clusterAnalysis.url) {
         this.servicesEnabled.push('clusterAnalysis');
@@ -35,6 +34,9 @@ export class ApiService {
       }
       if (environment.config.apiServices.translation.url) {
         this.servicesEnabled.push('translation');
+      }
+      if (environment.config.apiServices.confirmation.url) {
+        this.servicesEnabled.push('confirmation');
       }
       this.servicesEnabledSub.next(this.servicesEnabled);
     }
@@ -64,6 +66,9 @@ export class ApiService {
         break;
       case 'translate':
         url = `${ environment.config.apiServices.translation.url }/translation`;
+        break;
+      case 'confirmation':
+        url = `${ environment.config.apiServices.confirmation.url }/confirmation`;
         break;
     }
 
