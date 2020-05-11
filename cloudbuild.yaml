@@ -4,13 +4,13 @@ steps:
   args:
     - cp
     - -r
-    - 'gs://${_TARGET_PROJECT_ID_}-configs/workbench/src/environments/'
+    - 'gs://${_TARGET_PROJECT_}-configs/workbench/src/environments/'
     - ./src/
 - name: 'gcr.io/cloud-builders/gsutil'
   id: copy-app
   args:
     - cp
-    - 'gs://${_TARGET_PROJECT_ID_}-configs/workbench/src/app.yaml'
+    - 'gs://${_TARGET_PROJECT_}-configs/workbench/src/app.yaml'
     - ./src/
 
 - name: 'justingrayston/chrome_node:latest'
@@ -30,7 +30,11 @@ steps:
     - install
 - name: 'gcr.io/cloud-builders/gcloud'
   id: deploy
-  args: ['app', 'deploy', './dist/app.yaml']
+  args:
+    - app
+    - deploy
+    - ./dist/app.yaml
+    - --project=${_TARGET_PROJECT_}
   waitFor:
     - build
 - name: 'gcr.io/cloud-builders/gcloud'
@@ -44,5 +48,5 @@ steps:
     - build
 artifacts:
   objects:
-    location: 'gs://${_ARTIFACT_BUCKET_}/workbench/$SHORT_SHA'
+    location: 'gs://${_ARTIFACT_BUCKET_}/workbench/${_TARGET_PROJECT_}/$SHORT_SHA'
     paths: ['dist.tar.gz']
