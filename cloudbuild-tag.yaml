@@ -21,12 +21,16 @@ steps:
     - -r
     - 'gs://${_TARGET_PROJECT_}-configs/workbench/src/environments/'
     - ./dist/
+  waitFor:
+    - deflate
 - name: 'gcr.io/cloud-builders/gsutil'
   id: copy-app
   args:
     - cp
     - 'gs://${_TARGET_PROJECT_}-configs/workbench/src/app.yaml'
     - ./dist/
+  waitFor:
+    - deflate
 - name: 'gcr.io/cloud-builders/gcloud'
   id: deploy
   args:
@@ -35,5 +39,6 @@ steps:
     - ./dist/app.yaml
     - --project=${_TARGET_PROJECT_}
   waitFor:
-    - deflate
+    - copy-app
+    - copy-environs
   
