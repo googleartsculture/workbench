@@ -35,7 +35,8 @@ export class ApiService {
       if (environment.config.apiServices.translation.url) {
         this.servicesEnabled.push('translation');
       }
-      if (environment.config.apiServices.confirmation.url) {
+      if (environment.config.apiServices.confirmation
+          && environment.config.apiServices.confirmation.url) {
         this.servicesEnabled.push('confirmation');
       }
       this.servicesEnabledSub.next(this.servicesEnabled);
@@ -68,7 +69,9 @@ export class ApiService {
         url = `${ environment.config.apiServices.translation.url }/translation`;
         break;
       case 'confirmation':
-        url = `${ environment.config.apiServices.confirmation.url }/confirmation`;
+        if (environment.config.apiServices.confirmation.url) {
+          url = `${ environment.config.apiServices.confirmation.url }/confirmation`;
+        }
         break;
     }
 
