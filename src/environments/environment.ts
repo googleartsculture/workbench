@@ -6,7 +6,7 @@ export const environment = {
         enabled: true,
         key: 'DEPRECATED',
         confirmation: {
-          url: 'https://confrimation-api-dot-rosetta-ai-dev.ew.r.appspot.com'
+          url: 'https://confrimation-api-rosetta-ai-dev.ew.r.appspot.com'
         },
         translation: {
           // Set this to the correct backend.

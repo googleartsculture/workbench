@@ -147,6 +147,11 @@ $auto-translate-text-hover: $text-dark;
     opacity: 1;
     visibility: visible;
   }
+  &:active {
+    .c-tool__icon {
+      fill: green;
+    }
+  }
 }
 
 // Glyph Selection
@@ -236,6 +241,7 @@ $auto-translate-text-hover: $text-dark;
     opacity: 1;
   }
 
+
   &.is-selected {
     opacity: 1;
 
@@ -306,6 +312,7 @@ $auto-translate-text-hover: $text-dark;
   .c-tool:hover & {
     fill: $tool-hover;
   }
+
 
   .c-tool--sentence & {
     transform: rotate(90deg);
