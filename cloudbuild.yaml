@@ -4,13 +4,13 @@ steps:
   args:
     - cp
     - -r
-    - 'gs://${PROJECT_ID}-configs/workbench/src/environments/'
+    - 'gs://${_TARGET_PROJECT_ID_}-configs/workbench/src/environments/'
     - ./src/
 - name: 'gcr.io/cloud-builders/gsutil'
   id: copy-app
   args:
     - cp
-    - 'gs://${PROJECT_ID}-configs/workbench/src/app.yaml'
+    - 'gs://${_TARGET_PROJECT_ID_}-configs/workbench/src/app.yaml'
     - ./src/
 
 - name: 'justingrayston/chrome_node:latest'
