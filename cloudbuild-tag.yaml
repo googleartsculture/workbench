@@ -14,6 +14,19 @@ steps:
       tar xvzf dist.tar.gz -C ./
   waitFor:
     - get-artifact
+- name: 'gcr.io/cloud-builders/gsutil'
+  id: copy-environs
+  args:
+    - cp
+    - -r
+    - 'gs://${_TARGET_PROJECT_}-configs/workbench/src/environments/'
+    - ./dist/
+- name: 'gcr.io/cloud-builders/gsutil'
+  id: copy-app
+  args:
+    - cp
+    - 'gs://${_TARGET_PROJECT_}-configs/workbench/src/app.yaml'
+    - ./dist/
 - name: 'gcr.io/cloud-builders/gcloud'
   id: deploy
   args:
