@@ -1,6 +1,7 @@
 export const environment = {
     appVersion: '',
     production: true,
+    googleAnalytics: 'UA-166245485-1',
     config: {
       apiServices: {
         enabled: true,
