@@ -104,12 +104,25 @@ $header-logo-svg-fill: color(app-grey-darkest);
 }
 
 .c-header__logo-link {
-  display: block;
+  height: 48px;
+}
+
+.c-header__logo-combined {
+  display: inline-block;
+  height: 48px;
+  width: 182px;
+}
+
+.c-header__logo-gac {
+  fill: #2b2b2b;
+  height: 26px;
+  width: 100%;
 }
 
 .c-header__logo-icon {
-  height: 30px;
-  width: 220px;
+  height: 25px;
+  width: 100%;
+  position: relative;
 }
 
 .c-header__current-route {
