@@ -14,7 +14,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build --prod --crossOrigin=use-credentials",
     "build-serve": "yarn build && superstatic ./dist --port 8080",
     "dev-docs": "compodoc --watch --serve",
     "build-docs": "compodoc",
