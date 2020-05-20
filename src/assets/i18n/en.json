@@ -78,7 +78,7 @@
 			},
 			"PROJECT": {
 				"IMG": "Project image",
-				"SUB_TITLE": "Upload your source file on the left side.",
+				"SUB_TITLE": "Upload your source file (.jpeg / .png) on the left side.",
 				"TITLE": "New project"
 			},
 			"TS": {
