@@ -33,7 +33,7 @@ export const environment = {
         webfontloaderConfig: {}
       },
       localisation: {
-        default: 'en-us',
+        default: 'en',
         langs: []
       }
     }
