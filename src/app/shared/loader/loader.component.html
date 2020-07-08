@@ -1,0 +1,21 @@
+<div
+  [ngClass]="{
+    'is-bg-light': appLoaderBgLight,
+    'is-bg-transparent': appLoaderBgTransparent,
+    'is-basic': appLoaderBasic,
+    'is-small': appLoaderSmall,
+    'is-small-dark': appLoaderSmallDark,
+    'is-aside': appLoaderAside,
+    'is-hidden-spinner': appLoaderHideSpinner
+  }"
+  class="c-loader"
+>
+  <app-svg-logo class="c-loader__logo"></app-svg-logo>
+  <div class="c-loader__copy">
+    <span class="c-loader__line-1">Google Arts & Culture</span>
+    <span class="c-loader__line-2">Presents</span>
+    <app-svg-fabricius-square-logo class="c-easter-icon-square c-loader__icon"></app-svg-fabricius-square-logo>
+    <span class="c-loader__line-3">A tool using the power of AI to help decode ancient languages</span>
+  </div>
+  <div class="c-loader__spinner"></div>
+</div>

@@ -1,0 +1,63 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+//================================================================================================//
+//
+//  ALERT COMPONENTS
+//
+//================================================================================================//
+
+// VARS
+$alert-background: color(app-white) !default;
+$alert-border: color(app-white, -25) !default;
+
+$alert-border-error: color(app-red-desaturated) !default;
+$color-alert-warning-border: #dd9292 !default;
+$color-alert-success-border: color(app-green) !default;
+
+// ELEMENTS
+
+.c-alert {
+  background-color: $alert-background;
+  padding: 5px 10px;
+  border-width: 0 0 0 4px;
+  border-style: solid;
+  border-color: $alert-border;
+  margin-bottom: 20px;
+
+  p {
+    font-size: 14px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.c-alert--error {
+  border-color: $alert-border-error;
+  color: $text-dark;
+}
+
+.c-alert--warning {
+  border-color: $color-alert-warning-border;
+  color: $text-dark;
+}
+
+.c-alert--success {
+  border-color: $color-alert-success-border;
+  color: $text-dark;
+}

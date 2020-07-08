@@ -1,0 +1,24 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-recommended-scss"
+  ],
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "at-rule-empty-line-before": null,
+    "block-no-empty": null,
+    "color-named": "never",
+    "declaration-block-no-redundant-longhand-properties": null,
+    "declaration-block-semicolon-space-before": "never",
+    "declaration-empty-line-before": null,
+    "declaration-no-important": true,
+    "max-nesting-depth": 4,
+    "number-leading-zero": "never",
+    "no-descending-specificity": null,
+    "selector-type-no-unknown": [true, {
+      "ignoreTypes": ["/app-[a-z0-9]/"]
+    }],
+  }
+}

@@ -1,0 +1,110 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+//================================================================================================//
+//
+//  GENERATE MODULE COMPONENTS
+//
+//================================================================================================//
+
+@import '../../../../../styles/app-init';
+
+// VARS
+$generate-border: #ddd !default;
+$generate-header-background: color(app-grey-lighter) !default;
+$generate-header-border: #ddd !default;
+$generate-background: color(app-grey-lightest) !default;
+
+$effects-background: color(app-white) !default;
+$effects-title-background: color(app-grey-darkest) !default;
+$effects-border: #ddd !default;
+$effects-setting-border: #ddd !default;
+
+$tool-size: 32px;
+$tool-color: color(app-yellow, 80, 1, app-black-yellow) !default;
+$tool-hover: color(app-yellow, 100, 1, app-black-yellow) !default;
+
+// ELEMENTS
+
+:host {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+// GENERATE
+
+.c-generate {
+  border-bottom: 1px solid $generate-border;
+  background-color: $generate-background;
+}
+
+.c-generate__title {
+  @include font-size-sm();
+  background-color: $generate-header-background;
+  line-height: 1;
+  margin: 0;
+  padding: 11px 15px;
+  text-transform: uppercase;
+}
+
+.c-generate__content {
+  padding: 11px 15px;
+}
+
+// EFFECT
+
+.c-effect {
+  background-color: $effects-background;
+  margin: 11px 0;
+}
+
+.c-effect__title {
+  @include font-size-sm();
+  background-color: $effects-title-background;
+  color: color(app-white);
+  font-size: 13px;
+  margin-bottom: 0;
+  padding: 8px 11px;
+  text-transform: uppercase;
+}
+
+// EFFECT SETTINGS LIST
+
+.c-settings {
+  border: 1px solid $effects-border;
+  padding: 11px;
+  margin: 0;
+  list-style: none;
+}
+
+.c-settings__item {
+  padding: 11px 0;
+  margin: 0;
+  border-width: 0 0 1px;
+  border-style: dotted;
+  border-color: $effects-setting-border;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+    border-width: 0;
+  }
+}

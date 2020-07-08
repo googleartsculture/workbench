@@ -1,0 +1,81 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import '../../../../../styles/app-init';
+
+// VARS
+
+$glyph-transparent: color(app-gold, null, 0);
+$glyph-hover-background: color(app-grey, null, .1) !default;
+$glyph-even-background: color(app-grey-lighter) !default;
+$glyph-highlight-background: color(app-yellow, 10) !default;
+$glyph-highlight-border: color(app-grey-lighter) !default;
+$glyph-border-transparent: color(app-yellow, -10, 0) !default;
+$glyph-svg-fill: color(app-grey, -5) !default;
+
+// ELEMENTS
+
+:host {}
+
+.c-glyph-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  &.is-hidden {
+    opacity: 0;
+  }
+}
+
+.c-glyph {
+  @include animate(background-color border-color);
+  flex-shrink: 0;
+  margin-bottom: 0;
+  width: 20%;
+  background: $glyph-transparent;
+
+  &:nth-of-type(2n) {
+    background: $glyph-even-background;
+  }
+
+  &:hover {
+    background: $glyph-hover-background;
+  }
+
+  &.is-highlighted {
+    background: $glyph-highlight-background;
+  }
+}
+
+.c-glyph__btn {
+  @include font-primary-heavy;
+  align-items: center;
+  color: $text-medium;
+  display: flex;
+  flex-direction: column;
+  font-size: 11px;
+  padding: 10px;
+  text-align: left;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.c-glyph__icon {
+  fill: $glyph-svg-fill;
+  height: 50px;
+  margin-bottom: 10px;
+  position: relative;
+  width: 50px;
+}

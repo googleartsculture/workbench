@@ -1,0 +1,104 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import '../../../../../styles/app-init';
+
+$info-border: #ddd !default;
+$info-title-background: #e0e0e0 !default;
+$info-content-background: color(app-grey-lightest) !default;
+
+$table-border: color(app-white-yellow, -25, 1) !default;
+$table-background: color(app-white-yellow) !default;
+$table-head-background: color(app-orange-desaturated, 75, 1, app-white-yellow) !default;
+
+:host {}
+
+.c-info {}
+
+.c-info__header {
+  align-items: stretch;
+  background-color: $info-title-background;
+  display: flex;
+  justify-content: stretch;
+  padding: 11px 15px;
+}
+
+.c-info__content {
+  background-color: $info-content-background;
+  border-color: $info-border;
+  border-style: solid;
+  border-width: 1px 0;
+  padding: 15px;
+}
+
+.c-info__title {
+  color: $text-medium;
+  font-size: 13px;
+  font-weight: $font-weight-heavy;
+  text-transform: uppercase;
+}
+
+.c-pair__key {
+  margin-right: 5px;
+}
+
+.c-pair {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.c-preview {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.c-preview__item {
+  margin: 10px 15px 30px 0;
+  max-width: 300px;
+  width: 100%;
+}
+
+.c-preview__image {
+  min-height: 250px;
+  position: relative;
+}
+
+.c-dev-table {
+  @include animate(transform, $animation-time-short);
+  border-color: $table-border;
+  background-color: $table-background;
+  color: $text-dark;
+  margin-top: 20px;
+}
+
+.c-dev-table__header,
+.c-dev-table__cell {
+  border-color: $table-border;
+}
+
+.c-dev-table__header {
+  @include font-secondary-heavy();
+  @include font-size-sm();
+  padding: 5px 11px;
+  background-color: $table-head-background;
+  margin-bottom: 0;
+}
+
+.c-table-reveal {
+  position: relative;
+  overflow: hidden;
+}

@@ -1,0 +1,75 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import '../styles/app-init';
+
+:host {
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-grow: 1;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+// STAGE STRUCTURE
+.c-stage {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: $layout-min-width;
+}
+
+.c-stage__header {
+  flex-direction: row;
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+.c-stage__main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  position: relative;
+}
+
+.c-stage__footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+
+// HEADER
+.c-header {
+  background-color: $color-header-bg;
+  height: $layout-header-height;
+}
+
+// MAIN
+.c-main {}
+
+// FOOTER
+.c-footer {
+  background-color: $color-footer-bg;
+  padding: 4px 30px;
+}

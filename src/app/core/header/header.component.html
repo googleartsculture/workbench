@@ -1,0 +1,80 @@
+<div class="c-header__logo c-logo">
+  <a class="c-header__logo-link" routerLink="/" aria-label="FABRICIUS">
+    <span class="c-header__logo-combined">
+      <app-svg-fabricius-logo class="c-header__logo-icon c-easter-icon"></app-svg-fabricius-logo>
+      <app-svg-by-gac-logo class="c-header__logo-gac"></app-svg-by-gac-logo>
+    </span>
+  </a>
+</div>
+<div class="c-header__content">
+  <h1 class="c-header__title" *ngIf="project?.properties.title">{{ project?.properties.title }}</h1>
+  <div class="c-header__status">
+    <div class="c-header__status-item"
+      *ngIf="apiServicesEnabledCount === 0"
+      appTooltip=""
+      appTooltipTitle="{{ 'CORE.HEADER.API.DISABLED' | translate }}"
+      appTooltipPosition="left">
+      <app-svg-offline class="c-icon c-icon--lg"></app-svg-offline>
+    </div>
+    <div class="c-header__status-item c-header__status-item--semi" *ngIf="apiServicesEnabledCount > 0 && apiServicesEnabledCount < 3"
+      appTooltip=""
+      appTooltipTitle="{{ 'CORE.HEADER.API.PART_DISABLED' | translate }}"
+      appTooltipPosition="left">
+      <app-svg-offline class="c-icon c-icon--lg"></app-svg-offline>
+    </div>
+  </div>
+</div>
+
+<nav class="c-header__nav" *ngIf="currentProjectRoute">
+  <ul class="c-header__nav-list o-list">
+    <li class="c-header__nav-list-item">
+      <button class="c-header__nav-list-btn"
+        (click)="navigate('process')"
+        [ngClass]="{ 'is-active': currentProjectRoute === 'process' ||
+         currentProjectRoute !== 'process' && currentProjectRoute !== 'generate' && currentProjectRoute !== 'analyse' &&
+         currentProjectRoute !== 'annotate' && currentProjectRoute !== 'properties' }"
+      >
+        <span class="c-header__nav-icon">1</span>
+        {{ 'CORE.HEADER.PROCESS' | translate }}
+      </button>
+    </li>
+    <li class="c-header__nav-list-item">
+      <button class="c-header__nav-list-btn"
+        (click)="navigate('generate')"
+        [ngClass]="{ 'is-active': currentProjectRoute === 'generate' }"
+      >
+        <span class="c-header__nav-icon">2</span>
+        {{'CORE.HEADER.GENERATE' | translate }}
+      </button>
+    </li>
+    <li class="c-header__nav-list-item">
+      <button class="c-header__nav-list-btn"
+        (click)="navigate('analyse')"
+        [ngClass]="{ 'is-active': currentProjectRoute === 'analyse' }"
+      >
+        <span class="c-header__nav-icon">3</span>
+        {{ 'CORE.HEADER.ANALYSE' | translate }}
+      </button>
+    </li>
+    <li class="c-header__nav-list-item">
+      <button class="c-header__nav-list-btn"
+        (click)="navigate('annotate')"
+        [ngClass]="{ 'is-active': currentProjectRoute === 'annotate' }"
+      >
+        <span class="c-header__nav-icon">4</span>
+        {{ 'CORE.HEADER.ANNOTATE' | translate }}
+      </button>
+    </li>
+    <li class="c-header__nav-list-item">
+      <button class="c-header__nav-list-btn"
+        (click)="navigate('properties')"
+        [ngClass]="{ 'is-active': currentProjectRoute === 'properties' }"
+      >
+        <span class="c-header__nav-icon">
+          <app-svg-config-icon class="c-header__nav-icon__svg"></app-svg-config-icon>
+        </span>
+        {{ 'CORE.HEADER.PROPERTIES' | translate }}
+      </button>
+    </li>
+  </ul>
+</nav>

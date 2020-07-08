@@ -1,0 +1,80 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+//================================================================================================//
+//
+//  COLOR FUNCTIONS
+//
+//================================================================================================//
+
+// FUNCTIONS
+
+@function color($color, $tint: null, $alpha: 1, $mix: null, $lib: $colors) {
+
+  @if map-has-key($lib, $color) {
+    $col: map-get($lib, $color);
+    @if ($tint != null) {
+      @return _tint($col, $tint, $alpha, $mix);
+    }
+    @if ($alpha < 1) {
+      @return _fadeout($col, $alpha);
+    }
+    @return $col;
+  }
+  @warn "Unknown `#{$color}` in `#{$lib}`.";
+  @return null;
+}
+
+@function _tint($col, $tint, $alpha, $mix) {
+
+  $tnt: 0;
+
+  @if (type_of($tint) == number) {
+    $tnt: abs($tint);
+  }
+
+  @else if map-has-key($tints, $tint) {
+    $tnt: map-get($tints, $tint);
+  }
+
+  @if ($mix == null) {
+    @if ($tint > 0) {
+      $mix: app-white;
+    }
+    @else {
+      $mix: app-black;
+    }
+  }
+
+  @if ($tnt > 0) {
+    $mix: color($mix);
+    @if ($alpha < 1) {
+      @return _fadeout(mix($mix, $col, $tnt), $alpha);
+    }
+    @return mix($mix, $col, $tnt);
+  }
+  @warn "Unknown `#{$tint}` in $tints.";
+  @return null;
+}
+
+@function _fadeout($col, $alpha) {
+  @if ($alpha < 1) {
+    $a: 1 - $alpha;
+    @return fade-out($col, $a);
+  }
+  @warn "Values are incompatable with _transparent.";
+  @return null;
+}

@@ -1,0 +1,431 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+//================================================================================================//
+//
+//  BUTTON COMPONENTS
+//
+//================================================================================================//
+
+// VARS
+$button-opacity-disabled: .25 !default;
+
+$button-background: color(app-grey) !default;
+$button-background-disabled: color(app-grey) !default;
+
+$button-label: color(app-white) !default;
+$button-label-hover: color(app-yellow) !default;
+$button-label-active: color(app-yellow, -15) !default;
+$button-label-disabled: color(app-white) !default;
+
+$button-title-label: color(app-grey, 75, 1, app-black) !default;
+$button-title-label-hover: color(app-grey, 45, 1, app-black) !default;
+$button-title-label-active: color(app-grey, 85, 1, app-black) !default;
+$button-title-label-disabled: color(app-grey, 75, 1, app-black) !default;
+
+$button-medium-background: color(app-yellow) !default;
+$button-medium-background-disabled: color(app-grey, -25) !default;
+$button-medium-label: color(app-white) !default;
+$button-medium-label-hover: color(app-white) !default;
+$button-medium-label-active: color(app-white, -15) !default;
+$button-medium-label-disabled: color(app-white) !default;
+
+$button-dark-background: color(app-grey-dark) !default;
+$button-dark-background-hover: color(app-grey-dark) !default;
+$button-dark-background-active: color(app-grey-dark) !default;
+$button-dark-background-disabled: color(app-grey-lighter) !default;
+$button-dark-label: color(app-white) !default;
+$button-dark-label-hover: color(app-yellow) !default;
+$button-dark-label-active: color(app-yellow) !default;
+$button-dark-label-disabled: $text-dark !default;
+
+$button-invert-background: transparent !default;
+$button-invert-border: color(app-grey-dark) !default;
+$button-invert-background-hover: color(app-grey-dark) !default;
+$button-invert-background-active: color(app-grey-dark) !default;
+$button-invert-background-disabled: color(app-grey-lighter) !default;
+$button-invert-label: $text-dark !default;
+$button-invert-label-hover: color(app-yellow) !default;
+$button-invert-label-active: color(app-white) !default;
+$button-invert-label-disabled: $text-dark !default;
+
+$button-tool-background: color(app-grey-darkest) !default;
+$button-tool-background-disabled: color(app-grey, 25) !default;
+
+$button-tool-label: color(app-white) !default;
+$button-tool-label-hover: color(app-white) !default;
+$button-tool-label-active: color(app-white, -15) !default;
+$button-tool-label-disabled: color(app-white) !default;
+
+// ELEMENTS
+
+.c-button {
+  @include animate(color background-color opacity);
+  background-color: $button-background;
+  border-radius: 18px;
+  border: none;
+  color: $button-label;
+  display: inline-block;
+  line-height: 1;
+  min-width: 130px;
+  position: relative;
+  transition: color $animation-time-short, background-color $animation-time-short;
+
+  &:link,
+  &:visited {
+    color: $button-label;
+  }
+
+  &:hover {
+    color: $button-label-hover;
+  }
+
+  &:active {
+    color: $button-label-active;
+  }
+
+  &.is-disabled,
+  &:disabled {
+    background-color: $button-background-disabled;
+    pointer-events: none;
+    color: $button-label-disabled;
+    opacity: $button-opacity-disabled;
+
+    &:hover {
+      color: $button-label-disabled;
+      cursor: default;
+    }
+  }
+
+  &.is-loading {
+    pointer-events: none;
+
+    &:hover,
+    &:active {
+      cursor: default;
+    }
+  }
+}
+
+.c-button--title-icon,
+.c-button--icon {
+  min-width: 0;
+  background-color: transparent;
+}
+
+.c-button--title {
+  background: transparent;
+  color: $button-title-label;
+  justify-content: flex-start;
+
+  &:link,
+  &:visited {
+    color: $button-title-label;
+  }
+
+  &:hover {
+    color: $button-title-label-hover;
+  }
+
+  &:active {
+    color: $button-title-label-active;
+  }
+
+  &.is-disabled,
+  &:disabled {
+    background: transparent;
+    color: $button-title-label-disabled;
+
+    &:hover {
+      color: $button-title-label-disabled;
+    }
+  }
+}
+
+.c-button--dark {
+  background-color: $button-dark-background;
+  color: $button-dark-label;
+  font-size: 14px;
+
+  &:link,
+  &:visited {
+    background-color: $button-dark-background;
+    color: $button-dark-label;
+  }
+
+  &.is-active,
+  &:hover {
+    background-color: $button-dark-background-hover;
+    color: $button-dark-label-hover;
+  }
+
+  &:active {
+    background-color: $button-dark-background-active;
+    color: $button-dark-label-active;
+  }
+
+  &.is-disabled,
+  &:disabled {
+    background-color: $button-dark-background-disabled;
+    color: $button-dark-label-disabled;
+    pointer-events: none;
+
+    &:hover {
+      cursor: default;
+      color: $button-dark-label-disabled;
+    }
+  }
+}
+
+.c-button--invert {
+  background-color: $button-invert-background;
+  border: 2px solid $button-invert-border;
+  color: $button-invert-label;
+  font-size: 14px;
+
+  &.c-button--bumper .c-button__drop {
+    min-height: 50px;
+  }
+
+  &:link,
+  &:visited {
+    background-color: $button-invert-background;
+    color: $button-invert-label;
+  }
+
+  &.is-active,
+  &:hover {
+    background-color: $button-invert-background-hover;
+    color: $button-invert-label-hover;
+  }
+
+  &:active {
+    background-color: $button-invert-background-active;
+    color: $button-invert-label-active;
+  }
+
+  &.is-disabled,
+  &:disabled {
+    background-color: $button-invert-background-disabled;
+    color: $button-invert-label-disabled;
+    pointer-events: none;
+
+    &:hover {
+      cursor: default;
+      color: $button-invert-label-disabled;
+    }
+  }
+}
+
+.c-button--tool {
+  min-width: 0;
+  background-color: $button-tool-background;
+  border-radius: 0;
+  color: $button-tool-label;
+
+  &:link,
+  &:visited {
+    color: $button-tool-label;
+  }
+
+  &:hover {
+    color: $button-tool-label-hover;
+  }
+
+  &.is-active {
+    color: $button-tool-label-active;
+  }
+
+  &:active {
+    color: $button-tool-label-active;
+  }
+
+  &.is-disabled,
+  &:disabled {
+    background-color: $button-tool-background-disabled;
+    color: $button-tool-label-disabled;
+
+    &:hover {
+      color: $button-tool-label-disabled;
+    }
+  }
+}
+
+.c-button--full {
+  width: 100%;
+
+  + .c-button--full {
+    margin-top: 5px;
+  }
+}
+
+.c-button--bumper {
+  border-radius: 25px;
+  font-size: 20px;
+  overflow: hidden;
+
+  + .c-button--bumper {
+    margin-top: 15px;
+  }
+}
+
+.c-button__drop {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px 20px 12px;
+
+  .c-button--title & {
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 11px 10px 11px 15px;
+  }
+
+  .c-button--title-icon & {
+    padding: 11px;
+  }
+
+  .c-button--bumper & {
+    min-height: 54px;
+  }
+
+  .c-button--icon & {
+    padding: 10px;
+  }
+
+  .c-button--slim & {
+    padding: 2px;
+  }
+
+  .c-button--tool & {
+    padding: 12px 6px;
+  }
+}
+
+.c-button__label {
+  padding-top: 2px;
+
+  .c-button--title-icon &,
+  .c-button--tool &,
+  .c-button--icon & {
+    display: none;
+  }
+
+  .c-button__icon + & {
+    margin-left: 10px;
+  }
+
+  .is-loading & {
+    opacity: 0;
+  }
+}
+
+.c-button__loader {
+
+}
+
+.c-button__icon {
+  fill: $button-label;
+  min-width: 0;
+  transition: fill $animation-time-short;
+
+  .is-loading & {
+    fill: transparent !important; // stylelint-disable-line declaration-no-important
+  }
+
+  .c-button &,
+  .c-button:link &,
+  .c-button:visited & {
+    fill: $button-label;
+  }
+
+  .c-button:hover & {
+    fill: $button-label-hover;
+  }
+
+  .c-button:active & {
+    fill: $button-label-active;
+  }
+
+  .c-button.is-disabled &,
+  .c-button:disabled &,
+  .c-button:disabled:hover & {
+    fill: $button-label-disabled;
+  }
+
+  .c-button--title-icon &,
+  .c-button--title-icon:link &,
+  .c-button--title-icon:visited &,
+  .c-button--title &,
+  .c-button--title:link &,
+  .c-button--title:visited & {
+    fill: $button-title-label;
+  }
+
+  .c-button--title-icon:hover &,
+  .c-button--title:hover & {
+    fill: $button-title-label-hover;
+  }
+
+  .c-button--title-icon:active &,
+  .c-button--title:active & {
+    fill: $button-title-label-active;
+  }
+
+  .c-button--title-icon.is-disabled &,
+  .c-button--title-icon:disabled &,
+  .c-button--title-icon:disabled:hover &,
+  .c-button--title.is-disabled &,
+  .c-button--title:disabled &,
+  .c-button--title:disabled:hover & {
+    fill: $button-title-label-disabled;
+  }
+
+  .c-button--dark &,
+  .c-button--dark:link &,
+  .c-button--dark:visited & {
+    fill: $button-dark-label;
+  }
+
+  .c-button--dark:hover & {
+    fill: $button-dark-label-hover;
+  }
+
+  .c-button--dark:active & {
+    fill: $button-dark-label-active;
+  }
+
+  .c-button--dark.is-disabled &,
+  .c-button--dark:disabled &,
+  .c-button--dark:disabled:hover & {
+    fill: $button-dark-label-disabled;
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  .c-button__label + & {
+    margin-left: 10px;
+  }
+
+  .button--icon & {
+    margin: 0 !important; // stylelint-disable-line declaration-no-important
+  }
+}

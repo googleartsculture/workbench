@@ -1,0 +1,176 @@
+<div class="u-scroller">
+  <div class="o-page">
+
+    <div class="o-page__lhs o-page__lhs--basic">
+      <h1>{{ 'MODULES.PROJECT.MODULES.PROPERTIES.TITLE' | translate }}</h1>
+
+      <form #propertiesForm="ngForm" (ngSubmit)="save()">
+
+        <fieldset class="o-form-fieldset">
+          <legend class="o-form-legend">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.META.LEGEND' | translate }}</legend>
+          <div class="o-form-note">
+            <p>{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.META.NOTE' | translate }}</p>
+          </div>
+          <div class="o-form-row">
+            <label class="o-form-row__label" for="title">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.META.TITLE.INPUT' | translate }}</label>
+            <div class="o-form-row__input o-input c-textbox">
+              <input autocomplete="off" class="o-input__field c-textbox__field" type="text" name="title" id="title" #title="ngModel"
+                [(ngModel)]="formData.properties.title" required>
+            </div>
+            <div class="o-form-row__validation" [hidden]="title.valid || title.pristine">
+              {{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.META.TITLE.ALERT' | translate }}
+            </div>
+          </div>
+          <div class="o-form-row">
+            <label class="o-form-row__label" for="author">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.META.AUTHOR.INPUT' | translate }}</label>
+            <div class="o-form-row__input o-input c-textbox is-read-only">
+              <input autocomplete="off" class="o-input__field c-textbox__field" type="text" name="author" id="author" #author="ngModel"
+                [(ngModel)]="formData.properties.author" readonly required>
+            </div>
+            <div class="o-form-row__validation" [hidden]="author.valid || author.pristine">
+              {{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.META.AUTHOR.ALERT' | translate }}
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="o-form-fieldset">
+          <legend class="o-form-legend">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.SOURCE.LEGEND' | translate }}</legend>
+          <div class="o-form-note">
+            <p>{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.SOURCE.NOTE' | translate }}</p>
+          </div>
+          <div class="o-form-note">
+            <button class="c-button c-button--dark" type="button" (click)="addNewSource()">
+              <span class="c-button__drop">
+                <span class="c-button__label">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.SOURCE.BTN' | translate }}</span>
+                <app-svg-upload-img-icon class="c-button__icon c-icon c-icon--sm"></app-svg-upload-img-icon>
+                </span>
+            </button>
+          </div>
+          <div class="c-preview">
+            <div class="c-preview__item" *ngFor="let source of formData.sources; let i = index">
+              <div class="c-preview__image">
+                <app-image-upload [imageFile]="source.file" (imageFileChange)="onSourceChange($event, source)"></app-image-upload>
+              </div>
+              <div class="o-form-row">
+                <label class="o-form-row__label" for="sourceTitle_{{ i }}">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.SOURCE.INPUT' | translate }}</label>
+                <div class="o-form-row__input o-input c-textbox is-required">
+                  <input autocomplete="off" class="o-input__field c-textbox__field" type="text" name="sourceTitle_{{ i }}" id="sourceTitle_{{ i }}"
+                    [(ngModel)]="source.title" required>
+                </div>
+              </div>
+              <div class="o-form-row">
+                <button class="c-button c-button--dark" type="button" (click)="deleteSource(source)">
+                  <span class="c-button__drop">
+                    <span class="c-button__label">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.SOURCE.DELETE' | translate }}</span>
+                    <app-svg-trash-icon class="c-button__icon c-icon c-icon--sm"></app-svg-trash-icon>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="o-form-actions">
+          <div class="c-alert c-alert--success" *ngIf="config.states.saved">
+            <p>{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.SUCCESS' | translate }}</p>
+          </div>
+          <button class="c-button c-button--dark" type="submit" [disabled]="!config.states.sourceChanged && (propertiesForm.form.pristine || config.states.saving || !propertiesForm.form.valid)">
+            <span class="c-button__drop">
+              <span class="c-button__label" *ngIf="!config.states.saving">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.SUBMIT' | translate }}</span>
+              <span class="c-button__label" *ngIf="config.states.saving">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.FORM.SUBMITTING' | translate }}</span>
+              <app-svg-save-icon class="c-button__icon c-icon c-icon--sm"></app-svg-save-icon>
+            </span>
+          </button>
+        </div>
+
+      </form>
+
+      <br />
+      <div>
+        <button class="c-button c-button--dark" type="button" (click)="glyphDistribution.active = !glyphDistribution.active">
+          <span class="c-button__drop">
+            <span class="c-button__label" *ngIf="!glyphDistribution.active">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.DISTRIBUTION.BTN.SHOW' | translate }} ({{ glyphDistribution.count }})</span>
+            <app-svg-arrow-down-icon *ngIf="!glyphDistribution.active" class="c-button__icon c-icon c-icon--sm"></app-svg-arrow-down-icon>
+            <span class="c-button__label" *ngIf="glyphDistribution.active">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.DISTRIBUTION.BTN.HIDE' | translate }} ({{ glyphDistribution.count }})</span>
+            <app-svg-arrow-up-icon *ngIf="glyphDistribution.active" class="c-button__icon c-icon c-icon--sm"></app-svg-arrow-up-icon>
+          </span>
+        </button>
+        <div class="c-table-reveal" *ngIf="glyphDistribution.active">
+          <table class="o-table c-dev-table">
+            <tr class="o-table__row c-dev-table__row" *ngFor="let distribution of glyphDistribution.distributions">
+              <th class="o-table__header c-dev-table__header">{{ distribution.gardinerCode }}</th>
+              <td class="o-table__cell c-dev-table__cell">{{ distribution.count }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <aside class="o-page__rhs">
+      <div class="o-drawer__content">
+        <div class="c-sidebar">
+          <div class="c-sidebar__header">
+            <h2 class="c-sidebar__title">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.SIDEBAR.TITLE' | translate }}</h2>
+          </div>
+          <div class="c-sidebar__content">
+            <div class="c-info">
+              <div class="c-info__content">
+                <p class="c-pair">
+                  <strong class="c-pair__key">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.SIDEBAR.DATE.CREATE' | translate }}</strong>
+                  <span class="c-pair__value">{{ project?.created | date: 'medium' }}</span></p>
+                <p class="c-pair">
+                  <strong class="c-pair__key">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.SIDEBAR.DATE.UPDATE' | translate }}</strong>
+                  <span class="c-pair__value">{{ project?.updated | date: 'medium' }}</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="c-info">
+              <div class="c-info__header">
+                <h2 class="c-info__title">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.SIDEBAR.DOWNLOAD.TITLE' | translate }}</h2>
+              </div>
+              <div class="c-info__content">
+                <button type="button" class="c-button c-button--dark c-button--full" (click)="downloadFacsimile()">
+                  <span class="c-button__drop">
+                    <span class="c-button__label">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.SIDEBAR.DOWNLOAD.BTN.DOWNLOAD' | translate }}</span>
+                    <app-svg-download-icon class="c-button__icon c-icon c-icon--sm"></app-svg-download-icon>
+                  </span>
+                </button>
+                <button type="button" class="c-button c-button--dark c-button--full" (click)="downloadExport()">
+                  <span class="c-button__drop">
+                    <span class="c-button__label">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.SIDEBAR.DOWNLOAD.BTN.EXPORT' | translate }}</span>
+                    <app-svg-download-icon class="c-button__icon c-icon c-icon--sm"></app-svg-download-icon>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <div class="c-info">
+              <div class="c-info__header">
+                <h2 class="c-info__title">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.SIDEBAR.ACTION.HEAD' | translate }}</h2>
+              </div>
+              <div class="c-info__content">
+                <div class="c-alert c-alert--warning">
+                  <p>{{ 'MODULES.PROJECT.MODULES.PROPERTIES.SIDEBAR.ACTION.WARNING' | translate }}</p>
+                </div>
+                <button type="button" class="c-button c-button--dark c-button--full" (click)="deleteProject()">
+                  <span class="c-button__drop">
+                    <span class="c-button__label">{{ 'MODULES.PROJECT.MODULES.PROPERTIES.SIDEBAR.ACTION.DELETE' | translate }}</span>
+                    <app-svg-trash-icon class="c-button__icon c-icon c-icon--sm"></app-svg-trash-icon>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <app-loader [loading]="config.states.loading"></app-loader>
+  </div>
+
+</div>
+
+<app-facsimile-download-modal></app-facsimile-download-modal>
+<app-export-download-modal></app-export-download-modal>

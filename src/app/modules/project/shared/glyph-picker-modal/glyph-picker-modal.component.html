@@ -1,0 +1,39 @@
+<ngx-smart-modal #glyphPickerModal identifier="glyphPickerModal" (onOpen)="onInit()" (onDataAdded)="onDataLoad()">
+
+  <div class="c-modal">
+    <h2 class="c-modal__title">{{ 'MODULES.PROJECT.SHARED.GLYPH_MODAL.TITLE' | translate }}</h2>
+    <div class="o-form-group">
+      <div class="o-form-row">
+        <div class="o-form-row__label u-sr-only">
+          <label for="cats">{{ 'MODULES.PROJECT.SHARED.GLYPH_MODAL.INPUT' | translate }}</label>
+        </div>
+        <div class="o-form-row__input o-input c-select">
+          <select
+            class="o-input__field c-select__field"
+            name="cats"
+            id="cats"
+            [(ngModel)]="selectedCat"
+            (change)="onCatChange()"
+          >
+            <option *ngFor="let cat of categories" [ngValue]="cat">{{ cat.label }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="c-modal__content">
+      <app-loader [loading]="loading" [appLoaderBgLight]="true"  [appLoaderBasic]="true"></app-loader>
+      <ul *ngIf="!loading" class="c-glyph-list o-list">
+        <li class="c-glyph"
+          *ngFor="let glyph of filteredGlyphs"
+          [ngClass]="{ 'is-highlighted': selectedGlyph && selectedGlyph.code === glyph.code }"
+        >
+          <button type="button" class="c-glyph__btn" (click)="selectGlyph(glyph)">
+            <app-glyph-image [(glyphCode)]="glyph.code" class="c-glyph__icon"></app-glyph-image>
+            {{ glyph.code }}
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</ngx-smart-modal>

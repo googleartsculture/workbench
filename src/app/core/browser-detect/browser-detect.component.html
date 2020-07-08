@@ -1,0 +1,12 @@
+<div class="c-browser-detect__img" aria-hidden="true">
+  <app-svg-exclamation-icon class="c-browser-detect__svg"></app-svg-exclamation-icon>
+</div>
+<h2 class="c-browser-detect__title">{{ 'CORE.BROWSER_DETECT.TITLE' | translate }}</h2>
+<ul class="c-browser-detect__list o-list">
+  <li class="c-browser-detect__copy" *ngIf="supportedData.supportInfo.android">{{ 'CORE.BROWSER_DETECT.TS.ANDROID' | translate }}</li>
+  <li class="c-browser-detect__copy" *ngIf="supportedData.supportInfo.ie">{{ 'CORE.BROWSER_DETECT.TS.IE' | translate }}</li>
+  <li class="c-browser-detect__copy" *ngIf="supportedData.supportInfo.edge">{{ 'CORE.BROWSER_DETECT.TS.EDGE' | translate }}</li>
+  <li class="c-browser-detect__copy" *ngIf="supportedData.supportInfo.ios">{{ 'CORE.BROWSER_DETECT.TS.IOS' | translate }}</li>
+  <li class="c-browser-detect__copy" *ngIf="supportedData.supportInfo.dimensions" >{{ 'CORE.BROWSER_DETECT.TS.DIMENSION' | translate }}</li>
+</ul>
+

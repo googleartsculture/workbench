@@ -1,0 +1,802 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import '../../../../../styles/app-init';
+
+$common-spacing: 10px;
+$tool-size: 30px;
+$drag-size: 8px;
+$glyph-width: 61px;
+$analyse-bg-color: color(app-grey-lightest);
+$analyse-border-color: #ddd;
+
+$tool-color: color(app-grey-dark) !default;
+$tool-hover: color(app-grey-medium-light) !default;
+$tool-hover-alt: color(app-yellow-desaturated, 50, 1, app-white-yellow) !default;
+$tool-hover-trans: color(app-yellow-desaturated, 50, 0, app-black-yellow) !default;
+$tool-background: color(app-orange-desaturated, 70, 1, app-black-yellow) !default;
+$tool-toggle: color(app-yellow-desaturated, 50, 1, app-black-yellow) !default;
+$tool-toggle-transparent: color(app-yellow-desaturated, 70, 0, app-black-yellow) !default;
+$tool-disabled: color(app-grey) !default;
+
+$segments-title-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
+$segments-border: color(app-yellow-desaturated, 60, 1, app-white-yellow) !default;
+
+$sentence-transparent: color(app-grey-lighter, 25, 0, app-grey-lighter) !default;
+$sentence-inactive: color(app-grey-lighter) !default;
+$sentence-active: transparent !default;
+$sentence-border-active: #bdbdbd !default;
+
+$word-transparent: color(app-grey-lighter, 25, 0, app-grey-lighter) !default;
+$word-inactive: color(app-grey-lighter) !default;
+$word-active: transparent !default;
+$word-border-active: #bdbdbd !default;
+
+$glyph-disabled-opacity: .35 !default;
+$glyph-transparent: color(app-grey, 10, 0, app-black) !default;
+$glyph-transparent-hover: transparent !default;
+$glyph-even-background: color(app-grey, null, .2) !default;
+$glyph-even-background-hover: color(app-grey, null, .2) !default;
+$glyph-active: color(app-gold, 10, 1, app-black-yellow) !default;
+$glyph-border-active: color(app-gold, 25, 1, app-black) !default;
+
+$word-cartouche: transparentize(color(app-yellow), .75) !default;
+
+$translations-glyph: color(app-orange-desaturated, 90, 1, app-white-yellow) !default;
+$translation-glyph-selected: color(app-gold, 10, 1, app-black-yellow) !default;
+$translation-glyph-cartouche: color(app-gold, 35, 1, app-white-yellow) !default;
+
+$auto-translate-header: color(app-white-yellow, 10, 1, app-black-yellow);
+$auto-translate-content: color(app-white-yellow);
+
+$auto-translate-result-transparent: color(app-white-yellow, 10, 0, app-black-yellow) !default;
+$auto-translate-result-hover: color(app-white-yellow, 10, 1, app-black-yellow) !default;
+$auto-translate-option-border: color(app-white-yellow, 35, 1, app-black-yellow) !default;
+$auto-translate-option-hover: color(app-gold, 10, 1, app-black-yellow) !default;
+$auto-translate-text-hover: $text-dark;
+
+:host {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.c-sequence {
+  &.has-margin {
+    margin-bottom: 43px;
+  }
+}
+
+.c-sequence__content {
+  background-color: $analyse-bg-color;
+  border-bottom: 1px solid $analyse-border-color;
+  padding: $common-spacing;
+}
+
+.is-ghosted {
+  opacity: .35;
+}
+
+// LIST
+
+.c-glyphs {
+  list-style: none;
+  margin: 0;
+  min-height: 38px;
+  padding: 0;
+}
+
+.c-glyphs__item {
+  @include animate(border-color background-color, $animation-time-short);
+  background-color: $glyph-transparent;
+  border-color: $glyph-transparent;
+  border-style: solid;
+  border-width: 1px 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+
+  &:hover {
+    background-color: $glyph-transparent-hover;
+  }
+
+  &:nth-of-type(even) {
+    background-color: $glyph-even-background;
+
+    &:hover {
+      background-color: $glyph-even-background-hover;
+    }
+  }
+
+  &.is-selected {
+    background-color: $glyph-active;
+    border-color: $glyph-border-active;
+  }
+
+  &.is-disabled {
+    opacity: .5;
+    pointer-events: none;
+  }
+}
+
+.c-glyph {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 45px;
+  justify-content: space-between;
+  padding: 1px;
+
+  &.is-hidden {
+    opacity: 0;
+  }
+}
+
+.c-glyph__suggestions {
+  display: flex;
+}
+
+.c-glyph__select-btn {
+  @include font-size-sm;
+  @include animate(opacity visibility, $animation-time-short);
+  background-color: $glyph-transparent;
+  min-width: 10px;
+  opacity: 0;
+  visibility: hidden;
+  width: 100%;
+
+  .c-glyphs__item:hover & {
+    opacity: 1;
+    visibility: visible;
+  }
+  &:active {
+    .c-tool__icon {
+      fill: green;
+    }
+  }
+}
+
+// Glyph Selection
+
+.c-glyph-select {
+  @include animate(color, $animation-time-short);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: $tool-hover;
+  padding-right: $common-spacing * 1.5;
+  margin-right: ($common-spacing / 2) + 1;
+  position: relative;
+
+  &::after {
+    @include animate(border-color transform, $animation-time-short);
+    border-color: $tool-hover-alt;
+    border-style: solid;
+    border-width: 2px 2px 0 0;
+    content: '';
+    display: block;
+    height: 6px;
+    pointer-events: none;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-225deg);
+    width: 6px;
+  }
+
+  &:hover {
+    color: $tool-color;
+
+    &::after {
+      border-color: $tool-color;
+    }
+  }
+}
+
+.c-glyph-select__icon {
+  border: 2px solid $tool-hover;
+  margin: 0 $common-spacing / 2;
+  position: relative;
+  height: 28px;
+  width: 28px;
+
+  .is-glyph & {
+    border: 2px solid $tool-hover-trans;
+  }
+}
+
+.c-glyph-select__code {
+  font-size: 12px;
+  font-weight: $font-weight-heavy;
+  min-width: $tool-size;
+  padding-left: $common-spacing / 2;
+  padding-top: 0;
+
+  .is-glyph & {
+    font-size: 10px;
+    line-height: 1;
+    padding-top: 4px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+// GLPH PREDICTION
+
+.c-glyph-prediction {
+  @include animate(opacity border-color, $animation-time-short);
+  align-items: center;
+  border: 1px solid $tool-hover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 0 0 $common-spacing / 2;
+  opacity: .4;
+  padding: 2px;
+  position: relative;
+
+  &:disabled {
+    opacity: $glyph-disabled-opacity;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+
+  &.is-selected {
+    opacity: 1;
+
+    &:hover {
+      cursor: default;
+    }
+  }
+}
+
+.c-glyph-prediction__icon {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: $common-spacing / 3;
+  position: relative;
+  height: 26px;
+  width: 26px;
+}
+
+// TOOLS ( RIGHT OF GLYPH ROW)
+
+.c-tools {
+  display: flex;
+  height: $tool-size;
+  justify-content: center;
+  position: relative;
+
+  &.is-full {
+    flex-grow: 1;
+    height: 100%;
+  }
+}
+
+.c-tool {
+  @include animate(border-color);
+  align-items: center;
+  border-width: 2px;
+  border-style: dashed;
+  border-color: $tool-toggle-transparent;
+  display: flex;
+  height: $tool-size;
+  justify-content: center;
+  margin: 2px 0;
+  opacity: 1;
+  width: $tool-size;
+
+  &:disabled {
+    background-color: transparent;
+    opacity: $glyph-disabled-opacity;
+  }
+
+  &.is-hidden {
+    opacity: 0;
+  }
+
+  &.is-toggled {
+    border-color: $tool-toggle;
+  }
+}
+
+.c-tool__icon {
+  fill: $tool-color;
+  height: 16px;
+  width: 16px;
+
+  .c-tool.is-active,
+  .c-nudge__btn:hover &,
+  .c-tool:hover & {
+    fill: $tool-hover;
+  }
+
+
+  .c-tool--sentence & {
+    transform: rotate(90deg);
+    @include animate(transform, $animation-time-short);
+
+    .c-sentence.is-sentence-expanded & {
+      transform: rotate(180deg);
+    }
+  }
+
+  &.c-tool--nudge {
+    width: 14px;
+    height: 14px;
+  }
+
+  .c-tool--word & {
+    transform: rotate(90deg);
+    @include animate(transform, $animation-time-short);
+
+    .c-word.is-word-expanded & {
+      transform: rotate(180deg);
+    }
+  }
+
+  .is-toggled & {
+    fill: $tool-toggle;
+  }
+
+  .is-disabled &,
+  :disabled & {
+    fill: $tool-disabled;
+  }
+
+  .c-tool--light > & {
+    fill: color(app-white);
+  }
+
+  .c-tool--light:hover > & {
+    fill: darken(color(app-white), 10%);
+  }
+}
+
+// SENTENCES LIST
+
+.c-sentences {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c-sentences__item {
+  padding: 0;
+  margin: 5px 0 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+// WORDS LIST
+
+.c-words {
+  list-style-type: none;
+  margin: 0;
+  min-height: 38px;
+  padding: 0;
+}
+
+.c-words__item {
+  padding: 0;
+  margin: 5px 0 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+// SENTENCE ITEM
+
+.c-sentence {
+  @include animate(background-color, border-color);
+  background-color: $sentence-transparent;
+  border-width: 2px;
+  border-style: solid;
+  border-color: $sentence-inactive;
+
+  &.is-selected {
+    border-color: $sentence-border-active;
+    background-color: $sentence-active;
+  }
+}
+
+.c-sentence__header {
+  @include animate(background-color);
+  background-color: $sentence-inactive;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .is-selected > & {
+    background-color: $sentence-border-active;
+  }
+}
+
+.c-sentence__title {
+  color: $text-dark;
+  flex-grow: 1;
+  font-size: 13px;
+  font-weight: $font-weight-heavy;
+  margin: 0 0 0 5px;
+  padding: 10px 0;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.c-sentence__content {
+  padding: 5px;
+  display: none;
+
+  .is-sentence-expanded & {
+    display: block;
+  }
+}
+
+.c-sentence__actions {
+  padding: 0 0 0 5px;
+  display: flex;
+  flex-direction: row;
+}
+
+// WORD ITEM
+
+.c-word {
+  @include animate(background-color border-color);
+  border-width: 2px;
+  border-style: solid;
+  border-color: $word-inactive;
+  background-color: color(app-white-yellow);
+
+  &.is-selected {
+    border-color: $word-border-active;
+    background-color: $word-active;
+  }
+
+  &.is-cartouche {
+    background-color: $word-cartouche;
+  }
+}
+
+.c-word__header {
+  @include animate(background-color);
+  display: flex;
+  flex-direction: row;
+  background-color: $word-inactive;
+  align-items: center;
+
+  .is-selected > & {
+    background-color: $word-border-active;
+  }
+}
+
+.c-word__title {
+  @include font-secondary-heavy();
+  color: $text-dark;
+  flex-grow: 1;
+  font-size: 13px;
+  font-weight: $font-weight-heavy;
+  margin: 0 0 0 5px;
+  padding: 10px 0;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.c-word__actions {
+  padding: 0 0 0 5px;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.c-word__content {
+  display: none;
+
+  .is-word-expanded & {
+    display: block;
+  }
+}
+
+// TRANSLATION PANEL
+
+.c-translation {
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.c-translation-sentences,
+.c-translation-words,
+.c-translation-glyphs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.c-translation-sentences {
+  display: block;
+}
+
+.c-translation-words,
+.c-translation-glyphs,
+.c-translation-words__item,
+.c-translation-glyphs__item {
+  display: flex;
+}
+
+.c-translation-glyphs {
+  background-color: $sentence-inactive;
+
+  .is-cartouche & {
+    background-color: $translation-glyph-cartouche;
+  }
+
+  &.is-selected {
+    background-color: $translation-glyph-selected;
+  }
+}
+
+.c-translation-sentences__item {
+  border-right: 2px dashed $sentence-inactive;
+  display: inline-block;
+  margin: 0 auto;
+  min-width: $glyph-width * 3;
+  padding: $common-spacing;
+  vertical-align: top;
+
+  &:last-of-type {
+    border-right: none;
+  }
+}
+
+.c-translation-words__item {
+  margin: 0 2px;
+}
+
+.c-translation-glyphs__item {
+  @include animate(border-color background-color, $animation-time-short);
+  border: 1px solid $glyph-transparent;
+  min-width: 40px;
+  padding: 5px;
+  margin: 0;
+  position: relative;
+
+  &.is-highlighted,
+  &.is-selected {
+    background-color: $glyph-active;
+    border-color: $glyph-border-active;
+  }
+}
+
+.c-translation-word__glyphs {
+  @include animate(border-color, $animation-time-short);
+  border: 1px solid $glyph-transparent;
+
+  &.is-cartouche {
+    border-color: $tool-toggle;
+  }
+}
+
+.c-translation-sentence__inputs {
+  padding: $common-spacing 0 0;
+}
+
+.c-translation-word__inputs,
+.c-translation-sentence__inputs {
+  padding: 4px 0 0;
+
+  .o-form-row {
+    margin: 0 0 4px;
+    max-width: 100%;
+  }
+}
+
+.c-translation-word {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.c-translation-word__inputs,
+.c-translation__content {
+  width: 100%;
+}
+
+.c-transliteration {
+  color: $text-dark;
+  font-size: 12px;
+  font-weight: $font-weight-regular;
+  text-align: center;
+  font-style: italic;
+}
+
+.c-translation-glyph {
+  @include animate(opacity, $animation-time-short);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: $common-spacing / 2;
+  position: relative;
+  text-align: center;
+  opacity: 1;
+
+  &.is-hidden {
+    opacity: 0;
+  }
+}
+
+.c-translation-glyph__icon {
+  height: $tool-size;
+  position: relative;
+  width: $tool-size;
+}
+
+.c-translation-glyph__code {
+  color: $tool-hover;
+  font-size: 12px;
+  font-weight: $font-weight-heavy;
+  line-height: 1;
+  padding-top: $common-spacing / 2;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+// AT TITLE BUTTON
+
+.c-translate-title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 5px;
+}
+
+.c-translate-title__icon {
+  @include animate(transform, $animation-time-short);
+  transform: rotate(90deg);
+  fill: $text-dark;
+
+  .is-expanded > & {
+    transform: rotate(180deg);
+  }
+}
+
+.c-translate-title__label {
+  @include font-secondary-heavy;
+  @include font-size-xxs();
+  color: $text-dark;
+  flex-grow: 1;
+  margin: 0 0 0 5px;
+  font-weight: $font-weight-heavy;
+  text-align: left;
+  padding: 9px 0 7px;
+}
+
+// AT PANEL
+
+.c-auto-translate {}
+
+.c-auto-translate__header {
+  background-color: $auto-translate-header;
+}
+
+.c-auto-translate__actions {
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .c-button {
+    @include font-size-xs;
+  }
+}
+
+.c-auto-translate__content {
+  background-color: $auto-translate-content;
+  min-height: 50px;
+  height: 25vh;
+  position: relative;
+  max-height: 25vh;
+}
+
+// AT RESULTS LIST
+
+.c-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.c-results__item {
+  margin: 0;
+  padding: 1px 0;
+
+  &:hover {
+    background-color: $auto-translate-result-hover;
+  }
+}
+
+// AT RESULT
+
+.c-result {
+  @include animate(border-color);
+  border: 1px solid $auto-translate-option-border;
+  cursor: default;
+  height: 26px;
+  overflow: visible;
+  white-space: nowrap;
+  display: block;
+  position: relative;
+
+  &:hover {
+    border-color: $auto-translate-option-hover;
+  }
+}
+
+.c-result__label {
+  @include animate(background-color);
+  background-color: $auto-translate-result-transparent;
+  position: absolute;
+  padding: 4px 5px;
+  font-size: 11px;
+  min-width: 50px;
+  left: 0;
+  top: 0;
+
+  .c-results__item.is-end & {
+    left: auto;
+    right: 0;
+  }
+
+  .c-results__item.is-start & {
+    left: 0;
+    right: auto;
+  }
+
+  .c-result:hover & {
+    background-color: $auto-translate-option-hover;
+    color: $auto-translate-text-hover;
+  }
+}
+
+.js-drag-drop-handle-sentences,
+.js-drag-drop-handle-words,
+.js-drag-drop-handle-glyphs {
+  cursor: ns-resize;
+}
+
+.c-nudge {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 34px;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+
+.c-nudge__btn {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

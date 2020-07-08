@@ -1,0 +1,144 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+//================================================================================================//
+//
+//  MEDIAQUERY TOOLS
+//  N.B: Only mixins here NEVER anything that outputs CSS directly
+//
+//================================================================================================//
+
+// VARS
+
+$media-xxs: 320 !default;
+$media-xs: 640 !default;
+$media-sm: 768 !default;
+$media-md: 992 !default;
+$media-lg: 1200 !default;
+$media-xl: 1600 !default;
+$media-xxl: 1920 !default;
+
+$media-min: $media-xxs !default;
+$media-max: $media-lg !default;
+
+// MIXINS
+
+@mixin media-min-xs {
+  @media only screen and (min-width: #{$media-xs}px) {
+    @content;
+  }
+}
+
+@mixin media-max-xs {
+  @media only screen and (max-width: #{$media-xs - 1}px) {
+    @content;
+  }
+}
+
+@mixin media-min-xs-max-sm {
+  @media only screen and (min-width: #{$media-xs}px) and (max-width: #{$media-sm - 1}px) {
+    @content;
+  }
+}
+
+@mixin media-min-sm {
+  @media only screen and (min-width: #{$media-sm}px) {
+    @content;
+  }
+}
+
+@mixin media-max-sm {
+  @media only screen and (max-width: #{$media-sm - 1}px) {
+    @content;
+  }
+}
+
+@mixin media-min-sm-portrait {
+  @media only screen and (min-width: #{$media-sm}px) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin media-min-sm-landscape {
+  @media only screen and (min-width: #{$media-sm}px) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin media-min-sm-max-md {
+  @media only screen and (min-width: #{$media-sm}px) and (max-width: #{$media-md - 1}px) {
+    @content;
+  }
+}
+
+@mixin media-min-sm-max-lg {
+  @media only screen and (min-width: #{$media-sm}px) and (max-width: #{$media-lg - 1}px) {
+    @content;
+  }
+}
+
+@mixin media-max-md {
+  @media only screen and (max-width: #{$media-lg - 1}px) {
+    @content;
+  }
+}
+
+@mixin media-min-md {
+  @media only screen and (min-width: #{$media-md}px) {
+    @content;
+  }
+}
+
+@mixin media-min-md-max-lg {
+  @media only screen and (min-width: #{$media-md}px) and (max-width: #{$media-lg - 1}px) {
+    @content;
+  }
+}
+
+@mixin media-min-lg {
+  @media only screen and (min-width: #{$media-lg}px) {
+    @content;
+  }
+}
+
+@mixin media-portrait {
+  @media only screen and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin media-landscape {
+  @media only screen and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin retina {
+  @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (-moz-min-device-pixel-ratio: 2),
+    only screen and (-o-min-device-pixel-ratio: 2/1),
+    only screen and (min-resolution: 192dpi),
+    only screen and (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+@mixin print {
+  @media print {
+    @content;
+  }
+}

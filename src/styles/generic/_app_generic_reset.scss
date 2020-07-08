@@ -1,0 +1,342 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+//============================================================================//
+//
+//  GLOBAL GENERIC NORMALIZE
+//  BASED ON: necolas.github.io/normalize.css | MIT LICENCE
+//
+//============================================================================//
+
+// VARS
+
+$global-fieldset-border-color: #555 !default;
+$global-svg-fill: color(app-black) !default;
+$global-abbr-border-color: #000 !default;
+$global-page-background: color(app-white) !default;
+$global-text-dark: #000 !default;
+$global-line-height: 1.2 !default;
+
+$mark-background: #f00 !default;
+$font-size-base: 16 !default;
+
+$size-min: 1 !default;
+$size-xxs: 2 !default;
+$size-xs: 5 !default;
+$size-sm: 10 !default;
+$size-md: 15 !default;
+$size-xl: 30 !default;
+
+$font-weight-heavy: 700 !default;
+
+// ELEMENTS
+
+html {
+  background-color: $global-page-background;
+  box-sizing: border-box;
+  font-family: $font-family-base;
+  font-size: #{$font-size-base}px;
+  height: 100%;
+  line-height: $global-line-height;
+  overflow-y: auto;
+  user-select: none;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  &,
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
+}
+
+body {
+  @include font-size($font-size-base);
+  background-color: $global-page-background;
+  color: $text-medium;
+  font-weight: normal;
+  line-height: $global-line-height;
+  margin: 0;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+abbr[title] {
+  border-bottom: #{$size-min}px dotted $global-abbr-border-color;
+}
+
+b,
+strong {
+  font-weight: $font-weight-heavy;
+}
+
+dfn {
+  font-style: italic;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: #{$font-size-base}px;
+  margin: #{$size-md}px 0;
+}
+
+li > {
+  ul,
+  ol {
+    margin-bottom: 0;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+dl {
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+mark {
+  background: $mark-background;
+  color: $text-dark;
+}
+
+small {
+  font-size: .8em;
+}
+
+sub,
+sup {
+  font-size: .75em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -.5em;
+}
+
+sub {
+  bottom: -.25em;
+}
+
+img {
+  border: none;
+  max-width: 100%;
+  vertical-align: middle;
+  pointer-events: none;
+
+  &[width],
+  &[height] {
+    max-width: none;
+  }
+}
+
+svg {
+  height: 100%;
+  width: 100%;
+
+  &:not(:root) {
+    overflow: hidden;
+  }
+}
+
+figure {
+  margin: #{$size-md}px #{$size-xl}px;
+}
+
+hr {
+  height: 0;
+}
+
+pre {
+  overflow: auto;
+}
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* stylelint-disable-line */
+  font-size: #{$font-size-base}px;
+}
+
+form {
+  margin: 0;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+optgroup {
+  font-weight: $font-weight-heavy;
+}
+
+button,
+input {
+  overflow: hidden;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+
+  &::-moz-focus-inner {
+    border: none;
+    padding: 0;
+  }
+
+  &:-moz-focusring {
+    outline: #{$size-min}px dotted ButtonText;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:disabled:hover {
+    cursor: default;
+  }
+}
+
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+
+input {
+  line-height: normal;
+}
+
+[type="checkbox"],
+[type="radio"] {
+  padding: 0;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type="search"] {
+  -webkit-appearance: textfield;
+}
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+fieldset {
+  border: #{$size-min}px solid $global-fieldset-border-color;
+  margin: 0 #{$size-xxs}px;
+  padding: #{$size-xs}px #{$size-sm}px #{$size-md}px;
+}
+
+legend {
+  border: none;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
+}
+
+textarea {
+  overflow: auto;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+[hidden],
+template {
+  display: none;
+}

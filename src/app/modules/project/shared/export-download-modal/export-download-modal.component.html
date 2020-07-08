@@ -1,0 +1,24 @@
+<ngx-smart-modal #exportDownloadModal identifier="exportDownloadModal" (onOpen)="onInit()" (onDataAdded)="onDataLoad()">
+
+  <div class="c-modal c-modal--text">
+    <h2 class="c-modal__title">{{ 'MODULES.PROJECT.SHARED.EXPORT_MODAL.TITLE' | translate }}</h2>
+    <div class="c-modal__content">
+      <p>{{ 'MODULES.PROJECT.SHARED.EXPORT_MODAL.CONTENT' | translate }}</p>
+
+      <div class="c-modal__button-wrap">
+        <button
+          type="button"
+          (click)="download()"
+          class="c-button c-button--dark"
+        >
+          <span class="c-button__drop">
+            <span class="c-button__label">{{ 'MODULES.PROJECT.SHARED.EXPORT_MODAL.BTN' | translate }}</span>
+            <app-svg-download-icon class="c-button__icon c-icon c-icon--sm"></app-svg-download-icon>
+          </span>
+        </button>
+      </div>
+      <app-loader [loading]="config.states.loading" [appLoaderBgLight]="true"  [appLoaderBasic]="true"></app-loader>
+    </div>
+  </div>
+
+</ngx-smart-modal>

@@ -1,0 +1,60 @@
+# Copyright 2020 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+service: docs
+
+runtime: python27
+api_version: 1
+threadsafe: true
+
+default_expiration: "1m"
+
+handlers:
+
+  - url: /(.*\.(html|js|css|ico|map|json|woff|woff2|ttf))
+    static_files: \1
+    upload: (.*\.(html|js|css|ico|map|json|woff|woff2|ttf))
+    secure: always
+    http_headers:
+      X-Frame-Options: "DENY"
+      Strict-Transport-Security: "max-age=2592000; includeSubdomains"
+      X-Content-Type-Options: "nosniff"
+      X-XSS-Protection: "1; mode=block"
+      Content-Security-Policy: >-
+        default-src 'none';
+        object-src 'none';
+        script-src 'self' 'unsafe-inline';
+        connect-src 'self';
+        font-src 'self';
+        img-src 'self';
+        style-src 'self' 'unsafe-inline';
+
+  - url: /.*
+    static_files: index.html
+    upload: index.html
+    secure: always
+    http_headers:
+      X-Frame-Options: "DENY"
+      Strict-Transport-Security: "max-age=2592000; includeSubdomains"
+      X-Content-Type-Options: "nosniff"
+      X-XSS-Protection: "1; mode=block"
+      Content-Security-Policy: >-
+        default-src 'none';
+        object-src 'none';
+        script-src 'self' 'unsafe-inline';
+        connect-src 'self';
+        img-src 'self' data:;
+        font-src 'self';
+        style-src 'self' 'unsafe-inline';
+        manifest-src 'self';

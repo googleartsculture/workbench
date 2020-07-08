@@ -1,0 +1,53 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+//============================================================================//
+//
+//  GLOBAL GENERIC ANGULAR CSP
+//
+//============================================================================//
+
+// VARS
+
+// ELEMENTS
+
+// stylelint-disable declaration-no-important
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak,
+.ng-hide {
+  display: none !important;
+}
+
+[ng\:form] {
+  display: block;
+}
+
+.ng-animate-block-transitions {
+  transition: 0s all !important;
+  -webkit-transition: 0s all !important;
+}
+
+/* show the element during a show/hide animation when the
+ * animation is ongoing, but the .ng-hide class is active */
+.ng-hide-add-active,
+.ng-hide-remove {
+  display: block !important;
+}
+// stylelint-enable declaration-no-important

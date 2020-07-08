@@ -1,0 +1,133 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import '../../../styles/app-init';
+
+$uploader-background: color(app-white) !default;
+$uploader-background-transparent: color(app-white, null, 0) !default;
+$uploader-border: #ddd !default;
+$uploader-text: color(app-grey) !default;
+
+:host {
+  display: flex;
+  flex: 1 0 100%;
+  height: 100%;
+}
+
+// FORM
+
+.c-form {
+  display: flex;
+  flex-grow: 1;
+}
+
+// UPLOAD
+
+.c-upload {
+  bottom: 57px;
+  left: 50px;
+  position: absolute;
+  right: 50px;
+  top: 50px;
+}
+
+.c-import-sidebar {
+  background-color: color(app-grey-lightest);
+  border-bottom: 1px solid $uploader-border;
+  padding: 15px;
+}
+
+// IMPORTED IMAGES LIST
+
+.c-images {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.c-images--centered {
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.c-images__item {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 25%;
+  padding: 10px;
+
+  &:last-of-type {
+    margin-bottom: 10px;
+  }
+}
+
+// IMPORTED IMAGE
+
+.c-imported {
+  border-width: 4px;
+  border-style: dashed;
+  border-color: $uploader-border;
+  background-color: $uploader-background;
+  position: relative;
+  padding-top: 100%;
+  width: 100%;
+
+  &.is-hidden {
+    opacity: 0;
+  }
+}
+
+.c-imported__image {
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.c-imported__filename {
+  @include font-size-xs();
+  background-color: $uploader-background;
+  bottom: 0;
+  color: $uploader-text;
+  left: 0;
+  overflow: hidden;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  text-overflow: ellipsis;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.c-loader-bg {
+  height: 37px;
+}

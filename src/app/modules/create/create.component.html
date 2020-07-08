@@ -1,0 +1,79 @@
+<form #createForm="ngForm" (ngSubmit)="create()" class="c-form">
+  <div class="o-page">
+
+    <div class="o-page__lhs">
+      <h2 class="u-sr-only">{{ 'MODULES.CREATE.PROJECT.IMG' | translate }}</h2>
+      <div class="c-upload">
+        <app-image-upload [imageFile]="formData.sourceFile" (imageFileChange)="onImageChange($event)"></app-image-upload>
+      </div>
+    </div>
+
+    <div class="o-page__rhs">
+      <div class="c-sidebar">
+        <div class="c-sidebar__header">
+          <h2 class="c-sidebar__title">{{ 'MODULES.CREATE.PROJECT.TITLE' | translate }}</h2>
+          <div class="c-sidebar__note">{{ 'MODULES.CREATE.PROJECT.SUB_TITLE' | translate }}</div>
+        </div>
+        <div class="c-sidebar__content">
+          <div class="u-scroller">
+
+            <div class="c-create-sidebar">
+              <fieldset class="o-form-fieldset">
+                <legend class="o-form-legend">{{ 'MODULES.CREATE.FORM.META.LEGEND' | translate }}</legend>
+                <div class="o-form-note">{{ 'MODULES.CREATE.FORM.META.NOTE' | translate }}</div>
+                <div class="o-form-row">
+                  <div class="o-input is-required">
+                    <label class="o-input__label c-label" for="title">{{ 'MODULES.CREATE.FORM.META.TITLE' | translate }}</label>
+                    <div class="o-input__wrap c-textbox">
+                      <input autocomplete="off" class="o-input__field c-textbox__field" type="text" name="title" id="title" [(ngModel)]="formData.title" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="o-form-row">
+                  <div class="o-input is-required">
+                    <div class="o-input__label c-label">{{ 'MODULES.CREATE.FORM.META.AUTHOR' | translate }}</div>
+                    <div class="o-input__wrap c-textbox">
+                      <input autocomplete="off" class="o-input__field c-textbox__field" type="text" name="author" id="author" [(ngModel)]="formData.author" required>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="o-form-fieldset">
+                <legend class="o-form-legend">{{ 'MODULES.CREATE.FORM.SOURCE.LEGEND' | translate }}</legend>
+                <div class="o-form-row">
+                  <div class="o-input is-required">
+                    <label class="o-form-row__label c-label" for="sourceTitle">{{ 'MODULES.CREATE.FORM.SOURCE.TITLE' | translate }} </label>
+                    <div class="o-input__wrap c-textbox">
+                      <input autocomplete="off" class="o-input__field c-textbox__field" type="text" name="sourceTitle" id="sourceTitle" [(ngModel)]="formData.sourceTitle" required>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <div class="o-form-actions">
+                <button
+                  type="submit"
+                  [disabled]="!createForm.form.valid || !formData.sourceFile"
+                  [ngClass]="{ 'is-loading': loading }"
+                  class="c-button c-button--dark c-button--full"
+                >
+                  <span class="c-button__drop">
+                    <span class="c-button__label">{{ 'MODULES.CREATE.FORM.SUBMIT' | translate }}</span>
+                    <app-svg-create-icon class="c-button__icon c-icon c-icon--sm"></app-svg-create-icon>
+                  </span>
+                  <app-loader
+                    class="c-button__loader"
+                    [appLoaderSmall]="true"
+                    [appLoaderBgTransparent]="true"
+                    [loading]="loading"
+                  ></app-loader>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>

@@ -1,0 +1,168 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+//================================================================================================//
+//
+//  ANNOTATE MODULE COMPONENTS
+//
+//================================================================================================//
+
+@import '../../../../../styles/app-init';
+
+// VARS
+
+$annotations-title-background: color(app-yellow-desaturated, 70, 1, app-white-yellow) !default;
+$annotations-border: #ddd !default;
+
+$annotation-header-background: color(app-grey-lighter) !default;
+$annotation-header-border: #ddd !default;
+
+$annotation-background: color(app-grey-lightest) !default;
+
+$annotation-effects-background: color(app-white) !default;
+
+$comment-border: color(app-grey, 75, 1, app-white) !default;
+$comment-background: color(app-grey, 85, 1, app-white) !default;
+
+// ELEMENTS
+
+:host {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.c-annotations-note {
+  padding: 20px;
+}
+
+// ANNOTATIONS LIST
+
+.c-annotations {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.c-annotations__item {
+  padding: 0;
+  margin: 0;
+
+  &.is-disabled {
+    opacity: .5;
+    pointer-events: none;
+  }
+
+  &:nth-of-type(2n) .c-annotation__header {
+    background-color: darken($annotation-header-background, 3%);
+  }
+}
+
+// ANNOTATION
+
+.c-annotation {
+  border-bottom: 1px solid $annotations-border;
+  background-color: $annotation-background;
+}
+
+.c-annotation__open {
+  flex-grow: 1;
+}
+
+.c-annotation__header {
+  background-color: $annotation-header-background;
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+.c-annotation__author {
+  @include font-size-xs();
+  display: block;
+}
+
+.c-annotation__date {
+  @include font-secondary-heavy();
+  @include font-size-md();
+}
+
+.c-annotation__content {
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: $annotation-header-border;
+}
+
+// COMMENT FORM
+
+.c-comment-form {
+  padding: 10px 20px 20px;
+}
+
+// COMMENTS
+
+.c-comments-note {
+  padding: 20px;
+}
+
+.c-comments {
+  border-width: 1px 0 0;
+  border-style: solid;
+  border-color: $comment-border;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.c-comments__item {
+  padding: 10px 20px;
+  margin: 0;
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: $comment-border;
+
+  &:nth-child(odd) {
+    background-color: $comment-background;
+  }
+
+  &:last-child {
+    border-width: 0;
+  }
+}
+
+// COMMENT
+
+.c-comment__header {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+.c-comment__date {
+  @include font-size-min();
+}
+
+.c-comment__author {
+  @include font-size-xs();
+  text-transform: uppercase;
+  flex-grow: 1;
+}
+
+.c-comment__content {
+  @include font-size-sm();
+  padding-bottom: 2px;
+  line-height: 1.2;
+}

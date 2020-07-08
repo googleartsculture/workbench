@@ -1,0 +1,125 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+//================================================================================================//
+//
+//  FORM STRUCTURE
+//
+//================================================================================================//
+
+// VARS
+
+$padding-sidebar-gutter: 15px !default;
+
+$color-form-border: #ddd !default;
+$color-label-text: color(app-grey, 35, 1, app-black-yellow) !default;
+
+$color-radio-label-text: color(app-orange-desaturated, 25, 1, app-black-yellow) !default;
+$color-error-text: color(app-red-desaturated) !default;
+$input-disabled-opacity: .35 !default;
+
+$form-row-validation-text: color(app-red-desaturated) !default;
+
+// ELEMENTS
+
+.o-form-legend {
+  text-transform: uppercase;
+  font-weight: $font-weight-heavy;
+}
+
+.o-form-note {
+  margin: 0 0 20px;
+  font-size: 14px;
+  font-weight: $font-weight-light;
+
+  p,
+  ul,
+  li,
+  ol {
+    font-size: 15px;
+  }
+}
+
+.o-form-fieldset {
+  margin: 0 0 20px;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: $color-form-border;
+  padding: 10px 0 20px;
+
+  &:last-of-type {
+    border-width: 0;
+    margin-bottom: 0;
+  }
+}
+
+.o-form-actions {
+  margin: 0;
+  border-width: 1px 0 0;
+  border-style: solid;
+  border-color: $color-form-border;
+  padding: 20px 0 0;
+}
+
+.o-form-row {
+  margin: 10px 0;
+  max-width: 500px;
+  padding: 0;
+  position: relative;
+  @include animate(opacity, $animation-time-short);
+  width: 100%;
+
+  .is-locked-area & {
+    opacity: $input-disabled-opacity;
+  }
+
+  &.is-disabled {
+    opacity: $input-disabled-opacity;
+    pointer-events: none;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.o-form-row__input {
+  width: 100%;
+}
+
+.o-form-row__label {
+  @include font-size-xs();
+  display: flex;
+  flex-direction: row;
+  font-weight: $font-weight-heavy;
+  color: $color-label-text;
+  margin-bottom: 5px;
+  align-items: center;
+}
+
+.o-form-row__validation {
+  @include font-size-xs();
+  color: $form-row-validation-text;
+  padding: 5px 5px 5px 10px;
+
+  p {
+    color: $color-error-text;
+  }
+}

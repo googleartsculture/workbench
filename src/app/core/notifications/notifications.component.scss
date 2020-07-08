@@ -1,0 +1,233 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import '../../../styles/app-init';
+
+$notification-background: color(app-gold, 50, 1, app-white-yellow);
+$notification-background-warning: color(app-orange, 50);
+$notification-background-success: color(app-green, 50);
+$notification-background-error: color(app-red-desaturated, 50);
+
+$notification-background-hover: color(app-gold, 50, .5, app-white-yellow);
+$notification-background-warning-hover: color(app-orange, 50, .5);
+$notification-background-success-hover: color(app-green, 50, .5);
+$notification-background-error-hover: color(app-red-desaturated, 50, .5);
+
+$notification-background-active: color(app-gold, null, .5);
+$notification-background-warning-active: color(app-orange, null, .5);
+$notification-background-success-active: color(app-green, null, .5);
+$notification-background-error-active: color(app-red-desaturated, null, .5);
+
+$notification-border: color(app-gold);
+$notification-border-warning: color(app-orange);
+$notification-border-success: color(app-green);
+$notification-border-error: color(app-red-desaturated);
+
+$notification-text: color(app-yellow-desaturated);
+$notification-text-warning: color(app-orange, -25);
+$notification-text-success: color(app-green, -25);
+$notification-text-error: color(app-red-desaturated, -25);
+
+$notification-text-hover: color(app-yellow-desaturated, 5);
+$notification-text-warning-hover: color(app-orange, -20);
+$notification-text-success-hover: color(app-green, -20);
+$notification-text-error-hover: color(app-red-desaturated, -20);
+
+$notification-text-active: color(app-yellow-desaturated, -10);
+$notification-text-warning-active: color(app-orange, -30);
+$notification-text-success-active: color(app-green, -30);
+$notification-text-error-active: color(app-red-desaturated, -30);
+
+:host {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: $z-index-notification;
+}
+
+.c-notifications {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-200%) translateZ(0);
+  @include animate(transform opacity, 500ms);
+  will-change: transform opacity;
+
+  &.is-active {
+    opacity: 1;
+    transform: translateX(-50%) translateY(11px) translateZ(0);
+  }
+}
+
+.c-notifications__tray {
+  min-width: 400px;
+  max-width: 500px;
+}
+
+// INDIVIDUAL NOTIFICATION
+
+.c-notification {
+  align-items: center;
+  background-color: $notification-background;
+  border-radius: 3px;
+  border: 1px solid $notification-border;
+  color: $notification-text;
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  padding: 10px;
+  width: 100%;
+}
+
+.c-notification--success {
+  color: $notification-text-success;
+  background-color: $notification-background-success;
+  border-color: $notification-border-success;
+}
+
+.c-notification--warning {
+  color: $notification-text-error;
+  background-color: $notification-background-warning;
+  border-color: $notification-border-warning;
+}
+
+.c-notification--error {
+  color: $notification-text-error;
+  background-color: $notification-background-error;
+  border-color: $notification-border-error;
+}
+
+.c-notification__content {
+  flex-grow: 1;
+}
+
+.c-notification__close {
+  @include animate(color background-color, $animation-time-short);
+  background-color: $notification-background;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $notification-text;
+  font-size: 30px;
+  line-height: .6;
+  width: 20px;
+  height: 19px;
+
+  .c-notification--success & {
+    background-color: $notification-background-success;
+    color: $notification-text-success;
+  }
+
+  .c-notification--warning & {
+    background-color: $notification-background-warning;
+    color: $notification-text-warning;
+  }
+
+  .c-notification--error & {
+    background-color: $notification-background-error;
+    color: $notification-text-error;
+  }
+
+  &.is-active,
+  &:hover {
+    background-color: $notification-background-hover;
+    color: $notification-text-hover;
+
+    .c-notification--success & {
+      color: $notification-text-success-hover;
+      background-color: $notification-background-success-hover;
+    }
+
+    .c-notification--warning & {
+      color: $notification-text-warning-hover;
+      background-color: $notification-background-warning-hover;
+    }
+
+    .c-notification--error & {
+      color: $notification-text-error-hover;
+      background-color: $notification-background-error-hover;
+    }
+  }
+
+  &:active {
+    background-color: $notification-background-active;
+    color: $notification-text-active;
+
+    .c-notification--success & {
+      color: $notification-text-success-active;
+      background-color: $notification-background-success-active;
+    }
+
+    .c-notification--warning & {
+      color: $notification-text-warning-active;
+      background-color: $notification-background-warning-active;
+    }
+
+    .c-notification--error & {
+      color: $notification-text-error-active;
+      background-color: $notification-background-error-active;
+    }
+  }
+}
+
+.c-notification__icon {
+  fill: $notification-text;
+
+  .c-notification--success & {
+    fill: $notification-text-success;
+  }
+
+  .c-notification--warning & {
+    fill: $notification-text-warning;
+  }
+
+  .c-notification--error & {
+    fill: $notification-text-error;
+  }
+
+  &.is-active,
+  &:hover {
+    fill: $notification-text-hover;
+
+    .c-notification--success & {
+      fill: $notification-text-success-hover;
+    }
+
+    .c-notification--warning & {
+      fill: $notification-text-warning-hover;
+    }
+
+    .c-notification--error & {
+      fill: $notification-text-error-hover;
+    }
+  }
+
+  &:active {
+    fill: $notification-text-active;
+
+    .c-notification--success & {
+      fill: $notification-text-success-active;
+    }
+
+    .c-notification--warning & {
+      fill: $notification-text-warning-active;
+    }
+
+    .c-notification--error & {
+      fill: $notification-text-error-active;
+    }
+  }
+}

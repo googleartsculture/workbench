@@ -1,0 +1,141 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+//================================================================================================//
+//
+//  CHECKBOX COMPONENTS
+//
+//================================================================================================//
+
+// VARS
+$checkbox-label-text-checked: color(app-green, -50) !default;
+$checkbox-label-text-disabled: color(app-white-yellow, -15) !default;
+$checkbox-field-background: color(app-white-yellow) !default;
+$checkbox-field-background-disabled: color(app-white-yellow, -15) !default;
+$checkbox-field-background-focus: color(app-white) !default;
+
+$checkbox-field-border: color(app-white-yellow, -25, 1) !default;
+$checkbox-field-border-hover: color(app-white-yellow, -50, 1) !default;
+$checkbox-field-border-error: color(app-red-desaturated) !default;
+$checkbox-field-border-disabled: color(app-white-yellow, -15) !default;
+
+$checkbox-field-mark: color(app-green) !default;
+$checkbox-field-mark-disabled: color(app-orange-desaturated) !default;
+
+// ELEMENTS
+.c-checkbox {}
+
+.c-checkbox__field {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 5;
+
+  &::-ms-check {
+    display: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:checked {
+    background: transparent;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.c-checkbox__fake {
+  @include animate(border-color background-color);
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: $checkbox-field-background;
+  border: 1px solid $checkbox-field-border;
+  top: 2px;
+  left: 2px;
+  z-index: 2;
+
+  &::before,
+  &::after {
+    @include animate(transform);
+    background-color: $checkbox-field-mark;
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 2px;
+    height: 12px;
+    left: 50%;
+    top: 50%;
+  }
+
+  &::before {
+    transform: translate3d(1px, -6px, 0) scale(0) rotate(35deg);
+    height: 13px;
+  }
+
+  &::after {
+    transform: translate3d(-4px, 0, 0) scale(0) rotate(-45deg);
+    height: 6px;
+  }
+
+  .c-checkbox__field:focus ~ & {
+    background-color: $checkbox-field-background-focus;
+    outline: none;
+  }
+
+  .c-checkbox__field:hover ~ &,
+  &:hover {
+    border-color: $checkbox-field-border-hover;
+  }
+
+  .c-checkbox__field:checked ~ & {
+    &::before {
+      transform: translate3d(1px, -6px, 0) scale(1) rotate(35deg);
+      height: 13px;
+    }
+
+    &::after {
+      transform: translate3d(-4px, 0, 0) scale(1) rotate(-45deg);
+    }
+  }
+
+  .is-error &,
+  .c-checkbox__field.ng-invalid:not(.ng-pristine) ~ & {
+    border-color: $checkbox-field-border-error;
+  }
+
+  .is-disabled &,
+  .c-checkbox__field[disabled] ~ & {
+    border-color: $checkbox-field-border-disabled;
+    background-color: $checkbox-field-background-disabled;
+
+    &::before,
+    &::after {
+      background-color: $checkbox-field-mark-disabled;
+    }
+  }
+}
+
+// STATES
+
+// VARIANTS

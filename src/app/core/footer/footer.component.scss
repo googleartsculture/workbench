@@ -1,0 +1,177 @@
+/*
+ * Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@import '../../../styles/app-init';
+
+$color-footer-text: color(app-grey-lighter) !default;
+
+$color-corp-text: color(app-grey-lighter) !default;
+$color-corp-link: $color-corp-text !default;
+$color-corp-visited: $color-corp-text !default;
+$color-corp-hover: $color-corp-text !default;
+$color-corp-active: $color-corp-text !default;
+
+$color-lang-border: $color-corp-text !default;
+$color-lang-border-hover: $color-corp-hover !default;
+
+.c-footer__accreditation {
+  align-items: center;
+  color: $color-footer-text;
+  display: flex;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+// CORPS LIST
+
+.c-corps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.c-corps__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  margin: 0 1px 0 0;
+  line-height: 1;
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 2px;
+    height: 12px;
+    opacity: .35;
+    right: -1px;
+    top: 50%;
+    background-color: $color-corp-text;
+    transform: translateY(-50%);
+  }
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    margin: 0;
+    padding-right: 0;
+
+    &::after {
+      content: none;
+    }
+  }
+}
+
+// INDIVIDUAL CORP
+
+.c-corp {
+  @include font-primary-regular;
+  color: $color-corp-link;
+  display: inline-block;
+  font-size: 12px;
+  overflow: visible;
+  text-decoration: none;
+  @include animate(color, $animation-time-short);
+
+  &:link {
+    color: $color-corp-link;
+  }
+
+  &:visited {
+    color: $color-corp-visited;
+  }
+
+  &:hover {
+    color: $color-corp-hover;
+  }
+
+  &:active {
+    color: $color-corp-active;
+  }
+}
+
+// LANG
+
+.c-lang {
+  @include font-primary-regular;
+  color: $color-corp-text;
+  font-size: 12px;
+}
+
+.c-lang__input {
+  @include animate(border-color, $animation-time-short);
+  position: relative;
+
+  &::after {
+    @include animate(border-color, $animation-time-short);
+    content: '';
+    border-width: 2px 2px 0 0;
+    border-color: $color-lang-border;
+    border-style: solid;
+    height: 6px;
+    width: 6px;
+    transform: translateY(-50%) rotate(135deg);
+    position: absolute;
+    top: 45%;
+    right: 7px;
+    pointer-events: none;
+  }
+
+  &:hover {
+    color: $color-corp-hover;
+
+    &::after {
+      border-color: $color-lang-border-hover;
+    }
+  }
+}
+
+.c-lang__select {
+  @include font-primary-regular;
+  appearance: none;
+  background-color: transparent;
+  border-radius: 0;
+  border-width: 0;
+  box-sizing: border-box;
+  color: $color-corp-text;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 20px 2px 0;
+  @include animate(color, $animation-time-short);
+
+  .c-lang__input:hover & {
+    color: $color-corp-hover;
+  }
+}
+
+// ACCREDITATION
+
+.c-accreditation__link {
+  color: transparent;
+}
+
+.c-accreditation__google {
+  fill: $color-footer-text;
+  height: 27px;
+  position: relative;
+  width: 140px;
+}
