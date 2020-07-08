@@ -22,6 +22,9 @@ classifier-automl [googleartsculture/classifier-automl](https://github.com/googl
 
 translation [googleartsculture/translation](https://github.com/googleartsculture/translation)
 
+The translation uses data from: Berlin-Brandenburg Academy of Sciences and Humanities (Berlin, Germany) and Saxon Academy of Sciences and Humanities
+(Leipzig, Germany), research project  "Structure and Transformation in the Vocabulary of the Egyptian Language", CC BY-SA 4.0 Int.
+
 cluster-analysis [googleartsculture/cluster-analysis](https://github.com/googleartsculture/cluster-analysis)
 
 ## Built With
