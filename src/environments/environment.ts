@@ -48,7 +48,7 @@ export const environment = {
       },
       localisation: {
         default: 'en',
-        langs: []
+        langs: ['en', 'ar']
       }
     }
   };
