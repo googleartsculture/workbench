@@ -34,6 +34,7 @@ declare var gtag;
 export class AppComponent implements OnInit {
 
   public projectView: boolean;
+  public direction = 'ltr';
 
   constructor (
     private browserDetectService: BrowserDetectService,
@@ -59,6 +60,12 @@ export class AppComponent implements OnInit {
     );
     navEndEvent$.subscribe((e: NavigationEnd) => {
       gtag('config', environment.googleAnalytics, {'page_path': e.urlAfterRedirects});
+    });
+
+    this.translationsService.direction.subscribe((value) => {
+      if (value) {
+        this.direction = value;
+      }
     });
   }
 

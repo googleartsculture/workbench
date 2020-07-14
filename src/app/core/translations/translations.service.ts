@@ -19,13 +19,16 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable ,  Subscription ,  BehaviorSubject } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
+import { dir } from 'console';
 
 @Injectable()
 export class TranslationsService implements OnDestroy {
 
   private i18n: Subscription;
   private i18nSub: BehaviorSubject<any> = new BehaviorSubject(null);
+  private directionSub: BehaviorSubject<string> = new BehaviorSubject(null);
   i18nObs: Observable<any> = this.i18nSub.asObservable();
+  direction: Observable<string> = this.directionSub.asObservable();
 
   constructor(
     private translateService: TranslateService
@@ -37,10 +40,20 @@ export class TranslationsService implements OnDestroy {
     }
   }
 
+  private setDirection(lang: string): void {
+    let direction: string;
+    if (environment.config.localisation.rtlLangs.indexOf(lang) > -1) {
+      direction = 'rtl';
+    } else {
+      direction = 'ltr';
+    }
+    this.directionSub.next(direction);
+  }
+
   public init (): void {
     this.i18n = this.translateService.onLangChange.subscribe(l => {
       if (!l || !l.lang) { return; }
-
+      this.setDirection(l.lang);
       this.translateService.getTranslation(l.lang).pipe(
         take(1))
         .subscribe(t => this.i18nSub.next(t));
