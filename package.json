@@ -20,7 +20,7 @@
     "test": "ng test",
     "test-ci": "ng test --watch=false --browsers=ChromeHeadlessNoSandbox",
     "lint": "npm run lint-scss && npm run lint-ts",
-    "lint-scss": "stylelint './src/**/*.scss'",
+    "lint-scss": "nstylelint './src/**/*.scss'",
     "lint-ts": "ng lint",
     "e2e": "ng e2e",
     "extract": "ngx-translate-extract --input ./src/app --output ./src/assets/i18n/{en,ar}.json --clean --sort --format namespaced-json"
