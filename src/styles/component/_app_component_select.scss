@@ -99,7 +99,6 @@ $select-line-height: 1.2 !default;
   }
 
   .is-success &,
-  &.ng-valid,
   &.ng-valid {
     border-color: $select-border-success;
   }
