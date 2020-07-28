@@ -14,7 +14,7 @@
 
 import { Settings } from '../../modules/settings/settings.model';
 import { Injectable } from '@angular/core';
-import { LocalStorage } from '@ngx-pwa/local-storage';
+import { StorageMap } from '@ngx-pwa/local-storage';
 import { NotificationsService } from '../notifications/notifications.service';
 import { ProjectStorage, SourceStorage, FacsimileStorage } from './storage.model';
 import { projectListStorageSchema, projectStorageSchema, settingsStorageSchema, sourceStorageSchema, facsimileStorageSchema } from './storage.schema';
@@ -25,24 +25,25 @@ export class StorageService {
   // https://developers.google.com/web/fundamentals/instant-and-offline/web-storage/indexeddb-best-practices
 
   constructor (
-    private storage: LocalStorage,
+    private storage: StorageMap,
     private notificationsService: NotificationsService,
     private translate: TranslateService
   ) {
   }
 
   loadProjectList (): Promise<Array<ProjectStorage['id']>> {
-    return this.storage.getItem('project-list', projectListStorageSchema)
+    return this.storage.get('project-list', projectListStorageSchema)
       .toPromise()
       .then((data: Array<ProjectStorage['id']>) => {
         // If this does not exist yet then create it
         if (!data) {
-          return this.storage.setItem('project-list', [])
-            .toPromise()
-            .then(success => [], err => {
-              this.errorHandler(err);
-              return [];
-            });
+          return [];
+          // return this.storage.set('project-list', [''])
+          //   .toPromise()
+          //   .then(success => [], err => {
+          //     this.errorHandler(err);
+          //     return [];
+          //   });
         }
         return data;
       }, err => {
@@ -52,7 +53,7 @@ export class StorageService {
   }
 
   saveProjectList (ids: Array<ProjectStorage['id']>): Promise<boolean> {
-    return this.storage.setItem('project-list', ids)
+    return this.storage.set('project-list', ids)
       .toPromise()
       .catch(err => {
         this.errorHandler(err);
@@ -61,7 +62,8 @@ export class StorageService {
   }
 
   loadProject (id: ProjectStorage['id']): Promise<ProjectStorage> {
-    return this.storage.getItem(`project:${ id }`, projectStorageSchema)
+
+    return this.storage.get(`project:${ id }`, projectStorageSchema)
       .toPromise()
       .then((project: ProjectStorage) => {
         if (project) {
@@ -76,16 +78,17 @@ export class StorageService {
   }
 
   saveProject (project: ProjectStorage): Promise<boolean> {
-    return this.storage.setItem(`project:${ project.id }`, project)
+    return this.storage.set(`project:${ project.id }`, project)
       .toPromise()
       .catch(err => {
+        console.error(err);
         this.errorHandler(err);
         return false;
       });
   }
 
   deleteProject (id: ProjectStorage['id']): Promise<boolean> {
-    return this.storage.removeItem(`project:${ id }`)
+    return this.storage.delete(`project:${ id }`)
       .toPromise()
       .catch(err => {
         this.errorHandler(err);
@@ -94,7 +97,7 @@ export class StorageService {
   }
 
   loadSource (id: SourceStorage['id']): Promise<SourceStorage> {
-    return this.storage.getItem(`source:${ id }`, sourceStorageSchema)
+    return this.storage.get(`source:${ id }`, sourceStorageSchema)
       .toPromise()
       .then((source: SourceStorage) => {
         if (source) {
@@ -109,7 +112,7 @@ export class StorageService {
   }
 
   saveSource (source: SourceStorage): Promise<boolean> {
-    return this.storage.setItem(`source:${ source.id }`, source)
+    return this.storage.set(`source:${ source.id }`, source)
       .toPromise()
       .catch(err => {
         this.errorHandler(err);
@@ -118,7 +121,7 @@ export class StorageService {
   }
 
   deleteSource (id: SourceStorage['id']): Promise<boolean> {
-    return this.storage.removeItem(`source:${ id }`)
+    return this.storage.delete(`source:${ id }`)
       .toPromise()
       .catch(err => {
         this.errorHandler(err);
@@ -127,7 +130,7 @@ export class StorageService {
   }
 
   loadFacsimile (id: FacsimileStorage['id']): Promise<FacsimileStorage> {
-    return this.storage.getItem(`facsimile:${ id }`, facsimileStorageSchema)
+    return this.storage.get(`facsimile:${ id }`, facsimileStorageSchema)
       .toPromise()
       .then((facsimile: FacsimileStorage) => {
         if (facsimile) {
@@ -142,7 +145,7 @@ export class StorageService {
   }
 
   saveFacsimile (facsimile: FacsimileStorage): Promise<boolean> {
-    return this.storage.setItem(`facsimile:${ facsimile.id }`, facsimile)
+    return this.storage.set(`facsimile:${ facsimile.id }`, facsimile)
       .toPromise()
       .catch(err => {
         this.errorHandler(err);
@@ -151,7 +154,7 @@ export class StorageService {
   }
 
   deleteFacsimile (id: FacsimileStorage['id']): Promise<boolean> {
-    return this.storage.removeItem(`facsimile:${ id }`)
+    return this.storage.delete(`facsimile:${ id }`)
       .toPromise()
       .catch(err => {
         this.errorHandler(err);
@@ -160,7 +163,7 @@ export class StorageService {
   }
 
   loadSettings (): Promise<Settings> {
-    return this.storage.getItem(`settings`, settingsStorageSchema)
+    return this.storage.get(`settings`, settingsStorageSchema)
       .toPromise()
       .then((settings: Settings) => {
         if (settings) {
@@ -174,7 +177,7 @@ export class StorageService {
   }
 
   saveSettings (settings: Settings): Promise<boolean> {
-    return this.storage.setItem(`settings`, settings)
+    return this.storage.set(`settings`, settings)
       .toPromise()
       .catch(err => {
         this.errorHandler(err);
@@ -183,6 +186,7 @@ export class StorageService {
   }
 
   private errorHandler (err): void {
+    console.error(err);
     this.notificationsService.error(this.translate.instant('CORE.STORAGE.ERROR.STORAGE') + err);
     console.warn(this.translate.instant('CORE.STORAGE.ERROR.STORAGE'), err);
   }

@@ -12,203 +12,262 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { JSONSchemaArray, JSONSchemaObject, JSONSchemaString, JSONSchemaNumeric, JSONSchemaBoolean } from '@ngx-pwa/local-storage';
+import { JSONSchema } from '@ngx-pwa/local-storage';
 
-const positionStorageSchema: JSONSchemaObject = {
+const positionStorageSchema: JSONSchema = {
+  type: 'object',
   properties: {
-    height: { type: 'number' } as JSONSchemaNumeric,
-    left: { type: 'number' } as JSONSchemaNumeric,
-    top: { type: 'number' } as JSONSchemaNumeric,
-    width: { type: 'number' } as JSONSchemaNumeric,
+    height: { type: 'number' },
+    left: { type: 'number' },
+    top: { type: 'number' },
+    width: { type: 'number' },
   },
 };
 
-export const sourceStorageSchema: JSONSchemaObject = {
+export const sourceStorageSchema: JSONSchema = {
+  type: 'object',
   properties: {
-    dataURL: { type: 'string' } as JSONSchemaString,
-    id: { type: 'string' } as JSONSchemaString,
-    title: { type: 'string' } as JSONSchemaString,
+    dataURL: { type: 'string' },
+    id: { type: 'string' },
+    title: { type: 'string' },
   },
 };
 
-export const facsimileStorageSchema: JSONSchemaObject = {
+export const facsimileStorageSchema: JSONSchema = {
+  type: 'object',
   properties: {
-    dataURL: { type: 'string' } as JSONSchemaString,
-    id: { type: 'string' } as JSONSchemaString,
+    dataURL: { type: 'string' },
+    id: { type: 'string' },
   },
 };
 
-const facsimileEffectsStorageSchema: JSONSchemaObject = {
+const facsimileEffectsStorageSchema: JSONSchema = {
+  type: 'object',
   properties: {
     drawing: {
+      type: 'object',
       properties: {
-        active: { type: 'boolean' } as JSONSchemaBoolean,
-        width: { type: 'number' } as JSONSchemaNumeric,
+        active: { type: 'boolean' },
+        width: { type: 'number' },
       },
-    } as JSONSchemaObject,
+    },
     outlines: {
+      type: 'object',
       properties: {
-        active: { type: 'boolean' } as JSONSchemaBoolean,
-        level: { type: 'number' } as JSONSchemaNumeric,
+        active: { type: 'boolean' },
+        level: { type: 'number' },
       },
-    } as JSONSchemaObject,
+    },
     trace: {
+      type: 'object',
       properties: {
-        active: { type: 'boolean' } as JSONSchemaBoolean,
-        level: { type: 'number' } as JSONSchemaNumeric,
+        active: { type: 'boolean' },
+        level: { type: 'number' },
       },
-    } as JSONSchemaObject,
+    },
   },
 };
 
-const pointStorageSchema: JSONSchemaObject = {
+const pointStorageSchema: JSONSchema = {
+  type: 'object',
   properties: {
-    x: { type: 'number' } as JSONSchemaNumeric,
-    y: { type: 'number' } as JSONSchemaNumeric,
+    x: { type: 'number' },
+    y: { type: 'number' },
   }
 };
 
-const thresholdEffectStorageSchema: JSONSchemaObject = {
+const thresholdEffectStorageSchema: JSONSchema = {
+  type: 'object',
   properties: {
-    active: { type: 'boolean' } as JSONSchemaBoolean,
-    invert: { type: 'boolean' } as JSONSchemaBoolean,
-    level: { type: 'string' } as JSONSchemaString,
-    tid: { type: 'string' } as JSONSchemaString,
+    active: { type: 'boolean' },
+    invert: { type: 'boolean' },
+    level: { type: 'string' },
+    tid: { type: 'string' },
   },
 };
 
-const areaStorageSchema: JSONSchemaObject = {
+const areaStorageSchema: JSONSchema = {
+  type: 'object',
   properties: {
-    author: { type: 'string' } as JSONSchemaString,
-    created: { type: 'number' } as JSONSchemaNumeric,
+    author: { type: 'string' },
+    created: { type: 'number' },
     effects: {
+      type: 'array',
       items: thresholdEffectStorageSchema,
-    } as JSONSchemaArray,
+    },
     position: positionStorageSchema,
-    source: { type: 'string' } as JSONSchemaString,
+    source: { type: 'string' },
   },
 };
 
-const drawingStorageSchema: JSONSchemaObject = {
+const drawingStorageSchema: JSONSchema = {
+  type: 'object',
   properties: {
-    author: { type: 'string' } as JSONSchemaString,
-    created: { type: 'number' } as JSONSchemaNumeric,
-    dataURL: { type: 'string' } as JSONSchemaString,
+    author: { type: 'string' },
+    created: { type: 'number' },
+    dataURL: { type: 'string' },
     position: positionStorageSchema,
   },
 };
 
-const annotationCommentStorageSchema: JSONSchemaObject = {
+const annotationCommentStorageSchema: JSONSchema = {
+  type: 'object',
   properties: {
-    author: { type: 'string' } as JSONSchemaString,
-    comment: { type: 'string' } as JSONSchemaString,
-    created: { type: 'number' } as JSONSchemaNumeric,
-    id: { type: 'string' } as JSONSchemaString,
+    author: { type: 'string' },
+    comment: { type: 'string' },
+    created: { type: 'number' },
+    id: { type: 'string' },
   },
 };
 
-const annotationStorageSchema: JSONSchemaObject = {
+const annotationStorageSchema: JSONSchema = {
+  type: 'object',
   properties: {
-    author: { type: 'string' } as JSONSchemaString,
-    comments: { items: annotationCommentStorageSchema } as JSONSchemaArray,
-    created: { type: 'number' } as JSONSchemaNumeric,
-    points: { items: pointStorageSchema } as JSONSchemaArray,
+    author: { type: 'string' },
+    comments: {
+      type: 'array',
+      items: annotationCommentStorageSchema
+    },
+    created: { type: 'number' },
+    points: {
+      items: pointStorageSchema,
+      type: 'array',
+    },
   },
 };
 
-const classificationResultStorageSchema: JSONSchemaObject = {
+const classificationResultStorageSchema: JSONSchema = {
+  type: 'object',
   properties: {
-    glyph: { type: 'string' } as JSONSchemaString,
-    score: { type: 'number' } as JSONSchemaNumeric,
+    glyph: { type: 'string' },
+    score: { type: 'number' },
   },
 };
 
-const glyphStorageSchema: JSONSchemaObject = {
+const glyphStorageSchema: JSONSchema = {
+  type: 'object',
   properties: {
-    author: { type: 'string' } as JSONSchemaString,
-    created: { type: 'number' } as JSONSchemaNumeric,
-    gardinerCode: { type: 'string' } as JSONSchemaString,
-    gardinerCodePredictions: { items: classificationResultStorageSchema } as JSONSchemaArray,
-    locked: { type: 'boolean' } as JSONSchemaBoolean,
-    order: { type: 'number' } as JSONSchemaNumeric,
-    points: { items: pointStorageSchema } as JSONSchemaArray,
+    author: { type: 'string' },
+    created: { type: 'number' },
+    gardinerCode: { type: 'string' },
+    gardinerCodePredictions: {
+      items: classificationResultStorageSchema,
+      type: 'array'
+    },
+    locked: { type: 'boolean' },
+    order: { type: 'number' },
+    points: {
+      items: pointStorageSchema,
+      type: 'array'
+    },
   },
 };
 
-const wordStorageSchema: JSONSchemaObject = {
+const wordStorageSchema: JSONSchema = {
+  type: 'object',
   properties: {
-    author: { type: 'string' } as JSONSchemaString,
-    created: { type: 'number' } as JSONSchemaNumeric,
-    glyphs: { items: glyphStorageSchema } as JSONSchemaArray,
-    isCartouche: { type: 'boolean' } as JSONSchemaBoolean,
-    order: { type: 'number' } as JSONSchemaNumeric,
+    author: { type: 'string' },
+    created: { type: 'number' },
+    glyphs: {
+      items: glyphStorageSchema,
+      type: 'array'
+    },
+    isCartouche: { type: 'boolean' },
+    order: { type: 'number' },
     position: positionStorageSchema,
-    translation: { type: 'string' } as JSONSchemaString,
-    transliteration: { type: 'string' } as JSONSchemaString,
+    translation: { type: 'string' },
+    transliteration: { type: 'string' },
   },
 };
 
-const sentenceStorageSchema: JSONSchemaObject = {
+const sentenceStorageSchema: JSONSchema = {
+  type: 'object',
   properties: {
-    author: { type: 'string' } as JSONSchemaString,
-    created: { type: 'number' } as JSONSchemaNumeric,
-    interpretation: { type: 'string' } as JSONSchemaString,
-    order: { type: 'number' } as JSONSchemaNumeric,
+    author: { type: 'string' },
+    created: { type: 'number' },
+    interpretation: { type: 'string' },
+    order: { type: 'number' },
     position: positionStorageSchema,
-    transliteration: { type: 'string' } as JSONSchemaString,
-    words: { items: wordStorageSchema } as JSONSchemaArray,
+    transliteration: { type: 'string' },
+    words: {
+      items: wordStorageSchema,
+      type: 'array',
+    },
   },
 };
 
-export const projectStorageSchema: JSONSchemaObject = {
+export const projectStorageSchema: JSONSchema = {
+  type: 'object',
   properties: {
-    annotations: { items: annotationStorageSchema } as JSONSchemaArray,
-    appVersion: { type: 'string' } as JSONSchemaString,
-    areas: { items: areaStorageSchema } as JSONSchemaArray,
-    created: { type: 'number' } as JSONSchemaNumeric,
-    drawings: { items: drawingStorageSchema } as JSONSchemaArray,
+    annotations: {
+      items: annotationStorageSchema,
+      type: 'array',
+    },
+    appVersion: { type: 'string' },
+    areas: {
+      items: areaStorageSchema,
+      type: 'array',
+    },
+    created: { type: 'number' },
+    drawings: {
+      items: drawingStorageSchema,
+      type: 'array',
+    },
     effects: facsimileEffectsStorageSchema,
     facsimile: {
+      type: 'object',
       properties: {
-        generated: { type: 'string' } as JSONSchemaString,
-        processed: { type: 'string' } as JSONSchemaString,
+        generated: { type: 'string' },
+        processed: { type: 'string' },
       },
-    } as JSONSchemaObject,
-    id: { type: 'string' } as JSONSchemaString,
+    },
+    id: { type: 'string' },
     properties: {
+      type: 'object',
       properties: {
-        author: { type: 'string' } as JSONSchemaString,
-        title: { type: 'string' } as JSONSchemaString,
+        author: { type: 'string' },
+        title: { type: 'string' },
       },
-    } as JSONSchemaObject,
-    sentences: { items: sentenceStorageSchema } as JSONSchemaArray,
-    sources: { items: { type: 'string' } as JSONSchemaString } as JSONSchemaArray,
-    updated: { type: 'number' } as JSONSchemaNumeric,
+    },
+    sentences: {
+      items: sentenceStorageSchema,
+      type: 'array'
+    },
+    sources: {
+      items: { type: 'string' },
+      type: 'array'
+    },
+    updated: { type: 'number' }
   },
 };
 
-export const projectListStorageSchema: JSONSchemaArray = {
-  items: { type: 'string' } as JSONSchemaString,
+export const projectListStorageSchema: JSONSchema = {
+  items: { type: 'string' },
+  type: 'array'
 };
 
-export const settingsStorageSchema: JSONSchemaObject = {
+export const settingsStorageSchema: JSONSchema = {
+  type: 'object',
   properties: {
     classification: {
+      type: 'object',
       properties: {
         model: {
+          type: 'object',
           properties: {
-            displayName: { type: 'string' } as JSONSchemaString,
-            name: { type: 'string' } as JSONSchemaString,
-            version: { type: 'string' } as JSONSchemaString,
+            displayName: { type: 'string' },
+            name: { type: 'string' },
+            version: { type: 'string' },
           },
-        } as JSONSchemaObject,
+        },
       },
-    } as JSONSchemaObject,
+    },
     clusterAnalysis: {
+      type: 'object',
       properties: {
-        threshold: { type: 'number' } as JSONSchemaNumeric,
+        threshold: { type: 'number' },
       },
-    } as JSONSchemaObject,
-    userFullName: { type: 'string' } as JSONSchemaString,
+    },
+    userFullName: { type: 'string' },
   },
 };
