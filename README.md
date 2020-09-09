@@ -4,7 +4,8 @@ Fabricius is a collaborative project between Google Arts & Culture, the Australi
 
 ## The Workbench
 
-Browser-based tools for finding and classifying hieroglyphs in images.
+Browser-based tools for finding and classifying hieroglyphs in images. The Google hosted version of the
+Fabricius Workbench can be found at [fabriciusworkbench.withgoogle.com](https://fabriciusworkbench.withgoogle.com/)
 
 ## Development
 

@@ -49,6 +49,7 @@ steps:
     - deploy
     - ./dist/app.yaml
     - --project=${_TARGET_PROJECT_}
+    - --version=$SHORT_SHA
   waitFor:
     - build
 - name: 'gcr.io/cloud-builders/gcloud'

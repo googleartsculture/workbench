@@ -117,7 +117,6 @@ $textbox-line-height-multiline: 1.5 !default;
   }
 
   .is-success &,
-  &.ng-valid,
   &.ng-valid {
     border-color: $textbox-border-success;
   }
