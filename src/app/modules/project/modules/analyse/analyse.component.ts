@@ -736,10 +736,13 @@ export class AnalyseComponent implements OnDestroy {
       };
 
       // Choose default translation locale
+      const locale = this.translate.currentLang;
+
+      // Choose default translation locale
       // English if it exists, otherwise first other (until a UI is planned for
       // surfacing this choice to the user)
       if (result.translations) {
-        const translation = find(result.translations, { locale: 'en' });
+        const translation = find(result.translations, { locale: locale });
         if (translation) {
           word.translation = translation;
           words.push(word);
