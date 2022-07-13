@@ -30,17 +30,17 @@ steps:
 
   - name: "gcr.io/cloud-builders/npm"
     id: install
-    args: ["npm", "install"]
+    args: ["install"]
     waitFor:
       - copy-environs
       - copy-app
   # - name: 'gcr.io/cloud-builders/npm'
-  #   args: ['npm', 'run', 'test-ci']
+  #   args: ['run', 'test-ci']
   # - name: 'selenium/standalone-chrome-debug:latest'
-  #   args: ['npm', 'run', 'e2e']
+  #   args: ['run', 'e2e']
   - name: "gcr.io/cloud-builders/npm"
     id: build
-    args: ["npm", "run", "build"]
+    args: ["run", "build"]
     waitFor:
       - install
   - name: "gcr.io/cloud-builders/gcloud"
