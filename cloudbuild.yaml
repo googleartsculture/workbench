@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+timeout: 900s
 steps:
   - name: "gcr.io/cloud-builders/gsutil"
     id: copy-environs
@@ -27,17 +28,17 @@ steps:
       - "gs://${_CONFIG_BUCKET_}/${_ENVIRONMENT_}/src/app.yaml"
       - ./src/
 
-  - name: "justingrayston/chrome_node:latest"
+  - name: "gcr.io/cloud-builders/npm"
     id: install
     args: ["npm", "install"]
     waitFor:
       - copy-environs
       - copy-app
-  # - name: 'justingrayston/chrome_node:latest'
+  # - name: 'gcr.io/cloud-builders/npm'
   #   args: ['npm', 'run', 'test-ci']
   # - name: 'selenium/standalone-chrome-debug:latest'
   #   args: ['npm', 'run', 'e2e']
-  - name: "justingrayston/chrome_node:latest"
+  - name: "gcr.io/cloud-builders/npm"
     id: build
     args: ["npm", "run", "build"]
     waitFor:
