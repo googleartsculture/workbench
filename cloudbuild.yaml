@@ -18,13 +18,13 @@ steps:
     args:
       - cp
       - -r
-      - "gs://${_CONFIG_BUCKET_}/${_ENVIRONMENT_)/src/environments/"
+      - "gs://${_CONFIG_BUCKET_}/${_ENVIRONMENT_}/src/environments/"
       - ./src/
   - name: "gcr.io/cloud-builders/gsutil"
     id: copy-app
     args:
       - cp
-      - "gs://${_CONFIG_BUCKET_}/${_ENVIRONMENT_)/src/app.yaml"
+      - "gs://${_CONFIG_BUCKET_}/${_ENVIRONMENT_}/src/app.yaml"
       - ./src/
 
   - name: "justingrayston/chrome_node:latest"
