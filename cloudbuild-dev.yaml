@@ -21,13 +21,13 @@ steps:
       - -r
       - "gs://${_CONFIG_BUCKET_}/${_ENVIRONMENT_}/src/environments/"
       - ./src/
-  - name: gcr.io/cloud-builders/npm
+  - name: gcr.io/cloud-builders/npm:node-10.10.0
     id: install
     args:
       - install
     waitFor:
       - copy-environs
-  - name: gcr.io/cloud-builders/npm
+  - name: gcr.io/cloud-builders/npm:node-10.10.0
     id: lint
     args:
       - run
