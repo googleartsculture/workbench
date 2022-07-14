@@ -24,14 +24,12 @@ steps:
   - name: gcr.io/cloud-builders/npm
     id: install
     args:
-      - npm
       - install
     waitFor:
       - copy-environs
   - name: gcr.io/cloud-builders/npm
     id: lint
     args:
-      - npm
       - run
       - lint
     waitFor:
