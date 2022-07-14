@@ -14,26 +14,23 @@
 # limitations under the License.
 
 steps:
-- name: 'gcr.io/cloud-builders/gsutil'
-  id: copy-environs
-  args:
-    - cp
-    - -r
-    - 'gs://${_TARGET_PROJECT_}-configs/workbench/src/environments/'
-    - ./src/
-- name: justingrayston/chrome_node
-  id: install
-  args:
-    - npm
-    - install
-  waitFor:
+  - name: "gcr.io/cloud-builders/gsutil"
+    id: copy-environs
+    args:
+      - cp
+      - -r
+      - "gs://${_CONFIG_BUCKET_}/${_ENVIRONMENT_}/src/environments/"
+      - ./src/
+  - name: gcr.io/cloud-builders/npm:node-10.10.0
+    id: install
+    args:
+      - install
+    waitFor:
       - copy-environs
-- name: justingrayston/chrome_node
-  id: lint
-  args:
-    - npm
-    - run
-    - lint
-  waitFor:
-    - install
-
+  - name: gcr.io/cloud-builders/npm:node-10.10.0
+    id: lint
+    args:
+      - run
+      - lint
+    waitFor:
+      - install
