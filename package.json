@@ -36,7 +36,7 @@
     "@angular/router": "^13.3.11",
     "@angular/service-worker": "13.3.11",
     "@biesbjerg/ngx-translate-extract": "^2.3.4",
-    "@ngx-pwa/local-storage": "^10.0.1",
+    "@ngx-pwa/local-storage": "^13.0.5",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "array-move": "^2.2.2",
