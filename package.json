@@ -14,7 +14,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --crossOrigin=use-credentials",
+    "build": "ng build --configuration production --crossOrigin=use-credentials",
     "build-serve": "yarn build && superstatic ./dist --port 8080",
     "bundle-report": "webpack-bundle-analyzer ./dist/stats.json",
     "test": "ng test",
@@ -57,11 +57,11 @@
     "tslib": "^2.0.0",
     "uuid": "^3.2.1",
     "webfontloader": "^1.6.28",
-    "zone.js": "~0.11.7"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1102.19",
-    "@angular/cli": "^11.2.19",
+    "@angular-devkit/build-angular": "~12.2.18",
+    "@angular/cli": "^12.2.18",
     "@angular/compiler-cli": "^12.2.16",
     "@angular/language-service": "^12.2.16",
     "@types/fabric": "^2.6.12",
