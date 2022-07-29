@@ -18,7 +18,7 @@ import { Settings, DevData } from './settings.model';
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { find } from 'lodash';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from '../../../environments/environment';
 
@@ -37,10 +37,10 @@ export class SettingsComponent implements OnDestroy {
     },
     devVisible: false,
   };
-  formData = new FormGroup ({
-    userFullName: new FormControl('Anonymous', Validators.required),
-    clusterAnalysisThreshold: new FormControl(200, Validators.required),
-    classificationModel: new FormControl(
+  formData = new UntypedFormGroup ({
+    userFullName: new UntypedFormControl('Anonymous', Validators.required),
+    clusterAnalysisThreshold: new UntypedFormControl(200, Validators.required),
+    classificationModel: new UntypedFormControl(
       environment.config.apiServices.classification.models.length ? environment.config.apiServices.classification.models[0] : { value: null, disabled: true },
       environment.config.apiServices.classification.models.length ? Validators.required : null
     ),
