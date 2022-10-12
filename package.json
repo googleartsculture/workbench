@@ -44,7 +44,7 @@
     "buffer": "^5.7.1",
     "clone-deep": "^4.0.0",
     "core-js": "^2.6.12",
-    "fabric": "^2.7.0",
+    "fabric": "^5.2.4",
     "hammerjs": "^2.0.8",
     "js-yaml": "^3.14.1",
     "jsfeat": "^0.0.8",
