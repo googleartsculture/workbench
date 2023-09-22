@@ -28,9 +28,10 @@ steps:
       - "gs://${_CONFIG_BUCKET_}/${_ENVIRONMENT_}/src/app.yaml"
       - ./src/
 
-  - name: "gcr.io/cloud-builders/npm"
+  - name: "node:16.20.2"
     id: install
     args: ["install"]
+    entrypoint: "npm"
     waitFor:
       - copy-environs
       - copy-app
@@ -38,9 +39,10 @@ steps:
   #   args: ['run', 'test-ci']
   # - name: 'selenium/standalone-chrome-debug:latest'
   #   args: ['run', 'e2e']
-  - name: "gcr.io/cloud-builders/npm"
+  - name: "node:16.20.2"
     id: build
     args: ["run", "build"]
+    entrypoint: "npm"
     waitFor:
       - install
   - name: "gcr.io/cloud-builders/gcloud"
