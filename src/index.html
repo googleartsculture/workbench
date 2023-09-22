@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Workbench</title>
@@ -14,11 +15,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png">
   <link rel="mask-icon" href="/assets/images/favicons/safari-pinned-tab.svg" color="#f7b53f">
   <link rel="shortcut icon" href="/assets/images/favicons/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400&family=Google+Sans:wght@500&display=swap"
+    as="style">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400&family=Google+Sans:wght@500&display=swap">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-config" content="/assets/images/favicons/browserconfig.xml">
+  <link href="https://www.gstatic.com/glue/cookienotificationbar/cookienotificationbar.min.css" rel="stylesheet">
   <meta name="theme-color" content="#f7b53f">
 
 </head>
+
 <body>
   <app-root></app-root>
 
@@ -30,10 +40,13 @@
   <script async src="https://www.googletagmanager.com/gtag/js"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
   </script>
-  <script data-autoload-cookie-consent-bar="true"
-    src="https://www.gstatic.com/brandstudio/kato/cookie_choice_component/cookie_consent_bar.v2.js"></script>
+  <script src="https://www.gstatic.com/glue/cookienotificationbar/cookienotificationbar.min.js"
+    data-glue-cookie-notification-bar-category="2B"
+    data-glue-cookie-notification-bar-site-id="fabriciusworkbench.withgoogle.com">
+    </script>
 </body>
+
 </html>
