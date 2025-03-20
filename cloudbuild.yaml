@@ -51,9 +51,8 @@ steps:
     args:
       - -c
       - |
-        ls -l dist/
         chmod +x ./csp-update.sh
-        ./csp-update.sh -d dist/workbench -a src/app.yaml
+        ./csp-update.sh -d dist -a src/app.yaml
     waitFor:
       - build
   - name: "gcr.io/cloud-builders/gcloud"
