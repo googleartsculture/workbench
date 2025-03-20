@@ -20,7 +20,7 @@ DEFAULT_DIST_DIR="dist" # Default dist directory
 DEFAULT_APP_YAML="src/app.yaml" # Default app.yaml path
 SCRIPT_SRC_LINE_START="script-src"
 SCRIPT_SRC_ELEM_LINE_START="script-src-elem"
-CSP_BLOCK_START="Content-Security-Policy: >-"
+CSP_BLOCK_START="Content-Security-Policy: &gt;-" # Changed to match the escaped >
 # --- End Default Configuration ---
 
 # --- Parse Options ---
