@@ -14,11 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 # --- Default Configuration ---
-DEFAULT_DIST_DIR="dist/workbench" # Default dist directory
+DEFAULT_DIST_DIR="dist" # Default dist directory
 DEFAULT_APP_YAML="src/app.yaml" # Default app.yaml path
 SCRIPT_SRC_LINE_START="script-src"
 SCRIPT_SRC_ELEM_LINE_START="script-src-elem"
+CSP_BLOCK_START="Content-Security-Policy: >-"
 # --- End Default Configuration ---
 
 # --- Parse Options ---
@@ -76,10 +78,22 @@ echo "Found JS files: $JS_FILE_NAMES"
 echo "Generated CSP hashes: $CSP_HASHES"
 
 # 4. Modify the app.yaml file (using sed)
-# Add the hashes to the script-src line
-sed -i '' -E "s/($SCRIPT_SRC_LINE_START[^;]*)(;)/\1 $CSP_HASHES\2/g" "$APP_YAML"
+# Function to modify a specific CSP directive
+modify_csp_directive() {
+  local directive="$1"
+  local hashes="$2"
+  local file="$3"
 
-# Add the hashes to the script-src-elem line
-sed -i '' -E "s/($SCRIPT_SRC_ELEM_LINE_START[^;]*)(;)/\1 $CSP_HASHES\2/g" "$APP_YAML"
+  # Use sed to find the CSP block and modify the directive within it
+  sed -i -E "/^$CSP_BLOCK_START/,/^$/ {
+    s/($directive[^;]*)(;)/\1 $hashes\2/g
+  }" "$file"
+}
+
+# Modify script-src in all CSP blocks
+modify_csp_directive "$SCRIPT_SRC_LINE_START" "$CSP_HASHES" "$APP_YAML"
+
+# Modify script-src-elem in all CSP blocks
+modify_csp_directive "$SCRIPT_SRC_ELEM_LINE_START" "$CSP_HASHES" "$APP_YAML"
 
 echo "Modified $APP_YAML with new CSP hashes."
