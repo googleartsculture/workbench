@@ -51,6 +51,7 @@ steps:
     args:
       - -c
       - |
+        ls -l dist/
         chmod +x ./csp-update.sh
         ./csp-update.sh -d dist/workbench -a src/app.yaml
     waitFor:
