@@ -53,9 +53,6 @@ steps:
       - |
         chmod +x ./csp-update.sh
         ./csp-update.sh -d dist/workbench -a src/app.yaml
-    volumes:
-      - name: 'workspace'
-        path: /workspace
     waitFor:
       - build
   - name: "gcr.io/cloud-builders/gcloud"
