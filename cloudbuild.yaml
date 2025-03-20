@@ -53,6 +53,7 @@ steps:
       - |
         chmod +x ./csp-update.sh
         ./csp-update.sh -d dist -a src/app.yaml
+        cp src/app.yaml dist/app.yaml
     waitFor:
       - build
   - name: "gcr.io/cloud-builders/gcloud"
@@ -73,7 +74,7 @@ steps:
       - |
         tar cvzf dist.tar.gz dist
     waitFor:
-      - build
+      - update-csp
 artifacts:
   objects:
     location: "gs://${_ARTIFACT_BUCKET_}/workbench/${_TARGET_PROJECT_}/$SHORT_SHA"
