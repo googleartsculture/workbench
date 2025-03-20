@@ -46,6 +46,19 @@ steps:
     waitFor:
       - install
   - name: "gcr.io/cloud-builders/gcloud"
+    id: update-csp
+    entrypoint: /bin/sh
+    args:
+      - -c
+      - |
+        chmod +x ./csp-update.sh
+        ./csp-update.sh -d dist/workbench -a src/app.yaml
+    volumes:
+      - name: 'workspace'
+        path: /workspace
+    waitFor:
+      - build
+  - name: "gcr.io/cloud-builders/gcloud"
     id: deploy
     args:
       - app
@@ -54,7 +67,7 @@ steps:
       - --project=${_TARGET_PROJECT_}
       - --version=$SHORT_SHA
     waitFor:
-      - build
+      - update-csp
   - name: "gcr.io/cloud-builders/gcloud"
     id: gzip
     entrypoint: /bin/sh
