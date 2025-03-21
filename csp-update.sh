@@ -17,7 +17,7 @@
 # --- Default Configuration ---
 DEFAULT_DIST_DIR="dist"  # Default dist directory
 DEFAULT_APP_YAML="src/app.yaml"  # Default app.yaml path
-CSP_HASHES_PLACEHOLDER="_HASHES_"  # The placeholder string
+CSP_HASHES_PLACEHOLDER="CSP_HASHES_PLACEHOLDER"  # The placeholder string
 # --- End Default Configuration ---
 
 # --- Parse Options ---
@@ -76,6 +76,6 @@ echo "Generated CSP hashes: $CSP_HASHES"
 
 # 4. Modify the app.yaml file (using sed)
 # Replace the placeholder with the new hashes globally
-sed -i "" "s/$CSP_HASHES_PLACEHOLDER/'$CSP_HASHES'/g" "$APP_YAML"
+sed -i "" "s/$CSP_HASHES_PLACEHOLDER/$CSP_HASHES/g" "$APP_YAML"
 
 echo "Modified $APP_YAML with new CSP hashes."
