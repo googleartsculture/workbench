@@ -17,7 +17,7 @@
 # --- Default Configuration ---
 DEFAULT_DIST_DIR="dist"  # Default dist directory
 DEFAULT_APP_YAML="src/app.yaml"  # Default app.yaml path
-CSP_HASHES_PLACEHOLDER="CSP_HASHES_PLACEHOLDER"  # The placeholder string
+CSP_HASHES_PLACEHOLDER="_HASHES_"  # The placeholder string
 # --- End Default Configuration ---
 
 # --- Parse Options ---
