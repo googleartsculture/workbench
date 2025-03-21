@@ -74,6 +74,9 @@ done
 echo "Found JS files: $JS_FILE_NAMES"
 echo "Generated CSP hashes: $CSP_HASHES"
 
+# 3.1 Trim leading space from CSP_HASHES
+CSP_HASHES="${CSP_HASHES# }"
+
 # 4. Modify the app.yaml file (using sed)
 # Replace the placeholder with the new hashes globally
 sed -i "" "s/$CSP_HASHES_PLACEHOLDER/$CSP_HASHES/g" "$APP_YAML"
