@@ -68,7 +68,7 @@ for file in $JS_FILE_NAMES; do
   # Calculate SHA256 hash of the file
   HASH=$(openssl dgst -sha256 "$DIST_DIR/$file" | awk '{print $2}')
   # Add the hash to the CSP_HASHES string, formatted for CSP
-  CSP_HASHES="$CSP_HASHES 'sha256-$HASH'"
+  CSP_HASHES="$CSP_HASHES sha256-$HASH" # Removed the extra single quotes
 done
 
 echo "Found JS files: $JS_FILE_NAMES"
@@ -78,7 +78,14 @@ echo "Generated CSP hashes: $CSP_HASHES"
 CSP_HASHES="${CSP_HASHES# }"
 
 # 4. Modify the app.yaml file (using sed)
-# Replace the placeholder with the new hashes globally
-sed -i "" "s|$CSP_HASHES_PLACEHOLDER|$CSP_HASHES|g" "$APP_YAML"
+# 4.1 Identify OS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  SED_INPLACE="-i ''"
+else
+  SED_INPLACE="-i"
+fi
+
+# 4.2 Replace the placeholder with the new hashes globally
+sed $SED_INPLACE "s/$CSP_HASHES_PLACEHOLDER/'$CSP_HASHES'/g" "$APP_YAML"
 
 echo "Modified $APP_YAML with new CSP hashes."
