@@ -68,7 +68,7 @@ for file in $JS_FILE_NAMES; do
   # Calculate SHA256 hash of the file
   HASH=$(openssl dgst -sha256 "$DIST_DIR/$file" | awk '{print $2}')
   # Add the hash to the CSP_HASHES string, formatted for CSP
-  CSP_HASHES="$CSP_HASHES sha256-$HASH" # Removed the extra single quotes
+  CSP_HASHES="$CSP_HASHES 'sha256-$HASH'" # Added the single quotes here
 done
 
 echo "Found JS files: $JS_FILE_NAMES"
@@ -86,6 +86,6 @@ else
 fi
 
 # 4.2 Replace the placeholder with the new hashes globally
-sed $SED_INPLACE "s/$CSP_HASHES_PLACEHOLDER/'$CSP_HASHES'/g" "$APP_YAML"
+sed $SED_INPLACE "s/$CSP_HASHES_PLACEHOLDER/$CSP_HASHES/g" "$APP_YAML"
 
 echo "Modified $APP_YAML with new CSP hashes."
