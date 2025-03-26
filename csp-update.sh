@@ -17,7 +17,7 @@
 # --- Default Configuration ---
 DEFAULT_DIST_DIR="dist"  # Default dist directory
 DEFAULT_APP_YAML="src/app.yaml"  # Default app.yaml path
-CSP_HASHES_PLACEHOLDER="_HASHES_"  # The placeholder string
+CSP_FILES_PLACEHOLDER="_FILES_"  # The placeholder string
 # --- End Default Configuration ---
 
 # --- Parse Options ---
@@ -62,20 +62,18 @@ JS_FILES=$(find "$DIST_DIR" -name "*.js")
 # 2. Extract the file names (without paths)
 JS_FILE_NAMES=$(echo "$JS_FILES" | xargs -n 1 basename)
 
-# 3. Build the list of hashes for the CSP
-CSP_HASHES=""
+# 3. Build the list of files for the CSP
+CSP_FILES=""
 for file in $JS_FILE_NAMES; do
-  # Calculate SHA256 hash of the file
-  HASH=$(openssl dgst -sha256 "$DIST_DIR/$file" | awk '{print $2}')
-  # Add the hash to the CSP_HASHES string, formatted for CSP
-  CSP_HASHES="$CSP_HASHES 'sha256-$HASH'" # Added the single quotes here
+  # Add the file to the CSP_FILES string, formatted for CSP
+  CSP_FILES="$CSP_FILES '$file'"
 done
 
 echo "Found JS files: $JS_FILE_NAMES"
-echo "Generated CSP hashes: $CSP_HASHES"
+echo "Generated CSP files: $CSP_FILES"
 
-# 3.1 Trim leading space from CSP_HASHES
-CSP_HASHES="${CSP_HASHES# }"
+# 3.1 Trim leading space from CSP_FILES
+CSP_FILES="${CSP_FILES# }"
 
 # 4. Modify the app.yaml file (using sed)
 # 4.1 Identify OS
@@ -85,7 +83,7 @@ else
   SED_INPLACE="-i"
 fi
 
-# 4.2 Replace the placeholder with the new hashes globally
-sed $SED_INPLACE "s/$CSP_HASHES_PLACEHOLDER/$CSP_HASHES/g" "$APP_YAML"
+# 4.2 Replace the placeholder with the new files globally
+sed $SED_INPLACE "s/$CSP_FILES_PLACEHOLDER/$CSP_FILES/g" "$APP_YAML"
 
-echo "Modified $APP_YAML with new CSP hashes."
+echo "Modified $APP_YAML with new CSP files."
