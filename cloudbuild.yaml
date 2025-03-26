@@ -52,7 +52,7 @@ steps:
       - -c
       - |
         chmod +x ./csp-update.sh
-        ./csp-update.sh -d dist -a src/app.yaml
+        ./csp-update.sh -d dist -a src/app.yaml -t ${_TARGET_PROJECT_}
         less src/app.yaml
         cp src/app.yaml dist/app.yaml
     waitFor:

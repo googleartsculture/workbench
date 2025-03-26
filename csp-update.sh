@@ -18,11 +18,13 @@
 DEFAULT_DIST_DIR="dist"  # Default dist directory
 DEFAULT_APP_YAML="src/app.yaml"  # Default app.yaml path
 CSP_FILES_PLACEHOLDER="_FILES_"  # The placeholder string
+DEFAULT_DEPLOY_TARGET="https://fabriciusworkbench.withgoogle.com/" # Default deploy target
 # --- End Default Configuration ---
 
 # --- Parse Options ---
 DIST_DIR="$DEFAULT_DIST_DIR"
 APP_YAML="$DEFAULT_APP_YAML"
+DEPLOY_TARGET="$DEFAULT_DEPLOY_TARGET"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -34,9 +36,13 @@ while [[ $# -gt 0 ]]; do
       APP_YAML="$2"
       shift 2
       ;;
+    -t | --target)
+      DEPLOY_TARGET="$2"
+      shift 2
+      ;;
     *)
       echo "Error: Unknown option: $1"
-      echo "Usage: $0 [-d|--dist-dir <directory>] [-a|--app-yaml <file>]"
+      echo "Usage: $0 [-d|--dist-dir <directory>] [-a|--app-yaml <file>] [-t|--target <target>]"
       exit 1
       ;;
   esac
@@ -56,6 +62,11 @@ if [ ! -f "$APP_YAML" ]; then
   exit 1
 fi
 
+# Set the correct target if it is cilex-fabricius-workbench-stg
+if [[ "$DEPLOY_TARGET" == "cilex-fabricius-workbench-stg" ]]; then
+  DEPLOY_TARGET="https://cilex-fabricius-workbench-stg.uc.r.appspot.com/"
+fi
+
 # 1. Find all .js files in the dist directory
 JS_FILES=$(find "$DIST_DIR" -name "*.js")
 
@@ -66,7 +77,7 @@ JS_FILE_NAMES=$(echo "$JS_FILES" | xargs -n 1 basename)
 CSP_FILES=""
 for file in $JS_FILE_NAMES; do
   # Add the file to the CSP_FILES string, formatted for CSP
-  CSP_FILES="$CSP_FILES $file"
+  CSP_FILES="$CSP_FILES '$DEPLOY_TARGET$file'"
 done
 
 echo "Found JS files: $JS_FILE_NAMES"
