@@ -66,7 +66,7 @@ JS_FILE_NAMES=$(echo "$JS_FILES" | xargs -n 1 basename)
 CSP_FILES=""
 for file in $JS_FILE_NAMES; do
   # Add the file to the CSP_FILES string, formatted for CSP
-  CSP_FILES="$CSP_FILES '$file'"
+  CSP_FILES="$CSP_FILES $file"
 done
 
 echo "Found JS files: $JS_FILE_NAMES"
