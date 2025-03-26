@@ -18,7 +18,7 @@
 DEFAULT_DIST_DIR="dist"  # Default dist directory
 DEFAULT_APP_YAML="src/app.yaml"  # Default app.yaml path
 CSP_FILES_PLACEHOLDER="_FILES_"  # The placeholder string
-DEFAULT_DEPLOY_TARGET="https://fabriciusworkbench.withgoogle.com/" # Default deploy target
+DEFAULT_DEPLOY_TARGET="https:\/\/fabriciusworkbench.withgoogle.com\/" # Default deploy target
 # --- End Default Configuration ---
 
 # --- Parse Options ---
@@ -64,7 +64,7 @@ fi
 
 # Set the correct target if it is cilex-fabricius-workbench-stg
 if [[ "$DEPLOY_TARGET" == "cilex-fabricius-workbench-stg" ]]; then
-  DEPLOY_TARGET="https://cilex-fabricius-workbench-stg.uc.r.appspot.com/"
+  DEPLOY_TARGET="https:\/\/cilex-fabricius-workbench-stg.uc.r.appspot.com\/"
 fi
 
 # 1. Find all .js files in the dist directory
@@ -77,7 +77,7 @@ JS_FILE_NAMES=$(echo "$JS_FILES" | xargs -n 1 basename)
 CSP_FILES=""
 for file in $JS_FILE_NAMES; do
   # Add the file to the CSP_FILES string, formatted for CSP
-  CSP_FILES="$CSP_FILES '$DEPLOY_TARGET$file'"
+  CSP_FILES="$CSP_FILES $DEPLOY_TARGET$file"
 done
 
 echo "Found JS files: $JS_FILE_NAMES"
@@ -94,7 +94,10 @@ else
   SED_INPLACE="-i"
 fi
 
-# 4.2 Replace the placeholder with the new files globally
-sed $SED_INPLACE "s/$CSP_FILES_PLACEHOLDER/$CSP_FILES/g" "$APP_YAML"
+# 4.2 Escape forward slashes in DEPLOY_TARGET for sed
+# ESCAPED_DEPLOY_TARGET=$(echo "$DEPLOY_TARGET" | sed 's/\//\\\//g')
+
+# 4.3 Replace the placeholder with the new files globally
+sed $SED_INPLACE "s/$CSP_FILES_PLACEHOLDER/ $ESCAPED_DEPLOY_TARGET$CSP_FILES/g" "$APP_YAML"
 
 echo "Modified $APP_YAML with new CSP files."
