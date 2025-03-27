@@ -17,8 +17,8 @@
 # --- Default Configuration ---
 DEFAULT_DIST_DIR="dist"  # Default dist directory
 DEFAULT_APP_YAML="src/app.yaml"  # Default app.yaml path
-CSP_FILES_PLACEHOLDER="_FILES_"  # The placeholder string
-DEFAULT_DEPLOY_TARGET="https:\/\/fabriciusworkbench.withgoogle.com\/" # Default deploy target
+CSP_HASHES_PLACEHOLDER="_HASHES_"  # The placeholder string
+DEFAULT_DEPLOY_TARGET="https://fabriciusworkbench.withgoogle.com/" # Default deploy target
 # --- End Default Configuration ---
 
 # --- Parse Options ---
@@ -64,7 +64,7 @@ fi
 
 # Set the correct target if it is cilex-fabricius-workbench-stg
 if [[ "$DEPLOY_TARGET" == "cilex-fabricius-workbench-stg" ]]; then
-  DEPLOY_TARGET="https:\/\/cilex-fabricius-workbench-stg.uc.r.appspot.com\/"
+  DEPLOY_TARGET="https://cilex-fabricius-workbench-stg.uc.r.appspot.com/"
 fi
 
 # 1. Find all .js files in the dist directory
@@ -73,18 +73,20 @@ JS_FILES=$(find "$DIST_DIR" -name "*.js")
 # 2. Extract the file names (without paths)
 JS_FILE_NAMES=$(echo "$JS_FILES" | xargs -n 1 basename)
 
-# 3. Build the list of files for the CSP
-CSP_FILES=""
+# 3. Build the list of hashes for the CSP
+CSP_HASHES=""
 for file in $JS_FILE_NAMES; do
-  # Add the file to the CSP_FILES string, formatted for CSP
-  CSP_FILES="$CSP_FILES $DEPLOY_TARGET$file"
+  # Calculate SHA256 hash of the file
+  HASH=$(openssl dgst -sha256 "$DIST_DIR/$file" | awk '{print $2}')
+  # Add the hash to the CSP_HASHES string, formatted for CSP
+  CSP_HASHES="$CSP_HASHES 'sha256-$HASH'"
 done
 
 echo "Found JS files: $JS_FILE_NAMES"
-echo "Generated CSP files: $CSP_FILES"
+echo "Generated CSP hashes: $CSP_HASHES"
 
-# 3.1 Trim leading space from CSP_FILES
-CSP_FILES="${CSP_FILES# }"
+# 3.1 Trim leading space from CSP_HASHES
+CSP_HASHES="${CSP_HASHES# }"
 
 # 4. Modify the app.yaml file (using sed)
 # 4.1 Identify OS
@@ -94,10 +96,7 @@ else
   SED_INPLACE="-i"
 fi
 
-# 4.2 Escape forward slashes in DEPLOY_TARGET for sed
-# ESCAPED_DEPLOY_TARGET=$(echo "$DEPLOY_TARGET" | sed 's/\//\\\//g')
+# 4.2 Replace the placeholder with the new hashes globally
+sed $SED_INPLACE "s/$CSP_HASHES_PLACEHOLDER/$CSP_HASHES/g" "$APP_YAML"
 
-# 4.3 Replace the placeholder with the new files globally
-sed $SED_INPLACE "s/$CSP_FILES_PLACEHOLDER/ $ESCAPED_DEPLOY_TARGET$CSP_FILES/g" "$APP_YAML"
-
-echo "Modified $APP_YAML with new CSP files."
+echo "Modified $APP_YAML with new CSP hashes."
